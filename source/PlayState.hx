@@ -582,7 +582,13 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'limo':
-				gfVersion = 'gf-car';
+				if (carGf == true)
+				{
+					gfVersion = 'gf-limo'; // vroom
+				}
+				else
+					gfVersion = 'gf-car';
+
 			case 'mall' | 'mallEvil':
 				gfVersion = 'gf-christmas';
 			case 'school':
@@ -592,7 +598,12 @@ class PlayState extends MusicBeatState
 		}
 
 		if (curStage == 'limo')
-			gfVersion = 'gf-car';
+			if (carGf == true)
+			{
+				gfVersion = 'gf-limo'; // vroom
+			}
+			else
+				gfVersion = 'gf-car';
 
 		gf = new Character(400, 130, gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);
@@ -647,7 +658,14 @@ class PlayState extends MusicBeatState
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 260;
-
+				if (carGf == true) // Zoom
+				{
+					gf.y += 80;
+					gf.x += 80;
+					gf.scale.x -= 0.1;
+					gf.scale.y -= 0.1;
+					gf.scrollFactor.set(0.4, 0.4);
+				}
 				resetFastCar();
 				add(fastCar);
 
