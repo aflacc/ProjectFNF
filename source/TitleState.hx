@@ -191,7 +191,7 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('PFNF')); // ProjectFNF logo. I don't have a full one yet
 		add(ngSpr);
 		ngSpr.visible = false;
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
@@ -372,9 +372,9 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['In association', 'with']);
+				createCoolText(['Made', 'with']);
 			case 7:
-				addMoreText('newgrounds');
+				addMoreText('ProjectFNF'); // dont remove pls
 				ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
