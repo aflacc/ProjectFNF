@@ -79,6 +79,8 @@ class FreeplayState extends MusicBeatState
 		if (StoryMenuState.weekUnlocked[6] || isDebug)
 			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
 
+		// addWeek(['songname'],7,['characters']); If you wanna add stages that ignore the Weeks and unlocks
+
 		// LOAD MUSIC
 
 		// LOAD CHARACTERS
