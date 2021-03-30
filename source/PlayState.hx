@@ -1245,12 +1245,12 @@ class PlayState extends MusicBeatState
 			babyArrow.updateHitbox();
 			babyArrow.scrollFactor.set();
 
-			if (!isStoryMode)
-			{
-				babyArrow.y -= 10;
-				babyArrow.alpha = 0;
-				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
-			}
+			// if (!isStoryMode)
+			// {
+			babyArrow.y -= 20;
+			babyArrow.alpha = 0;
+			FlxTween.tween(babyArrow, {y: babyArrow.y + 20, alpha: 1}, 1, {ease: FlxEase.smoothStepInOut, startDelay: 0.5 + (0.2 * i)});
+			// }
 
 			babyArrow.ID = i;
 
