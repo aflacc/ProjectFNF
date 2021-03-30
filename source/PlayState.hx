@@ -210,12 +210,32 @@ class PlayState extends MusicBeatState
 		// To avoid having duplicate images in Discord assets
 		switch (iconRPC)
 		{
-			case 'senpai-angry':
+			case 'bf':
+				iconRPC = 'bf';
+			case 'gf':
+				iconRPC = 'gf';
+			case 'spooky':
+				iconRPC = 'spooky';
+			case 'pico':
+				iconRPC = 'pico';
+			case 'senpai':
 				iconRPC = 'senpai';
+			case 'senpai-angry':
+				iconRPC = 'senpaipissed';
 			case 'monster-christmas':
-				iconRPC = 'monster';
+				iconRPC = 'lemon';
+			case 'monster':
+				iconRPC = 'lemon';
 			case 'mom-car':
 				iconRPC = 'mom';
+			case 'mom':
+				iconRPC = 'mom';
+			case 'dad':
+				iconRPC = 'dad';
+			case 'parents-christmas':
+				iconRPC = 'mom_and_dad';
+			case 'spirit':
+				iconRPC = 'spirit';
 		}
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
