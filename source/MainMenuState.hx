@@ -96,14 +96,11 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 32, 0, "v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		var PROJECTFNFVERSION:FlxText = new FlxText(5, FlxG.height - 18, 0, "ProjectFNF version 0.1-a BETA", 12);
-		PROJECTFNFVERSION.scrollFactor.set();
-		PROJECTFNFVERSION.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		add(PROJECTFNFVERSION); // im an idiot and forgot to add this originally
+
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
