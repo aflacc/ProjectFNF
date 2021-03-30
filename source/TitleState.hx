@@ -35,6 +35,7 @@ class TitleState extends MusicBeatState
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
+	var PFNFLOGO:Bool = true; // Shows logo instead of Bumpin
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -143,7 +144,14 @@ class TitleState extends MusicBeatState
 		add(bg);
 
 		logoBl = new FlxSprite(-150, -100);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		if (PFNFLOGO = true)
+		{
+			logoBl.frames = Paths.getSparrowAtlas('ProjectFNFLogoBumpin');
+			logoBl.x += 180;
+			logoBl.y += 60;
+		}
+		else
+			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');
