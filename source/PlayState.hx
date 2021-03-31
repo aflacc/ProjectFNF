@@ -2551,6 +2551,10 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 			gf.playAnim('cheer', true);
 		}
+		if (curBeat == 47 && curSong == 'Spookeez')
+		{
+			gf.playAnim('cheer', true);
+		}
 
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 		{
@@ -2600,7 +2604,7 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		if (isHalloween && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)
+		if (isHalloween && FlxG.random.bool(20) && curBeat > lightningStrikeBeat + lightningOffset)
 		{
 			lightningStrikeShit();
 		}
