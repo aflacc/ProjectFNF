@@ -2350,9 +2350,17 @@ class PlayState extends MusicBeatState
 			}
 
 			if (note.noteData >= 0)
+			{
 				health += 0.023;
+				if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
+					gf.playAnim('cheer', true);
+			}
 			else
+			{
 				health += 0.004;
+				if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
+					gf.playAnim('cheer', true);
+			}
 
 			switch (note.noteData)
 			{
@@ -2555,7 +2563,14 @@ class PlayState extends MusicBeatState
 		{
 			gf.playAnim('cheer', true);
 		}
+		if (curBeat == 15 && curSong == 'Fresh')
+			gf.playAnim('cheer', true);
+		if (curBeat == 159 && curSong == 'Fresh')
+			gf.playAnim('cheer', true);
 
+		if (curBeat == 77 || curBeat == 95 || curBeat == 105 || curBeat == 110 || curBeat == 127 || curBeat == 150) // Scary lemon scares the bitchass female
+			if (curSong == 'Monster')
+				gf.playAnim('scared', true);
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 		{
 			boyfriend.playAnim('hey', true);
