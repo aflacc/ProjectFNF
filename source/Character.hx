@@ -347,7 +347,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				flipX = true;
+				flipX = true; // hi
 			case 'bf-car':
 				var tex = Paths.getSparrowAtlas('bfCar');
 				frames = tex;
