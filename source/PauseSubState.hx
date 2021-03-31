@@ -15,6 +15,8 @@ import flixel.util.FlxColor;
 
 class PauseSubState extends MusicBeatSubstate
 {
+	var canSkipSong:Bool = true; // adds a skip button to the pause menu
+
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Charting Menu', 'Exit to menu'];
