@@ -24,6 +24,7 @@ class FreeplayState extends MusicBeatState
 	var curDifficulty:Int = 1;
 
 	var scoreText:FlxText;
+	var songLength:FlxText;
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
@@ -112,8 +113,10 @@ class FreeplayState extends MusicBeatState
 		// scoreText.autoSize = false;
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		// scoreText.alignment = RIGHT;
+		// songLength = new FlxText(FlxG.width * 0.7, 33, 0, "hola", 32);
+		//	songLength.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT);
 
-		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
+		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 80, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		add(scoreBG);
 
@@ -122,6 +125,7 @@ class FreeplayState extends MusicBeatState
 		add(diffText);
 
 		add(scoreText);
+		// add(songLength);
 
 		changeSelection();
 		changeDiff();
