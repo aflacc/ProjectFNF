@@ -52,7 +52,7 @@ class OptionsMenu extends MusicBeatState
 
 		currentDescription = "none";
 
-		versionShit = new FlxText(5, FlxG.height - 18, 0, "Offset (Left, Right): " + FlxG.save.data.offset + " - Description - " + currentDescription, 12);
+		versionShit = new FlxText(5, FlxG.height - 18, 0, "This menu is a WIP", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -62,5 +62,54 @@ class OptionsMenu extends MusicBeatState
 
 	var isCat:Bool = false;
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (controls.BACK && !isCat)
+			FlxG.switchState(new MainMenuState());
+	}
+
 	var isSettingControl:Bool = false;
+
+	function changeSelection(change:Int = 0)
+	{
+		#if !switch
+		// NGio.logEvent("Fresh");
+		#end
+
+		FlxG.sound.play(Paths.sound("scrollMenu"), 0.4);
+
+		curSelected += change;
+
+		if (curSelected < 0)
+			curSelected = grpControls.length - 1;
+		if (curSelected >= grpControls.length)
+			curSelected = 0;
+
+		if (isCat)
+			currentDescription = currentSelectedCat.getOptions()[curSelected].getDescription();
+		else
+			currentDescription = "Please select a catagory";
+		versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset + " - Description - " + currentDescription;
+
+		// selector.y = (70 * curSelected) + 30;
+
+		var bullShit:Int = 0;
+
+		for (item in grpControls.members)
+		{
+			item.targetY = bullShit - curSelected;
+			bullShit++;
+
+			item.alpha = 0.6;
+			// item.setGraphicSize(Std.int(item.width * 0.8));
+
+			if (item.targetY == 0)
+			{
+				item.alpha = 1;
+				// item.setGraphicSize(Std.int(item.width));
+			}
+		}
+	}
 }
