@@ -885,13 +885,10 @@ class PlayState extends MusicBeatState
 
 						new FlxTimer().start(0.8, function(tmr:FlxTimer)
 						{
+							startCountdown();
 							camHUD.visible = true;
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 3, {
-								ease: FlxEase.smootherStepOut,
-								onComplete: function(twn:FlxTween)
-								{
-									startCountdown();
-								}
+								ease: FlxEase.smootherStepOut
 							});
 						});
 					});
