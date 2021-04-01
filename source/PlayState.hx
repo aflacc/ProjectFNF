@@ -755,15 +755,11 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				// trailArea.scrollFactor.set();
 
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 1, 0.069);
-				var bfevilTrail = new FlxTrail(boyfriend, null, 0, 24, 1, 0.069);
-				var gfevilTrail = new FlxTrail(gf, null, 4, 24, 0.1, 0.069);
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				// var noteevilTrail = new FlxTrail(FlxCamera, null, 4, 24, 0.3, 0.069);
 				// evilTrail.changeValuesEnabled(false, false, false, false);
 				// evilTrail.changeGraphic()
 				add(evilTrail);
-				add(bfevilTrail);
-				add(gfevilTrail);
 				// evilTrail.scrollFactor.set(1.1, 1.1);
 
 				boyfriend.x += 200;
