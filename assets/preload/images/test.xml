@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="test.png">
+	<!-- Created with Adobe Animate version 21.0.4.39603 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SENPAI LEFT NOTE0000" x="0" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0001" x="0" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0002" x="124" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0003" x="124" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0004" x="124" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0005" x="124" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0006" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0007" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0008" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0009" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0010" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0011" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0012" x="248" y="0" width="124" height="163"/>
+	<SubTexture name="SENPAI LEFT NOTE0013" x="248" y="0" width="124" height="163"/>
+</TextureAtlas>
