@@ -7,7 +7,7 @@
 	<SubTexture name="Angry Senpai DOWN NOTE instance 10002" x="0" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai DOWN NOTE instance 10003" x="0" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai DOWN NOTE instance 10004" x="0" y="0" width="125" height="164"/>
-	<SubTexture name="Angry Senpai DOWN NOTE instance 10005" x="0" y="0" width="125" height="164"/>
+	<SubTexture name="Angry Senpai DOWN NOTE instance 10005" x="135" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai DOWN NOTE instance 10006" x="135" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai DOWN NOTE instance 10007" x="135" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai DOWN NOTE instance 10008" x="135" y="0" width="125" height="164"/>
@@ -35,7 +35,7 @@
 	<SubTexture name="Angry Senpai LEFT NOTE instance 10002" x="945" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai LEFT NOTE instance 10003" x="945" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai LEFT NOTE instance 10004" x="945" y="0" width="125" height="164"/>
-	<SubTexture name="Angry Senpai LEFT NOTE instance 10005" x="945" y="0" width="125" height="164"/>
+	<SubTexture name="Angry Senpai LEFT NOTE instance 10005" x="1080" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai LEFT NOTE instance 10006" x="1080" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai LEFT NOTE instance 10007" x="1080" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai LEFT NOTE instance 10008" x="1080" y="0" width="125" height="164"/>
@@ -49,7 +49,7 @@
 	<SubTexture name="Angry Senpai RIGHT NOTE instance 10002" x="1215" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai RIGHT NOTE instance 10003" x="1215" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai RIGHT NOTE instance 10004" x="1215" y="0" width="125" height="164"/>
-	<SubTexture name="Angry Senpai RIGHT NOTE instance 10005" x="1215" y="0" width="125" height="164"/>
+	<SubTexture name="Angry Senpai RIGHT NOTE instance 10005" x="1350" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai RIGHT NOTE instance 10006" x="1350" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai RIGHT NOTE instance 10007" x="1350" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai RIGHT NOTE instance 10008" x="1350" y="0" width="125" height="164"/>
@@ -63,7 +63,7 @@
 	<SubTexture name="Angry Senpai UP NOTE instance 10002" x="1485" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai UP NOTE instance 10003" x="1485" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai UP NOTE instance 10004" x="1485" y="0" width="125" height="164"/>
-	<SubTexture name="Angry Senpai UP NOTE instance 10005" x="1485" y="0" width="125" height="164"/>
+	<SubTexture name="Angry Senpai UP NOTE instance 10005" x="1620" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai UP NOTE instance 10006" x="1620" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai UP NOTE instance 10007" x="1620" y="0" width="125" height="164"/>
 	<SubTexture name="Angry Senpai UP NOTE instance 10008" x="1620" y="0" width="125" height="164"/>

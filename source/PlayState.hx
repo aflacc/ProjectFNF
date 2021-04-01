@@ -48,8 +48,23 @@ class PlayState extends MusicBeatState
 {
 	var characterCol:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
 	var col:Array<FlxColor> = [
-		0xFF5eb9ff, 0xFFd142f5, 0xFFf5427e, 0xFFff5500, 0xFF2af545, 0xFFf666b9, 0xFFf666b9, 0xFF5eb9ff, 0xFF008c13, 0xFFe3df00, 0xFF5eb9ff, 0xFFe3df00,
-		0xFF5eb9ff, 0xFFffc75e, 0xFFffc75e, 0xFFff4a4a, 0xFFff4a4a
+		0xFF5eb9ff, // BF
+		0xFF5eb9ff, // BF-PIXEL
+		0xFF5eb9ff, // BF-CHRISTMAS
+		0xFF5eb9ff, // BF-CAR
+		0xFFd142f5, // GF
+		0xFFd142f5, // GF-CHRISTMAS (Pretty sure this one doesn't really do anything.)
+		0xFFc56eff, // DAD
+		0xFFf02929, // MOM
+		0xFFf02929, // MOM-CAR
+		0xFFffffff, // PARENTS-CHRISTMAS (Look I don't know what a Better color would be.)
+		0xFFfc6d0d, // SPOOKY
+		0xFF33ff55, // PICO
+		0xFFf6ff42, // MONSTER
+		0xFFf6ff42, // MONSTER-CHRISTMAS
+		0xFFffd061, // SENPAI
+		0xFFffa861, // SENPAI-ANGRY
+		0xFFff6c61 // SPIRIT
 	]; // Health Bar Colors. One for each character uses the character list
 
 	public static var curStage:String = '';
