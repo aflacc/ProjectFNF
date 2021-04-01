@@ -295,13 +295,6 @@ class ReplayOption extends Option
 		description = desc;
 	}
 
-	public override function press():Bool
-	{
-		trace("switch");
-		FlxG.switchState(new LoadReplayState());
-		return false;
-	}
-
 	private override function updateDisplay():String
 	{
 		return "Load replays";
