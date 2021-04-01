@@ -22,7 +22,7 @@
 	<SubTexture name="BF DOWN NOTE0003" x="216" y="0" width="72" height="72"/>
 	<SubTexture name="BF DOWN NOTE0004" x="216" y="0" width="72" height="72"/>
 	<SubTexture name="BF DOWN NOTE0005" x="216" y="0" width="72" height="72"/>
-	<SubTexture name="BF DOWN NOTE0006" x="288" y="0" width="72" height="72"/>
+	<SubTexture name="BF DOWN NOTE0006" x="216" y="0" width="72" height="72"/>
 	<SubTexture name="BF DOWN NOTE0007" x="288" y="0" width="72" height="72"/>
 	<SubTexture name="BF DOWN NOTE0008" x="288" y="0" width="72" height="72"/>
 	<SubTexture name="BF DOWN NOTE0009" x="288" y="0" width="72" height="72"/>
@@ -62,7 +62,7 @@
 	<SubTexture name="BF LEFT NOTE0001" x="360" y="72" width="72" height="72"/>
 	<SubTexture name="BF LEFT NOTE0002" x="432" y="72" width="72" height="72"/>
 	<SubTexture name="BF LEFT NOTE0003" x="432" y="72" width="72" height="72"/>
-	<SubTexture name="BF LEFT NOTE0004" x="0" y="144" width="72" height="72"/>
+	<SubTexture name="BF LEFT NOTE0004" x="432" y="72" width="72" height="72"/>
 	<SubTexture name="BF LEFT NOTE0005" x="0" y="144" width="72" height="72"/>
 	<SubTexture name="BF LEFT NOTE0006" x="0" y="144" width="72" height="72"/>
 	<SubTexture name="BF LEFT NOTE0007" x="0" y="144" width="72" height="72"/>
