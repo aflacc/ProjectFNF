@@ -875,24 +875,6 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
-				case 'satin-panties':
-					new FlxTimer().start(0.1, function(tmr:FlxTimer)
-					{
-						camFollow.y -= 10;
-						camFollow.x = -2000;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						FlxG.camera.zoom = 0.9;
-
-						new FlxTimer().start(0.8, function(tmr:FlxTimer)
-						{
-							startCountdown();
-							camHUD.visible = true;
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 3, {
-								ease: FlxEase.smootherStepOut
-							});
-						});
-					});
-
 				case 'senpai':
 					schoolIntro(doof);
 				case 'roses':
