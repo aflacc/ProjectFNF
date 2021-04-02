@@ -1136,7 +1136,10 @@ class PlayState extends MusicBeatState
 						if (SONG.song.toLowerCase() == 'senpai' || SONG.song.toLowerCase() == 'roses')
 							FlxG.sound.play(Paths.sound('introGo-pixel'), 0.6);
 						else
+						{
 							FlxG.sound.play(Paths.sound('introGo'), 0.6);
+							gf.playAnim('cheer', true);
+						};
 					}
 				case 4:
 			}
@@ -1355,12 +1358,13 @@ class PlayState extends MusicBeatState
 			babyArrow.updateHitbox();
 			babyArrow.scrollFactor.set();
 
-			// if (!isStoryMode)
-			// {
-			babyArrow.y -= 20;
-			babyArrow.alpha = 0;
-			FlxTween.tween(babyArrow, {y: babyArrow.y + 20, alpha: 1}, 1, {ease: FlxEase.smoothStepInOut, startDelay: 0.5 + (0.2 * i)});
-			// }
+			if (!isStoryMode || curSong == 'bopeebo' || curSong == 'tutorial' || curSong == 'spookeez' || curSong == 'pico' || curSong == 'satin-panties'
+				|| curSong == 'cocoa' || curSong == 'senpai') // Just play the intro anim for JUST the first song in a week. I think theres a better way to do it tho.
+			{
+				babyArrow.y -= 20;
+				babyArrow.alpha = 0;
+				FlxTween.tween(babyArrow, {y: babyArrow.y + 20, alpha: 1}, 1, {ease: FlxEase.smoothStepInOut, startDelay: 0.5 + (0.2 * i)});
+			}
 
 			babyArrow.ID = i;
 

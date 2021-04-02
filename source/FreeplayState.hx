@@ -163,6 +163,7 @@ class FreeplayState extends MusicBeatState
 	public function addSong(songName:String, weekNum:Int, songCharacter:String)
 	{
 		songs.push(new SongMetadata(songName, weekNum, songCharacter));
+		FlxG.sound.cache(Paths.inst(songName));
 	}
 
 	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>)
