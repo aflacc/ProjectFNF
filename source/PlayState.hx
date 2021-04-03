@@ -146,6 +146,7 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var scoreTxt:FlxText;
+	var timerTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
 
@@ -838,7 +839,11 @@ class PlayState extends MusicBeatState
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
 		scoreTxt.scrollFactor.set();
+		timerTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "Hello world!", 20);
+		timerTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		timerTxt.scrollFactor.set();
 		add(scoreTxt);
+		add(timerTxt);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -1358,8 +1363,8 @@ class PlayState extends MusicBeatState
 			babyArrow.updateHitbox();
 			babyArrow.scrollFactor.set();
 
-			if (!isStoryMode || curSong == 'bopeebo' || curSong == 'tutorial' || curSong == 'spookeez' || curSong == 'pico' || curSong == 'satin-panties'
-				|| curSong == 'cocoa' || curSong == 'senpai') // Just play the intro anim for JUST the first song in a week. I think theres a better way to do it tho.
+			if (!isStoryMode == true || curSong == 'bopeebo' || curSong == 'tutorial' || curSong == 'spookeez' || curSong == 'pico'
+				|| curSong == 'satin-panties' || curSong == 'cocoa' || curSong == 'senpai') // Just play the intro anim for JUST the first song in a week. I think theres a better way to do it tho.
 			{
 				babyArrow.y -= 20;
 				babyArrow.alpha = 0;
@@ -1513,6 +1518,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score:" + songScore;
+		timerTxt.text = "Time Left:" + "I dunno";
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
