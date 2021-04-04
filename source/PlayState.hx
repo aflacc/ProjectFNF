@@ -898,6 +898,35 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
+				case "monster":
+					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.WHITE);
+					add(blackScreen);
+					blackScreen.scrollFactor.set();
+					camHUD.visible = false;
+
+					new FlxTimer().start(0.1, function(tmr:FlxTimer)
+					{
+						remove(blackScreen);
+						FlxG.sound.play(Paths.sound('BIGTHUNDER'));
+						camFollow.y = boyfriend.y;
+						camFollow.x = boyfriend.x;
+						FlxG.camera.focusOn(camFollow.getPosition());
+						FlxG.camera.zoom = 2;
+						boyfriend.playAnim('scared', true);
+
+						new FlxTimer().start(0.8, function(tmr:FlxTimer)
+						{
+							camHUD.visible = true;
+							remove(blackScreen);
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
+								ease: FlxEase.quadInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									startCountdown();
+								}
+							});
+						});
+					});
 				case 'senpai':
 					schoolIntro(doof);
 				case 'roses':
@@ -1970,6 +1999,16 @@ class PlayState extends MusicBeatState
 					camHUD.visible = false;
 
 					FlxG.sound.play(Paths.sound('Lights_Shut_off'));
+				}
+				if (SONG.song.toLowerCase() == 'south')
+				{
+					var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 10, FlxG.height * 10, FlxColor.WHITE);
+					blackShit.scrollFactor.set();
+					add(blackShit);
+					camHUD.visible = false;
+
+					FlxG.sound.play(Paths.sound('thunder_2'));
 				}
 
 				FlxTransitionableState.skipNextTransIn = true;
