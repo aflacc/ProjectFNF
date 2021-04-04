@@ -899,7 +899,7 @@ class PlayState extends MusicBeatState
 						});
 					});
 				case "monster":
-					var whiteScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.WHITE);
+					var whiteScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 10), Std.int(FlxG.height * 10), FlxColor.WHITE);
 					add(whiteScreen);
 					whiteScreen.scrollFactor.set();
 					camHUD.visible = false;
@@ -2004,16 +2004,25 @@ class PlayState extends MusicBeatState
 				if (SONG.song.toLowerCase() == 'south')
 				{
 					var whiteShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 10, FlxG.height * 10, FlxColor.WHITE);
+						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 100, FlxG.height * 100, FlxColor.WHITE);
 					whiteShit.scrollFactor.set();
 					add(whiteShit);
 					camHUD.visible = false;
 
+					trace('PEE YOURSELF');
 					FlxG.sound.play(Paths.sound('thunder_2'));
 				}
 
-				FlxTransitionableState.skipNextTransIn = true;
-				FlxTransitionableState.skipNextTransOut = true;
+				if (SONG.song.toLowerCase() != 'south' || SONG.song.toLowerCase() != 'eggnog')
+				{
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
+				}
+				else
+				{
+					FlxTransitionableState.skipNextTransIn = false;
+					FlxTransitionableState.skipNextTransOut = false;
+				}
 				prevCamFollow = camFollow;
 
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
