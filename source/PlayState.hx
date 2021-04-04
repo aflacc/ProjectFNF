@@ -2013,15 +2013,16 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('thunder_2'));
 				}
 
-				if (SONG.song.toLowerCase() != 'south' || SONG.song.toLowerCase() != 'eggnog')
-				{
-					FlxTransitionableState.skipNextTransIn = true;
-					FlxTransitionableState.skipNextTransOut = true;
-				}
-				else
+				if (SONG.song.toLowerCase() == 'south' || SONG.song.toLowerCase() == 'eggnog')
 				{
 					FlxTransitionableState.skipNextTransIn = false;
 					FlxTransitionableState.skipNextTransOut = false;
+					trace('yes');
+				}
+				else
+				{
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
 				}
 				prevCamFollow = camFollow;
 
@@ -2688,6 +2689,9 @@ class PlayState extends MusicBeatState
 		if (curBeat == 77 || curBeat == 95 || curBeat == 105 || curBeat == 110 || curBeat == 127 || curBeat == 150) // Scary lemon scares the bitchass female
 			if (curSong == 'Monster')
 				gf.playAnim('scared', true);
+		if (curBeat == 195 || curBeat == 138 || curBeat == 232 || curBeat == 248 || curBeat == 312)
+			if (curSong == 'Monster')
+				boyfriend.playAnim('hey', true);
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 		{
 			boyfriend.playAnim('hey', true);
