@@ -15,8 +15,8 @@ class HealthIcon extends FlxSprite
 		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
 
 		antialiasing = true;
-		animation.add('bf', [0, 1], 0, false, isPlayer);
-		animation.add('bf-car', [0, 1], 0, false, isPlayer);
+		animation.add('bf', [0, 1, 29], 0, false, isPlayer);
+		animation.add('bf-car', [0, 1], 0, false, isPlayer); // he turned into a convertible 
 		animation.add('bf-christmas', [0, 1], 0, false, isPlayer);
 		animation.add('bf-pixel', [21, 21], 0, false, isPlayer);
 		animation.add('spooky', [2, 3], 0, false, isPlayer);
@@ -28,9 +28,9 @@ class HealthIcon extends FlxSprite
 		animation.add('dad', [12, 13], 0, false, isPlayer);
 		animation.add('senpai', [22, 22], 0, false, isPlayer); // I personally hate icon 23
 		animation.add('senpai-angry', [24, 25], 0, false, isPlayer);
-		animation.add('spirit', [26, 27], 0, false, isPlayer);
+		animation.add('spirit', [26, 27, 28], 0, false, isPlayer); // winning icon is from weeg mod dont sue me
 		animation.add('bf-old', [14, 15], 0, false, isPlayer);
-		animation.add('gf', [16], 0, false, isPlayer);
+		animation.add('gf', [16, 31, 30], 0, false, isPlayer); // cute icons pog
 		animation.add('parents-christmas', [17], 0, false, isPlayer);
 		animation.add('monster', [19, 20], 0, false, isPlayer);
 		animation.add('monster-christmas', [19, 20], 0, false, isPlayer);

@@ -48,23 +48,23 @@ class PlayState extends MusicBeatState
 {
 	var characterCol:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
 	var col:Array<FlxColor> = [
-		0xFF5eb9ff, // BF
-		0xFF5eb9ff, // BF-PIXEL
-		0xFF5eb9ff, // BF-CHRISTMAS
-		0xFF5eb9ff, // BF-CAR
-		0xFFd142f5, // GF
-		0xFFd142f5, // GF-CHRISTMAS (Pretty sure this one doesn't really do anything.)
-		0xFFc56eff, // DAD
-		0xFFf02929, // MOM
-		0xFFf02929, // MOM-CAR
+		0xFF51d8fb, // BF
+		0xFF9fe6ff, // BF-PIXEL
+		0xFF51d8fb, // BF-CHRISTMAS
+		0xFF51d8fb, // BF-CAR
+		0xFFca1f6f, // GF
+		0xFFca1f6f, // GF-CHRISTMAS (Pretty sure this one doesn't really do anything.)
+		0xFFc885e5, // DAD
+		0xFFec7aac, // MOM
+		0xFFec7aac, // MOM-CAR
 		0xFFffffff, // PARENTS-CHRISTMAS (Look I don't know what a Better color would be.)
-		0xFFfc6d0d, // SPOOKY
-		0xFF33ff55, // PICO
-		0xFFf6ff42, // MONSTER
-		0xFFf6ff42, // MONSTER-CHRISTMAS
-		0xFFffd061, // SENPAI
-		0xFFffa861, // SENPAI-ANGRY
-		0xFFff6c61 // SPIRIT
+		0xFFf9a326, // SPOOKY
+		0xFFceec75, // PICO
+		0xFFf5ff8a, // MONSTER
+		0xFFf5ff8a, // MONSTER-CHRISTMAS
+		0xFFffaa6f, // SENPAI
+		0xFFffaa6f, // SENPAI-ANGRY
+		0xFFff5d87 // SPIRIT
 	];
 
 	/* 
@@ -839,9 +839,6 @@ class PlayState extends MusicBeatState
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
 		scoreTxt.scrollFactor.set();
-		timerTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "Hello world!", 20);
-		timerTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
-		timerTxt.scrollFactor.set();
 		add(scoreTxt);
 		add(timerTxt);
 
@@ -1518,7 +1515,6 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score:" + songScore;
-		timerTxt.text = "Time Left:" + "I dunno";
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -1572,7 +1568,12 @@ class PlayState extends MusicBeatState
 			iconP1.animation.curAnim.curFrame = 0;
 
 		if (healthBar.percent > 80)
+		{
 			iconP2.animation.curAnim.curFrame = 1;
+			iconP1.animation.curAnim.curFrame = 3;
+		}
+		else if (healthBar.percent < 20)
+			iconP2.animation.curAnim.curFrame = 3;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
 
