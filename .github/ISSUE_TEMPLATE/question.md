@@ -1,8 +1,10 @@
 ---
 name: Question
-about: Ask a general question
-title: 'Question: '
-labels: question
+about: Ask a question about ProjectFNF or FNF in general!
+title: ''
+labels: Ask
+assignees: ''
+
 ---
-#### Please check for duplicates or similar issues before asking your question.
-## What is your question?
+
+Type your question here:
