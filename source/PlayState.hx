@@ -900,6 +900,36 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
+				case "monster":
+					var whiteScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 10), Std.int(FlxG.height * 10), FlxColor.WHITE);
+					add(whiteScreen);
+					whiteScreen.scrollFactor.set();
+					camHUD.visible = false;
+
+					new FlxTimer().start(0.1, function(tmr:FlxTimer)
+					{
+						remove(whiteScreen);
+						FlxG.sound.play(Paths.sound('BIGTHUNDER'));
+						camFollow.y = boyfriend.y - 200;
+						camFollow.x = boyfriend.x;
+						FlxG.camera.focusOn(camFollow.getPosition());
+						FlxG.camera.zoom = 2.7;
+						boyfriend.playAnim('scared', true);
+						gf.playAnim('scared', true);
+
+						new FlxTimer().start(0.8, function(tmr:FlxTimer)
+						{
+							camHUD.visible = true;
+							remove(whiteScreen);
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
+								ease: FlxEase.quadInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									startCountdown();
+								}
+							});
+						});
+					});
 				case 'senpai':
 					schoolIntro(doof);
 				case 'roses':
@@ -1973,9 +2003,29 @@ class PlayState extends MusicBeatState
 
 					FlxG.sound.play(Paths.sound('Lights_Shut_off'));
 				}
+				if (SONG.song.toLowerCase() == 'south')
+				{
+					var whiteShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 100, FlxG.height * 100, FlxColor.WHITE);
+					whiteShit.scrollFactor.set();
+					add(whiteShit);
+					camHUD.visible = false;
 
-				FlxTransitionableState.skipNextTransIn = true;
-				FlxTransitionableState.skipNextTransOut = true;
+					trace('PEE YOURSELF');
+					FlxG.sound.play(Paths.sound('thunder_2'));
+				}
+
+				if (SONG.song.toLowerCase() == 'south' || SONG.song.toLowerCase() == 'eggnog')
+				{
+					FlxTransitionableState.skipNextTransIn = false;
+					FlxTransitionableState.skipNextTransOut = false;
+					trace('yes');
+				}
+				else
+				{
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
+				}
 				prevCamFollow = camFollow;
 
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
@@ -2641,6 +2691,9 @@ class PlayState extends MusicBeatState
 		if (curBeat == 77 || curBeat == 95 || curBeat == 105 || curBeat == 110 || curBeat == 127 || curBeat == 150) // Scary lemon scares the bitchass female
 			if (curSong == 'Monster')
 				gf.playAnim('scared', true);
+		if (curBeat == 195 || curBeat == 138 || curBeat == 232 || curBeat == 248 || curBeat == 312)
+			if (curSong == 'Monster')
+				boyfriend.playAnim('hey', true);
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 		{
 			boyfriend.playAnim('hey', true);

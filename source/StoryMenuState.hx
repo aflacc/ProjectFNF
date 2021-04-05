@@ -26,7 +26,7 @@ class StoryMenuState extends MusicBeatState
 		// Songs that are in the weeks
 		['Tutorial'],
 		['Bopeebo', 'Fresh', 'Dadbattle'],
-		['Spookeez', 'South', "Monster"],
+		['Spookeez', 'South', "Monster"], // 'Spookeez'
 		['Pico', 'Philly', "Blammed"],
 		['Satin-Panties', "High", "Milf"],
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
