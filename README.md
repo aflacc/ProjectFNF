@@ -101,3 +101,14 @@ As for Mac, 'lime test mac -debug' should work, if not the internet surely has a
 ### Additional guides
 
 - [Command line basics](https://ninjamuffin99.newgrounds.com/news/post/1090480)
+
+
+
+# Adding Healthbar Colors
+Taken from [Here](https://github.com/aflacc/ProjectFNF/wiki/Custom-Healthbar-Colors)
+
+
+## Explanation
+The Way the Healthbar colors works, is inside `PlayState.hx` there is a setting at the top called `CustomHealth`. When this value is set to `true`, this feature is enabled. This feature gives the health bar specific colors depending on what characters are currently being used. The Health bar Colors are handled via a list right below the `CustomHealth` config option. These colors are in hexadecimal. HaxeFlixel does not read `#` well, so to get a Hex color, you will use `0xFF` instead. For example, `0xFFFFFFFF` is White. I just google "Color Picker" to choose my hex colors, but any way to get a hex color also works.
+
+The List of colors is in the same order as the characters in `CharacterList.txt`. (Located in the Data folder), so Boyfriends color is the first value in the array. If the color list is longer than that of `CharacterList.txt` then the game will crash. However, you do not have to do every characters color, since any characters without a color will be assigned to a white color. 
