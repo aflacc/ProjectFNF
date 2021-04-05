@@ -20,3 +20,7 @@
 - Fixed an issue with game crashing opening the debug menu
 - Thorns has seperate intro assets
 - 
+
+
+### Mods that use ProjectFNF
+- none yet
