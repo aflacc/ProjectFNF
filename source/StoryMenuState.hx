@@ -192,6 +192,7 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.animation.addByPrefix('easy', 'EASY');
 		sprDifficulty.animation.addByPrefix('normal', 'NORMAL');
 		sprDifficulty.animation.addByPrefix('hard', 'HARD');
+		sprDifficulty.animation.addByPrefix('neo', 'NEO');
 		sprDifficulty.animation.play('easy');
 		changeDifficulty();
 
@@ -300,7 +301,10 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (stopspamming == false)
 			{
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				if (curDifficulty == 3)
+					FlxG.sound.play(Paths.sound('confirmMenuNeo'));
+				else
+					FlxG.sound.play(Paths.sound('confirmMenu'));
 
 				grpWeekText.members[curWeek].startFlashing();
 				grpWeekCharacters.members[1].animation.play('bfConfirm');
@@ -312,6 +316,7 @@ class StoryMenuState extends MusicBeatState
 			selectedWeek = true;
 
 			var diffic = "";
+			var isNeo:Bool = false; // Enviormental value
 
 			switch (curDifficulty)
 			{
@@ -319,6 +324,9 @@ class StoryMenuState extends MusicBeatState
 					diffic = '-easy';
 				case 2:
 					diffic = '-hard';
+				case 3:
+					diffic = '-neo';
+					isNeo = true;
 			}
 
 			PlayState.storyDifficulty = curDifficulty;
@@ -326,6 +334,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
+			PlayState.isNeo = isNeo;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				LoadingState.loadAndSwitchState(new PlayState(), true);
@@ -338,8 +347,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
+			curDifficulty = 3;
+		if (curDifficulty > 3)
 			curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;
@@ -354,6 +363,9 @@ class StoryMenuState extends MusicBeatState
 				sprDifficulty.offset.x = 70;
 			case 2:
 				sprDifficulty.animation.play('hard');
+				sprDifficulty.offset.x = 20;
+			case 3:
+				sprDifficulty.animation.play('neo');
 				sprDifficulty.offset.x = 20;
 		}
 
