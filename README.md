@@ -112,3 +112,31 @@ Taken from [Here](https://github.com/aflacc/ProjectFNF/wiki/Custom-Healthbar-Col
 The Way the Healthbar colors works, is inside `PlayState.hx` there is a setting at the top called `CustomHealth`. When this value is set to `true`, this feature is enabled. This feature gives the health bar specific colors depending on what characters are currently being used. The Health bar Colors are handled via a list right below the `CustomHealth` config option. These colors are in hexadecimal. HaxeFlixel does not read `#` well, so to get a Hex color, you will use `0xFF` instead. For example, `0xFFFFFFFF` is White. I just google "Color Picker" to choose my hex colors, but any way to get a hex color also works.
 
 The List of colors is in the same order as the characters in `CharacterList.txt`. (Located in the Data folder), so Boyfriends color is the first value in the array. If the color list is longer than that of `CharacterList.txt` then the game will crash. However, you do not have to do every characters color, since any characters without a color will be assigned to a white color. 
+
+
+# Enabling/Disabling Features
+Taken from [Here](https://github.com/aflacc/ProjectFNF/wiki/Disabling-and-Enabling-features)
+
+ProjectFNF has a configuration file that will be functional in `v0.1-c`. This config file (`config.hx`) is mod locked features that the user can not turn on or off. Before `v0.1-c`, you can find this config options located in their respective files. Some of these config options are as follows:
+
+`distortedIntro` (Bool) - Thorns in week 6 has a more distorted countdown than Roses or Senpai\
+`gfLimo` (Bool) - Girlfriend in week 4 will sit on the Limo in the back instead of their normal speaker and in between the two cars \
+`fps` (Int) - Frames per Second. This cannot (needs confirmation) be changed during the gameplay. 
+`poses` (Int) - If you want the characters to do poses (the "Hey", girlfriend cheering, the sweating in week 2 etc.) This one only accepts 3 values:\
+0 - No Poses\
+1 - Original Game poses (theres a few custom ones in the engine)\
+2 - All poses (Default)\
+`hpBarCol` (Array) - See [Custom Healthbar Colors](https://github.com/aflacc/ProjectFNF/wiki/Custom-Healthbar-Colors), this is the list of colors that the custom healthbar uses. If this array is empty (feature as of `v0.1-c`), then the custom healthbar will be disabled. However, if you change this variable into a Integer, you can further customize it:\
+`0` - No custom Healthbar\
+`1` - Boyfriend side only Colors\
+`2` - Dad side only Colors\
+`3` - No Color\
+`enemyNoteFix` (Bool) - This basically fixes the second characters notes not lighting up and actually looks really good
+
+
+
+
+References:\
+`Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`
+`Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.
+`Array`, a list of values.
