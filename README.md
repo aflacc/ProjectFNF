@@ -12,5 +12,11 @@
 ## Changelog
 #### v0.1-d
 - accidentally committed stuff for a seperate mod aaaaaaaaa
+- anything that has to do with neo stuff _does not belong  in the files!_
+- If anyone wants to go and make a pull request that removes all the neo stuff please let me know
 #### v0.1-c
 - Added a cutscene to South transitioning to Monster
+- Updated Senpai and Pixel Boyfriends sprites to close their mouths.
+- Fixed an issue with game crashing opening the debug menu
+- Thorns has seperate intro assets
+- 
