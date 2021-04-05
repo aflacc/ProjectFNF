@@ -119,6 +119,7 @@ Taken from [Here](https://github.com/aflacc/ProjectFNF/wiki/Disabling-and-Enabli
 
 ProjectFNF has a configuration file that will be functional in `v0.1-c`. This config file (`config.hx`) is mod locked features that the user can not turn on or off. Before `v0.1-c`, you can find this config options located in their respective files. Some of these config options are as follows:
 
+## List of Features
 `distortedIntro` (Bool) - Thorns in week 6 has a more distorted countdown than Roses or Senpai\
 `gfLimo` (Bool) - Girlfriend in week 4 will sit on the Limo in the back instead of their normal speaker and in between the two cars \
 `fps` (Int) - Frames per Second. This cannot (needs confirmation) be changed during the gameplay. 
@@ -136,7 +137,7 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 
 
 
-References:\
+## References:
 `Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`\
 `Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.\
-`Array`, a list of values.\
+`Array`, a list of values.
