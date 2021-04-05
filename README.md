@@ -137,6 +137,6 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 
 
 References:\
-`Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`
-`Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.
-`Array`, a list of values.
+`Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`\
+`Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.\
+`Array`, a list of values.\
