@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="BoomRIGHT.png">
+	<!-- Created with Adobe Animate version 21.0.2.37893 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="stereo boom0000" x="0" y="0" width="212" height="243"/>
+	<SubTexture name="stereo boom0001" x="0" y="0" width="212" height="243"/>
+	<SubTexture name="stereo boom0002" x="212" y="0" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0003" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0004" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0005" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0006" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0007" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0008" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0009" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0010" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0011" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0012" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0013" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0014" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0015" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0016" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0017" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0018" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0019" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0020" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0021" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0022" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0023" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+	<SubTexture name="stereo boom0024" x="0" y="243" width="209" height="241" frameX="0" frameY="-2" frameWidth="212" frameHeight="243"/>
+</TextureAtlas>
