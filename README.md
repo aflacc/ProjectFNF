@@ -6,7 +6,7 @@
 *Kade Engine but cooler :sunglasses:*
 
 # About
-ProjectFNF is a engine for Friday Night Funkin' designed to be flexable. It contains a few quality of life enhancements along with a whole wiki which can help the user make their own mod.
+ProjectFNF is a engine for Friday Night Funkin' designed to be flexable. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
 ***
 
 ## Changelog
