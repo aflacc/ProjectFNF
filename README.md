@@ -1,5 +1,5 @@
 
-[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&label=Discord&logoColor=%234e5d94&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues) [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
+[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&label=Discord&logoColor=%234e5d94&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
 ***
 ![Logo](https://u.cubeupload.com/Aflac/ProjectFNF.png)
 
@@ -141,3 +141,9 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 `Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`\
 `Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.\
 `Array`, a list of values.
+
+
+
+# General Statistics
+[![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues)
+[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&label=Discord&logoColor=%234e5d94&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
