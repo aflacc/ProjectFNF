@@ -143,6 +143,10 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 `Array`, a list of values.
 
 
+# Example Mods
+none yet ;-;
+
+
 
 # General Statistics
 [![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues)
