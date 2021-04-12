@@ -1,6 +1,6 @@
 
-[![Discord](https://img.shields.io/discord/826580018346852372?color=553ade&label=Discord&logoColor=553ade&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Version&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues) [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
-
+[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&label=Discord&logoColor=%234e5d94&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
+***
 ![Logo](https://u.cubeupload.com/Aflac/ProjectFNF.png)
 
 *Kade Engine but cooler :sunglasses:*
@@ -141,3 +141,12 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 `Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`\
 `Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.\
 `Array`, a list of values.
+
+
+
+# General Statistics
+[![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues)
+[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&label=Discord&logoColor=%234e5d94&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) ![Downloads](https://img.shields.io/github/downloads/aflacc/ProjectFNF/total?style=for-the-badge) ![License](https://img.shields.io/github/license/aflacc/ProjectFNF?style=for-the-badge)
+
+*click on the stats to see more about that topic!*/
+*stats generated with [shields.io](http://shields.io/)*
