@@ -279,6 +279,60 @@ class Character extends FlxSprite
 
 				flipX = true;
 
+			case 'aflac':
+				tex = Paths.getSparrowAtlas('aflac');
+				frames = tex;
+				animation.addByPrefix('idle', "Idle", 24);
+				// animation.addByPrefix('idleNo', "Idle NoMic", 24, false);
+				// animation.addByPrefix('equip', "Equip Mic", 24, false);
+				animation.addByPrefix('singUP', 'Note UP', 24, false);
+				animation.addByPrefix('singDOWN', 'Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'Note LEFT', 24, false);
+				animation.addByPrefix('singRIGHT', 'Note RIGHT', 24, false);
+
+				addOffset('idle');
+				// addOffset('idleNo');
+				// addOffset('equip');
+				addOffset("singUP", -33, 9);
+				addOffset("singRIGHT", -48, -7);
+				addOffset("singLEFT", 37, 3);
+				addOffset("singDOWN", -5, -42);
+
+				playAnim('idle');
+
+			case 'aflacangy':
+				tex = Paths.getSparrowAtlas('aflacbutangry');
+				frames = tex;
+				animation.addByPrefix('idle', "Idle ANGRY", 24);
+				animation.addByPrefix('singUP', 'Note UP ANGRY', 24, false);
+				animation.addByPrefix('singDOWN', 'Note DOWN ANGRY', 24, false);
+				animation.addByPrefix('singLEFT', 'Note LEFT ANGRY', 24, false);
+				animation.addByPrefix('singRIGHT', 'Note RIGHT ANGRY', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", -29, 10);
+				addOffset("singRIGHT", -54, -7);
+				addOffset("singLEFT", -18, 35);
+				addOffset("singDOWN", -20, -20);
+
+				playAnim('idle');
+			case 'aflacpissed':
+				tex = Paths.getSparrowAtlas('aflacpissed');
+				frames = tex;
+				animation.addByPrefix('idle', "Idle PISSED", 24);
+				animation.addByPrefix('singUP', 'Note UP PISSED', 24, false);
+				animation.addByPrefix('singDOWN', 'Note DOWN PISSE', 24, false);
+				animation.addByPrefix('singLEFT', 'Note LEFT PISSED AF', 24, false);
+				animation.addByPrefix('singRIGHT', 'Note RIGHT ANGY', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", -29, 10);
+				addOffset("singRIGHT", -54, -7);
+				addOffset("singLEFT", -18, 35);
+				addOffset("singDOWN", -20, -20);
+
+				playAnim('idle');
+
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('BOYFRIEND');
 				frames = tex;

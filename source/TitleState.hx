@@ -35,7 +35,7 @@ class TitleState extends MusicBeatState
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
-	var PFNFLOGO:Bool = true; // Shows logo instead of Bumpin
+	var PFNFLOGO:Bool = false; // Shows logo instead of Bumpin
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -48,7 +48,7 @@ class TitleState extends MusicBeatState
 	override public function create():Void
 	{
 		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+		// polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
 
 		PlayerSettings.init();
@@ -129,7 +129,7 @@ class TitleState extends MusicBeatState
 			// music.loadStream(Paths.music('freakyMenu'));
 			// FlxG.sound.list.add(music);
 			// music.play();
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('freak'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
@@ -146,9 +146,9 @@ class TitleState extends MusicBeatState
 		logoBl = new FlxSprite(-150, -100);
 		if (PFNFLOGO = true)
 		{
-			logoBl.frames = Paths.getSparrowAtlas('ProjectFNFLogoBumpin');
-			logoBl.x += 180;
-			logoBl.y += 60;
+			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+			logoBl.x += 350;
+			// logoBl.y += 60;
 		}
 		else
 			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
@@ -161,9 +161,13 @@ class TitleState extends MusicBeatState
 
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		gfDance.animation.addByIndices('danceLeft', 'Aflac', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		gfDance.animation.addByIndices('danceRight', 'Aflac', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		gfDance.antialiasing = true;
+		gfDance.x -= 670;
+		gfDance.y -= 180;
+		gfDance.scale.x -= 0.4;
+		gfDance.scale.y -= 0.4;
 		add(gfDance);
 		add(logoBl);
 
@@ -192,7 +196,7 @@ class TitleState extends MusicBeatState
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
 
-		credTextShit = new Alphabet(0, 0, "ninjamuffin99\nPhantomArcade\nkawaisprite\nevilsk8er\naflac", true);
+		credTextShit = new Alphabet(0, 0, "aflac\nVr Core\nAll of TEAMFNF", true);
 		credTextShit.screenCenter();
 
 		// credTextShit.alignment = CENTER;
@@ -367,7 +371,7 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+				createCoolText(['aflack', 'VR Core', 'all of TeamFNF']);
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
@@ -399,17 +403,19 @@ class TitleState extends MusicBeatState
 			// credTextShit.text += '\nlmao';
 			case 12:
 				deleteCoolText();
-			// credTextShit.visible = false;
-			// credTextShit.text = "Friday";
+				// credTextShit.visible = false;
+				// credTextShit.text = "Friday";
+				addMoreText('Friday');
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
+				addMoreText('Night');
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('Night');
+				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('VS AFLAC'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
