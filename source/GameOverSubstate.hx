@@ -1,7 +1,5 @@
 package;
 
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSubState;
@@ -49,14 +47,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
-		bf.playAnim('firstDeath');
 
-		new FlxTimer().start(0.8, function(tmr:FlxTimer)
-		{
-			FlxTween.tween(FlxG.camera, {zoom: 1.2}, 20, {
-				ease: FlxEase.backOut
-			});
-		});
+		bf.playAnim('firstDeath');
 	}
 
 	override function update(elapsed:Float)

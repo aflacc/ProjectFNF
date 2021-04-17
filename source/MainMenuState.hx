@@ -40,12 +40,13 @@ class MainMenuState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
+
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
 		if (!FlxG.sound.music.playing)
 		{
-			FlxG.sound.playMusic(Paths.music('freak'));
+			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
 		persistentUpdate = persistentDraw = true;
@@ -141,6 +142,15 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
+				if (optionShit[curSelected] == 'donate')
+				{
+					#if linux
+					Sys.command('/usr/bin/xdg-open', ["https://ninja-muffin24.itch.io/funkin", "&"]);
+					#else
+					FlxG.openURL('https://ninja-muffin24.itch.io/funkin');
+					#end
+				}
+				else
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -152,7 +162,7 @@ class MainMenuState extends MusicBeatState
 						if (curSelected != spr.ID)
 						{
 							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.smootherStepInOut,
+								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)
 								{
 									spr.kill();
@@ -179,10 +189,6 @@ class MainMenuState extends MusicBeatState
 										FlxTransitionableState.skipNextTransIn = true;
 										FlxTransitionableState.skipNextTransOut = true;
 										FlxG.switchState(new OptionsMenu());
-									case 'donate':
-										FlxG.switchState(new CreditState());
-
-										trace("Credits Selected");
 								}
 							});
 						}
