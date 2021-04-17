@@ -30,11 +30,12 @@ class StoryMenuState extends MusicBeatState
 		['Pico', 'Philly', "Blammed"],
 		['Satin-Panties', "High", "Milf"],
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
-		['Senpai', 'Roses', 'Thorns']
+		['Senpai', 'Roses', 'Thorns'],
+		['Loaf', 'Blazeborn', 'The-End']
 	];
 	var curDifficulty:Int = 1; // 0 = easy, 1 = normal, 2 = hard
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true]; // If the weeks are unlocked
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true]; // If the weeks are unlocked
 
 	var weekCharacters:Array<Dynamic> = [
 		// Characters that are displayed in the story mode menu
@@ -44,7 +45,8 @@ class StoryMenuState extends MusicBeatState
 		['pico', 'bf', 'gf'],
 		['mom', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf']
+		['senpai', 'bf', 'gf'],
+		['aflac', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
@@ -55,7 +57,8 @@ class StoryMenuState extends MusicBeatState
 		"PICO",
 		"MOMMY MUST MURDER",
 		"RED SNOW",
-		"hating simulator ft. moawling"
+		"hating simulator ft. moawling",
+		"Block Game Brawl"
 	];
 
 	var txtWeekTitle:FlxText;
@@ -96,7 +99,10 @@ class StoryMenuState extends MusicBeatState
 
 		var rankText:FlxText = new FlxText(0, 10);
 		rankText.text = 'RANK: GREAT';
-		rankText.setFormat(Paths.font("vcr.ttf"), 32);
+		if (curWeek == 7)
+			rankText.setFormat(Paths.font("minercaftia.ttf"), 32);
+		else
+			rankText.setFormat(Paths.font("vcr.ttf"), 32);
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
@@ -168,6 +174,9 @@ class StoryMenuState extends MusicBeatState
 				case 'pico':
 					weekCharacterThing.flipX = true;
 				case 'parents-christmas':
+					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.9));
+					weekCharacterThing.updateHitbox();
+				case 'aflac':
 					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.9));
 					weekCharacterThing.updateHitbox();
 			}
@@ -338,8 +347,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 3;
-		if (curDifficulty > 3)
+			curDifficulty = 2;
+		if (curDifficulty > 2)
 			curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;
@@ -424,6 +433,9 @@ class StoryMenuState extends MusicBeatState
 				grpWeekCharacters.members[0].offset.set(120, 200);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
 
+			case 'aflac':
+				grpWeekCharacters.members[0].offset.set(130, 0);
+				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1.4));
 			default:
 				grpWeekCharacters.members[0].offset.set(100, 100);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
