@@ -10,6 +10,13 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexable. It cont
 ***
 
 ## Changelog
+#### v0.2-a (BETA)
+- Added `die` function
+- Added a small bit of cutscene support
+- Improved the input system to be able to handle more notes
+- Fixed an issue with the freeplay menu causing a crash
+- Reverted the "hi" commit (don't ask)
+- Created the ProjectFNF Beta Program
 #### v0.1-d
 - accidentally committed stuff for a seperate mod aaaaaaaaa
 - anything that has to do with neo stuff _does not belong  in the files!_
