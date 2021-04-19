@@ -150,6 +150,9 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 `Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.\
 `Array`, a list of values.
 
+# Usage
+We do not ask for much, all we ask is you link the github and if the mod is on gamebanana make sure to credit "aflack" for making the engine. Also please do not remove the ProjectFNF version on the bottom of the screen in the main menu, this gives the engine its credit and also makes it easier to receive help with the mod. I will *not* be able to help you if you do not have the version of ProjectFNF in the game.
+
 
 
 # General Statistics
