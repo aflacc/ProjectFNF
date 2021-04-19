@@ -7,10 +7,11 @@
 
 # About
 ProjectFNF is a engine for Friday Night Funkin' designed to be flexable. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
+Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
 ***
 
 ## Changelog
-#### v0.2-a (BETA)
+#### v0.2-a ([BETA](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
 - Added `die` function
 - Added a small bit of cutscene support
 - Improved the input system to be able to handle more notes
