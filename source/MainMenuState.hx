@@ -99,16 +99,19 @@ class MainMenuState extends MusicBeatState
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 32, 0, "v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		var PFNFversionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "ProjectFNF version 0.1-c BETA");
+		var PFNFversionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "ProjectFNF version " + Application.current.meta.get('version'));
 		PFNFversionShit.scrollFactor.set();
 		PFNFversionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
 		add(PFNFversionShit);
 
+		var Mod:FlxText = new FlxText(5, FlxG.height - 44, 0, Config.ModName, 22);
+		Mod.scrollFactor.set();
+		Mod.setFormat("VCR OSD Mono", 26, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		// NG.core.calls.event.logEvent('swag').send();
+		add(Mod);
 
 		changeItem();
-
+		// ModName
 		super.create();
 	}
 

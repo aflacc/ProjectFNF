@@ -18,7 +18,7 @@ class OutdatedSubState extends MusicBeatState
 		add(bg);
 		var ver = "v" + Application.current.meta.get('version');
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"WARNING!!! \n\n\n\nYou are using a Beta Build of ProjectFNF!! \nYou might run into some bugs while playing! \n Press Enter to go to the GitHub,\n or press ESC to continue.",
+			"WARNING!!! \n\n\n\nYou are using a early version of ProjectFNF!! \n Some Features might not work as they should \n Press Enter to go to the GitHub,\n or press ESC to continue.",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();

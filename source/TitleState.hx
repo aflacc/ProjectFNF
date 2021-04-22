@@ -35,7 +35,7 @@ class TitleState extends MusicBeatState
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
-	var PFNFLOGO:Bool = true; // Shows logo instead of Bumpin
+	var PFNFLOGO:Bool = Config.CONFIGTitle; // Shows logo instead of Bumpin
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -44,6 +44,7 @@ class TitleState extends MusicBeatState
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
+	var skip:Bool = Config.CONFIGSkip;
 
 	override public function create():Void
 	{
@@ -199,7 +200,8 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('PFNF')); // ProjectFNF logo. I don't have a full one yet
+		ngSpr = new FlxSprite(0,
+			FlxG.height * 0.52).loadGraphic(Paths.image('PFNF')); // ProjectFNF logo. I just realized I had this comment say I didn't have one lmao
 		add(ngSpr);
 		ngSpr.visible = false;
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
@@ -295,7 +297,7 @@ class TitleState extends MusicBeatState
 				// Check if version is outdated
 				var version:String = "v" + Application.current.meta.get('version');
 
-				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState)
+				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState && skip == false)
 				{
 					FlxG.switchState(new OutdatedSubState());
 					trace('OLD VERSION!');
