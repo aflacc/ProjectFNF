@@ -7,9 +7,17 @@
 
 # About
 ProjectFNF is a engine for Friday Night Funkin' designed to be flexable. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
+Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
 ***
 
 ## Changelog
+#### v0.2-a ([BETA](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
+- Added `die` function
+- Added a small bit of cutscene support
+- Improved the input system to be able to handle more notes
+- Fixed an issue with the freeplay menu causing a crash
+- Reverted the "hi" commit (don't ask)
+- Created the ProjectFNF Beta Program
 #### v0.1-d
 - accidentally committed stuff for a seperate mod aaaaaaaaa
 - anything that has to do with neo stuff _does not belong  in the files!_
@@ -141,6 +149,9 @@ ProjectFNF has a configuration file that will be functional in `v0.1-c`. This co
 `Bool`, or Boolean is a true or false variable. This can *only* be set to `True` or `False`\
 `Int`, or Integer is a number variable. Any letters in these kinds of values will result in an error.\
 `Array`, a list of values.
+
+# Usage
+We do not ask for much, all we ask is you link the github and if the mod is on gamebanana make sure to credit "aflack" for making the engine. Also please do not remove the ProjectFNF version on the bottom of the screen in the main menu, this gives the engine its credit and also makes it easier to receive help with the mod. I will *not* be able to help you if you do not have the version of ProjectFNF in the game.
 
 
 
