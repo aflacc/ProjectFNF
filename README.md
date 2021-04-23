@@ -1,5 +1,5 @@
 
-[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&label=Discord&logoColor=%234e5d94&style=for-the-badge)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
+[![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&icon=discord&label=Discord&logoColor=%234e5d94&style=for-the-badge&icon=disc)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
 ***
 ![Logo](https://u.cubeupload.com/Aflac/ProjectFNF.png)
 
@@ -11,13 +11,19 @@ Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF
 ***
 
 ## Changelog
-#### v0.2-a ([BETA](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
+#### v0.2-a ([BETA](https://github.com/aflacc/ProjectFNF/blob/master/beta.md))
 - Added `die` function
 - Added a small bit of cutscene support
 - Improved the input system to be able to handle more notes
 - Fixed an issue with the freeplay menu causing a crash
 - Reverted the "hi" commit (don't ask)
 - Created the ProjectFNF Beta Program
+- Made the Config file work
+- Added a Mod Title to the main menu
+- The mod version on the main menu uses the metadata instead of being hand-typed.
+- Added miss sprites to week 6
+- Dying now zooms the camera in towards the boyfriend
+- Screen shakes a little bit if you try and play a locked week
 #### v0.1-d
 - accidentally committed stuff for a seperate mod aaaaaaaaa
 - anything that has to do with neo stuff _does not belong  in the files!_
@@ -32,7 +38,7 @@ Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF
 ***
 
 # Mods that use ProjectFNF
-- none yet
+- neo (woah)
 
 # Setup workspace
 Taken from [Here](https://github.com/aflacc/ProjectFNF/wiki/Setup-Workspace)
