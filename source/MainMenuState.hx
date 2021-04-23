@@ -106,7 +106,7 @@ class MainMenuState extends MusicBeatState
 
 		var Mod:FlxText = new FlxText(5, FlxG.height - 44, 0, Config.ModName, 22);
 		Mod.scrollFactor.set();
-		Mod.setFormat("VCR OSD Mono", 26, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		Mod.setFormat("VCR OSD Mono", 26, 0xFFffffff, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		// NG.core.calls.event.logEvent('swag').send();
 		add(Mod);
 

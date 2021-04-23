@@ -338,8 +338,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 3;
-		if (curDifficulty > 3)
+			curDifficulty = 2;
+		if (curDifficulty > 2)
 			curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;

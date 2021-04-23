@@ -79,7 +79,7 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
-	public static var carGf:Bool = true; // Girlfriend in week 4 sits on car
+	public static var carGf:Bool = Config.CONFIGGfCar; // Girlfriend in week 4 sits on car
 
 	var halloweenLevel:Bool = false;
 
