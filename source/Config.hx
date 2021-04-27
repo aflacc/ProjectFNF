@@ -6,4 +6,5 @@ class Config extends MusicBeatState
 	public static var CONFIGTitle:Bool = true; // Title screen uses ProjectFNF logo instead of the Logo bumpin.
 	public static var CONFIGSkip:Bool = true; // Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
 	public static var ModName:String = 'ProjectFNF'; // Change this to the name of your mod
+	public static var DEBUGMODE:Bool = false; // WIP
 }
