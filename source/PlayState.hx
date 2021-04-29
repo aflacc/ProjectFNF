@@ -1766,8 +1766,6 @@ class PlayState extends MusicBeatState
 			health += 1;
 			trace("User is cheating!");
 		}
-		function die()
-			health = 0;
 
 		if (health <= 0)
 		{
