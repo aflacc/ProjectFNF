@@ -1,5 +1,5 @@
-/* ur welcome Magnus*/
-
+// this file is for modchart things, this is to declutter playstate.hx
+// Lua
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
