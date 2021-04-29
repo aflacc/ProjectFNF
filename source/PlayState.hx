@@ -195,6 +195,12 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	function die()
+	{
+		trace('Death');
+		health = 0;
+	}
+
 	override public function create()
 	{
 		if (FlxG.sound.music != null)
@@ -1760,6 +1766,8 @@ class PlayState extends MusicBeatState
 			health += 1;
 			trace("User is cheating!");
 		}
+		function die()
+			health = 0;
 
 		if (health <= 0)
 		{
@@ -2678,6 +2686,7 @@ class PlayState extends MusicBeatState
 		{
 			boyfriend.playAnim('hey', true);
 			gf.playAnim('cheer', true);
+			die;
 		}
 		if (curBeat == 47 && curSong == 'Spookeez')
 		{
