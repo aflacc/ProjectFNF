@@ -145,6 +145,7 @@ class PlayState extends MusicBeatState
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
+	var songMisses:Int = 0;
 	var scoreTxt:FlxText;
 	var timerTxt:FlxText;
 
@@ -846,7 +847,8 @@ class PlayState extends MusicBeatState
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
-		scoreTxt.scrollFactor.set();
+		scoreTxt.borderColor = FlxColor.BLACK;
+		scoreTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
 		add(scoreTxt);
 		add(timerTxt);
 
@@ -1552,7 +1554,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore;
+		scoreTxt.text = "Misses:" + songMisses + " | Score:" + songScore + " "; // the last part is just so the outline doesnt clip
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -1777,6 +1779,7 @@ class PlayState extends MusicBeatState
 
 			vocals.stop();
 			FlxG.sound.music.stop();
+			FlxG.camera.shake(0.08, 0.1, null, true, XY);
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -1898,6 +1901,37 @@ class PlayState extends MusicBeatState
 					{
 						health -= 0.0475;
 						vocals.volume = 0;
+						FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+						// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
+						// FlxG.log.add('played imss note');
+
+						boyfriend.stunned = true;
+
+						// get stunned for 5 seconds
+						new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
+						{
+							boyfriend.stunned = false;
+						});
+						songMisses += 1;
+						switch (daNote.noteData)
+						{
+							case 0:
+								boyfriend.playAnim('singLEFTmiss', true);
+								if (Config.MISSFX = true)
+									FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+							case 1:
+								boyfriend.playAnim('singDOWNmiss', true);
+								if (Config.MISSFX = true)
+									FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
+							case 2:
+								boyfriend.playAnim('singUPmiss', true);
+								if (Config.MISSFX = true)
+									FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
+							case 3:
+								boyfriend.playAnim('singRIGHTmiss', true);
+								if (Config.MISSFX = true)
+									FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+						}
 					}
 
 					daNote.active = false;
@@ -2421,17 +2455,26 @@ class PlayState extends MusicBeatState
 			{
 				boyfriend.stunned = false;
 			});
+			songMisses += 1;
 
 			switch (direction)
 			{
 				case 0:
 					boyfriend.playAnim('singLEFTmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 				case 1:
 					boyfriend.playAnim('singDOWNmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
 				case 2:
 					boyfriend.playAnim('singUPmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
 				case 3:
 					boyfriend.playAnim('singRIGHTmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 			}
 		}
 	}

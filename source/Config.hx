@@ -7,4 +7,6 @@ class Config extends MusicBeatState
 	public static var CONFIGSkip:Bool = true; // Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
 	public static var ModName:String = 'ProjectFNF'; // Change this to the name of your mod
 	public static var DEBUGMODE:Bool = false; // WIP
+	public static var MISSFX:Bool = true; // Shakes the camera
+	public static var MISSINTENSITY = 0.005; // Only does anything if MISSFX is true dont put too high
 }
