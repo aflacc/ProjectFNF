@@ -12,8 +12,8 @@ Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF
 
 ## Changelog
 #### v0.2-a ([BETA](https://github.com/aflacc/ProjectFNF/blob/master/beta.md))
-- Added `die` function
-- Added a small bit of cutscene support
+- Missing a note causes the screen to shake (configurable)
+- Notes that pass (not actually hit) also still play the sound and play the miss animation
 - Improved the input system to be able to handle more notes
 - Fixed an issue with the freeplay menu causing a crash
 - Reverted the "hi" commit (don't ask)
