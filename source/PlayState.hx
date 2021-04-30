@@ -196,12 +196,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function die()
-	{
-		trace('Death');
-		health = 0;
-	}
-
 	override public function create()
 	{
 		if (FlxG.sound.music != null)
@@ -1759,7 +1753,7 @@ class PlayState extends MusicBeatState
 		if (controls.RESET)
 		{
 			health = 0;
-			trace("RESET = True");
+			trace("[ProjectFNF] Reset player");
 		}
 
 		// CHEAT = brandon's a pussy
@@ -1780,7 +1774,8 @@ class PlayState extends MusicBeatState
 			vocals.stop();
 			FlxG.sound.music.stop();
 			FlxG.camera.shake(0.08, 0.1, null, true, XY);
-
+			if (SONG.song.toLowerCase() == 'tutorial')
+				trace('[ProjectFNF] how tf did you die on tutorial');
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
@@ -2030,7 +2025,7 @@ class PlayState extends MusicBeatState
 				if (storyDifficulty == 2)
 					difficulty = '-hard';
 
-				trace('LOADING NEXT SONG');
+				trace('[ProjectFNF] Loading song ' + SONG.song.toLowerCase());
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
 
 				if (SONG.song.toLowerCase() == 'eggnog')
@@ -2051,7 +2046,6 @@ class PlayState extends MusicBeatState
 					add(whiteShit);
 					camHUD.visible = false;
 
-					trace('PEE YOURSELF');
 					FlxG.sound.play(Paths.sound('thunder_2'));
 				}
 
@@ -2059,7 +2053,6 @@ class PlayState extends MusicBeatState
 				{
 					FlxTransitionableState.skipNextTransIn = false;
 					FlxTransitionableState.skipNextTransOut = false;
-					trace('yes');
 				}
 				else
 				{
@@ -2076,7 +2069,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			trace('WENT BACK TO FREEPLAY??');
+			trace('[ProjectFNF] Returned to Freeplay');
 			FlxG.switchState(new FreeplayState());
 		}
 	}
@@ -2727,7 +2720,6 @@ class PlayState extends MusicBeatState
 		{
 			boyfriend.playAnim('hey', true);
 			gf.playAnim('cheer', true);
-			die;
 		}
 		if (curBeat == 47 && curSong == 'Spookeez')
 		{
