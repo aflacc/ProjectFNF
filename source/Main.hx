@@ -92,6 +92,11 @@ class Main extends Sprite
 		fpsCounter.visible = fpsEnabled;
 	}
 
+	public function changefunkyColor(color:FlxColor)
+	{
+		fpsCounter.textColor = color;
+	}
+
 	public function changeFPSColor(color:FlxColor)
 	{
 		fpsCounter.textColor = color;

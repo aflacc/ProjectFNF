@@ -2448,6 +2448,7 @@ class PlayState extends MusicBeatState
 			{
 				boyfriend.stunned = false;
 			});
+
 			songMisses += 1;
 
 			switch (direction)
@@ -2600,6 +2601,7 @@ class PlayState extends MusicBeatState
 		{
 			startedMoving = true;
 			gf.playAnim('hairBlow');
+			camera.shake(0.002, 0.1, null, true, X);
 		}
 
 		if (startedMoving)
@@ -2636,6 +2638,7 @@ class PlayState extends MusicBeatState
 	{
 		FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
 		halloweenBG.animation.play('lightning');
+		camera.shake(0.003, 2.3, null, true, Y);
 
 		lightningStrikeBeat = curBeat;
 		lightningOffset = FlxG.random.int(8, 24);

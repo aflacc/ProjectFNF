@@ -8,5 +8,5 @@ class Config extends MusicBeatState
 	public static var ModName:String = 'ProjectFNF'; // Change this to the name of your mod
 	public static var DEBUGMODE:Bool = false; // WIP
 	public static var MISSFX:Bool = true; // Shakes the camera
-	public static var MISSINTENSITY = 0.005; // Only does anything if MISSFX is true dont put too high
+	public static var MISSINTENSITY = 0.002; // Only does anything if MISSFX is true dont put too high
 }
