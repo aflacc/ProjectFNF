@@ -76,6 +76,9 @@ class PlayState extends MusicBeatState
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
+
+	var fullCombo:Bool = true; // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
@@ -84,6 +87,7 @@ class PlayState extends MusicBeatState
 	var halloweenLevel:Bool = false;
 
 	private var vocals:FlxSound;
+	var rank:Float;
 
 	private var dad:Character;
 	private var gf:Character;
@@ -839,10 +843,11 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		scoreTxt = new FlxText(0, healthBarBG.y + 50, 0, "", 20);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
 		scoreTxt.borderColor = FlxColor.BLACK;
 		scoreTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
+		scoreTxt.screenCenter(X);
 		add(scoreTxt);
 		add(timerTxt);
 
@@ -1908,6 +1913,8 @@ class PlayState extends MusicBeatState
 							boyfriend.stunned = false;
 						});
 						songMisses += 1;
+						fullCombo = false;
+						trace('miss');
 						switch (daNote.noteData)
 						{
 							case 0:
@@ -2136,7 +2143,6 @@ class PlayState extends MusicBeatState
 		rating.acceleration.y = 550;
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
-
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
 		comboSpr.x = coolText.x;
@@ -2450,6 +2456,8 @@ class PlayState extends MusicBeatState
 			});
 
 			songMisses += 1;
+			fullCombo = false;
+			trace('miss');
 
 			switch (direction)
 			{
