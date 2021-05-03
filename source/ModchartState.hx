@@ -7,19 +7,16 @@ import openfl.geom.Matrix;
 import openfl.display.BitmapData;
 import lime.app.Application;
 import flixel.FlxSprite;
-#if windows
 import llua.Convert;
 import llua.Lua;
 import llua.State;
 import llua.LuaL;
-#end
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
 
 class ModchartState
 {
-	#if windows
 	public static var lua:State = null;
 
 	function callLua(func_name:String, args:Array<Dynamic>, ?type:String):Dynamic
@@ -257,7 +254,6 @@ class ModchartState
 		#end
 		return toBeCalled;
 	}
-	#end
 
 	public function die()
 	{
@@ -743,6 +739,7 @@ class ModchartState
 				notes.members[id].shader = wiggleEffect.shader;
 				luaWiggles.push(wiggleEffect);
 			});
+
 			Lua_helper.add_callback(lua,"setActorWiggle", function(id:String, effectType:String, waveSpeed:Int, waveFrequency:Int) {
 				trace('call');
 				var wiggleEffect = new WiggleEffect();
@@ -765,6 +762,7 @@ class ModchartState
 				getActorByName(id).shader = wiggleEffect.shader;
 				luaWiggles.push(wiggleEffect);
 		});*/
+
 		for (i in 0...PlayState.strumLineNotes.length)
 		{
 			var member = PlayState.strumLineNotes.members[i];
