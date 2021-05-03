@@ -1,5 +1,6 @@
 package;
 
+import flixel.text.FlxText;
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
 
@@ -7,6 +8,12 @@ using StringTools;
 
 class DiscordClient
 {
+	public static var rpc:Array<String> = [
+		"among us", "Now with 10% more issues!", "Did I leave the stove on?", "I am spain without the P", "Subscribe to aflac", "Now lactose free!",
+		"I'm wanted for several accounts of homicide and murder!", "Swear Word!", "That would be your mother!", "Wait why is this here again?",
+		"AAAAAAAAAAAAAAAAAAA", "I have flooded your room with a lethal neurotoxin", ":troll:", "When the", "Hi", "f"
+	];
+
 	public function new()
 	{
 		trace("Discord Client starting...");
@@ -16,6 +23,7 @@ class DiscordClient
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
+
 		trace("Discord Client started.");
 
 		while (true)
@@ -30,11 +38,13 @@ class DiscordClient
 
 	static function onReady()
 	{
+		var rpcsplash:String = rpc[Math.floor(Math.random() * rpc.length)];
 		DiscordRpc.presence({
 			details: "In the Menus",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "ProjectFNF"
+			largeImageText: "ProjectFNF",
+			smallImageText: rpcsplash
 		});
 	}
 
@@ -57,6 +67,8 @@ class DiscordClient
 		trace("Discord Client initialized");
 	}
 
+	public static var rpcsplash:String = rpc[Math.floor(Math.random() * rpc.length)];
+
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float)
 	{
 		var startTimestamp:Float = if (hasStartTimestamp) Date.now().getTime() else 0;
@@ -72,6 +84,7 @@ class DiscordClient
 			largeImageKey: 'icon',
 			largeImageText: "ProjectFNF",
 			smallImageKey: smallImageKey,
+			smallImageText: rpcsplash,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp: Std.int(startTimestamp / 1000),
 			endTimestamp: Std.int(endTimestamp / 1000)
