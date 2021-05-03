@@ -11,7 +11,9 @@ class DiscordClient
 	public static var rpc:Array<String> = [
 		"among us", "Now with 10% more issues!", "Did I leave the stove on?", "I am spain without the P", "Subscribe to aflac", "Now lactose free!",
 		"I'm wanted for several accounts of homicide and murder!", "Swear Word!", "That would be your mother!", "Wait why is this here again?",
-		"AAAAAAAAAAAAAAAAAAA", "I have flooded your room with a lethal neurotoxin", ":troll:", "When the", "Hi", "f"
+		"AAAAAAAAAAAAAAAAAAA", "I have flooded your room with a lethal neurotoxin", ":troll:", "When the", "Hi", "f", "ur stinky",
+		"you do not kill clown. Clown kills YOU!!", "tricky said cookie", "FNF but cooler!", "I have your ip adress!", "Somewhere in Nevada...",
+		"Every second you're not running, I'm only getting closer.", "I AM THIS CLOSE TO SAYING A BAD WORD", "Join ProjectFNF discord"
 	];
 
 	public function new()
