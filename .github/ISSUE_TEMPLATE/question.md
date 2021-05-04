@@ -1,10 +1,12 @@
 ---
 name: Question
 about: Ask a question about ProjectFNF or FNF in general!
-title: ''
+title: "[?]"
 labels: Ask
-assignees: ''
+assignees: aflacc
 
 ---
 
 Type your question here:
+
+<!-- Before submitting your issue, make sure to check for duplicate issues! Especially look for dupes that were closed already because the solution might be there too! I will close your issue if it is a dupe.-->
