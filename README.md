@@ -6,7 +6,7 @@
 *Kade Engine but cooler :sunglasses:*
 
 # About
-ProjectFNF is a engine for Friday Night Funkin' designed to be flexable. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
+ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
 Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
 ***
 
@@ -26,14 +26,13 @@ Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF
 - Screen shakes a little bit if you try and play a locked week
 #### v0.1-d
 - accidentally committed stuff for a seperate mod aaaaaaaaa
-- anything that has to do with neo stuff _does not belong  in the files!_
+- anything that has to do with neo stuff _does not belong in the files!_
 - If anyone wants to go and make a pull request that removes all the neo stuff please let me know
 #### v0.1-c
 - Added a cutscene to South transitioning to Monster
 - Updated Senpai and Pixel Boyfriends sprites to close their mouths.
 - Fixed an issue with game crashing opening the debug menu
 - Thorns has seperate intro assets
-- 
 
 ***
 
@@ -46,7 +45,7 @@ Taken from [Here](https://github.com/aflacc/ProjectFNF/wiki/Setup-Workspace)
 ### Installing the Required Programs
 
 First you need to install Haxe and HaxeFlixel. I'm too lazy to write and keep updated with that setup (which is pretty simple). 
-1. [Install Haxe 4.1.5](https://haxe.org/download/version/4.1.5/) (Download 4.1.5 instead of 4.2.0 because 4.2.0 is broken and is not working with gits properly...)
+1. [Install Haxe](https://haxe.org/download) (4.2.1 seems to work fine (Tested on Linux by @VMGuy23))
 2. [Install HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/) after downloading Haxe
 
 Other installations you'd need is the additional libraries, a fully updated list will be in `Project.xml` in the project root. Currently, these are all of the things you need to install:
@@ -60,7 +59,7 @@ newgrounds
 So for each of those type `haxelib install [library]` so shit like `haxelib install newgrounds`
 
 You'll also need to install a couple things that involve Gits. To do this, you need to do a few things first.
-1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build.
+1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build. (On Linux, just instaill `git`)
 2. Follow instructions to install the application properly.
 3. Run `haxelib git polymod https://github.com/larsiusprime/polymod.git` to install Polymod.
 4. Run `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc` to install Discord RPC.
@@ -69,6 +68,10 @@ You should have everything ready for compiling the game! Follow the guide below 
 
 At the moment, you can optionally fix the transition bug in songs with zoomed out cameras.
 - Run `haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons` in the terminal/command-prompt.
+
+### Downloading the source
+
+You can download the source by unzipping the download from above, running `git clone https://github.com/aflacc/ProjectFNF.git` in a terminal or cloning with GitHub Desktop.
 
 ### Ignored files
 
