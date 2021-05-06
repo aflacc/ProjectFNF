@@ -11,6 +11,23 @@ Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF
 ***
 
 ## Changelog
+#### v0.2-b
+- Miss counter next to score
+- A few easter eggs
+- Modcharts (WIP)
+- In-Game config has a single option called "Debug Mode" (Mostly for testing, probably doesn't work)
+- Added MISSFX, MISSIntensity, MISSDir and CACHE config options.
+- Missing notes will cause the screen to shake a little bit (highly configurable)
+- Notes that you fail to hit will trigger the miss animations and sounds, also resets the combo.
+- Added a small outline to the score text to make it visible in Week 5 or just really bright enviroments
+- Changed Bopeebo to use the original music and voices (seriously I like them a lot better than the new one)
+- Prototype failsafe for attempting to load a song that doesn't exist
+- Some more Icons to the DiscordRPC
+- Revamped the DiscordRPC design
+- Completely revamped the console outputs. (Way less cluttered and is much more specific about what its doing)
+- Animations for the characters re-designed to use the official neo stuff (tysm moisty)
+- Added "Bookmark" comments (Makes finding parts of the code a LOT easier, just search for the bookmark)
+
 #### v0.2-a ([BETA](https://github.com/aflacc/ProjectFNF/blob/master/beta.md))
 - Missing a note causes the screen to shake (configurable)
 - Notes that pass (not actually hit) also still play the sound and play the miss animation
