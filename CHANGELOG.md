@@ -65,3 +65,5 @@ This is the Changelog file. any important changes that are done will be marked h
 - Fixes to the Options menu (Still WIP)
 - Adjusted sprite XMLs to make them look nicer
 - New animations for sprites to make them more clean.
+
+[back 2 top](https://github.com/aflacc/ProjectFNF/blob/master/CHANGELOG.md#changelog)
