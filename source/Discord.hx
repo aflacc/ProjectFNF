@@ -11,7 +11,7 @@ class DiscordClient
 	public static var rpc:Array<String> = [
 		"among us", "Now with 10% more issues!", "Did I leave the stove on?", "I am spain without the P", "Subscribe to aflac", "Now lactose free!",
 		"I'm wanted for several accounts of homicide and murder!", "Swear Word!", "That would be your mother!", "Wait why is this here again?",
-		"AAAAAAAAAAAAAAAAAAA", "I have flooded your room with a lethal neurotoxin", ":troll:", "When the", "Hi", "f"
+		"AAAAAAAAAAAAAAAAAAA", "every second your not running im only getting closer", ":troll:", "When the", "Hi", "f", "subscribe to aflac", "never gonna give you up","hello","o/"
 	];
 
 	public function new()
