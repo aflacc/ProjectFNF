@@ -148,7 +148,7 @@ class TitleState extends MusicBeatState
 		{
 			logoBl.frames = Paths.getSparrowAtlas('ProjectFNFLogoBumpin');
 			logoBl.x += 180;
-			logoBl.y += 60;
+			logoBl.y += 80;
 		}
 		else
 			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
