@@ -67,6 +67,9 @@ First you need to install Haxe and HaxeFlixel. I'm too lazy to write and keep up
 
 Other installations you'd need is the additional libraries, a fully updated list will be in `Project.xml` in the project root. Currently, these are all of the things you need to install:
 ```
+lime
+openfl
+linc_luajit
 flixel
 flixel-addons
 flixel-ui
@@ -75,8 +78,10 @@ newgrounds
 ```
 So for each of those type `haxelib install [library]` so shit like `haxelib install newgrounds`
 
+Run `haxelib run lime setup` to be able to use the `lime` command so you can actually compile the game.
+
 You'll also need to install a couple things that involve Gits. To do this, you need to do a few things first.
-1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build. (On Linux, just instaill `git`)
+1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build. (On Linux, just run `sudo apt install git`)
 2. Follow instructions to install the application properly.
 3. Run `haxelib git polymod https://github.com/larsiusprime/polymod.git` to install Polymod.
 4. Run `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc` to install Discord RPC.
@@ -89,26 +94,6 @@ At the moment, you can optionally fix the transition bug in songs with zoomed ou
 ### Downloading the source
 
 You can download the source by unzipping the download from above, running `git clone https://github.com/aflacc/ProjectFNF.git` in a terminal or cloning with GitHub Desktop.
-
-### Ignored files
-
-I gitignore the API keys for the game, so that no one can nab them and post fake highscores on the leaderboards. But because of that the game
-doesn't compile without it.
-
-Just make a file in `/source` and call it `APIStuff.hx`, and copy paste this into it
-
-```haxe
-package;
-
-class APIStuff
-{
-	public static var API:String = "";
-	public static var EncKey:String = "";
-}
-
-```
-
-and you should be good to go there.
 
 ### Compiling game
 
