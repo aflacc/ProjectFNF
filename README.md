@@ -1,8 +1,7 @@
 
 [![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&icon=discord&label=Discord&logoColor=%234e5d94&style=for-the-badge&icon=disc)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
 ***
-
-<img src="https://github.com/aflacc/ProjectFNF/blob/master/art/projectfnf.png?raw=true" height=350 width=350 align="center">
+![Logo](https://u.cubeupload.com/Aflac/ProjectFNF.png)
 
 *Kade Engine but cooler :sunglasses:*
 
