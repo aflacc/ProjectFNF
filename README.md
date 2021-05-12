@@ -2,7 +2,7 @@
 [![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&icon=discord&label=Discord&logoColor=%234e5d94&style=for-the-badge&icon=disc)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
 ***
 <div align="center"> <img src="https://github.com/aflacc/ProjectFNF/blob/master/art/projectfnf.png?raw=true" height=350 width=350 align="center"></div>
-*Kade Engine but cooler :sunglasses:*
+<div align="center">*Kade Engine but cooler :sunglasses:*</div>
 
 # About
 ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
