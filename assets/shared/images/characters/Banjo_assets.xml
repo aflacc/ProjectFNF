@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Banjo assets.png">
+	<!-- Created with Adobe Animate version 21.0.5.40714 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Banjo GUH HUH!0000" x="0" y="0" width="623" height="805" frameX="0" frameY="-2" frameWidth="623" frameHeight="300"/>
+	<SubTexture name="Banjo GUH HUH!0001" x="623" y="0" width="623" height="807"/>
+	<SubTexture name="Banjo GUH HUH!0002" x="1246" y="0" width="580" height="761" frameX="-36" frameY="-42" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0003" x="1826" y="0" width="587" height="752" frameX="-29" frameY="-52" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0004" x="2413" y="0" width="608" height="779" frameX="-2" frameY="-26" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0005" x="3021" y="0" width="583" height="778" frameX="-10" frameY="-28" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0006" x="0" y="807" width="589" height="790" frameX="-13" frameY="-17" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0007" x="589" y="807" width="587" height="796" frameX="-15" frameY="-11" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0008" x="1176" y="807" width="586" height="796" frameX="-16" frameY="-11" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0009" x="1176" y="807" width="586" height="796" frameX="-16" frameY="-11" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0010" x="1762" y="807" width="586" height="800" frameX="-16" frameY="-7" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0011" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0012" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0013" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0014" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0015" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0016" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0017" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0018" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0019" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0020" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0021" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0022" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0023" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0024" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0025" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0026" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0027" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0028" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0029" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0030" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0031" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0032" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0033" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0034" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0035" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0036" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0037" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0038" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0039" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0040" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0041" x="2348" y="807" width="586" height="805" frameX="-16" frameY="-2" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0042" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0043" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0044" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0045" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0046" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0047" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0048" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0049" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0050" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0051" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0052" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0053" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0054" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0055" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0056" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0057" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0058" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0059" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0060" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0061" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0062" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0063" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0064" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0065" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0066" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0067" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0068" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0069" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo GUH HUH!0070" x="2934" y="807" width="0" height="0" frameX="277" frameY="110" frameWidth="623" frameHeight="807"/>
+	<SubTexture name="Banjo Idle0000" x="2934" y="807" width="631" height="813" frameX="-12" frameY="-3" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0001" x="2934" y="807" width="631" height="813" frameX="-12" frameY="-3" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0002" x="0" y="1620" width="626" height="812" frameX="-8" frameY="0" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0003" x="0" y="1620" width="626" height="812" frameX="-8" frameY="0" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0004" x="626" y="1620" width="632" height="783" frameX="0" frameY="-29" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0005" x="626" y="1620" width="632" height="783" frameX="0" frameY="-29" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0006" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0007" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0008" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0009" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0010" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0011" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0012" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Idle0013" x="1258" y="1620" width="632" height="773" frameX="0" frameY="-39" frameWidth="643" frameHeight="816"/>
+	<SubTexture name="Banjo Right Note0000" x="1890" y="1620" width="606" height="849" frameX="-4" frameY="-10" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0001" x="1890" y="1620" width="606" height="849" frameX="-4" frameY="-10" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0002" x="2496" y="1620" width="599" height="864" frameX="0" frameY="0" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0003" x="2496" y="1620" width="599" height="864" frameX="0" frameY="0" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0004" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0005" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0006" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0007" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0008" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0009" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0010" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0011" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0012" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0013" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Right Note0014" x="3095" y="1620" width="599" height="842" frameX="0" frameY="-11" frameWidth="610" frameHeight="864"/>
+	<SubTexture name="Banjo Up Note0000" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0001" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0002" x="594" y="2484" width="612" height="857" frameX="0" frameY="0" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0003" x="594" y="2484" width="612" height="857" frameX="0" frameY="0" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0004" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0005" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0006" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0007" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0008" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0009" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0010" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0011" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0012" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo Up Note0013" x="0" y="2484" width="594" height="829" frameX="-13" frameY="-30" frameWidth="612" frameHeight="859"/>
+	<SubTexture name="Banjo down note0000" x="1206" y="2484" width="610" height="826" frameX="-3" frameY="0" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0001" x="1206" y="2484" width="610" height="826" frameX="-3" frameY="0" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0002" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0003" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0004" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0005" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0006" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0007" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0008" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0009" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0010" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0011" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0012" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0013" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo down note0014" x="1816" y="2484" width="595" height="814" frameX="0" frameY="-9" frameWidth="613" frameHeight="826"/>
+	<SubTexture name="Banjo left note0000" x="2411" y="2484" width="738" height="850" frameX="-4" frameY="0" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0001" x="2411" y="2484" width="738" height="850" frameX="-4" frameY="0" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0002" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0003" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0004" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0005" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0006" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0007" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0008" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0009" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0010" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0011" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0012" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0013" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+	<SubTexture name="Banjo left note0014" x="3149" y="2484" width="741" height="830" frameX="0" frameY="-20" frameWidth="742" frameHeight="850"/>
+</TextureAtlas>
