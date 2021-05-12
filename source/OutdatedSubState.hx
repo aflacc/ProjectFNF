@@ -18,7 +18,7 @@ class OutdatedSubState extends MusicBeatState
 		add(bg);
 		var ver = "v" + Application.current.meta.get('version');
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"PLEASE READ!! \n\n\n\nThis is a \n\nDEMO\n\n of the Vs Banjo and Kazooie mod! \n There will be bugs, and lots will be changed when the full mod comes! \n For now, we hope you enjoy this demo!\nPress ESC to continue.",
+			"WARNING!!! \n\n\n\nYou are using a early version of ProjectFNF!! \n Some Features might not work as they should \n Press Enter to go to the GitHub,\n or press ESC to continue.",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
@@ -27,6 +27,10 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		if (controls.ACCEPT)
+		{
+			FlxG.openURL("https://github.com/aflacc/ProjectFNF");
+		}
 		if (controls.BACK)
 		{
 			leftState = true;
