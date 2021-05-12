@@ -1,3 +1,4 @@
+--hell yeah it works fuk u kade
 function start(song) -- do nothing
 
 end
