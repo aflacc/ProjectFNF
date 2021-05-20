@@ -160,4 +160,5 @@ We do not ask for much, all we ask is you link the github and if the mod is on g
 
 *click on the stats to see more about that topic!*/
 *stats generated with [shields.io](http://shields.io/)*
-imposter is sus haha among us
+
+<- 😐 why are you cringe ->
