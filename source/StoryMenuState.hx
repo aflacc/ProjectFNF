@@ -32,6 +32,15 @@ class StoryMenuState extends MusicBeatState
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
 		['Senpai', 'Roses', 'Thorns']
 	];
+	var weekColors:Array<FlxColor> = [
+		0xFFca1f6f, // GF
+		0xFFc885e5, // DAD
+		0xFFf9a326, // SPOOKY
+		0xFFceec75, // PICO
+		0xFFec7aac, // MOM
+		0xFFffffff, // PARENTS-CHRISTMAS (Look I don't know what a Better color would be.)
+		0xFFffaa6f // SENPAI
+	];
 	var curDifficulty:Int = 1; // 0 = easy, 1 = normal, 2 = hard
 
 	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true]; // If the weeks are unlocked
@@ -73,6 +82,7 @@ class StoryMenuState extends MusicBeatState
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFFFFFFF);
 
 	override function create()
 	{
@@ -101,7 +111,6 @@ class StoryMenuState extends MusicBeatState
 		rankText.screenCenter(X);
 
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
-		var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFF9CF51);
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
@@ -118,7 +127,7 @@ class StoryMenuState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("Selecting a Week", null);
 		#end
 
 		for (i in 0...weekData.length)
@@ -212,7 +221,7 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist = new FlxText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Tracks", 32);
 		txtTracklist.alignment = CENTER;
 		txtTracklist.font = rankText.font;
-		txtTracklist.color = 0xFFF9CF51; // 0xFFe55777
+		txtTracklist.color = 0xFFFFFFF; // 0xFFe55777
 		add(txtTracklist);
 		// add(rankText);
 		add(scoreText);
@@ -393,6 +402,8 @@ class StoryMenuState extends MusicBeatState
 				item.alpha = 0.6;
 			bullShit++;
 		}
+		FlxTween.color(txtTracklist, 0.1, txtTracklist.color, weekColors[curWeek]);
+		FlxTween.color(yellowBG, 0.1, yellowBG.color, weekColors[curWeek]); // not yellow anymore :sunglasses:
 
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 

@@ -296,18 +296,18 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Story Mode: Week " + storyWeek;
+			detailsText = "Playing Week " + storyWeek;
 		}
 		else
 		{
-			detailsText = "Freeplay";
+			detailsText = "Playing in Freeplay";
 		}
 
 		// String for when the game is paused
-		detailsPausedText = "Paused - " + detailsText;
+		detailsPausedText = "Paused on " + detailsText;
 
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+		DiscordClient.changePresence(detailsText, SONG.song + ", " + storyDifficultyText, iconRPC);
 		#end
 
 		switch (SONG.song.toLowerCase())

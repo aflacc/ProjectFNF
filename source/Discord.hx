@@ -40,10 +40,10 @@ class DiscordClient
 	{
 		var rpcsplash:String = rpc[Math.floor(Math.random() * rpc.length)];
 		DiscordRpc.presence({
-			details: "In the Menus",
+			details: "Launching the Game...",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "ProjectFNF",
+			largeImageText: Config.ModName,
 			smallImageText: rpcsplash
 		});
 	}
@@ -82,7 +82,7 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: 'icon',
-			largeImageText: "ProjectFNF",
+			largeImageText: Config.ModName,
 			smallImageKey: smallImageKey,
 			smallImageText: rpcsplash,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
