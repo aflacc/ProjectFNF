@@ -1213,7 +1213,7 @@ class PlayState extends MusicBeatState
 		songLength = FlxG.sound.music.length;
 
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, SONG.song + ", " + storyDifficultyText + "", iconRPC, true, songLength + health + "% HP");
+		DiscordClient.changePresence(detailsText, SONG.song + ", " + storyDifficultyText + "", iconRPC, true, songLength);
 		#end
 	}
 
