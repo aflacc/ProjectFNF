@@ -1,9 +1,8 @@
 
 [![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&icon=discord&label=Discord&logoColor=%234e5d94&style=for-the-badge&icon=disc)](https://discord.gg/fmxuXhRqMU)  [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases)  [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
 ***
-![Logo](https://u.cubeupload.com/Aflac/ProjectFNF.png)
-
-*Kade Engine but cooler :sunglasses:*
+<div align="center"> <img src="https://github.com/aflacc/ProjectFNF/blob/master/art/projectfnf.png?raw=true" height=500 width=500 align="center"></div>
+<div align="center">Kade Engine but cooler :sunglasses:</div>
 
 # About
 ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod.
@@ -81,7 +80,7 @@ So for each of those type `haxelib install [library]` so shit like `haxelib inst
 Run `haxelib run lime setup` to be able to use the `lime` command so you can actually compile the game.
 
 You'll also need to install a couple things that involve Gits. To do this, you need to do a few things first.
-1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build. (On Linux, just run `sudo apt install git`)
+1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build. (On Linux, just install Git)
 2. Follow instructions to install the application properly.
 3. Run `haxelib git polymod https://github.com/larsiusprime/polymod.git` to install Polymod.
 4. Run `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc` to install Discord RPC.
@@ -100,21 +99,10 @@ You can download the source by unzipping the download from above, running `git c
 Once you have all those installed, it's pretty easy to compile the game. You just need to run 'lime test html5 -debug' in the root of the project to build and run the HTML5 version. (command prompt navigation guide can be found here: [https://ninjamuffin99.newgrounds.com/news/post/1090480](https://ninjamuffin99.newgrounds.com/news/post/1090480))
 
 To run it from your desktop (Windows, Mac, Linux) it can be a bit more involved. For Linux, you only need to open a terminal in the project directory and run 'lime test linux -debug' and then run the executible file in export/release/linux/bin. For Windows, you need to install Visual Studio Community 2019. While installing VSC, don't click on any of the options to install workloads. Instead, go to the individual components tab and choose the following:
-* MSVC v142 - VS 2019 C++ x64/x86 build tools
-* Windows SDK (10.0.17763.0)
-* C++ Profiling tools
-* C++ CMake tools for windows
-* C++ ATL for v142 build tools (x86 & x64)
-* C++ MFC for v142 build tools (x86 & x64)
-* C++/CLI support for v142 build tools (14.21)
-* C++ Modules for v142 build tools (x64/x86)
-* Clang Compiler for Windows
-* Windows 10 SDK (10.0.17134.0)
-* Windows 10 SDK (10.0.16299.0)
-* MSVC v141 - VS 2017 C++ x64/x86 build tools
-* MSVC v140 - VS 2015 C++ build tools (v14.00)
+* MSVC v142 - VS 2019 C++ x64/x86 build tools (Latest)
+* Windows SDK (10.0.19041.0)
 
-This will install about 22GB of crap, but once that is done you can open up a command line in the project's directory and run `lime test windows -debug`. Once that command finishes (it takes forever even on a higher end PC), you can run FNF from the .exe file under export\release\windows\bin
+This will install about 4GB of crap, but once that is done you can open up a command line in the project's directory and run `lime test windows -debug`. Once that command finishes (it takes forever even on a higher end PC), you can run FNF from the .exe file under export\release\windows\bin
 As for Mac, 'lime test mac -debug' should work, if not the internet surely has a guide on how to compile Haxe stuff for Mac.
 
 ### Additional guides
@@ -172,3 +160,5 @@ We do not ask for much, all we ask is you link the github and if the mod is on g
 
 *click on the stats to see more about that topic!*/
 *stats generated with [shields.io](http://shields.io/)*
+
+😐 why are you cringe
