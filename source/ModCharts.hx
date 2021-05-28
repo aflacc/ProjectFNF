@@ -10,4 +10,7 @@ class ModCharts
     static public function circleSprite(sprite, rotateradius, speed) {
         FlxTween.circularMotion(sprite, sprite.x, sprite.y, rotateradius, 90, true, speed, {type: FlxTween.LOOPING});
     }
+    static public function moveTo(sprite, x, y, movespeed) {
+        FlxTween.linearMotion(sprite, sprite.x, sprite.y, x, y, movespeed, true, { type: FlxTween.ONESHOT, ease: FlxEase.quadInOut});
+    }
 }

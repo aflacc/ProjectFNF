@@ -1185,9 +1185,6 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
-					strumLineNotes.forEach(function(note) {
-					//	ModCharts.circleSprite(note, 100, 3);
-					});
 			}
 
 			swagCounter += 1;
