@@ -199,6 +199,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+	//	ModCharts.dadNotesVisible = false; uncomment to make dads notes invisible
+
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -1185,6 +1187,11 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
+					/*strumLineNotes.forEach(function(note) {
+						if (note.visible) {
+							ModCharts.circleSprite(note, 30, 3);
+						}
+					});*/ //UNCOMMENT TO HAVE NOTES CIRCLE
 			}
 
 			swagCounter += 1;
@@ -1426,6 +1433,12 @@ class PlayState extends MusicBeatState
 
 			strumLineNotes.add(babyArrow);
 			ModCharts.quickSpin(babyArrow);
+		}
+		if (ModCharts.dadNotesVisible == false) {
+			strumLineNotes.members[0].visible = false;
+			strumLineNotes.members[1].visible = false;
+			strumLineNotes.members[2].visible = false;
+			strumLineNotes.members[3].visible = false;
 		}
 	}
 
@@ -1811,32 +1824,18 @@ class PlayState extends MusicBeatState
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
-				// THIS SUCKS DICK
+				// THIS SUCKS (slightly less) DICK (than before)
 				if (ModCharts.stickNotes == true) {
-				if (daNote.mustPress) {
-					switch (daNote.noteData)
-					{
-						case 0:
-							daNote.x = strumLineNotes.members[4].x;
-						case 1:
-							daNote.x = strumLineNotes.members[5].x;
-						case 2:
-							daNote.x = strumLineNotes.members[6].x;
-						case 3:
-							daNote.x = strumLineNotes.members[7].x;
+					var noteNum:Int = 0;
+					if (daNote.mustPress) {
+						noteNum += 4; // set to bfs notes instead
 					}
-				} else {					
-					switch (daNote.noteData)
-					{
-						case 0:
-							daNote.x = strumLineNotes.members[0].x;
-						case 1:
-							daNote.x = strumLineNotes.members[1].x;
-						case 2:
-							daNote.x = strumLineNotes.members[2].x;
-						case 3:
-							daNote.x = strumLineNotes.members[3].x;
-					}}
+					noteNum += daNote.noteData;
+					trace(ModCharts.dadNotesVisible);
+					if (!ModCharts.dadNotesVisible && !daNote.mustPress) {
+						daNote.visible = false;
+					}
+					daNote.x = strumLineNotes.members[noteNum].x;
 				}
 
 				if (daNote.y > FlxG.height)
@@ -1846,8 +1845,16 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					daNote.visible = true;
-					daNote.active = true;
+					if (daNote.mustPress) { // IM SUCH A RETARD
+						daNote.visible = true;
+						daNote.active = true;
+					} else if (ModCharts.dadNotesVisible) {
+						daNote.visible = true;
+						daNote.active = true;
+					} else {
+						daNote.visible = false;
+						daNote.active = true;
+					}
 				}
 
 				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));

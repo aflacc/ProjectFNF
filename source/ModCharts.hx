@@ -4,6 +4,8 @@ import flixel.tweens.FlxTween;
 class ModCharts
 {
     static public var stickNotes:Bool = true;
+    static public var dadNotesVisible:Bool = true;
+
     static public function quickSpin(sprite) {
         FlxTween.angle(sprite, 0, 360, 0.5, { type: FlxTween.ONESHOT, ease: FlxEase.quadInOut, startDelay: 0, loopDelay: 0 });
     }
