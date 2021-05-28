@@ -1185,6 +1185,9 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
+					strumLineNotes.forEach(function(note) {
+						//ModCharts.circleSprite(note, 30);
+					});
 			}
 
 			swagCounter += 1;
@@ -1271,7 +1274,6 @@ class PlayState extends MusicBeatState
 				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
-
 				var susLength:Float = swagNote.sustainLength;
 
 				susLength = susLength / Conductor.stepCrochet;
@@ -1372,6 +1374,7 @@ class PlayState extends MusicBeatState
 
 					babyArrow.antialiasing = true;
 					babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+					babyArrow.updateHitbox();
 
 					switch (Math.abs(i))
 					{
@@ -1425,6 +1428,7 @@ class PlayState extends MusicBeatState
 			babyArrow.x += ((FlxG.width / 2) * player);
 
 			strumLineNotes.add(babyArrow);
+			ModCharts.quickSpin(babyArrow);
 		}
 	}
 
@@ -1810,6 +1814,34 @@ class PlayState extends MusicBeatState
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
+				// THIS SUCKS DICK
+				if (ModCharts.stickNotes == true) {
+				if (daNote.mustPress) {
+					switch (daNote.noteData)
+					{
+						case 0:
+							daNote.x = strumLineNotes.members[4].x;
+						case 1:
+							daNote.x = strumLineNotes.members[5].x;
+						case 2:
+							daNote.x = strumLineNotes.members[6].x;
+						case 3:
+							daNote.x = strumLineNotes.members[7].x;
+					}
+				} else {					
+					switch (daNote.noteData)
+					{
+						case 0:
+							daNote.x = strumLineNotes.members[0].x;
+						case 1:
+							daNote.x = strumLineNotes.members[1].x;
+						case 2:
+							daNote.x = strumLineNotes.members[2].x;
+						case 3:
+							daNote.x = strumLineNotes.members[3].x;
+					}}
+				}
+
 				if (daNote.y > FlxG.height)
 				{
 					daNote.active = false;
@@ -2269,6 +2301,17 @@ class PlayState extends MusicBeatState
 
 			notes.forEachAlive(function(daNote:Note)
 			{
+				/*if (left)
+								goodNoteHit(daNote);
+						case 1:
+							if (down)
+								goodNoteHit(daNote);
+						case 2:
+							if (up)
+								goodNoteHit(daNote);
+						case 3:
+							if (right)
+								goodNoteHit(daNote);*/
 				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
 				{
 					// the sorting probably doesn't need to be in here? who cares lol
@@ -2727,6 +2770,10 @@ class PlayState extends MusicBeatState
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
 		{
+			// idk im lazy asf
+			strumLineNotes.forEach(function(note) {
+				ModCharts.quickSpin(note);
+			});
 			boyfriend.playAnim('hey', true);
 			gf.playAnim('cheer', true);
 		}

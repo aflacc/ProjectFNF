@@ -68,7 +68,6 @@ Other installations you'd need is the additional libraries, a fully updated list
 ```
 lime
 openfl
-linc_luajit
 flixel
 flixel-addons
 flixel-ui
