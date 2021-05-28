@@ -199,8 +199,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		ModCharts.dadNotesVisible = false; // uncomment to make dads notes invisible
-	//  ModCharts.bfNotesVisible = false; // uncomment to make bfs notes invisible
+		ModCharts.dadNotesVisible = true;
+		ModCharts.bfNotesVisible = true;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -1187,21 +1187,22 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
-						// modcharting for spookeez
-						if (curSong.toLowerCase() == 'spookeez') {
-							for(note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
-								{
-								if (note >= 4)
-								{
-									ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000 /*should be a beat? idk im dumb*/);
-								}
-								}
+					// modcharting for spookeez
+					if (curSong.toLowerCase() == 'spookeez')
+					{
+						for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
+						{
+							if (note >= 4)
+							{
+								ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000 /*should be a beat? idk im dumb*/);
+							}
 						}
+					}
 					/*strumLineNotes.forEach(function(note) {
 						if (note.visible) {
 							ModCharts.circleSprite(note, 30, 3);
 						}
-					});*/ //UNCOMMENT TO HAVE NOTES CIRCLE
+					});*/ // UNCOMMENT TO HAVE NOTES CIRCLE
 			}
 
 			swagCounter += 1;
@@ -1444,19 +1445,20 @@ class PlayState extends MusicBeatState
 			strumLineNotes.add(babyArrow);
 			ModCharts.quickSpin(babyArrow);
 		}
-        for(note in 0...strumLineNotes.members.length)
+		for (note in 0...strumLineNotes.members.length)
+		{
+			if (player == 1 && note >= 4)
 			{
-			  if (player == 1 && note >= 4)
-			  {
-				  if (!ModCharts.bfNotesVisible) {
+				if (!ModCharts.bfNotesVisible)
+				{
 					strumLineNotes.members[note].visible = false;
-				  }
-			  }
-			  else
-				  if (!ModCharts.dadNotesVisible) {
-					strumLineNotes.members[note].visible = false;
-				  }
+				}
 			}
+			else if (!ModCharts.dadNotesVisible)
+			{
+				strumLineNotes.members[note].visible = false;
+			}
+		}
 	}
 
 	function tweenCamIn():Void
@@ -1842,16 +1844,20 @@ class PlayState extends MusicBeatState
 			notes.forEachAlive(function(daNote:Note)
 			{
 				// THIS SUCKS (slightly less) DICK (than before)
-				if (ModCharts.stickNotes == true) {
+				if (ModCharts.stickNotes == true)
+				{
 					var noteNum:Int = 0;
-					if (daNote.mustPress) {
+					if (daNote.mustPress)
+					{
 						noteNum += 4; // set to bfs notes instead
 					}
 					noteNum += daNote.noteData;
-					if (!ModCharts.dadNotesVisible && !daNote.mustPress) {
+					if (!ModCharts.dadNotesVisible && !daNote.mustPress)
+					{
 						daNote.visible = false;
 					}
-					if (!ModCharts.bfNotesVisible && daNote.mustPress) {
+					if (!ModCharts.bfNotesVisible && daNote.mustPress)
+					{
 						daNote.visible = false;
 					}
 					daNote.x = strumLineNotes.members[noteNum].x;
@@ -1865,18 +1871,26 @@ class PlayState extends MusicBeatState
 				else
 				{
 					// mag not be retarded challange(failed instantly)
-					if (daNote.mustPress) {
-						if (ModCharts.bfNotesVisible) {
+					if (daNote.mustPress)
+					{
+						if (ModCharts.bfNotesVisible)
+						{
 							daNote.visible = true;
 							daNote.active = true;
-						} else {
+						}
+						else
+						{
 							daNote.visible = false;
 							daNote.active = true;
 						}
-					} else if (ModCharts.dadNotesVisible) {
+					}
+					else if (ModCharts.dadNotesVisible)
+					{
 						daNote.visible = true;
 						daNote.active = true;
-					} else {
+					}
+					else
+					{
 						daNote.visible = false;
 						daNote.active = true;
 					}
@@ -2331,16 +2345,16 @@ class PlayState extends MusicBeatState
 			notes.forEachAlive(function(daNote:Note)
 			{
 				/*if (left)
-								goodNoteHit(daNote);
-						case 1:
-							if (down)
-								goodNoteHit(daNote);
-						case 2:
-							if (up)
-								goodNoteHit(daNote);
-						case 3:
-							if (right)
-								goodNoteHit(daNote);*/
+							goodNoteHit(daNote);
+					case 1:
+						if (down)
+							goodNoteHit(daNote);
+					case 2:
+						if (up)
+							goodNoteHit(daNote);
+					case 3:
+						if (right)
+							goodNoteHit(daNote); */
 				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
 				{
 					// the sorting probably doesn't need to be in here? who cares lol
@@ -2768,9 +2782,8 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
-
 		// modcharting for spookeez part two
-/*		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
+		/*		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
 			var gotox = FlxG.random.int(100, 1000);
 			var gotoy = FlxG.random.int(50, 500);
 			for(note in 0...strumLineNotes.members.length) 
@@ -2794,7 +2807,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 					strumLine.y = gotoy;
-				} */
+		}*/
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
@@ -2828,7 +2841,8 @@ class PlayState extends MusicBeatState
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
 		{
 			// idk im lazy asf
-			strumLineNotes.forEach(function(note) {
+			strumLineNotes.forEach(function(note)
+			{
 				ModCharts.quickSpin(note);
 			});
 			boyfriend.playAnim('hey', true);
