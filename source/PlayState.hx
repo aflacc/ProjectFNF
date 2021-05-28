@@ -199,8 +199,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-	//	ModCharts.dadNotesVisible = false; uncomment to make dads notes invisible
-
+		ModCharts.dadNotesVisible = false; // uncomment to make dads notes invisible
+	//  ModCharts.bfNotesVisible = false; // uncomment to make bfs notes invisible
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -1187,6 +1187,16 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
+						// modcharting for spookeez
+						if (curSong.toLowerCase() == 'spookeez') {
+							for(note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
+								{
+								if (note >= 4)
+								{
+									ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000 /*should be a beat? idk im dumb*/);
+								}
+								}
+						}
 					/*strumLineNotes.forEach(function(note) {
 						if (note.visible) {
 							ModCharts.circleSprite(note, 30, 3);
@@ -1434,12 +1444,19 @@ class PlayState extends MusicBeatState
 			strumLineNotes.add(babyArrow);
 			ModCharts.quickSpin(babyArrow);
 		}
-		if (ModCharts.dadNotesVisible == false) {
-			strumLineNotes.members[0].visible = false;
-			strumLineNotes.members[1].visible = false;
-			strumLineNotes.members[2].visible = false;
-			strumLineNotes.members[3].visible = false;
-		}
+        for(note in 0...strumLineNotes.members.length)
+			{
+			  if (player == 1 && note >= 4)
+			  {
+				  if (!ModCharts.bfNotesVisible) {
+					strumLineNotes.members[note].visible = false;
+				  }
+			  }
+			  else
+				  if (!ModCharts.dadNotesVisible) {
+					strumLineNotes.members[note].visible = false;
+				  }
+			}
 	}
 
 	function tweenCamIn():Void
@@ -1831,8 +1848,10 @@ class PlayState extends MusicBeatState
 						noteNum += 4; // set to bfs notes instead
 					}
 					noteNum += daNote.noteData;
-					trace(ModCharts.dadNotesVisible);
 					if (!ModCharts.dadNotesVisible && !daNote.mustPress) {
+						daNote.visible = false;
+					}
+					if (!ModCharts.bfNotesVisible && daNote.mustPress) {
 						daNote.visible = false;
 					}
 					daNote.x = strumLineNotes.members[noteNum].x;
@@ -1845,9 +1864,15 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					if (daNote.mustPress) { // IM SUCH A RETARD
-						daNote.visible = true;
-						daNote.active = true;
+					// mag not be retarded challange(failed instantly)
+					if (daNote.mustPress) {
+						if (ModCharts.bfNotesVisible) {
+							daNote.visible = true;
+							daNote.active = true;
+						} else {
+							daNote.visible = false;
+							daNote.active = true;
+						}
 					} else if (ModCharts.dadNotesVisible) {
 						daNote.visible = true;
 						daNote.active = true;
@@ -2743,6 +2768,34 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
+
+		// modcharting for spookeez part two
+/*		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
+			var gotox = FlxG.random.int(100, 1000);
+			var gotoy = FlxG.random.int(50, 500);
+			for(note in 0...strumLineNotes.members.length) 
+				{
+					if (note >= 4)
+					{
+						ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000 );
+					}
+				}
+				strumLine.y = gotoy;
+			}
+			// im bad
+			if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574) {
+				var gotox = FlxG.random.int(100, 1000);
+				var gotoy = FlxG.random.int(50, 500);
+				for(note in 0...strumLineNotes.members.length) 
+					{
+						if (note >= 4)
+						{
+							ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
+						}
+					}
+					strumLine.y = gotoy;
+				} */
+
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
 		{
@@ -2851,7 +2904,6 @@ class PlayState extends MusicBeatState
 					trainStart();
 				}
 		}
-
 		if (isHalloween && FlxG.random.bool(20) && curBeat > lightningStrikeBeat + lightningOffset)
 		{
 			lightningStrikeShit();
