@@ -1,6 +1,10 @@
 // This is the config folder for ProjectFNF
 // These are config options the player doesn't get to access so you can keep the game looking as intended.
-class Config extends Descriptions
+
+/**
+ * config options lmao
+ */
+class Config extends MusicBeatState
 {
 	/**
 	 * Makes the Girlfriend sit on the Limo instead of the Speaker in week 4.
