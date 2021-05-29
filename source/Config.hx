@@ -1,12 +1,44 @@
 // This is the config folder for ProjectFNF
 // These are config options the player doesn't get to access so you can keep the game looking as intended.
-class Config extends MusicBeatState
+class Config extends Descriptions
 {
-	public static var CONFIGGfCar:Bool = true; // If you want GF on week 4 to be sitting on the car in the back and not on a speaker.
-	public static var CONFIGTitle:Bool = true; // Title screen uses ProjectFNF logo instead of the Logo bumpin.
-	public static var CONFIGSkip:Bool = true; // Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
-	public static var ModName:String = 'ProjectFNF'; // Change this to the name of your mod
-	public static var DEBUGMODE:Bool = false; // WIP
-	public static var MISSFX:Bool = true; // Shakes the camera
-	public static var MISSINTENSITY = 0.002; // Only does anything if MISSFX is true dont put too high
+	/**
+	 * Makes the Girlfriend sit on the Limo instead of the Speaker in week 4.
+	 * Its very funny
+	 */
+	public static var CONFIGGfCar:Bool = true;
+
+	/**
+	 * Use the ProjectFNF logo or the Friday Night Funkin logo??
+	 */
+	public static var CONFIGTitle:Bool = true;
+
+	/**
+	 * Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
+	 */
+	public static var CONFIGSkip:Bool = true;
+
+	/**
+	 *  The Name of the Mod. This shows up in the Main Menu with the Story Mode, Freeplay, Donate, and Options buttons
+	 */
+	public static var ModName:String = 'ProjectFNF';
+
+	/**
+	 * This is a WIP thing. I don't fully know what I'm gonna do with this but I might just have it make the Output be a little more in depth.
+	 */
+	public static var DEBUGMODE:Bool = false;
+
+	/**
+	 * Shakes the camera when you miss a note. Shakes on the Axis you missed the note of. (Up/Down will shake the camera Up and Down)
+	 */
+	public static var MISSFX:Bool = true;
+
+	/**
+	 * Only Works if **MISSFX** is set to **true**
+	 * 
+	 * It is not reccomended to set this *too* high, it gets very obnoxious ***VERY*** quickly.
+	 * 
+	 * Suggested to use any value between .001 - .01
+	 */
+	public static var MISSINTENSITY = 0.002;
 }
