@@ -1588,9 +1588,9 @@ class PlayState extends MusicBeatState
 
 		// accuracy!!
 		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
-		infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy " + accuracy + "%";
+		infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
 		infoTxt.updateHitbox();
-		funnySexBox.width = infoTxt.fieldWidth; // im so smart and cool
+		funnySexBox.scale.x = infoTxt.fieldWidth; // thank you daddy tyler#4534
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
