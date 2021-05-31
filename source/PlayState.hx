@@ -110,7 +110,7 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	static public var health:Float = 1;
+	private var health:Float = 1;
 
 	private var combo:Int = 0;
 
@@ -692,7 +692,6 @@ class PlayState extends MusicBeatState
 
 		dad = new Character(100, 100, SONG.player2);
 
-
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
 		switch (SONG.player2)
@@ -786,7 +785,7 @@ class PlayState extends MusicBeatState
 			add(limo);
 
 		add(dad);
-		//add(ModCharts.addTrailToSprite(dad));
+		// add(ModCharts.addTrailToSprite(dad));
 		add(boyfriend);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
@@ -1658,10 +1657,8 @@ class PlayState extends MusicBeatState
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
-		#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebug(SONG.player2));
-		#end
 
 		if (startingSong)
 		{
@@ -1796,7 +1793,7 @@ class PlayState extends MusicBeatState
 		// RESET = Quick Game Over Screen
 		if (controls.RESET)
 		{
-			//health = 0;
+			// health = 0;
 			trace("[ProjectFNF] Reset player");
 		}
 
@@ -2786,44 +2783,50 @@ class PlayState extends MusicBeatState
 		wiggleShit.update(Conductor.crochet);
 
 		// modcharting for spookeez part two
-		if (curSong.toLowerCase() == 'spookeez') {
-		if (curStep == 191) {
-			for(note in 0...strumLineNotes.members.length) 
+		if (curSong.toLowerCase() == 'spookeez')
+		{
+			if (curStep == 191)
+			{
+				for (note in 0...strumLineNotes.members.length)
 				{
 					if (note >= 4)
 					{
 						ModCharts.cancelMovement(note);
 						ModCharts.dadNotesVisible = false;
-					} else {
+					}
+					else
+					{
 						ModCharts.toggleVisibility(note, false); // im so smart
 					}
+				}
 			}
 		}
-	}
-		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
+		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319)
+		{
 			var gotox = FlxG.random.int(100, 1000);
 			var gotoy = FlxG.random.int(50, 500);
-			for(note in 0...strumLineNotes.members.length) 
+			for (note in 0...strumLineNotes.members.length)
+			{
+				if (note >= 4)
 				{
-					if (note >= 4)
-					{
-						ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000 );
-					}
+					ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
 				}
-				strumLine.y = gotoy;
 			}
-			// im bad
-			if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574) {
-				var gotox = FlxG.random.int(100, 1000);
-				var gotoy = FlxG.random.int(50, 500);
-				for(note in 0...strumLineNotes.members.length) 
-					{
-						if (note >= 4)
-						{
-							ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
-						}
-					}
-					strumLine.y = gotoy;
+			strumLine.y = gotoy;
+		}
+		// im bad
+		if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574)
+		{
+			var gotox = FlxG.random.int(100, 1000);
+			var gotoy = FlxG.random.int(50, 500);
+			for (note in 0...strumLineNotes.members.length)
+			{
+				if (note >= 4)
+				{
+					ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
+				}
+			}
+			strumLine.y = gotoy;
 		}
 
 		// HARDCODING FOR MILF ZOOMS!
