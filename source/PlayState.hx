@@ -785,7 +785,7 @@ class PlayState extends MusicBeatState
 			add(limo);
 
 		add(dad);
-		add(ModCharts.addTrailToSprite(dad));
+		//add(ModCharts.addTrailToSprite(dad));
 		add(boyfriend);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
@@ -1797,7 +1797,7 @@ class PlayState extends MusicBeatState
 		// RESET = Quick Game Over Screen
 		if (controls.RESET)
 		{
-			health = 0;
+			//health = 0;
 			trace("[ProjectFNF] Reset player");
 		}
 
