@@ -148,8 +148,7 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var songMisses:Int = 0;
-	var scoreTxt:FlxText;
-	var missesTxt:FlxText;
+	var infoTxt:FlxText;
 	var timerTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
@@ -201,6 +200,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		// SECURE THIS FUCKING SHIT
+		health = 1;
 		ModCharts.dadNotesVisible = true;
 		ModCharts.bfNotesVisible = true;
 		if (FlxG.sound.music != null)
@@ -837,25 +838,25 @@ class PlayState extends MusicBeatState
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
 
+		trace(health);
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
+		trace(healthBar.percent);
+		healthBar.percent = (health / 2) * 100;
+		trace(healthBar.percent);
 		healthBar.scrollFactor.set();
 		var curcol:FlxColor = col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon
 		var curcol2:FlxColor = col[characterCol.indexOf(boyfriend.curCharacter)]; // Bf Icon
 		healthBar.createFilledBar(curcol, curcol2); // Use those colors
 		// healthBar
 		add(healthBar);
+		// HARD CODING CUZ IM RETARDED LOOOOL
 
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 60, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
-		scoreTxt.borderColor = FlxColor.BLACK;
-		scoreTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
-		missesTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 60, 0, "", 20);
-		missesTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
-		missesTxt.borderColor = FlxColor.BLACK;
-		missesTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
-		add(missesTxt);
-		add(scoreTxt);
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 60, 0, "", 20);
+		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
+		infoTxt.borderColor = FlxColor.BLACK;
+		infoTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
+		add(infoTxt);
 		add(timerTxt);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
@@ -872,8 +873,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
-		scoreTxt.cameras = [camHUD];
-		missesTxt.cameras = [camHUD];
+		infoTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
@@ -1592,8 +1592,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore + " "; // the last part is just so the outline doesnt clip
-		missesTxt.text = "Misses:" + songMisses;
+		infoTxt.text = "Misses: " + songMisses + " // Health: " + healthBar.percent + " // Score: " + songScore + " ";
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -2787,6 +2786,7 @@ class PlayState extends MusicBeatState
 		wiggleShit.update(Conductor.crochet);
 
 		// modcharting for spookeez part two
+		if (curSong.toLowerCase() == 'spookeez') {
 		if (curStep == 191) {
 			for(note in 0...strumLineNotes.members.length) 
 				{
@@ -2794,9 +2794,12 @@ class PlayState extends MusicBeatState
 					{
 						ModCharts.cancelMovement(note);
 						ModCharts.dadNotesVisible = false;
+					} else {
+						ModCharts.toggleVisibility(note, false); // im so smart
 					}
 			}
 		}
+	}
 		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
 			var gotox = FlxG.random.int(100, 1000);
 			var gotoy = FlxG.random.int(50, 500);

@@ -119,13 +119,13 @@ class ModCharts
 	 * ```
 	 *
 	 * @param	Object 		The object to toggle (FlxObject)
+	 * @param	Bool 		New state for the object(true for seeable, false for invisible)
 	 */
-	 static public function toggleVisibility(sprite) {
-		if (sprite.visible == true) {
-        	sprite.visible = false; // listen man, it makes some people's life easier.
+	 static public function toggleVisibility(sprite, newstate) {
+		if (newstate == true) {
+			FlxTween.tween(sprite, {  "visible": true }, 0.1);
 		} else {
-			sprite.visible = false;
+			FlxTween.tween(sprite, {  "visible": false }, 0.1);
 		}
     }
-
 }
