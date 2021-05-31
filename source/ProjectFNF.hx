@@ -1,5 +1,5 @@
 // YOU CAN IGNORE THIS
-class Functions
+class ProjectFNF
 {
 	/**
 		* Set the players health to a number specified
