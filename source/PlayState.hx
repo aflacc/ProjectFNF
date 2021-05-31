@@ -113,6 +113,7 @@ class PlayState extends MusicBeatState
 	var health:Float = 1; // dont set to static
 
 	private var combo:Int = 0;
+	var notesPressed:Float = 0; // accurasy shit
 
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
@@ -844,9 +845,13 @@ class PlayState extends MusicBeatState
 		healthBar.createFilledBar(curcol, curcol2); // Use those colors
 		// healthBar
 		add(healthBar);
-		// HARD CODING CUZ IM RETARDED LOOOOL
-
+		// i hate my fucking life
+		var funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 35).makeGraphic(400, 20, FlxColor.BLACK);
+		funnySexBox.alpha = 0.3;
+		add(funnySexBox);
+		funnySexBox.cameras = [camHUD]; // hopefully this works lol
 		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 35, 0, "", 20);
+		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
 		infoTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 1, 1);
