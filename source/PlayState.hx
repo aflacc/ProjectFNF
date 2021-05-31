@@ -1186,7 +1186,7 @@ class PlayState extends MusicBeatState
 					}
 				case 4:
 					// modcharting for spookeez
-					if (curSong.toLowerCase() == 'spookeez')
+				/*	if (curSong.toLowerCase() == 'spookeez')
 					{
 						for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
 						{
@@ -1195,7 +1195,7 @@ class PlayState extends MusicBeatState
 								ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000 /*should be a beat? idk im dumb*/);
 							}
 						}
-					}
+					}*/
 					/*strumLineNotes.forEach(function(note) {
 						if (note.visible) {
 							ModCharts.circleSprite(note, 30, 3);
@@ -2780,7 +2780,7 @@ class PlayState extends MusicBeatState
 		wiggleShit.update(Conductor.crochet);
 
 		// modcharting for spookeez part two
-		if (curSong.toLowerCase() == 'spookeez') {
+/*if (curSong.toLowerCase() == 'spookeez') {
 		if (curStep == 191) {
 			for(note in 0...strumLineNotes.members.length) 
 				{
@@ -2818,7 +2818,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 					strumLine.y = gotoy;
-		}
+		}*/
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
