@@ -846,10 +846,10 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 		// HARD CODING CUZ IM RETARDED LOOOOL
 
-		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 60, 0, "", 20);
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 35, 0, "", 20);
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
-		infoTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
+		infoTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 1, 1);
 		add(infoTxt);
 		add(timerTxt);
 
@@ -1192,15 +1192,10 @@ class PlayState extends MusicBeatState
 						{
 							if (note >= 4)
 							{
-								ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000 /*should be a beat? idk im dumb*/);
+								ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000);
 							}
 						}
 					}*/
-					/*strumLineNotes.forEach(function(note) {
-						if (note.visible) {
-							ModCharts.circleSprite(note, 30, 3);
-						}
-					});*/ // UNCOMMENT TO HAVE NOTES CIRCLE
 			}
 
 			swagCounter += 1;
@@ -1586,7 +1581,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		infoTxt.text = "Misses: " + songMisses + " // Health: " + healthBar.percent + " // Score: " + songScore + " ";
+		infoTxt.text = "Misses: " + songMisses + " // Health: " + healthBar.percent + "% // Score: " + songScore + " ";
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
