@@ -850,7 +850,7 @@ class PlayState extends MusicBeatState
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
-		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55, 0, "", 20);
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 565, healthBarBG.y + 55, 0, "", 20);
 		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
@@ -1554,6 +1554,13 @@ class PlayState extends MusicBeatState
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
+	var fullClearFormat = new FlxTextFormat(FlxColor.CYAN);
+	var aFormat = new FlxTextFormat(FlxColor.LIME);
+	var bFormat = new FlxTextFormat(FlxColor.GREEN);
+	var cFormat = new FlxTextFormat(FlxColor.YELLOW);
+	var dFormat = new FlxTextFormat(FlxColor.ORANGE);
+	var eFormat = new FlxTextFormat(FlxColor.BLUE);
+	var fFormat = new FlxTextFormat(FlxColor.PURPLE);
 
 	override public function update(elapsed:Float)
 	{
@@ -1589,8 +1596,32 @@ class PlayState extends MusicBeatState
 
 		// accuracy!!
 		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
-		infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
-		infoTxt.updateHitbox();
+
+		// rating!!
+		var rating = "??"; // incase it doesnt load or start idk
+		if (accuracy == 100) {
+			rating = "!FC!";
+		} else if (accuracy > 90) {
+			rating = "@A@";
+		} else if (accuracy > 80) {
+			rating = "#B#";
+		} else if (accuracy > 70) {
+			rating = "$C$";
+		} else if (accuracy > 60) {
+			rating = "*D*";
+		} else if (accuracy > 50) {
+			rating = "^E^";
+		} else {
+			rating = "&F&";
+		}
+	/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
+		infoTxt.updateHitbox();*/
+
+		// the things i do for funny colors
+		infoTxt.applyMarkup(
+			"Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%",
+			[new FlxTextFormatMarkerPair(fullClearFormat, "!"), new FlxTextFormatMarkerPair(aFormat, "@"), new FlxTextFormatMarkerPair(bFormat, "#"), new FlxTextFormatMarkerPair(cFormat, "$"), new FlxTextFormatMarkerPair(dFormat, "*"), new FlxTextFormatMarkerPair(eFormat, "^"), new FlxTextFormatMarkerPair(fFormat, "&")]
+		);
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
