@@ -110,7 +110,7 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	static public var health:Float = 1;
+	var health:Float = 1; // dont set to static
 
 	private var combo:Int = 0;
 
@@ -200,8 +200,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		// SECURE THIS FUCKING SHIT
-		health = 1;
 		ModCharts.dadNotesVisible = true;
 		ModCharts.bfNotesVisible = true;
 		if (FlxG.sound.music != null)
@@ -838,12 +836,8 @@ class PlayState extends MusicBeatState
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
 
-		trace(health);
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
-		trace(healthBar.percent);
-		healthBar.percent = (health / 2) * 100;
-		trace(healthBar.percent);
 		healthBar.scrollFactor.set();
 		var curcol:FlxColor = col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon
 		var curcol2:FlxColor = col[characterCol.indexOf(boyfriend.curCharacter)]; // Bf Icon
