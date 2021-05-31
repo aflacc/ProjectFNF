@@ -850,7 +850,6 @@ class PlayState extends MusicBeatState
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
-		funnySexBox.scale.x = infoTxt.fieldWidth; // thank you daddy tyler#4534
 		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55, 0, "", 20);
 		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
@@ -858,6 +857,7 @@ class PlayState extends MusicBeatState
 		infoTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 1, 1);
 		add(infoTxt);
 		add(timerTxt);
+		funnySexBox.scale.x = infoTxt.fieldWidth;
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
