@@ -5,10 +5,12 @@ import flixel.tweens.FlxTween;
 class ModCharts
 {
 	static public var stickNotes:Bool = true;
+
 	/**
 	 * Only works at the start of the scene.
 	 */
 	static public var dadNotesVisible:Bool = true;
+
 	/**
 	 * Only works at the start of the scene.
 	 */
@@ -23,7 +25,6 @@ class ModCharts
 	 *
 	 * @param	Object 		The object to move (FlxObject)
 	 */
-
 	static public function quickSpin(sprite)
 	{
 		FlxTween.angle(sprite, 0, 360, 0.5, {
@@ -61,12 +62,12 @@ class ModCharts
 	 * @param	y 		The y value of the final destination
 	 * @param	duration 		How long it takes to get there(seconds)
 	 */
+	static public function moveTo(sprite, x, y, duration)
+	{
+		FlxTween.linearMotion(sprite, sprite.x, sprite.y, x, y, duration, true, {type: FlxTween.ONESHOT, ease: FlxEase.quadInOut});
+	}
 
-    static public function moveTo(sprite, x, y, duration) {
-        FlxTween.linearMotion(sprite, sprite.x, sprite.y, x, y, duration, true, { type: FlxTween.ONESHOT, ease: FlxEase.quadInOut});
-    }
-
-    /**
+	/**
 	 * Bounces the sprite up and down infinenty(WIP, STILL SHAKY)
 	 *
 	 * ```haxe
@@ -91,12 +92,13 @@ class ModCharts
 	 * @param	Object 		The object to add the effect to (FlxObject)
 	 * @return The trail sprite. simply add it to the project with add(spriteName)
 	 */
-    static public function addTrailToSprite(sprite) {
-        var trail = new FlxTrail(sprite, null, 4, 24, 0.3, 0.069);
-        // evilTrail.changeValuesEnabled(false, false, false, false);
-        // evilTrail.changeGraphic()
-        return trail; // to be added
-    }
+	static public function addTrailToSprite(sprite)
+	{
+		var trail = new FlxTrail(sprite, null, 4, 24, 0.3, 0.069);
+		// evilTrail.changeValuesEnabled(false, false, false, false);
+		// evilTrail.changeGraphic()
+		return trail; // to be added
+	}
 
 	/**
 	 * Cancels all active movements on the sprite. Good for stages if you were using a loop.
@@ -107,9 +109,10 @@ class ModCharts
 	 *
 	 * @param	Object 		The object to cancel (FlxObject)
 	 */
-    static public function cancelMovement(sprite) {
-        FlxTween.cancelTweensOf(sprite);
-    }
+	static public function cancelMovement(sprite)
+	{
+		// FlxTween.cancelTweensOf(sprite); Remind me to uncomment this when magnus fixes it
+	}
 
 	/**
 	 * Toggles visibility for a sprite. Safe to run after the stage.
@@ -121,11 +124,15 @@ class ModCharts
 	 * @param	Object 		The object to toggle (FlxObject)
 	 * @param	Bool 		New state for the object(true for seeable, false for invisible)
 	 */
-	 static public function toggleVisibility(sprite, newstate) {
-		if (newstate == true) {
-			FlxTween.tween(sprite, {  "visible": true }, 0.1);
-		} else {
-			FlxTween.tween(sprite, {  "visible": false }, 0.1);
+	static public function toggleVisibility(sprite, newstate)
+	{
+		if (newstate == true)
+		{
+			FlxTween.tween(sprite, {"visible": true}, 0.1);
 		}
-    }
+		else
+		{
+			FlxTween.tween(sprite, {"visible": false}, 0.1);
+		}
+	}
 }
