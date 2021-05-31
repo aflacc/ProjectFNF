@@ -17,6 +17,7 @@ class ModCharts
 	 *
 	 * @param	Object 		The object to move (FlxObject)
 	 */
+
 	static public function quickSpin(sprite)
 	{
 		FlxTween.angle(sprite, 0, 360, 0.5, {
@@ -54,20 +55,12 @@ class ModCharts
 	 * @param	y 		The y value of the final destination
 	 * @param	duration 		How long it takes to get there(seconds)
 	 */
-<<<<<<< HEAD
+
     static public function moveTo(sprite, x, y, duration) {
         FlxTween.linearMotion(sprite, sprite.x, sprite.y, x, y, duration, true, { type: FlxTween.ONESHOT, ease: FlxEase.quadInOut});
     }
 
     /**
-=======
-	static public function moveTo(sprite, x, y, duration)
-	{
-		FlxTween.linearMotion(sprite, sprite.x, sprite.y, x, y, duration, true, {type: FlxTween.ONESHOT, ease: FlxEase.quadInOut});
-	}
-
-	/**
->>>>>>> e11773944c041f8897bba894b72031c2ee05378c
 	 * Bounces the sprite up and down infinenty(WIP, STILL SHAKY)
 	 *
 	 * ```haxe
@@ -92,7 +85,6 @@ class ModCharts
 	 * @param	Object 		The object to add the effect to (FlxObject)
 	 * @return The trail sprite. simply add it to the project with add(spriteName)
 	 */
-<<<<<<< HEAD
     static public function addTrailToSprite(sprite) {
         var trail = new FlxTrail(sprite, null, 4, 24, 0.3, 0.069);
         // evilTrail.changeValuesEnabled(false, false, false, false);
@@ -114,13 +106,3 @@ class ModCharts
         FlxTween.cancelTweensOf(sprite);
     }
 }
-=======
-	static public function addTrailToSprite(sprite)
-	{
-		var trail = new FlxTrail(sprite, null, 4, 2, 0.1, 0.069);
-		// evilTrail.changeValuesEnabled(false, false, false, false);
-		// evilTrail.changeGraphic()
-		return trail; // to be added
-	}
-}
->>>>>>> e11773944c041f8897bba894b72031c2ee05378c
