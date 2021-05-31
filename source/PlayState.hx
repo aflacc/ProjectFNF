@@ -1,5 +1,4 @@
 package;
-
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -113,7 +112,6 @@ class PlayState extends MusicBeatState
 	var health:Float = 1; // dont set to static
 
 	private var combo:Int = 0;
-	var notesPressed:Float = 0; // accurasy shit
 
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
@@ -148,8 +146,10 @@ class PlayState extends MusicBeatState
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
-	var songMisses:Int = 0;
+	var songNotesMissed:Float = 0; // accurasy shit
+	var songNotesHit:Float = 0;
 	var infoTxt:FlxText;
+	var funnySexBox:FlxSprite;
 	var timerTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
@@ -846,11 +846,11 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 		// i hate my fucking life
-		var funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 35).makeGraphic(400, 20, FlxColor.BLACK);
+		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55).makeGraphic(500, 20, FlxColor.BLACK);
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
-		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 35, 0, "", 20);
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55, 0, "", 20);
 		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
@@ -1586,8 +1586,11 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		infoTxt.text = "Misses: " + songMisses + " // Health: " + healthBar.percent + "% // Score: " + songScore + " ";
-
+		// accuracy!!
+		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
+		infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy " + accuracy + "%";
+		infoTxt.updateHitbox();
+		funnySexBox.width = infoTxt.fieldWidth; // im so smart and cool
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -1867,28 +1870,15 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
+					
 					// mag not be retarded challange(failed instantly)
 					if (daNote.mustPress)
 					{
-						if (ModCharts.bfNotesVisible)
-						{
-							daNote.visible = true;
-							daNote.active = true;
-						}
-						else
-						{
-							daNote.visible = false;
-							daNote.active = true;
-						}
-					}
-					else if (ModCharts.dadNotesVisible)
-					{
-						daNote.visible = true;
+						daNote.visible = ModCharts.bfNotesVisible;
 						daNote.active = true;
 					}
-					else
-					{
-						daNote.visible = false;
+					else {
+						daNote.visible = ModCharts.dadNotesVisible;
 						daNote.active = true;
 					}
 				}
@@ -1987,7 +1977,7 @@ class PlayState extends MusicBeatState
 						{
 							boyfriend.stunned = false;
 						});
-						songMisses += 1;
+						songNotesMissed += 1;
 						switch (daNote.noteData)
 						{
 							case 0:
@@ -2517,6 +2507,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
+		songNotesMissed += 1;
 		if (!boyfriend.stunned)
 		{
 			health -= 0.04;
@@ -2583,6 +2574,7 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
+		songNotesHit += 1;
 		if (keyP)
 			goodNoteHit(note);
 		else
