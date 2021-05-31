@@ -850,6 +850,7 @@ class PlayState extends MusicBeatState
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
+		funnySexBox.scale.x = infoTxt.fieldWidth; // thank you daddy tyler#4534
 		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55, 0, "", 20);
 		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
@@ -1590,7 +1591,6 @@ class PlayState extends MusicBeatState
 		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
 		infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
 		infoTxt.updateHitbox();
-		funnySexBox.scale.x = infoTxt.fieldWidth; // thank you daddy tyler#4534
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
