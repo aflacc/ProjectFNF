@@ -49,6 +49,7 @@ class ModCharts
     static public function moveTo(sprite, x, y, duration) {
         FlxTween.linearMotion(sprite, sprite.x, sprite.y, x, y, duration, true, { type: FlxTween.ONESHOT, ease: FlxEase.quadInOut});
     }
+
     /**
 	 * Bounces the sprite up and down infinenty(WIP, STILL SHAKY)
 	 *
@@ -74,9 +75,23 @@ class ModCharts
 	 * @return The trail sprite. simply add it to the project with add(spriteName)
 	 */
     static public function addTrailToSprite(sprite) {
-        var trail = new FlxTrail(sprite, null, 4, 2, 0.1, 0.069);
+        var trail = new FlxTrail(sprite, null, 4, 24, 0.3, 0.069);
         // evilTrail.changeValuesEnabled(false, false, false, false);
         // evilTrail.changeGraphic()
         return trail; // to be added
+    }
+
+	/**
+	 * Cancels all active movements on the sprite. Good for stages if you were using a loop.
+	 *
+	 * ```haxe
+	 * ModCharts.cancelMovement(arrow);
+	 * ```
+	 *
+	 * @param	Object 		The object to bounce (FlxObject)
+	 * @param	duration		How logn it takes to bounce up. Repeats for down
+	 */
+    static public function cancelMovement(sprite) {
+        FlxTween.cancelTweensOf(sprite);
     }
 }

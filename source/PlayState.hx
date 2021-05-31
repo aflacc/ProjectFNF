@@ -689,6 +689,7 @@ class PlayState extends MusicBeatState
 
 		dad = new Character(100, 100, SONG.player2);
 
+
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
 		switch (SONG.player2)
@@ -782,6 +783,7 @@ class PlayState extends MusicBeatState
 			add(limo);
 
 		add(dad);
+		add(ModCharts.addTrailToSprite(dad));
 		add(boyfriend);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
