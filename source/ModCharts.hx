@@ -5,7 +5,13 @@ import flixel.tweens.FlxTween;
 class ModCharts
 {
 	static public var stickNotes:Bool = true;
+	/**
+	 * Only works at the start of the scene.
+	 */
 	static public var dadNotesVisible:Bool = true;
+	/**
+	 * Only works at the start of the scene.
+	 */
 	static public var bfNotesVisible:Bool = true;
 
 	/**
@@ -99,10 +105,27 @@ class ModCharts
 	 * ModCharts.cancelMovement(arrow);
 	 * ```
 	 *
-	 * @param	Object 		The object to bounce (FlxObject)
-	 * @param	duration		How logn it takes to bounce up. Repeats for down
+	 * @param	Object 		The object to cancel (FlxObject)
 	 */
     static public function cancelMovement(sprite) {
         FlxTween.cancelTweensOf(sprite);
     }
+
+	/**
+	 * Toggles visibility for a sprite. Safe to run after the stage.
+	 *
+	 * ```haxe
+	 * ModCharts.toggleVisibility(arrow);
+	 * ```
+	 *
+	 * @param	Object 		The object to toggle (FlxObject)
+	 */
+	 static public function toggleVisibility(sprite) {
+		if (sprite.visible == true) {
+        	sprite.visible = false; // listen man, it makes some people's life easier.
+		} else {
+			sprite.visible = false;
+		}
+    }
+
 }
