@@ -840,7 +840,7 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 		// i hate my fucking life
-		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 60).makeGraphic(500, 20, FlxColor.BLACK);
+		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55).makeGraphic(500, 20, FlxColor.BLACK);
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
@@ -1591,7 +1591,8 @@ class PlayState extends MusicBeatState
 
 		// accuracy!!
 		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
-		if (Math.isNaN(accuracy)) {
+		if (Math.isNaN(accuracy))
+		{
 			accuracy = 100;
 		}
 
@@ -1629,7 +1630,7 @@ class PlayState extends MusicBeatState
 		{
 			rating = "&F&";
 		}
-	
+
 		/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
 			infoTxt.updateHitbox(); */
 
@@ -2071,10 +2072,8 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
-}
+	}
 
-
-	
 	function endSong():Void
 	{
 		canPause = false;
