@@ -13,6 +13,11 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 
 # Mods that use ProjectFNF
 - neo (woah)
+- VS Aflac
+- Wii Deleted You
+- VS Default
+- VS Banjo and Kazooie
+- VS Ganondorf
 - 
 
 # Usage
