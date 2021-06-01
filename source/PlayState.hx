@@ -1,4 +1,5 @@
 package;
+
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -589,13 +590,11 @@ class PlayState extends MusicBeatState
 						// bg.setGraphicSize(Std.int(bg.width * 6));
 						// bg.updateHitbox();
 						add(bg);
-
 						var fg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolFG'));
 						fg.scale.set(6, 6);
 						// fg.setGraphicSize(Std.int(fg.width * 6));
 						// fg.updateHitbox();
 						add(fg);
-
 						wiggleShit.effectType = WiggleEffectType.DREAMY;
 						wiggleShit.waveAmplitude = 0.01;
 						wiggleShit.waveFrequency = 60;
@@ -608,21 +607,17 @@ class PlayState extends MusicBeatState
 					/* 
 						var waveSprite = new FlxEffectSprite(bg, [waveEffectBG]);
 						var waveSpriteFG = new FlxEffectSprite(fg, [waveEffectFG]);
-
 						// Using scale since setGraphicSize() doesnt work???
 						waveSprite.scale.set(6, 6);
 						waveSpriteFG.scale.set(6, 6);
 						waveSprite.setPosition(posX, posY);
 						waveSpriteFG.setPosition(posX, posY);
-
 						waveSprite.scrollFactor.set(0.7, 0.8);
 						waveSpriteFG.scrollFactor.set(0.9, 0.8);
-
 						// waveSprite.setGraphicSize(Std.int(waveSprite.width * 6));
 						// waveSprite.updateHitbox();
 						// waveSpriteFG.setGraphicSize(Std.int(fg.width * 6));
 						// waveSpriteFG.updateHitbox();
-
 						add(waveSprite);
 						add(waveSpriteFG);
 					 */
@@ -690,7 +685,6 @@ class PlayState extends MusicBeatState
 		gf.scrollFactor.set(0.95, 0.95);
 
 		dad = new Character(100, 100, SONG.player2);
-
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
@@ -785,7 +779,7 @@ class PlayState extends MusicBeatState
 			add(limo);
 
 		add(dad);
-		//add(ModCharts.addTrailToSprite(dad));
+		// add(ModCharts.addTrailToSprite(dad));
 		add(boyfriend);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
@@ -1192,15 +1186,15 @@ class PlayState extends MusicBeatState
 					}
 				case 4:
 					// modcharting for spookeez
-				/*	if (curSong.toLowerCase() == 'spookeez')
-					{
-						for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
+					/*	if (curSong.toLowerCase() == 'spookeez')
 						{
-							if (note >= 4)
+							for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
 							{
-								ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000);
+								if (note >= 4)
+								{
+									ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000);
+								}
 							}
-						}
 					}*/
 			}
 
@@ -1555,6 +1549,7 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var fullClearFormat = new FlxTextFormat(FlxColor.CYAN);
+	var sFormat = new FlxTextFormat(FlxColor.MAGENTA);
 	var aFormat = new FlxTextFormat(FlxColor.LIME);
 	var bFormat = new FlxTextFormat(FlxColor.GREEN);
 	var cFormat = new FlxTextFormat(FlxColor.YELLOW);
@@ -1602,10 +1597,18 @@ class PlayState extends MusicBeatState
 
 		// rating!!
 		var rating = "??"; // incase it doesnt load or start idk
-		if (accuracy == 100) {
+		if (accuracy == 100)
+		{
 			rating = "!FC!";
-		} else if (accuracy > 90) {
+		}
+		else if (accuracy > 90)
+		{
+			rating = "-S-";
+		}
+		else if (accuracy > 80)
+		{
 			rating = "@A@";
+<<<<<<< HEAD
 		} else if (accuracy > 70) {
 			rating = "#B#";
 		} else if (accuracy > 50) {
@@ -1617,12 +1620,45 @@ class PlayState extends MusicBeatState
 		} else if (accuracy > 0) {
 			rating = "&F&";
 		}
+=======
+		}
+		else if (accuracy > 70)
+		{
+			rating = "#B#";
+		}
+		else if (accuracy > 60)
+		{
+			rating = "$C$";
+		}
+		else if (accuracy > 50)
+		{
+			rating = "*D*";
+		}
+		else if (accuracy > 30)
+		{
+			rating = "^E^";
+		}
+		else
+		{
+			rating = "&F&";
+		}
+		/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
+			infoTxt.updateHitbox(); */
+>>>>>>> 3df19dc88d196721a2bd4e91112925b242a6841f
 
 		// the things i do for funny colors
-		infoTxt.applyMarkup(
-			"Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%",
-			[new FlxTextFormatMarkerPair(fullClearFormat, "!"), new FlxTextFormatMarkerPair(aFormat, "@"), new FlxTextFormatMarkerPair(bFormat, "#"), new FlxTextFormatMarkerPair(cFormat, "$"), new FlxTextFormatMarkerPair(dFormat, "*"), new FlxTextFormatMarkerPair(eFormat, "^"), new FlxTextFormatMarkerPair(fFormat, "&")]
-		);
+		infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
+			+ " // Accuracy: " + accuracy + "%",
+			[
+				new FlxTextFormatMarkerPair(fullClearFormat, "!"),
+				new FlxTextFormatMarkerPair(sFormat, "-"),
+				new FlxTextFormatMarkerPair(aFormat, "@"),
+				new FlxTextFormatMarkerPair(bFormat, "#"),
+				new FlxTextFormatMarkerPair(cFormat, "$"),
+				new FlxTextFormatMarkerPair(dFormat, "*"),
+				new FlxTextFormatMarkerPair(eFormat, "^"),
+				new FlxTextFormatMarkerPair(fFormat, "&")
+			]);
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -1825,7 +1861,7 @@ class PlayState extends MusicBeatState
 		// RESET = Quick Game Over Screen
 		if (controls.RESET)
 		{
-			//health = 0;
+			// health = 0;
 			trace("[ProjectFNF] Reset player");
 		}
 
@@ -1902,14 +1938,14 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					
 					// mag not be retarded challange(failed instantly)
 					if (daNote.mustPress)
 					{
 						daNote.visible = ModCharts.bfNotesVisible;
 						daNote.active = true;
 					}
-					else {
+					else
+					{
 						daNote.visible = ModCharts.dadNotesVisible;
 						daNote.active = true;
 					}
@@ -2450,7 +2486,6 @@ class PlayState extends MusicBeatState
 								if (upP || rightP || downP || leftP)
 									noteCheck(leftP, daNote);
 						}
-
 					//this is already done in noteCheck / goodNoteHit
 					if (daNote.wasGoodHit)
 					{
@@ -2804,44 +2839,44 @@ class PlayState extends MusicBeatState
 		wiggleShit.update(Conductor.crochet);
 
 		// modcharting for spookeez part two
-/*if (curSong.toLowerCase() == 'spookeez') {
-		if (curStep == 191) {
-			for(note in 0...strumLineNotes.members.length) 
-				{
-					if (note >= 4)
-					{
-						ModCharts.cancelMovement(note);
-						ModCharts.dadNotesVisible = false;
-					} else {
-						ModCharts.toggleVisibility(note, false); // im so smart
-					}
-			}
-		}
-	}
-		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
-			var gotox = FlxG.random.int(100, 1000);
-			var gotoy = FlxG.random.int(50, 500);
-			for(note in 0...strumLineNotes.members.length) 
-				{
-					if (note >= 4)
-					{
-						ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000 );
+		/*if (curSong.toLowerCase() == 'spookeez') {
+				if (curStep == 191) {
+					for(note in 0...strumLineNotes.members.length) 
+						{
+							if (note >= 4)
+							{
+								ModCharts.cancelMovement(note);
+								ModCharts.dadNotesVisible = false;
+							} else {
+								ModCharts.toggleVisibility(note, false); // im so smart
+							}
 					}
 				}
-				strumLine.y = gotoy;
 			}
-			// im bad
-			if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574) {
-				var gotox = FlxG.random.int(100, 1000);
-				var gotoy = FlxG.random.int(50, 500);
-				for(note in 0...strumLineNotes.members.length) 
-					{
-						if (note >= 4)
+				if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
+					var gotox = FlxG.random.int(100, 1000);
+					var gotoy = FlxG.random.int(50, 500);
+					for(note in 0...strumLineNotes.members.length) 
 						{
-							ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
+							if (note >= 4)
+							{
+								ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000 );
+							}
 						}
+						strumLine.y = gotoy;
 					}
-					strumLine.y = gotoy;
+					// im bad
+					if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574) {
+						var gotox = FlxG.random.int(100, 1000);
+						var gotoy = FlxG.random.int(50, 500);
+						for(note in 0...strumLineNotes.members.length) 
+							{
+								if (note >= 4)
+								{
+									ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
+								}
+							}
+							strumLine.y = gotoy;
 		}*/
 
 		// HARDCODING FOR MILF ZOOMS!
