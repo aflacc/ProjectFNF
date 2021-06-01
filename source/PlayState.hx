@@ -110,7 +110,7 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	private var health:Float = 1;
+	var health:Float = 1; // dont set to static
 
 	private var combo:Int = 0;
 
@@ -147,8 +147,10 @@ class PlayState extends MusicBeatState
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
-	var songMisses:Int = 0;
+	var songNotesMissed:Float = 0; // accurasy shit
+	var songNotesHit:Float = 0;
 	var infoTxt:FlxText;
+	var funnySexBox:FlxSprite;
 	var timerTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
@@ -200,8 +202,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		// SECURE THIS FUCKING SHIT
-		health = 1;
 		ModCharts.dadNotesVisible = true;
 		ModCharts.bfNotesVisible = true;
 		if (FlxG.sound.music != null)
@@ -590,13 +590,11 @@ class PlayState extends MusicBeatState
 						// bg.setGraphicSize(Std.int(bg.width * 6));
 						// bg.updateHitbox();
 						add(bg);
-
 						var fg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolFG'));
 						fg.scale.set(6, 6);
 						// fg.setGraphicSize(Std.int(fg.width * 6));
 						// fg.updateHitbox();
 						add(fg);
-
 						wiggleShit.effectType = WiggleEffectType.DREAMY;
 						wiggleShit.waveAmplitude = 0.01;
 						wiggleShit.waveFrequency = 60;
@@ -609,21 +607,17 @@ class PlayState extends MusicBeatState
 					/* 
 						var waveSprite = new FlxEffectSprite(bg, [waveEffectBG]);
 						var waveSpriteFG = new FlxEffectSprite(fg, [waveEffectFG]);
-
 						// Using scale since setGraphicSize() doesnt work???
 						waveSprite.scale.set(6, 6);
 						waveSpriteFG.scale.set(6, 6);
 						waveSprite.setPosition(posX, posY);
 						waveSpriteFG.setPosition(posX, posY);
-
 						waveSprite.scrollFactor.set(0.7, 0.8);
 						waveSpriteFG.scrollFactor.set(0.9, 0.8);
-
 						// waveSprite.setGraphicSize(Std.int(waveSprite.width * 6));
 						// waveSprite.updateHitbox();
 						// waveSpriteFG.setGraphicSize(Std.int(fg.width * 6));
 						// waveSpriteFG.updateHitbox();
-
 						add(waveSprite);
 						add(waveSpriteFG);
 					 */
@@ -837,26 +831,27 @@ class PlayState extends MusicBeatState
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
 
-		trace(health);
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
-		trace(healthBar.percent);
-		healthBar.percent = (health / 2) * 100;
-		trace(healthBar.percent);
 		healthBar.scrollFactor.set();
 		var curcol:FlxColor = col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon
 		var curcol2:FlxColor = col[characterCol.indexOf(boyfriend.curCharacter)]; // Bf Icon
 		healthBar.createFilledBar(curcol, curcol2); // Use those colors
 		// healthBar
 		add(healthBar);
-		// HARD CODING CUZ IM RETARDED LOOOOL
-
-		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 475, healthBarBG.y + 60, 0, "", 20);
+		// i hate my fucking life
+		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55).makeGraphic(500, 20, FlxColor.BLACK);
+		funnySexBox.alpha = 0.3;
+		add(funnySexBox);
+		funnySexBox.cameras = [camHUD]; // hopefully this works lol
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 565, healthBarBG.y + 55, 0, "", 20);
+		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
-		infoTxt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1, 1);
+		infoTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 1, 1);
 		add(infoTxt);
 		add(timerTxt);
+		funnySexBox.scale.x = infoTxt.fieldWidth;
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -1191,21 +1186,16 @@ class PlayState extends MusicBeatState
 					}
 				case 4:
 					// modcharting for spookeez
-					if (curSong.toLowerCase() == 'spookeez')
-					{
-						for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
+					/*	if (curSong.toLowerCase() == 'spookeez')
 						{
-							if (note >= 4)
+							for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
 							{
-								ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000 /*should be a beat? idk im dumb*/);
+								if (note >= 4)
+								{
+									ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000);
+								}
 							}
-						}
-					}
-					/*strumLineNotes.forEach(function(note) {
-						if (note.visible) {
-							ModCharts.circleSprite(note, 30, 3);
-						}
-					});*/ // UNCOMMENT TO HAVE NOTES CIRCLE
+					}*/
 			}
 
 			swagCounter += 1;
@@ -1558,6 +1548,13 @@ class PlayState extends MusicBeatState
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
+	var fullClearFormat = new FlxTextFormat(FlxColor.CYAN);
+	var aFormat = new FlxTextFormat(FlxColor.LIME);
+	var bFormat = new FlxTextFormat(FlxColor.GREEN);
+	var cFormat = new FlxTextFormat(FlxColor.YELLOW);
+	var dFormat = new FlxTextFormat(FlxColor.ORANGE);
+	var eFormat = new FlxTextFormat(FlxColor.BLUE);
+	var fFormat = new FlxTextFormat(FlxColor.PURPLE);
 
 	override public function update(elapsed:Float)
 	{
@@ -1591,8 +1588,54 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		infoTxt.text = "Misses: " + songMisses + " // Health: " + healthBar.percent + " // Score: " + songScore + " ";
+		// accuracy!!
+		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
 
+		// rating!!
+		var rating = "??"; // incase it doesnt load or start idk
+		if (accuracy == 100)
+		{
+			rating = "!FC!";
+		}
+		else if (accuracy > 90)
+		{
+			rating = "@A@";
+		}
+		else if (accuracy > 80)
+		{
+			rating = "#B#";
+		}
+		else if (accuracy > 70)
+		{
+			rating = "$C$";
+		}
+		else if (accuracy > 60)
+		{
+			rating = "*D*";
+		}
+		else if (accuracy > 50)
+		{
+			rating = "^E^";
+		}
+		else
+		{
+			rating = "&F&";
+		}
+		/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
+			infoTxt.updateHitbox(); */
+
+		// the things i do for funny colors
+		infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
+			+ " // Accuracy: " + accuracy + "%",
+			[
+				new FlxTextFormatMarkerPair(fullClearFormat, "!"),
+				new FlxTextFormatMarkerPair(aFormat, "@"),
+				new FlxTextFormatMarkerPair(bFormat, "#"),
+				new FlxTextFormatMarkerPair(cFormat, "$"),
+				new FlxTextFormatMarkerPair(dFormat, "*"),
+				new FlxTextFormatMarkerPair(eFormat, "^"),
+				new FlxTextFormatMarkerPair(fFormat, "&")
+			]);
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -1657,8 +1700,10 @@ class PlayState extends MusicBeatState
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
+		#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebug(SONG.player2));
+		#end
 
 		if (startingSong)
 		{
@@ -1873,25 +1918,12 @@ class PlayState extends MusicBeatState
 					// mag not be retarded challange(failed instantly)
 					if (daNote.mustPress)
 					{
-						if (ModCharts.bfNotesVisible)
-						{
-							daNote.visible = true;
-							daNote.active = true;
-						}
-						else
-						{
-							daNote.visible = false;
-							daNote.active = true;
-						}
-					}
-					else if (ModCharts.dadNotesVisible)
-					{
-						daNote.visible = true;
+						daNote.visible = ModCharts.bfNotesVisible;
 						daNote.active = true;
 					}
 					else
 					{
-						daNote.visible = false;
+						daNote.visible = ModCharts.dadNotesVisible;
 						daNote.active = true;
 					}
 				}
@@ -1990,7 +2022,7 @@ class PlayState extends MusicBeatState
 						{
 							boyfriend.stunned = false;
 						});
-						songMisses += 1;
+						songNotesMissed += 1;
 						switch (daNote.noteData)
 						{
 							case 0:
@@ -2431,7 +2463,6 @@ class PlayState extends MusicBeatState
 								if (upP || rightP || downP || leftP)
 									noteCheck(leftP, daNote);
 						}
-
 					//this is already done in noteCheck / goodNoteHit
 					if (daNote.wasGoodHit)
 					{
@@ -2520,6 +2551,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
+		songNotesMissed += 1;
 		if (!boyfriend.stunned)
 		{
 			health -= 0.04;
@@ -2586,6 +2618,7 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
+		songNotesHit += 1;
 		if (keyP)
 			goodNoteHit(note);
 		else
@@ -2783,51 +2816,45 @@ class PlayState extends MusicBeatState
 		wiggleShit.update(Conductor.crochet);
 
 		// modcharting for spookeez part two
-		if (curSong.toLowerCase() == 'spookeez')
-		{
-			if (curStep == 191)
-			{
-				for (note in 0...strumLineNotes.members.length)
-				{
-					if (note >= 4)
-					{
-						ModCharts.cancelMovement(note);
-						ModCharts.dadNotesVisible = false;
-					}
-					else
-					{
-						ModCharts.toggleVisibility(note, false); // im so smart
+		/*if (curSong.toLowerCase() == 'spookeez') {
+				if (curStep == 191) {
+					for(note in 0...strumLineNotes.members.length) 
+						{
+							if (note >= 4)
+							{
+								ModCharts.cancelMovement(note);
+								ModCharts.dadNotesVisible = false;
+							} else {
+								ModCharts.toggleVisibility(note, false); // im so smart
+							}
 					}
 				}
 			}
-		}
-		if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319)
-		{
-			var gotox = FlxG.random.int(100, 1000);
-			var gotoy = FlxG.random.int(50, 500);
-			for (note in 0...strumLineNotes.members.length)
-			{
-				if (note >= 4)
-				{
-					ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
-				}
-			}
-			strumLine.y = gotoy;
-		}
-		// im bad
-		if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574)
-		{
-			var gotox = FlxG.random.int(100, 1000);
-			var gotoy = FlxG.random.int(50, 500);
-			for (note in 0...strumLineNotes.members.length)
-			{
-				if (note >= 4)
-				{
-					ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
-				}
-			}
-			strumLine.y = gotoy;
-		}
+				if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
+					var gotox = FlxG.random.int(100, 1000);
+					var gotoy = FlxG.random.int(50, 500);
+					for(note in 0...strumLineNotes.members.length) 
+						{
+							if (note >= 4)
+							{
+								ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000 );
+							}
+						}
+						strumLine.y = gotoy;
+					}
+					// im bad
+					if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574) {
+						var gotox = FlxG.random.int(100, 1000);
+						var gotoy = FlxG.random.int(50, 500);
+						for(note in 0...strumLineNotes.members.length) 
+							{
+								if (note >= 4)
+								{
+									ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
+								}
+							}
+							strumLine.y = gotoy;
+		}*/
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
