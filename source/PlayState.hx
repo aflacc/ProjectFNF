@@ -1185,17 +1185,6 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
-					// modcharting for spookeez
-					/*	if (curSong.toLowerCase() == 'spookeez')
-						{
-							for (note in 0...strumLineNotes.members.length) // thank you daddy kadedev!
-							{
-								if (note >= 4)
-								{
-									ModCharts.bounceLoop(strumLineNotes.members[note], Conductor.crochet / 1000);
-								}
-							}
-					}*/
 			}
 
 			swagCounter += 1;
