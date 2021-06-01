@@ -300,11 +300,11 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Playing Week " + storyWeek;
+			detailsText = SONG.song;
 		}
 		else
 		{
-			detailsText = "Playing in Freeplay";
+			detailsText = SONG.song;
 		}
 
 		// String for when the game is paused
@@ -1596,6 +1596,9 @@ class PlayState extends MusicBeatState
 
 		// accuracy!!
 		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
+		if (Math.isNaN(accuracy)) {
+			accuracy = 100;
+		}
 
 		// rating!!
 		var rating = "??"; // incase it doesnt load or start idk
@@ -1603,19 +1606,17 @@ class PlayState extends MusicBeatState
 			rating = "!FC!";
 		} else if (accuracy > 90) {
 			rating = "@A@";
-		} else if (accuracy > 80) {
-			rating = "#B#";
 		} else if (accuracy > 70) {
-			rating = "$C$";
-		} else if (accuracy > 60) {
-			rating = "*D*";
+			rating = "#B#";
 		} else if (accuracy > 50) {
+			rating = "$C$";
+		} else if (accuracy > 30) {
+			rating = "*D*";
+		} else if (accuracy > 10) {
 			rating = "^E^";
-		} else {
+		} else if (accuracy > 0) {
 			rating = "&F&";
 		}
-	/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
-		infoTxt.updateHitbox();*/
 
 		// the things i do for funny colors
 		infoTxt.applyMarkup(
