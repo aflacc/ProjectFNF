@@ -844,7 +844,7 @@ class PlayState extends MusicBeatState
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
-		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 565, healthBarBG.y + 55, 0, "", 20);
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 565, healthBarBG.y + 60, 0, "", 20);
 		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
@@ -1608,19 +1608,6 @@ class PlayState extends MusicBeatState
 		else if (accuracy > 80)
 		{
 			rating = "@A@";
-<<<<<<< HEAD
-		} else if (accuracy > 70) {
-			rating = "#B#";
-		} else if (accuracy > 50) {
-			rating = "$C$";
-		} else if (accuracy > 30) {
-			rating = "*D*";
-		} else if (accuracy > 10) {
-			rating = "^E^";
-		} else if (accuracy > 0) {
-			rating = "&F&";
-		}
-=======
 		}
 		else if (accuracy > 70)
 		{
@@ -1644,7 +1631,6 @@ class PlayState extends MusicBeatState
 		}
 		/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
 			infoTxt.updateHitbox(); */
->>>>>>> 3df19dc88d196721a2bd4e91112925b242a6841f
 
 		// the things i do for funny colors
 		infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
