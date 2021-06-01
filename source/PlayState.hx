@@ -2072,36 +2072,9 @@ class PlayState extends MusicBeatState
 			endSong();
 		#end
 }
-		function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
-		{
-			var length:Float = note.sustainLength;
 
-			if (length > 0)
-			{
-				strumming2[strum] = true;
-			}
 
-			var bps:Float = Conductor.bpm / 60;
-			var spb:Float = 1 / bps;
-
-			if (!note.isSustainNote)
-			{
-				new FlxTimer().start(length == 0 ? 0.2 : (length / Conductor.crochet * spb) + 0.1, function(tmr:FlxTimer)
-				{
-					if (!strumming2[strum])
-					{
-						spr.animation.play("static", true);
-					}
-					else if (length > 0)
-					{
-						strumming2[strum] = false;
-						spr.animation.play("static", true);
-					}
-				});
-			}
-		}
-	}
-
+	
 	function endSong():Void
 	{
 		canPause = false;
