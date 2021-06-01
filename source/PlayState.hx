@@ -1549,6 +1549,7 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var fullClearFormat = new FlxTextFormat(FlxColor.CYAN);
+	var sFormat = new FlxTextFormat(FlxColor.MAGENTA);
 	var aFormat = new FlxTextFormat(FlxColor.LIME);
 	var bFormat = new FlxTextFormat(FlxColor.GREEN);
 	var cFormat = new FlxTextFormat(FlxColor.YELLOW);
@@ -1599,21 +1600,25 @@ class PlayState extends MusicBeatState
 		}
 		else if (accuracy > 90)
 		{
-			rating = "@A@";
+			rating = "-S-";
 		}
 		else if (accuracy > 80)
 		{
-			rating = "#B#";
+			rating = "@A@";
 		}
 		else if (accuracy > 70)
 		{
-			rating = "$C$";
+			rating = "#B#";
 		}
 		else if (accuracy > 60)
 		{
-			rating = "*D*";
+			rating = "$C$";
 		}
 		else if (accuracy > 50)
+		{
+			rating = "*D*";
+		}
+		else if (accuracy > 30)
 		{
 			rating = "^E^";
 		}
@@ -1629,6 +1634,7 @@ class PlayState extends MusicBeatState
 			+ " // Accuracy: " + accuracy + "%",
 			[
 				new FlxTextFormatMarkerPair(fullClearFormat, "!"),
+				new FlxTextFormatMarkerPair(sFormat, "-"),
 				new FlxTextFormatMarkerPair(aFormat, "@"),
 				new FlxTextFormatMarkerPair(bFormat, "#"),
 				new FlxTextFormatMarkerPair(cFormat, "$"),
