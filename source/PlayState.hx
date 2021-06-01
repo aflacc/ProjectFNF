@@ -840,11 +840,11 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 		// i hate my fucking life
-		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55).makeGraphic(500, 20, FlxColor.BLACK);
+		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 60).makeGraphic(500, 20, FlxColor.BLACK);
 		funnySexBox.alpha = 0.3;
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
-		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 565, healthBarBG.y + 60, 0, "", 20);
+		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 610, healthBarBG.y + 60, 0, "", 20);
 		infoTxt.bold = true;
 		infoTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		infoTxt.borderColor = FlxColor.BLACK;
