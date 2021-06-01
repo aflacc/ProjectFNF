@@ -1608,19 +1608,6 @@ class PlayState extends MusicBeatState
 		else if (accuracy > 80)
 		{
 			rating = "@A@";
-<<<<<<< HEAD
-		} else if (accuracy > 70) {
-			rating = "#B#";
-		} else if (accuracy > 50) {
-			rating = "$C$";
-		} else if (accuracy > 30) {
-			rating = "*D*";
-		} else if (accuracy > 10) {
-			rating = "^E^";
-		} else if (accuracy > 0) {
-			rating = "&F&";
-		}
-=======
 		}
 		else if (accuracy > 70)
 		{
@@ -1642,9 +1629,9 @@ class PlayState extends MusicBeatState
 		{
 			rating = "&F&";
 		}
+	
 		/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
 			infoTxt.updateHitbox(); */
->>>>>>> 3df19dc88d196721a2bd4e91112925b242a6841f
 
 		// the things i do for funny colors
 		infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
@@ -2084,6 +2071,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+}
 		function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
 		{
 			var length:Float = note.sustainLength;
