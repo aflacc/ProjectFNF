@@ -889,6 +889,7 @@ class PlayState extends MusicBeatState
 					blackScreen.scrollFactor.set();
 					camHUD.visible = false;
 
+					
 					new FlxTimer().start(0.1, function(tmr:FlxTimer)
 					{
 						remove(blackScreen);
