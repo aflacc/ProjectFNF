@@ -1222,7 +1222,7 @@ class PlayState extends MusicBeatState
 	function updateLoop() {
 		#if desktop
 		var timer = Timer.delay(function() {
-			DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100), iconRPC);
+			DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC);
 			updateLoop();
 		}, 5000);
 		#end
@@ -1492,11 +1492,11 @@ class PlayState extends MusicBeatState
 			#if desktop
 			if (startTimer.finished)
 			{
-				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100), iconRPC, true, songLength - Conductor.songPosition);
+				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC, true, songLength - Conductor.songPosition);
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100), iconRPC);
+				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC);
 			}
 			#end
 		}
@@ -1511,11 +1511,11 @@ class PlayState extends MusicBeatState
 		{
 			if (Conductor.songPosition > 0.0)
 			{
-				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100), iconRPC, true, songLength - Conductor.songPosition);
+				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC, true, songLength - Conductor.songPosition);
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100), iconRPC);
+				DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC);
 			}
 		}
 		#end
@@ -1528,7 +1528,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (health > 0 && !paused)
 		{
-			DiscordClient.changePresence(detailsPausedText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100), iconRPC);
+			DiscordClient.changePresence(detailsPausedText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC);
 		}
 		#end
 
