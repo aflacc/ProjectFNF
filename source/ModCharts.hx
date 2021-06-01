@@ -17,6 +17,16 @@ class ModCharts
 	static public var bfNotesVisible:Bool = true;
 
 	/**
+	 * Configures if the strumline should automatically be adjusted every frame.(MAY BE LAGGY)
+	 */
+	 static public var autoStrum:Bool = false;
+
+	/**
+	 * Picks the strum note num to set strumline to, if autoStrum is on
+	 */
+	 static public var autoStrumNum:Float = 4;
+
+	/**
 	 * Quickly spin a sprite 180 degrees. Usually used for spinning the strum arrows.
 	 *
 	 * ```haxe
@@ -44,10 +54,11 @@ class ModCharts
 	 *
 	 * @param	Object 		The object to move (FlxObject)
 	 * @param	RotateRadius 		The rotating radius of the object
+	 * @param	Duration 		The time it takes to complete a rotation
 	 */
-	static public function circleLoop(sprite, rotateradius, speed)
+	static public function circleLoop(sprite, rotateradius, duration)
 	{
-		FlxTween.circularMotion(sprite, sprite.x, sprite.y, rotateradius, 90, true, speed, {type: FlxTween.LOOPING});
+		FlxTween.circularMotion(sprite, sprite.x, sprite.y, rotateradius, 90, true, duration, {type: FlxTween.LOOPING});
 	}
 
 	/**
