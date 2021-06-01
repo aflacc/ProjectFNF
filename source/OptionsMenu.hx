@@ -52,7 +52,7 @@ class OptionsMenu extends MusicBeatState
 
 		currentDescription = "none";
 
-		versionShit = new FlxText(5, FlxG.height - 18, 0, "This menu is a WIP", 12);
+		versionShit = new FlxText(5, FlxG.height - 18, 0, "POV: your waiting for week 7 to release to actually do anything with this menu", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
