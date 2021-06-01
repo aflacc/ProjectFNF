@@ -203,7 +203,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		ModCharts.autoStrum = true;
+		//ModCharts.autoStrum = true;
 		ModCharts.dadNotesVisible = true;
 		ModCharts.bfNotesVisible = true;
 		if (FlxG.sound.music != null)
