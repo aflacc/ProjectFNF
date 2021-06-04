@@ -1898,7 +1898,7 @@ class PlayState extends MusicBeatState
 
 		if (generatedMusic)
 		{
-			if (ModCharts.autoStrum) { // sex
+			if (ModCharts.autoStrum && startedCountdown && !inCutscene) { // sex
 				strumLine.y = strumLineNotes.members[Std.int(ModCharts.autoStrumNum)].y;
 			}
 			notes.forEachAlive(function(daNote:Note)
