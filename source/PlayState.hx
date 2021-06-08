@@ -2974,24 +2974,15 @@ class PlayState extends MusicBeatState
 						ModCharts.cancelMovement(note);
 						ModCharts.moveTo(note, -600, 100, 3);
 					});*/
-					
+
 					// use this:
-					ModCharts.moveStrumNotes(player2Strums, -600, 100, 3, 150, 0);
+					ModCharts.moveStrumNotes(player2Strums, -1000, 100, 3, 150, 0);
 
 					new FlxTimer().start(3, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
 					{
 						ModCharts.dadNotesVisible = false;
 					});
-					var num = 600; // cuz im lazy
-					playerStrums.forEach(function(note)
-					{
-						num = num + 150; // distance between notes
-						ModCharts.quickSpin(note);
-						ModCharts.cancelMovement(note);
-						ModCharts.moveTo(note, -400 + num, 50, 1);
-						
-						//ModCharts.circleLoop(note, 15, 3);
-					});
+					ModCharts.moveStrumNotes(player2Strums, -400, 50, 1, 150, 600);
 				case 63:
 					var sky:FlxSprite = new FlxSprite(-600, -900).loadGraphic(Paths.image('planeNight'));
 					ModCharts.moveTo(dad, -300, -600, 1);
@@ -3017,20 +3008,7 @@ class PlayState extends MusicBeatState
 					//FlxG.camera.focusOn(camFollow.getPosition());
 				case 96:
 					ModCharts.dadNotesVisible = true;
-					var num2 = 0; // cum
-					playerStrums.forEach(function(note)
-					{
-						num2 = num2 + 100; // distance between notes
-						ModCharts.cancelMovement(note);
-						ModCharts.moveTo(note, 600 + num2, 50, 3);
-					});
-					var num3 = 0; // idk
-					player2Strums.forEach(function(note)
-					{
-						num3 = num3 + 100; // distance between notes
-						ModCharts.cancelMovement(note);
-						ModCharts.moveTo(note, 0 + num3, 40, 1);
-					});
+					ModCharts.moveStrumNotes(player2Strums, 0, 40, 1, 100, 0);
 					ModCharts.cancelMovement(boyfriend);
 					ModCharts.cancelMovement(dad);
 				case 104:
