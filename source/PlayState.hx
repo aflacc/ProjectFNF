@@ -2955,8 +2955,14 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'test') // Modchart showcase song!!! Vocals by https://www.youtube.com/channel/UCVpDJmtu0P-6LcdKMe8Wc3A
 		{
 			ModCharts.updateNoteVisibilty = true;
+			ModCharts.autoStrum = true;
 			switch (curBeat)
 			{
+				case 1: 
+					strumLineNotes.forEach(function(note)
+					{
+						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
+					});
 				case 3 | 7 | 11 | 14 | 18 | 22 | 26:
 					strumLineNotes.forEach(function(note)
 					{
@@ -2969,7 +2975,7 @@ class PlayState extends MusicBeatState
 						ModCharts.quickSpin(note);
 					});
 				case 31:
-					ModCharts.bfNotesVisible = false;
+					//ModCharts.bfNotesVisible = false;
 				case 96:
 					ModCharts.dadNotesVisible = true;
 				case 104:
