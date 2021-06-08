@@ -1,3 +1,5 @@
+import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.effects.FlxTrail;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -137,7 +139,7 @@ class ModCharts
 	 * Toggles visibility for a sprite. Safe to run after the stage.
 	 *
 	 * ```haxe
-	 * ModCharts.toggleVisibility(arrow);
+	 * ModCharts.toggleVisibility(arrow, true);
 	 * ```
 	 *
 	 * @param	Object 		The object to toggle (FlxObject)
@@ -153,5 +155,29 @@ class ModCharts
 		{
 			FlxTween.tween(sprite, {"visible": false}, 0.1);
 		}
+	}
+
+	/**
+	 * Moves player 1 or two's strum notes to an x or y location. WIP
+	 *
+	 * ```haxe
+	 * ModCharts.moveStrumNotes(playerStrums, 600, 50, 150, 0);
+	 * ```
+	 *
+	 * @param	notesGroup	The group of strum notes to move.
+	 * @param	x	The x of the final movement.
+	 * @param	y	The y of the final movement.
+	 * @param	distancebetweennotes	The distance between each strum note(DEFAULT 150)
+	 * @param	startingnum		The starting number for x. Not reccomended to use unless your porting things
+	 */
+
+	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, distancebetweennotes = 150, startingnum = 0) {
+		var num = 0;
+		notesGroup.forEach(function(note)
+		{
+			num = num + distancebetweennotes;
+			ModCharts.cancelMovement(note);
+			ModCharts.moveTo(note, x + num, y, 3);
+		});
 	}
 }

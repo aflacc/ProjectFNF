@@ -2967,18 +2967,31 @@ class PlayState extends MusicBeatState
 					{
 						ModCharts.quickSpin(note);
 					});
-				case 30:
-					ModCharts.dadNotesVisible = false;
-					var num = 0;
-					strumLineNotes.forEach(function(note)
+				case 29:
+					//Instead of this:
+					/*player2Strums.forEach(function(note)
+					{
+						ModCharts.cancelMovement(note);
+						ModCharts.moveTo(note, -600, 100, 3);
+					});*/
+					// use this:
+					ModCharts.moveStrumNotes(player2Strums, -600, 100, 3, 150, 0);
+
+					new FlxTimer().start(3, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
+					{
+						ModCharts.dadNotesVisible = false;
+					});
+					var num = 600; // cuz im lazy
+					playerStrums.forEach(function(note)
 					{
 						num = num + 150; // distance between notes
 						ModCharts.quickSpin(note);
 						ModCharts.cancelMovement(note);
-						ModCharts.moveTo(note, -400 + num, 100, 3);
+						ModCharts.moveTo(note, -400 + num, 50, 1);
+						
 						//ModCharts.circleLoop(note, 15, 3);
 					});
-				case 64:
+				case 63:
 					var sky:FlxSprite = new FlxSprite(-600, -900).loadGraphic(Paths.image('planeNight'));
 					ModCharts.moveTo(dad, -300, -600, 1);
 					ModCharts.moveTo(boyfriend, 500, -600, 1);
@@ -2991,23 +3004,36 @@ class PlayState extends MusicBeatState
 					{
 						ModCharts.circleLoop(note, 30, 3);
 					});
-					new FlxTimer().start(2, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
+					new FlxTimer().start(1, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
 					{
 						//add(ModCharts.addTrailToSprite(boyfriend));
-						ModCharts.circleLoop(boyfriend, 30, 10);
+						ModCharts.circleLoop(boyfriend, 50, 5);
 						//add(ModCharts.addTrailToSprite(dad));
-						ModCharts.circleLoop(dad, 30, 10);
+						ModCharts.circleLoop(dad, 50, 7);
 					});
 					//camFollow.x = -300;// this doesnt matter cuz it changes with the chaacters lol
 					//camFollow.y = -600;
 					//FlxG.camera.focusOn(camFollow.getPosition());
 				case 96:
 					ModCharts.dadNotesVisible = true;
+					var num2 = 0; // cum
+					playerStrums.forEach(function(note)
+					{
+						num2 = num2 + 100; // distance between notes
+						ModCharts.cancelMovement(note);
+						ModCharts.moveTo(note, 600 + num2, 50, 3);
+					});
+					var num3 = 0; // idk
+					player2Strums.forEach(function(note)
+					{
+						num3 = num3 + 100; // distance between notes
+						ModCharts.cancelMovement(note);
+						ModCharts.moveTo(note, 0 + num3, 40, 1);
+					});
+					ModCharts.cancelMovement(boyfriend);
+					ModCharts.cancelMovement(dad);
 				case 104:
-					ModCharts.dadNotesVisible = false;
-					ModCharts.bfNotesVisible = true;
 				case 112:
-					ModCharts.dadNotesVisible = true;
 				case 160:
 				//	camera.shake(0.05, 1, null, true, FlxAxes.X);
 			}
