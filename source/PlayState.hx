@@ -2974,6 +2974,7 @@ class PlayState extends MusicBeatState
 						ModCharts.cancelMovement(note);
 						ModCharts.moveTo(note, -600, 100, 3);
 					});*/
+					
 					// use this:
 					ModCharts.moveStrumNotes(player2Strums, -600, 100, 3, 150, 0);
 

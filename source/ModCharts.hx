@@ -167,17 +167,18 @@ class ModCharts
 	 * @param	notesGroup	The group of strum notes to move.
 	 * @param	x	The x of the final movement.
 	 * @param	y	The y of the final movement.
+	 * @param	time	The time it takes to get there.
 	 * @param	distancebetweennotes	The distance between each strum note(DEFAULT 150)
 	 * @param	startingnum		The starting number for x. Not reccomended to use unless your porting things
 	 */
 
-	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, distancebetweennotes = 150, startingnum = 0) {
+	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, time, distancebetweennotes = 150, startingnum = 0) {
 		var num = 0;
 		notesGroup.forEach(function(note)
 		{
 			num = num + distancebetweennotes;
 			ModCharts.cancelMovement(note);
-			ModCharts.moveTo(note, x + num, y, 3);
+			ModCharts.moveTo(note, x + num, y, time);
 		});
 	}
 }
