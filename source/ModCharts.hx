@@ -4,15 +4,23 @@ import flixel.tweens.FlxTween;
 
 class ModCharts
 {
+	/**
+	 * Configures if the notes should track to there respective strum note. Good to have on, unless your not modcharting.
+	 */
 	static public var stickNotes:Bool = true;
 
 	/**
-	 * Only works at the start of the scene.
+	 * Configures if the strum note hiding and unhiding should be checked every frame. IT WOULD BE BETTER TO JUST USE toggleVisibilty()
+	 */
+	static public var updateNoteVisibilty:Bool = false;
+
+	/**
+	 * Defines if the dads strum notes and normal notes should be visible.(FOR CHANGING IN GAME IT IS MORE RECCOMENDED TO USE toggleVisibility()!!)
 	 */
 	static public var dadNotesVisible:Bool = true;
 
 	/**
-	 * Only works at the start of the scene.
+	 * Defines if the boyfriends notes should be visible.
 	 */
 	static public var bfNotesVisible:Bool = true;
 

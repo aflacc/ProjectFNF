@@ -1929,6 +1929,22 @@ class PlayState extends MusicBeatState
 			{ // sex
 				strumLine.y = strumLineNotes.members[Std.int(ModCharts.autoStrumNum)].y;
 			}
+			if (ModCharts.updateNoteVisibilty) {
+				for (note in 0...strumLineNotes.members.length)
+					{
+						if (note >= 4)
+						{
+							if (!ModCharts.bfNotesVisible)
+							{
+								strumLineNotes.members[note].visible = false;
+							}
+						}
+						else if (!ModCharts.dadNotesVisible)
+						{
+							strumLineNotes.members[note].visible = false;
+						}
+					}
+			}
 			notes.forEachAlive(function(daNote:Note)
 			{
 				// THIS SUCKS (slightly less) DICK (than before)
@@ -2941,6 +2957,7 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song.toLowerCase() == 'test') // Modchart showcase song!!! Vocals by https://www.youtube.com/channel/UCVpDJmtu0P-6LcdKMe8Wc3A
 		{
+			ModCharts.updateNoteVisibilty = true;
 			switch (curBeat)
 			{
 				case 3 | 7 | 11 | 14 | 18 | 22 | 26:
@@ -2954,16 +2971,8 @@ class PlayState extends MusicBeatState
 					{
 						ModCharts.quickSpin(note);
 					});
-					for (note in 0...strumLineNotes.members.length)
-					{
-						strumLineNotes.members[note].visible = false;
-					}
 				case 31:
 					ModCharts.bfNotesVisible = false;
-					for (note in 0...strumLineNotes.members.length)
-					{
-						strumLineNotes.members[note].visible = true;
-					}
 				case 96:
 					ModCharts.dadNotesVisible = true;
 				case 104:
