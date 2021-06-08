@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
 import haxe.Timer;
 #if desktop
@@ -98,7 +99,7 @@ class PlayState extends MusicBeatState
 	private var curSection:Int = 0;
 
 	private var camFollow:FlxObject;
-
+	
 	private static var prevCamFollow:FlxObject;
 
 	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
@@ -172,6 +173,9 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+
+	// modcharting
+	var block:FlxSprite;
 
 	function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
 	{
@@ -2967,7 +2971,7 @@ class PlayState extends MusicBeatState
 					{
 						ModCharts.quickSpin(note);
 					});
-				case 29:
+				case 28:
 					//Instead of this:
 					/*player2Strums.forEach(function(note)
 					{
@@ -2976,17 +2980,16 @@ class PlayState extends MusicBeatState
 					});*/
 
 					// use this:
-					ModCharts.moveStrumNotes(player2Strums, -1000, 100, 3, 150, 0);
+					ModCharts.moveStrumNotes(player2Strums, -1000, 50, 3, 50, 0);
 
 					new FlxTimer().start(3, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
 					{
 						ModCharts.dadNotesVisible = false;
 					});
-					ModCharts.moveStrumNotes(player2Strums, -400, 50, 1, 150, 600);
 				case 63:
-					var sky:FlxSprite = new FlxSprite(-600, -900).loadGraphic(Paths.image('planeNight'));
-					ModCharts.moveTo(dad, -300, -600, 1);
-					ModCharts.moveTo(boyfriend, 500, -600, 1);
+					var sky:FlxSprite = new FlxSprite(-600, -1500).loadGraphic(Paths.image('planeNight'));
+					ModCharts.moveTo(dad, -300, -1200, 1);
+					ModCharts.moveTo(boyfriend, 500, -1200, 1);
 					remove(dad);
 					remove(boyfriend);
 					add(sky);
@@ -3008,21 +3011,47 @@ class PlayState extends MusicBeatState
 					//FlxG.camera.focusOn(camFollow.getPosition());
 				case 96:
 					ModCharts.dadNotesVisible = true;
-					ModCharts.moveStrumNotes(player2Strums, 0, 40, 1, 100, 0);
+					ModCharts.moveStrumNotes(player2Strums, 0, 40, 1, 110, 0);
 					ModCharts.cancelMovement(boyfriend);
 					ModCharts.cancelMovement(dad);
-				case 104:
-				case 112:
+					playerStrums.forEach(function(note)
+					{
+						ModCharts.cancelMovement(note);
+					});
+					ModCharts.moveTo(dad, 100, 450, 1);
+					ModCharts.moveTo(boyfriend, 770, 450, 1);
+				case 128:
+					block = new FlxSprite(-300, -1000).makeGraphic(5000, 5000, FlxColor.BLACK);
+					block.alpha = 0;
+					remove(dad);
+					remove(boyfriend);
+					add(block);
+					add(dad);
+					add(boyfriend);
+					ModCharts.fadeInObject(block);
+				case 158:
+					ModCharts.fadeOutObject(block);
+					// sky shit
+					var sky:FlxBackdrop = new FlxBackdrop(Paths.image('sky'), 1, 1, false, true, 0, 0);
+					sky.y = -1500;
+					sky.velocity.y = 2500;
+					ModCharts.moveTo(dad, 400, -1200, 1);
+				//	ModCharts.moveTo(boyfriend, 500, -1200, 1);
+					remove(dad);
+					remove(boyfriend);
+					add(sky);
+					add(dad);
+					add(boyfriend);
 				case 160:
 				//	camera.shake(0.05, 1, null, true, FlxAxes.X);
 			}
+
 		}
 
 		switch (curStage)
 		{
 			case 'school':
 				bgGirls.dance();
-
 			case 'mall':
 				upperBoppers.animation.play('bop', true);
 				bottomBoppers.animation.play('bop', true);

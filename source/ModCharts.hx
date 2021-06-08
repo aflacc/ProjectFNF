@@ -172,7 +172,7 @@ class ModCharts
 	 * @param	startingnum		The starting number for x. Not reccomended to use unless your porting things
 	 */
 
-	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, time, distancebetweennotes = 150, startingnum = 0) {
+	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, time, distancebetweennotes = 50, startingnum = 0) {
 		var num = 0;
 		notesGroup.forEach(function(note)
 		{
@@ -180,5 +180,20 @@ class ModCharts
 			ModCharts.cancelMovement(note);
 			ModCharts.moveTo(note, x + num, y, time);
 		});
+	}
+
+	/**
+	 * WIP. probably shouldnt use lol
+	 */
+	static public function fadeOutObject(object) {
+		FlxTween.tween(object, {"alpha": 0}, 2);
+	}
+
+	/**
+	 * WIP. probably shouldnt use lol
+	 */
+
+	static public function fadeInObject(object) {
+		FlxTween.tween(object, {"alpha": 1}, 2);
 	}
 }
