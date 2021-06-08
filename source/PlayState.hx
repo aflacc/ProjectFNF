@@ -1934,14 +1934,11 @@ class PlayState extends MusicBeatState
 					{
 						if (note >= 4)
 						{
-							if (!ModCharts.bfNotesVisible)
-							{
-								strumLineNotes.members[note].visible = false;
-							}
+							strumLineNotes.members[note].visible = ModCharts.bfNotesVisible;
 						}
-						else if (!ModCharts.dadNotesVisible)
+						else
 						{
-							strumLineNotes.members[note].visible = false;
+							strumLineNotes.members[note].visible = ModCharts.dadNotesVisible;
 						}
 					}
 			}
