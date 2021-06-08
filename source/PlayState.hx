@@ -1,6 +1,5 @@
 package;
 
-import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
 import haxe.Timer;
 #if desktop
@@ -2980,23 +2979,25 @@ class PlayState extends MusicBeatState
 						//ModCharts.circleLoop(note, 15, 3);
 					});
 				case 64:
-					var sky:FlxBackdrop = new FlxBackdrop(Paths.image('planeNight'), 1, 2, true, false, 0, 0);
-					sky.x = -300;
-					sky.y = -600;
-					ModCharts.moveTo(dad, 0, -600, 1);
-					ModCharts.moveTo(boyfriend, 300, -600, 1);
+					var sky:FlxSprite = new FlxSprite(-600, -900).loadGraphic(Paths.image('planeNight'));
+					ModCharts.moveTo(dad, -300, -600, 1);
+					ModCharts.moveTo(boyfriend, 500, -600, 1);
 					remove(dad);
 					remove(boyfriend);
 					add(sky);
-					sky.velocity.x = 300;
 					add(dad);
 					add(boyfriend);
 					strumLineNotes.forEach(function(note)
 					{
 						ModCharts.circleLoop(note, 30, 3);
 					});
-					ModCharts.addTrailToSprite(boyfriend);
-					ModCharts.circleLoop(boyfriend, 30, 10);
+					new FlxTimer().start(2, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
+					{
+						//add(ModCharts.addTrailToSprite(boyfriend));
+						ModCharts.circleLoop(boyfriend, 30, 10);
+						//add(ModCharts.addTrailToSprite(dad));
+						ModCharts.circleLoop(dad, 30, 10);
+					});
 					//camFollow.x = -300;// this doesnt matter cuz it changes with the chaacters lol
 					//camFollow.y = -600;
 					//FlxG.camera.focusOn(camFollow.getPosition());
@@ -3008,7 +3009,7 @@ class PlayState extends MusicBeatState
 				case 112:
 					ModCharts.dadNotesVisible = true;
 				case 160:
-					camera.shake(0.05, 1, null, true, FlxAxes.X);
+				//	camera.shake(0.05, 1, null, true, FlxAxes.X);
 			}
 		}
 
