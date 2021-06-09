@@ -1,3 +1,6 @@
+import flixel.group.FlxGroup;
+import flixel.FlxBasic.FlxType;
+import flixel.FlxCamera;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.effects.FlxTrail;
@@ -136,6 +139,20 @@ class ModCharts
 	}
 
 	/**
+	 * Haxeflixel has autism and needs this
+	 *
+	 * ```haxe
+	 * ModCharts.cancelCamera(arrow);
+	 * ```
+	 *
+	 * @param	Camera 		The Camera to cancel
+	 */
+	static public function cancelCamera(camera:Any)
+	{
+		FlxTween.cancelTweensOf(camera);//Remind me to uncomment this when magnus fixes it
+	}
+
+	/**
 	 * Toggles visibility for a sprite. Safe to run after the stage.
 	 *
 	 * ```haxe
@@ -183,17 +200,39 @@ class ModCharts
 	}
 
 	/**
-	 * WIP. probably shouldnt use lol
+	 * Fades out an object.
+	 * @param object	The object to fade out
 	 */
 	static public function fadeOutObject(object) {
 		FlxTween.tween(object, {"alpha": 0}, 2);
 	}
 
 	/**
-	 * WIP. probably shouldnt use lol
+	 * Fades in an object.
+	 * @param object	The object to fade in
 	 */
-
 	static public function fadeInObject(object) {
 		FlxTween.tween(object, {"alpha": 1}, 2);
 	}
+
+	/**
+	 * Fades in an out an object infenetly. STARTS BY FADING OUT, THE OBJECT MUST HAVE AN ALPHA OF 1 FOR THIS TO WORK
+	 * @param object	The object to fade in and out
+	 */
+	 static public function fadeInOutLoop(object:FlxSprite) {
+		if (object.alpha == 0) {
+			trace("[ProjectFNF] Alpha can not be 0");
+			return;
+		}
+		FlxTween.tween(object, {"alpha": 0}, 2, {ease: FlxEase.quadOut, type: FlxTween.PINGPONG});
+	}
+
+	/**
+	* Bounces the camera up and down infenitley. WIP
+	* @param camera		The camera to bounce.
+	*/
+	static public function cameraBounce(camera:FlxCamera, duration:Float, intensity:Float = 200) {
+		FlxTween.tween(camera, {'scroll.y': intensity}, duration, {ease: FlxEase.quadOut, type: FlxTweenType.PINGPONG});
+	}
+
 }
