@@ -99,7 +99,7 @@ class PlayState extends MusicBeatState
 	private var curSection:Int = 0;
 
 	private var camFollow:FlxObject;
-	
+
 	private static var prevCamFollow:FlxObject;
 
 	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
@@ -1932,18 +1932,19 @@ class PlayState extends MusicBeatState
 			{ // sex
 				strumLine.y = strumLineNotes.members[Std.int(ModCharts.autoStrumNum)].y;
 			}
-			if (ModCharts.updateNoteVisibilty) {
+			if (ModCharts.updateNoteVisibilty)
+			{
 				for (note in 0...strumLineNotes.members.length)
+				{
+					if (note >= 4)
 					{
-						if (note >= 4)
-						{
-							strumLineNotes.members[note].visible = ModCharts.bfNotesVisible;
-						}
-						else
-						{
-							strumLineNotes.members[note].visible = ModCharts.dadNotesVisible;
-						}
+						strumLineNotes.members[note].visible = ModCharts.bfNotesVisible;
 					}
+					else
+					{
+						strumLineNotes.members[note].visible = ModCharts.dadNotesVisible;
+					}
+				}
 			}
 			notes.forEachAlive(function(daNote:Note)
 			{
@@ -2081,6 +2082,7 @@ class PlayState extends MusicBeatState
 						{
 							boyfriend.stunned = false;
 						});
+						trace('sussy');
 						songNotesMissed += 1;
 						switch (daNote.noteData)
 						{
@@ -2397,7 +2399,7 @@ class PlayState extends MusicBeatState
 		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
 
 		// FlxG.watch.addQuick('asdfa', upP);
-		if ((upP || rightP || downP || leftP) && !boyfriend.stunned && generatedMusic)
+		if ((upP || rightP || downP || leftP) && generatedMusic)
 		{
 			boyfriend.holdTimer = 0;
 
@@ -2509,7 +2511,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if ((up || right || down || left) && !boyfriend.stunned && generatedMusic)
+		if ((up || right || down || left) && generatedMusic)
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
@@ -2582,50 +2584,30 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		songNotesMissed += 1;
-		if (!boyfriend.stunned)
-		{
-			health -= 0.04;
-			if (combo > 5 && gf.animOffsets.exists('sad'))
+		/*songNotesMissed += 1;
+			if (!boyfriend.stunned)
 			{
-				gf.playAnim('sad');
-			}
-			combo = 0;
+				health -= 0.04;
+				if (combo > 5 && gf.animOffsets.exists('sad'))
+				{
+					gf.playAnim('sad');
+				}
+				combo = 0;
 
-			songScore -= 10;
+				songScore -= 10;
 
-			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
+				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+				// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
+				// FlxG.log.add('played imss note');
 
-			boyfriend.stunned = true;
+				boyfriend.stunned = true;
 
-			// get stunned for 5 seconds
-			new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
-			{
-				boyfriend.stunned = false;
-			});
-
-			switch (direction)
-			{
-				case 0:
-					boyfriend.playAnim('singLEFTmiss', true);
-					if (Config.MISSFX = true)
-						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
-				case 1:
-					boyfriend.playAnim('singDOWNmiss', true);
-					if (Config.MISSFX = true)
-						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
-				case 2:
-					boyfriend.playAnim('singUPmiss', true);
-					if (Config.MISSFX = true)
-						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
-				case 3:
-					boyfriend.playAnim('singRIGHTmiss', true);
-					if (Config.MISSFX = true)
-						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
-			}
-		}
+				// get stunned for 5 seconds
+				new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
+				{
+					boyfriend.stunned = false;
+				});
+		}*/
 	}
 
 	function badNoteCheck()
@@ -2961,7 +2943,7 @@ class PlayState extends MusicBeatState
 			ModCharts.autoStrum = true;
 			switch (curBeat)
 			{
-				case 1: 
+				case 1:
 					strumLineNotes.forEach(function(note)
 					{
 						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
@@ -2972,11 +2954,11 @@ class PlayState extends MusicBeatState
 						ModCharts.quickSpin(note);
 					});
 				case 28:
-					//Instead of this:
+					// Instead of this:
 					/*player2Strums.forEach(function(note)
-					{
-						ModCharts.cancelMovement(note);
-						ModCharts.moveTo(note, -600, 100, 3);
+						{
+							ModCharts.cancelMovement(note);
+							ModCharts.moveTo(note, -600, 100, 3);
 					});*/
 
 					// use this:
@@ -3001,14 +2983,14 @@ class PlayState extends MusicBeatState
 					});
 					new FlxTimer().start(1, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
 					{
-						//add(ModCharts.addTrailToSprite(boyfriend));
+						// add(ModCharts.addTrailToSprite(boyfriend));
 						ModCharts.circleLoop(boyfriend, 50, 5);
-						//add(ModCharts.addTrailToSprite(dad));
+						// add(ModCharts.addTrailToSprite(dad));
 						ModCharts.circleLoop(dad, 50, 7);
 					});
-					//camFollow.x = -300;// this doesnt matter cuz it changes with the chaacters lol
-					//camFollow.y = -600;
-					//FlxG.camera.focusOn(camFollow.getPosition());
+				// camFollow.x = -300;// this doesnt matter cuz it changes with the chaacters lol
+				// camFollow.y = -600;
+				// FlxG.camera.focusOn(camFollow.getPosition());
 				case 96:
 					ModCharts.dadNotesVisible = true;
 					ModCharts.moveStrumNotes(player2Strums, 0, 40, 1, 110, 0);
@@ -3036,16 +3018,15 @@ class PlayState extends MusicBeatState
 					sky.y = -1500;
 					sky.velocity.y = 2500;
 					ModCharts.moveTo(dad, 400, -1200, 1);
-				//	ModCharts.moveTo(boyfriend, 500, -1200, 1);
+					//	ModCharts.moveTo(boyfriend, 500, -1200, 1);
 					remove(dad);
 					remove(boyfriend);
 					add(sky);
 					add(dad);
 					add(boyfriend);
 				case 160:
-				//	camera.shake(0.05, 1, null, true, FlxAxes.X);
+					//	camera.shake(0.05, 1, null, true, FlxAxes.X);
 			}
-
 		}
 
 		switch (curStage)

@@ -32,12 +32,12 @@ class ModCharts
 	/**
 	 * Configures if the strumline should automatically be adjusted every frame.(MAY BE LAGGY)
 	 */
-	 static public var autoStrum:Bool = false;
+	static public var autoStrum:Bool = false;
 
 	/**
 	 * Picks the strum note num to set strumline to, if autoStrum is on
 	 */
-	 static public var autoStrumNum:Float = 4;
+	static public var autoStrumNum:Float = 4;
 
 	/**
 	 * Quickly spin a sprite 180 degrees. Usually used for spinning the strum arrows.
@@ -135,7 +135,7 @@ class ModCharts
 	 */
 	static public function cancelMovement(sprite)
 	{
-		FlxTween.cancelTweensOf(sprite);//Remind me to uncomment this when magnus fixes it
+		// FlxTween.cancelTweensOf(sprite); Remind me to uncomment this when magnus fixes it
 	}
 
 	/**
@@ -149,7 +149,7 @@ class ModCharts
 	 */
 	static public function cancelCamera(camera:Any)
 	{
-		FlxTween.cancelTweensOf(camera);//Remind me to uncomment this when magnus fixes it
+		// FlxTween.cancelTweensOf(camera); // Remind me to uncomment this when magnus fixes it
 	}
 
 	/**
@@ -188,8 +188,8 @@ class ModCharts
 	 * @param	distancebetweennotes	The distance between each strum note(DEFAULT 150)
 	 * @param	startingnum		The starting number for x. Not reccomended to use unless your porting things
 	 */
-
-	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, time, distancebetweennotes = 50, startingnum = 0) {
+	static public function moveStrumNotes(notesGroup:FlxTypedGroup<FlxSprite>, x, y, time, distancebetweennotes = 50, startingnum = 0)
+	{
 		var num = 0;
 		notesGroup.forEach(function(note)
 		{
@@ -203,7 +203,8 @@ class ModCharts
 	 * Fades out an object.
 	 * @param object	The object to fade out
 	 */
-	static public function fadeOutObject(object) {
+	static public function fadeOutObject(object)
+	{
 		FlxTween.tween(object, {"alpha": 0}, 2);
 	}
 
@@ -211,7 +212,8 @@ class ModCharts
 	 * Fades in an object.
 	 * @param object	The object to fade in
 	 */
-	static public function fadeInObject(object) {
+	static public function fadeInObject(object)
+	{
 		FlxTween.tween(object, {"alpha": 1}, 2);
 	}
 
@@ -219,8 +221,10 @@ class ModCharts
 	 * Fades in an out an object infenetly. STARTS BY FADING OUT, THE OBJECT MUST HAVE AN ALPHA OF 1 FOR THIS TO WORK
 	 * @param object	The object to fade in and out
 	 */
-	 static public function fadeInOutLoop(object:FlxSprite) {
-		if (object.alpha == 0) {
+	static public function fadeInOutLoop(object:FlxSprite)
+	{
+		if (object.alpha == 0)
+		{
 			trace("[ProjectFNF] Alpha can not be 0");
 			return;
 		}
@@ -228,11 +232,11 @@ class ModCharts
 	}
 
 	/**
-	* Bounces the camera up and down infenitley. WIP
-	* @param camera		The camera to bounce.
-	*/
-	static public function cameraBounce(camera:FlxCamera, duration:Float, intensity:Float = 200) {
+	 * Bounces the camera up and down infenitley. WIP
+	 * @param camera		The camera to bounce.
+	 */
+	static public function cameraBounce(camera:FlxCamera, duration:Float, intensity:Float = 200)
+	{
 		FlxTween.tween(camera, {'scroll.y': intensity}, duration, {ease: FlxEase.quadOut, type: FlxTweenType.PINGPONG});
 	}
-
 }
