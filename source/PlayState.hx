@@ -142,6 +142,7 @@ class PlayState extends MusicBeatState
 	var fastCar:FlxSprite;
 
 	var upperBoppers:FlxSprite;
+	var block:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 
@@ -175,7 +176,6 @@ class PlayState extends MusicBeatState
 	#end
 
 	// modcharting
-	var block:FlxSprite;
 
 	function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
 	{
@@ -2957,7 +2957,26 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
 		}
-
+		if (SONG.song.toLowerCase() == 'thorns')
+		{
+			switch (curBeat)
+			{
+				case 94:
+					ModCharts.circleLoop(dad, 50, 7);
+					strumLineNotes.forEach(function(note)
+					{
+						ModCharts.quickSpin(note);
+					});
+				case 160:
+					ModCharts.cancelMovement(dad);
+				case 320:
+					strumLineNotes.forEach(function(note)
+					{
+						ModCharts.quickSpin(note);
+					});
+					ModCharts.fadeOutObject(dad);
+			}
+		}
 		if (SONG.song.toLowerCase() == 'test') // Modchart showcase song!!! Vocals by https://www.youtube.com/channel/UCVpDJmtu0P-6LcdKMe8Wc3A
 		{
 			ModCharts.updateNoteVisibilty = true;
@@ -3024,7 +3043,7 @@ class PlayState extends MusicBeatState
 					ModCharts.moveTo(dad, 100, 450, 1);
 					ModCharts.moveTo(boyfriend, 770, 450, 1);
 				case 128:
-					block = new FlxSprite(-300, -1000).makeGraphic(5000, 5000, FlxColor.BLACK);
+					var block = new FlxSprite(-300, -1000).makeGraphic(5000, 5000, FlxColor.BLACK);
 					block.alpha = 0;
 					remove(dad);
 					remove(boyfriend);
@@ -3033,7 +3052,7 @@ class PlayState extends MusicBeatState
 					add(boyfriend);
 					ModCharts.fadeInObject(block);
 				case 158:
-					ModCharts.fadeOutObject(block);
+					//ModCharts.fadeOutObject(block); // mag u forgot to define block
 					// sky shit
 					var sky:FlxBackdrop = new FlxBackdrop(Paths.image('sky'), 1, 1, false, true, 0, 0);
 					sky.y = -1500;
