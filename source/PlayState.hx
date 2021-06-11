@@ -2584,30 +2584,51 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		/*songNotesMissed += 1;
-			if (!boyfriend.stunned)
+		if (Config.INPUT == false)
+		{
+			songNotesMissed += 1;
+
+			health -= 0.04;
+			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
-				health -= 0.04;
-				if (combo > 5 && gf.animOffsets.exists('sad'))
-				{
-					gf.playAnim('sad');
-				}
-				combo = 0;
+				gf.playAnim('sad');
+			}
+			combo = 0;
 
-				songScore -= 10;
+			songScore -= 10;
 
-				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-				// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-				// FlxG.log.add('played imss note');
+			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
+			// FlxG.log.add('played imss note');
 
-				boyfriend.stunned = true;
+			boyfriend.stunned = true;
 
-				// get stunned for 5 seconds
-				new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
-				{
-					boyfriend.stunned = false;
-				});
-		}*/
+			// get stunned for 5 seconds
+			new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
+			{
+				boyfriend.stunned = false;
+			});
+
+			switch (direction)
+			{
+				case 0:
+					boyfriend.playAnim('singLEFTmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+				case 1:
+					boyfriend.playAnim('singDOWNmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
+				case 2:
+					boyfriend.playAnim('singUPmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, Y);
+				case 3:
+					boyfriend.playAnim('singRIGHTmiss', true);
+					if (Config.MISSFX = true)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+			}
+		}
 	}
 
 	function badNoteCheck()

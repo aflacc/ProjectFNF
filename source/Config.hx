@@ -60,4 +60,10 @@ class Config extends MusicBeatState
 	 * Default = **0.002**
 	 */
 	public static var MISSINTENSITY = 0.002;
+
+	/**
+	 * Use funny inputs like in Kade Engine
+	 * (Spam is allow) 
+	**/
+	public static var INPUT:Bool = true;
 }
