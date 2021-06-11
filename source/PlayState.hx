@@ -489,7 +489,7 @@ class PlayState extends MusicBeatState
 					santa.antialiasing = true;
 					add(santa);
 				}
-			case '':
+			case 'winter-horrorland':
 				{
 					curStage = 'mallEvil';
 					var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG'));
@@ -3052,7 +3052,7 @@ class PlayState extends MusicBeatState
 					add(boyfriend);
 					ModCharts.fadeInObject(block);
 				case 158:
-					//ModCharts.fadeOutObject(block); // mag u forgot to define block
+					// ModCharts.fadeOutObject(block); // mag u forgot to define block
 					// sky shit
 					var sky:FlxBackdrop = new FlxBackdrop(Paths.image('sky'), 1, 1, false, true, 0, 0);
 					sky.y = -1500;
