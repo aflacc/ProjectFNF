@@ -135,7 +135,7 @@ class ModCharts
 	 */
 	static public function cancelMovement(sprite)
 	{
-		// FlxTween.cancelTweensOf(sprite); Remind me to uncomment this when magnus fixes it
+		FlxTween.cancelTweensOf(sprite); Remind me to uncomment this when magnus fixes it
 	}
 
 	/**
@@ -149,7 +149,7 @@ class ModCharts
 	 */
 	static public function cancelCamera(camera:Any)
 	{
-		// FlxTween.cancelTweensOf(camera); // Remind me to uncomment this when magnus fixes it
+		FlxTween.cancelTweensOf(camera); // Remind me to uncomment this when magnus fixes it
 	}
 
 	/**
