@@ -1,0 +1,10 @@
+setOptions Test One
+True
+setOptions Test Two
+False
+setOptions Test Three
+1
+setOptions Test Four
+5
+setOptions Test Five
+Only on sundays
