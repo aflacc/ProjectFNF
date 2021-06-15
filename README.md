@@ -4,7 +4,7 @@
 
 ***
 <div align="center"> <img src="https://github.com/aflacc/ProjectFNF/blob/master/art/projectfnf.png?raw=true" height=500 width=500 align="center"></div>
-<div align="center">Kade Engine but cooler :sunglasses:</div>
+<div align="center">Quality of Life & Highly Compatibile Engine</div>
 
 # About
 ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It contains a few quality of life enhancements along with a whole [wiki](https://github.com/aflacc/ProjectFNF/wiki) which can help the user make their own mod. To Begin coding with ProjectFNF, follow this guide I created [Here](https://github.com/aflacc/ProjectFNF/wiki/Setup-Workspace). Interested in trying the beta? Click [here](https://github.com/aflacc/ProjectFNF/blob/master/beta.md)
