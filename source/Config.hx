@@ -7,6 +7,14 @@
  */
 class Config extends MusicBeatState
 {
+
+	/**
+	 * The intro thing. plays right before the flash to the gf screen
+	 * 
+	 * Default = **["Friday", "Night", "Funkin"]**
+	 */
+	 public static var TITLEMESSAGE:Array<String> = ["Friday", "Night", "Funkin"];
+
 	/**
 	 * Makes the Girlfriend sit on the Limo instead of the Speaker in week 4.
 	 * Its very funny
@@ -16,11 +24,11 @@ class Config extends MusicBeatState
 	public static var CONFIGGfCar:Bool = true;
 
 	/**
-	 * Downscroll? WIP
+	 * Downscroll. Thanks kade :uwu:
 	 * 
 	 * Default = **false**
 	 */
-	 public static var DOWNSCROLL:Bool = false;
+	 public static var DOWNSCROLL:Bool = true;
 
 	/**
 	 * Use the ProjectFNF logo or the Friday Night Funkin logo??

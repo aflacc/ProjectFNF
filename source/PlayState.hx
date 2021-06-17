@@ -2131,6 +2131,7 @@ class PlayState extends MusicBeatState
 							else
 							{
 								health -= 0.075;
+								songNotesMissed += 1;
 								vocals.volume = 0;
 								if (theFunne)
 									noteMiss(daNote.noteData);
