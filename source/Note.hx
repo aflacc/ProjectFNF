@@ -119,6 +119,9 @@ class Note extends FlxSkewedSprite
 		}
 
 		// trace(prevNote);
+		if (Config.DOWNSCROLL && sustainNote) {
+			flipY = true;
+		}
 
 		if (isSustainNote && prevNote != null)
 		{
