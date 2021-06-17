@@ -840,6 +840,9 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.88).loadGraphic(Paths.image('healthBar'));
+		if (Config.DOWNSCROLL) {
+			healthBarBG.y = 50;
+		}
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
@@ -1972,7 +1975,7 @@ class PlayState extends MusicBeatState
 					daNote.x = strumLineNotes.members[noteNum].x;
 				}
 
-				if (daNote.y > FlxG.height)
+				if (daNote.tooLate)
 				{
 					daNote.active = false;
 					daNote.visible = false;
