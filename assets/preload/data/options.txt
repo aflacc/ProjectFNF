@@ -1,10 +1,3 @@
-setOptions Test One
-True
-setOptions Test Two
-False
-setOptions Test Three
-1
-setOptions Test Four
-5
-setOptions Test Five
-Only on sundays
+setGhost Tapping|| Hitting a key (if not giving you a hit) will give you a miss || True
+setDownscroll || The notes scroll down || False
+setMiss Shake || Screen shakes on miss || False

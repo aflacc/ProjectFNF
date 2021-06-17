@@ -22,6 +22,7 @@ class OptionsMenu extends MusicBeatState
 	private var grpControls:FlxTypedGroup<Alphabet>;
 
 	var optionsText:FlxText;
+	var optionsDesc:FlxText;
 
 	override function create()
 	{
@@ -35,10 +36,14 @@ class OptionsMenu extends MusicBeatState
 		add(menuBG);
 		optionsText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		optionsText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		optionsDesc = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
+		optionsDesc.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		var optionsBG:FlxSprite = new FlxSprite(optionsText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.55), 80, 0xFF000000);
 		optionsBG.alpha = 0.6;
 		add(optionsBG);
 		add(optionsText);
+		add(optionsDesc);
+		optionsDesc.screenCenter(XY);
 
 		
 			grpControls = new FlxTypedGroup<Alphabet>();
@@ -47,7 +52,7 @@ class OptionsMenu extends MusicBeatState
 			{
 				if (controlsStrings[i].indexOf('set') != -1)
 				{
-					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3), true, false);
+					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3).split("||")[0], true, false);
 					controlLabel.isMenuItem = true;
 					controlLabel.targetY = i;
 					grpControls.add(controlLabel);
@@ -114,15 +119,17 @@ class OptionsMenu extends MusicBeatState
 			curSelected = 0;
 
 
-		optionsText.text = controlsStrings[curSelected + 1];
-		// selector.y = (70 * curSelected) + 30;
+		// how did it take me this long to figure this out bruh
+		optionsText.text = controlsStrings[curSelected].split("||")[2];
+		optionsDesc.text = controlsStrings[curSelected].split("||")[1];
 
+		// selector.y = (70 * curSelected) + 30;
 		var bullShit:Int = 0;
 		for (item in grpControls.members)
 		{
 			item.targetY = bullShit - curSelected;
 			bullShit++;
-
+			
 			item.alpha = 0.6;
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
