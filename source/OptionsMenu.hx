@@ -21,6 +21,8 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 
+	var optionsText:FlxText;
+
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -31,6 +33,12 @@ class OptionsMenu extends MusicBeatState
 		menuBG.screenCenter();
 		menuBG.antialiasing = true;
 		add(menuBG);
+		optionsText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
+		optionsText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		var optionsBG:FlxSprite = new FlxSprite(optionsText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.55), 80, 0xFF000000);
+		optionsBG.alpha = 0.6;
+		add(optionsBG);
+		add(optionsText);
 
 		
 			grpControls = new FlxTypedGroup<Alphabet>();
@@ -39,7 +47,7 @@ class OptionsMenu extends MusicBeatState
 			{
 				if (controlsStrings[i].indexOf('set') != -1)
 				{
-					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3) + ': ' + controlsStrings[i + 1], true, false);
+					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3), true, false);
 					controlLabel.isMenuItem = true;
 					controlLabel.targetY = i;
 					grpControls.add(controlLabel);
@@ -49,7 +57,7 @@ class OptionsMenu extends MusicBeatState
 		 
 
 		super.create();
-
+		changeSelection();
 	//	openSubState(new OptionsSubState());
 	}
 
@@ -105,10 +113,11 @@ class OptionsMenu extends MusicBeatState
 		if (curSelected >= grpControls.length)
 			curSelected = 0;
 
+
+		optionsText.text = controlsStrings[curSelected + 1];
 		// selector.y = (70 * curSelected) + 30;
 
 		var bullShit:Int = 0;
-
 		for (item in grpControls.members)
 		{
 			item.targetY = bullShit - curSelected;
