@@ -16,6 +16,13 @@ class Config extends MusicBeatState
 	public static var CONFIGGfCar:Bool = true;
 
 	/**
+	 * Downscroll? WIP
+	 * 
+	 * Default = **false**
+	 */
+	 public static var DOWNSCROLL:Bool = false;
+
+	/**
 	 * Use the ProjectFNF logo or the Friday Night Funkin logo??
 	 * 
 	 * Default = **true**

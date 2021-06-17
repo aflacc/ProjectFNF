@@ -186,7 +186,7 @@ class PlayState extends MusicBeatState
 			strumming2[strum] = true;
 		}
 
-		var bps:Float = Conductor.bpm / 60;
+		var bps:Float = bpm / 60;
 		var spb:Float = 1 / bps;
 
 		if (!note.isSustainNote)
@@ -801,6 +801,10 @@ class PlayState extends MusicBeatState
 
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
+
+		if (Config.DOWNSCROLL) {
+			strumLine.y = FlxG.height - 165;
+		}
 
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
 		add(strumLineNotes);
