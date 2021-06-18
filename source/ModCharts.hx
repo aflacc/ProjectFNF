@@ -43,7 +43,7 @@ class ModCharts
 	 * Configures if dad's notes degrade bf's health, like in tricky phase 4 and sans.
 	 * Works mid game!
 	 */
-	 static public var dadNotesDoDamage:Bool = true;
+	 static public var dadNotesDoDamage:Bool = false;
 	/**
 	 * Configures if dad's notes can kill bf.
 	 * Works mid game!
