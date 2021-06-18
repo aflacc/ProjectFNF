@@ -14,6 +14,8 @@ import lime.utils.Assets;
 
 class OptionsMenu extends MusicBeatState
 {
+	public static var instance:OptionsMenu;
+
 	var selector:FlxText;
 	var curSelected:Int = 0;
 
@@ -21,11 +23,15 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 
+	public var acceptInput:Bool = true;
+
 	var optionsText:FlxText;
 	var optionsDesc:FlxText;
 
 	override function create()
 	{
+		instance = this;
+
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		controlsStrings = CoolUtil.coolTextFile(Paths.txt('options'));
 		menuBG.color = FlxColor.GRAY;
@@ -47,6 +53,7 @@ class OptionsMenu extends MusicBeatState
 		
 			grpControls = new FlxTypedGroup<Alphabet>();
 			add(grpControls);
+			controlsStrings[controlsStrings.length + 1] = "setCustomize Keybinds";
 			for (i in 0...controlsStrings.length)
 			{
 				switch(controlsStrings[i].substring(3).split(" || ")[0]) {
@@ -108,6 +115,8 @@ class OptionsMenu extends MusicBeatState
 					case "Dad Notes Visible":
 						FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
 						optionsText.text = FlxG.save.data.dadnotesvisible;
+					default: // lol
+						OptionsMenu.instance.openSubState(new KeyBindMenu());
 				}
 				FlxG.save.flush();
 				// this could be us but FlxG savedata sucks dick and im too lazy too see how kade engine did it
@@ -143,10 +152,6 @@ class OptionsMenu extends MusicBeatState
 
 	function changeSelection(change:Int = 0)
 	{
-		#if !switch
-		NGio.logEvent('Fresh');
-		#end
-
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
 		curSelected += change;
@@ -157,6 +162,7 @@ class OptionsMenu extends MusicBeatState
 			curSelected = 0;
 
 
+		//trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
 		switch(controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 			case "Ghost Tapping":
 				optionsText.text = FlxG.save.data.ghosttapping;
@@ -166,6 +172,9 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.missshake;
 			case "Dad Notes Visible":
 				optionsText.text = FlxG.save.data.dadnotesvisible;
+			default: // lol im lazy
+				optionsText.text = "Press ENTER";
+				optionsDesc.text = "Customize the keys you use. (Up down left right)";
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];
