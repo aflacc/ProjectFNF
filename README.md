@@ -13,6 +13,14 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 [Changelog](https://github.com/aflacc/ProjectFNF/releases)
 ***
 
+
+### Here are some examples of ProjectFNF:
+![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/storymenu.png)
+![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/mother.png)
+![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/options.png)
+![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/dadnotes1.png)
+![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/pixel.png)
+
 # Mods that use ProjectFNF
 - neo (woah)
 - VS Aflac
@@ -32,5 +40,3 @@ We do not ask for much, all we ask is you link the github and if the mod is on g
 
 *click on the stats to see more about that topic!*/
 *stats generated with [shields.io](http://shields.io/)*
-
-😐 why are you cringe
