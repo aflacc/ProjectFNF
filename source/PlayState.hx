@@ -868,6 +868,7 @@ class PlayState extends MusicBeatState
 		infoTxt.borderColor = FlxColor.BLACK;
 		infoTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 1, 1);
 		add(infoTxt);
+		updateInfo();
 		add(timerTxt);
 		funnySexBox.scale.x = infoTxt.fieldWidth;
 
@@ -1597,6 +1598,66 @@ class PlayState extends MusicBeatState
 	var eFormat = new FlxTextFormat(FlxColor.BLUE);
 	var fFormat = new FlxTextFormat(FlxColor.PURPLE);
 
+	function updateInfo() {
+		// accuracy!!
+		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
+		if (Math.isNaN(accuracy))
+				{
+					accuracy = 100;
+				}
+		
+				// rating!!
+				var rating = "??"; // incase it doesnt load or start idk
+				if (accuracy == 100)
+				{
+					rating = "!FC!";
+				}
+				else if (accuracy > 90)
+				{
+					rating = "-S-";
+				}
+				else if (accuracy > 80)
+				{
+					rating = "@A@";
+				}
+				else if (accuracy > 70)
+				{
+					rating = "#B#";
+				}
+				else if (accuracy > 60)
+				{
+					rating = "$C$";
+				}
+				else if (accuracy > 50)
+				{
+					rating = "*D*";
+				}
+				else if (accuracy > 30)
+				{
+					rating = "^E^";
+				}
+				else
+				{
+					rating = "&F&";
+				}
+		
+				/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
+					infoTxt.updateHitbox(); */
+		
+				// the things i do for funny colors
+				infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
+					+ " // Accuracy: " + accuracy + "%",
+					[
+						new FlxTextFormatMarkerPair(fullClearFormat, "!"),
+						new FlxTextFormatMarkerPair(sFormat, "-"),
+						new FlxTextFormatMarkerPair(aFormat, "@"),
+						new FlxTextFormatMarkerPair(bFormat, "#"),
+						new FlxTextFormatMarkerPair(cFormat, "$"),
+						new FlxTextFormatMarkerPair(dFormat, "*"),
+						new FlxTextFormatMarkerPair(eFormat, "^"),
+						new FlxTextFormatMarkerPair(fFormat, "&")
+					]);
+	}
 	override public function update(elapsed:Float)
 	{
 		#if !debug
@@ -1628,65 +1689,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
-		// accuracy!!
-		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
-		if (Math.isNaN(accuracy))
-		{
-			accuracy = 100;
-		}
-
-		// rating!!
-		var rating = "??"; // incase it doesnt load or start idk
-		if (accuracy == 100)
-		{
-			rating = "!FC!";
-		}
-		else if (accuracy > 90)
-		{
-			rating = "-S-";
-		}
-		else if (accuracy > 80)
-		{
-			rating = "@A@";
-		}
-		else if (accuracy > 70)
-		{
-			rating = "#B#";
-		}
-		else if (accuracy > 60)
-		{
-			rating = "$C$";
-		}
-		else if (accuracy > 50)
-		{
-			rating = "*D*";
-		}
-		else if (accuracy > 30)
-		{
-			rating = "^E^";
-		}
-		else
-		{
-			rating = "&F&";
-		}
-
-		/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
-			infoTxt.updateHitbox(); */
-
-		// the things i do for funny colors
-		infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
-			+ " // Accuracy: " + accuracy + "%",
-			[
-				new FlxTextFormatMarkerPair(fullClearFormat, "!"),
-				new FlxTextFormatMarkerPair(sFormat, "-"),
-				new FlxTextFormatMarkerPair(aFormat, "@"),
-				new FlxTextFormatMarkerPair(bFormat, "#"),
-				new FlxTextFormatMarkerPair(cFormat, "$"),
-				new FlxTextFormatMarkerPair(dFormat, "*"),
-				new FlxTextFormatMarkerPair(eFormat, "^"),
-				new FlxTextFormatMarkerPair(fFormat, "&")
-			]);
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -2075,6 +2077,12 @@ class PlayState extends MusicBeatState
 							sustain2(spr.ID, spr, daNote);
 						}
 					});
+					if (ModCharts.dadNotesDoDamage) {
+						if (!(health - 0.04 < 0.001) && !ModCharts.dadNotesCanKill) {
+							health -= 0.04;
+							updateInfo();
+						}
+					}
 
 					dad.holdTimer = 0;
 
@@ -2663,6 +2671,7 @@ class PlayState extends MusicBeatState
 							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 				}
 			}
+			updateInfo();
 			}
 		}
 		}
@@ -2800,6 +2809,7 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		}
+		updateInfo();
 	}
 
 	var fastCarCanDrive:Bool = true;
@@ -3063,98 +3073,6 @@ class PlayState extends MusicBeatState
 					ModCharts.fadeOutObject(dad);
 			}
 		}
-		if (SONG.song.toLowerCase() == 'test') // Modchart showcase song!!! Vocals by https://www.youtube.com/channel/UCVpDJmtu0P-6LcdKMe8Wc3A
-		{
-			ModCharts.updateNoteVisibilty = true;
-			ModCharts.autoStrum = true;
-			switch (curBeat)
-			{
-				case 1:
-					strumLineNotes.forEach(function(note)
-					{
-						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
-					});
-				case 3 | 7 | 11 | 14 | 18 | 22 | 26:
-					strumLineNotes.forEach(function(note)
-					{
-						ModCharts.quickSpin(note);
-					});
-				case 28:
-					// Instead of this:
-					/*player2Strums.forEach(function(note)
-						{
-							ModCharts.cancelMovement(note);
-							ModCharts.moveTo(note, -600, 100, 3);
-					});*/
-
-					// use this:
-					ModCharts.moveStrumNotes(player2Strums, -1000, 50, 3, 50, 0);
-
-					new FlxTimer().start(3, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
-					{
-						ModCharts.dadNotesVisible = false;
-					});
-				case 63:
-					var sky:FlxSprite = new FlxSprite(-600, -1500).loadGraphic(Paths.image('planeNight'));
-					ModCharts.moveTo(dad, -300, -1200, 1);
-					ModCharts.moveTo(boyfriend, 500, -1200, 1);
-					remove(dad);
-					remove(boyfriend);
-					add(sky);
-					add(dad);
-					add(boyfriend);
-					strumLineNotes.forEach(function(note)
-					{
-						ModCharts.circleLoop(note, 30, 3);
-					});
-					new FlxTimer().start(1, function(tmr:FlxTimer) // SO THE FLXTWEENS DONT OVERLAP AND BF DOESNT GET STUCK
-					{
-						// add(ModCharts.addTrailToSprite(boyfriend));
-						ModCharts.circleLoop(boyfriend, 50, 5);
-						// add(ModCharts.addTrailToSprite(dad));
-						ModCharts.circleLoop(dad, 50, 7);
-					});
-				// camFollow.x = -300;// this doesnt matter cuz it changes with the chaacters lol
-				// camFollow.y = -600;
-				// FlxG.camera.focusOn(camFollow.getPosition());
-				case 96:
-					ModCharts.dadNotesVisible = true;
-					ModCharts.moveStrumNotes(player2Strums, 0, 40, 1, 110, 0);
-					ModCharts.cancelMovement(boyfriend);
-					ModCharts.cancelMovement(dad);
-					playerStrums.forEach(function(note)
-					{
-						ModCharts.cancelMovement(note);
-					});
-					ModCharts.moveTo(dad, 100, 450, 1);
-					ModCharts.moveTo(boyfriend, 770, 450, 1);
-				case 128:
-					var block = new FlxSprite(-300, -1000).makeGraphic(5000, 5000, FlxColor.BLACK);
-					block.alpha = 0;
-					remove(dad);
-					remove(boyfriend);
-					add(block);
-					add(dad);
-					add(boyfriend);
-					ModCharts.fadeInObject(block);
-				case 158:
-					// ModCharts.fadeOutObject(block); // mag u forgot to define block
-					// sky shit
-					var sky:FlxBackdrop = new FlxBackdrop(Paths.image('sky'), 1, 1, false, true, 0, 0);
-					sky.y = -1500;
-					sky.velocity.y = 2500;
-					ModCharts.moveTo(dad, 400, -1200, 1);
-					//	ModCharts.moveTo(boyfriend, 500, -1200, 1);
-					remove(dad);
-					remove(boyfriend);
-					add(sky);
-					add(dad);
-					add(boyfriend);
-				case 160:
-					//	camera.shake(0.05, 1, null, true, FlxAxes.X);
-			}
-		}
-
 		switch (curStage)
 		{
 			case 'school':

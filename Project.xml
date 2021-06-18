@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' ProjectFNF" file="ProjectFNF" packageName="com.aflac.projectfnf" package="com.aflac.projectfnf" main="Main" version="0.2-e" company="aflac" />
+	<app title="Friday Night Funkin' ProjectFNF" file="ProjectFNF" packageName="com.aflac.projectfnf" package="com.aflac.projectfnf" main="Main" version="0.2-e-2" company="aflac" />
 	<!-- DO NOT TOUCH THE VERSION -->
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />

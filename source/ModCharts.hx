@@ -40,6 +40,18 @@ class ModCharts
 	static public var autoStrumNum:Float = 4;
 
 	/**
+	 * Configures if dad's notes degrade bf's health, like in tricky phase 4 and sans.
+	 * Works mid game!
+	 */
+	 static public var dadNotesDoDamage:Bool = true;
+	/**
+	 * Configures if dad's notes can kill bf.
+	 * Works mid game!
+	 */
+	 static public var dadNotesCanKill:Bool = false;
+
+
+	/**
 	 * Quickly spin a sprite 180 degrees. Usually used for spinning the strum arrows.
 	 *
 	 * ```haxe
