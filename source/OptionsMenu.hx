@@ -69,6 +69,9 @@ class OptionsMenu extends MusicBeatState
 					case "Dad Notes Visible":
 						if (!FlxG.save.data.dadnotesvisible)
 							FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
+					case "Enable Miss Animations":
+						if (!FlxG.save.data.enablemissanimations)
+							FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
 					}
 					FlxG.save.flush();
 
@@ -115,6 +118,9 @@ class OptionsMenu extends MusicBeatState
 					case "Dad Notes Visible":
 						FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
 						optionsText.text = FlxG.save.data.dadnotesvisible;
+					case "Enable Miss Animations":
+						FlxG.save.data.enablemissanimations = !FlxG.save.data.enablemissanimations;
+						optionsText.text = FlxG.save.data.enablemissanimations;
 					default: // lol
 						OptionsMenu.instance.openSubState(new KeyBindMenu());
 				}
@@ -172,6 +178,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.missshake;
 			case "Dad Notes Visible":
 				optionsText.text = FlxG.save.data.dadnotesvisible;
+			case "Enable Miss Animations":
+				optionsText.text = FlxG.save.data.enablemissanimations;
 			default: // lol im lazy
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";

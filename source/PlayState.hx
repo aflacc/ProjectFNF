@@ -2642,6 +2642,7 @@ class PlayState extends MusicBeatState
 					boyfriend.stunned = false;
 				});
 
+				if (FlxG.save.data.enablemissanimations) {
 				switch (direction)
 				{
 					case 0:
@@ -2661,6 +2662,7 @@ class PlayState extends MusicBeatState
 						if (FlxG.save.data.missshake)
 							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 				}
+			}
 			}
 		}
 		}
