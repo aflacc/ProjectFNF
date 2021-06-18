@@ -72,6 +72,12 @@ class OptionsMenu extends MusicBeatState
 					case "Enable Miss Animations":
 						if (!FlxG.save.data.enablemissanimations)
 							FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
+					case "Change Note Theme":
+						if (FlxG.save.data.notetheme == "CIRCLE") {
+							FlxG.save.data.notetheme = "CIRCLE";
+						} else {
+							FlxG.save.data.notetheme = "NOTE";
+						}
 					}
 					FlxG.save.flush();
 
@@ -121,11 +127,20 @@ class OptionsMenu extends MusicBeatState
 					case "Enable Miss Animations":
 						FlxG.save.data.enablemissanimations = !FlxG.save.data.enablemissanimations;
 						optionsText.text = FlxG.save.data.enablemissanimations;
+					case "Change Note Theme":
+						if (FlxG.save.data.notetheme == "NOTE") {
+							FlxG.save.data.notetheme = "CIRCLE";
+							optionsText.text = "CIRCLE";
+						} else {
+							FlxG.save.data.notetheme = "NOTE";
+							optionsText.text = "NOTE(DEFAULT)";
+						}
+						trace(FlxG.save.data.notetheme);
 					default: // lol
 						OptionsMenu.instance.openSubState(new KeyBindMenu());
 				}
 				FlxG.save.flush();
-				// this could be us but FlxG savedata sucks dick and im too lazy too see how kade engine did it
+				// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
 			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];
 			}
 				if (controls.BACK)
@@ -180,6 +195,12 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.dadnotesvisible;
 			case "Enable Miss Animations":
 				optionsText.text = FlxG.save.data.enablemissanimations;
+			case "Change Note Theme":
+				if (FlxG.save.data.notetheme == "NOTE") {
+					optionsText.text = "NOTE(DEFAULT)";
+				} else {
+					optionsText.text = FlxG.save.data.notetheme;
+				}
 			default: // lol im lazy
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";
