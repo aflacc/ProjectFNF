@@ -2078,8 +2078,8 @@ class PlayState extends MusicBeatState
 						}
 					});
 					if (ModCharts.dadNotesDoDamage) {
-						if (!(health - 0.04 < 0.001) && !ModCharts.dadNotesCanKill) {
-							health -= 0.04;
+						if (!(health - 0.01 < 0.001) && !ModCharts.dadNotesCanKill) {
+							health -= 0.01;
 							updateInfo();
 						}
 					}
