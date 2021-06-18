@@ -214,7 +214,7 @@ class PlayState extends MusicBeatState
 		var stageFront:FlxSprite;
 		var bg:FlxSprite;
 		// ModCharts.autoStrum = true;
-		ModCharts.dadNotesVisible = true;
+		ModCharts.dadNotesVisible = FlxG.save.data.dadnotesvisible; // gamer
 		ModCharts.bfNotesVisible = true;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -804,7 +804,7 @@ class PlayState extends MusicBeatState
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
 
-		if (Config.DOWNSCROLL) {
+		if (FlxG.save.data.downscroll) {
 			strumLine.y = FlxG.height - 165;
 		}
 
@@ -842,7 +842,7 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.88).loadGraphic(Paths.image('healthBar'));
-		if (Config.DOWNSCROLL) {
+		if (FlxG.save.data.downscroll) {
 			healthBarBG.y = 50;
 		}
 		healthBarBG.screenCenter(X);
@@ -1997,7 +1997,7 @@ class PlayState extends MusicBeatState
 					}
 				}
 
-				if (Config.DOWNSCROLL)
+				if (FlxG.save.data.downscroll)
 					{
 						if (daNote.mustPress)
 							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2));
@@ -2121,7 +2121,7 @@ class PlayState extends MusicBeatState
 
 				// WIP interpolation shit? Need to fix the pause issue
 				// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
-				if ((daNote.mustPress && daNote.tooLate && !Config.DOWNSCROLL || daNote.mustPress && daNote.tooLate && Config.DOWNSCROLL) && daNote.mustPress)
+				if ((daNote.mustPress && daNote.tooLate && !FlxG.save.data.downscroll || daNote.mustPress && daNote.tooLate && FlxG.save.data.downscroll) && daNote.mustPress)
 					{
 							if (daNote.isSustainNote && daNote.wasGoodHit)
 							{
@@ -2271,7 +2271,9 @@ class PlayState extends MusicBeatState
 
 		var daRating:String = "sick";
 
-		if (noteDiff > Conductor.safeZoneOffset * 0.9)
+		daRating = Ratings.CalculateRating(noteDiff);
+		score = 100; // till i stop being a lazy cunt
+		/*if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
 			daRating = 'shit';
 			score = 50;
@@ -2285,7 +2287,7 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'good';
 			score = 200;
-		}
+		}*/
 
 		songScore += score;
 
@@ -2614,7 +2616,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 		{
-			if (Config.INPUT == false) {
+			if (!FlxG.save.data.ghosttapping) {
 			if (!boyfriend.stunned)
 			{
 				health -= 0.04;
@@ -2644,12 +2646,20 @@ class PlayState extends MusicBeatState
 				{
 					case 0:
 						boyfriend.playAnim('singLEFTmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 					case 1:
 						boyfriend.playAnim('singDOWNmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 					case 2:
 						boyfriend.playAnim('singUPmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 					case 3:
 						boyfriend.playAnim('singRIGHTmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 				}
 			}
 		}
@@ -2658,7 +2668,7 @@ class PlayState extends MusicBeatState
 		
 /*	function noteMiss(direction:Int = 1):Void
 	{
-		if (Config.INPUT == false)
+		if (FlxG.save.data.ghosttapping == false)
 		{
 			songNotesMissed += 1;
 
@@ -2903,7 +2913,7 @@ class PlayState extends MusicBeatState
 
 		if (generatedMusic)
 		{
-			notes.sort(FlxSort.byY, (Config.DOWNSCROLL ? FlxSort.ASCENDING : FlxSort.DESCENDING));
+			notes.sort(FlxSort.byY, (FlxG.save.data.downscroll ? FlxSort.ASCENDING : FlxSort.DESCENDING));
 		}
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)

@@ -1,3 +1,4 @@
-setGhost Tapping|| Hitting a key (if not giving you a hit) will give you a miss || True
-setDownscroll || The notes scroll down || False
-setMiss Shake || Screen shakes on miss || False
+setGhost Tapping || Hitting a key will not give you a miss || false
+setDownscroll || The notes scroll down || false
+setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false
+setDad Notes Visible || Dad(Enemies) notes are visible || true

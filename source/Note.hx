@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.addons.effects.FlxSkewedSprite;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -119,7 +120,7 @@ class Note extends FlxSkewedSprite
 		}
 
 		// trace(prevNote);
-		if (Config.DOWNSCROLL && sustainNote) {
+		if (FlxG.save.data.downscroll && sustainNote) {
 			flipY = true;
 		}
 

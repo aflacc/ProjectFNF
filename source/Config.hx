@@ -24,13 +24,6 @@ class Config extends MusicBeatState
 	public static var CONFIGGfCar:Bool = true;
 
 	/**
-	 * Downscroll. Thanks kade :uwu:
-	 * 
-	 * Default = **false**
-	 */
-	 public static var DOWNSCROLL:Bool = true;
-
-	/**
 	 * Use the ProjectFNF logo or the Friday Night Funkin logo??
 	 * 
 	 * Default = **true**
@@ -59,13 +52,6 @@ class Config extends MusicBeatState
 	public static var DEBUGMODE:Bool = false;
 
 	/**
-	 * Shakes the camera when you miss a note. Shakes on the Axis you missed the note of. (Up/Down will shake the camera Up and Down)
-	 * 
-	 * Default = **true**
-	 */
-	public static var MISSFX:Bool = true;
-
-	/**
 	 * Only Works if **MISSFX** is set to **true**
 	 * 
 	 * It is not reccomended to set this *too* high, it gets very obnoxious ***VERY*** quickly.
@@ -75,10 +61,4 @@ class Config extends MusicBeatState
 	 * Default = **0.002**
 	 */
 	public static var MISSINTENSITY = 0.002;
-
-	/**
-	 * Use funny inputs like in Kade Engine
-	 * (Spam is allow) 
-	**/
-	public static var INPUT:Bool = true;
 }

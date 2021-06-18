@@ -28,7 +28,7 @@ class OptionsMenu extends MusicBeatState
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		controlsStrings = CoolUtil.coolTextFile(Paths.txt('options'));
-		menuBG.color = 0xFFea71fd;
+		menuBG.color = FlxColor.GRAY;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -36,23 +36,39 @@ class OptionsMenu extends MusicBeatState
 		add(menuBG);
 		optionsText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		optionsText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
-		optionsDesc = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
+		optionsDesc = new FlxText(830, 80, 450, "", 32);
 		optionsDesc.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		var optionsBG:FlxSprite = new FlxSprite(optionsText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.55), 80, 0xFF000000);
 		optionsBG.alpha = 0.6;
 		add(optionsBG);
 		add(optionsText);
 		add(optionsDesc);
-		optionsDesc.screenCenter(XY);
 
 		
 			grpControls = new FlxTypedGroup<Alphabet>();
 			add(grpControls);
 			for (i in 0...controlsStrings.length)
 			{
+				switch(controlsStrings[i].substring(3).split(" || ")[0]) {
+					case "Ghost Tapping":
+						if (!FlxG.save.data.ghosttapping)
+							FlxG.save.data.ghosttapping = controlsStrings[curSelected].split(" || ")[2];
+					case "Downscroll":
+						if (!FlxG.save.data.downscroll)
+							FlxG.save.data.downscroll = controlsStrings[curSelected].split(" || ")[2];
+					case "Miss Shake":
+						if (!FlxG.save.data.missshake)
+							FlxG.save.data.missshake = controlsStrings[curSelected].split(" || ")[2];
+					case "Dad Notes Visible":
+						if (!FlxG.save.data.dadnotesvisible)
+							FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
+					}
+					FlxG.save.flush();
+
+
 				if (controlsStrings[i].indexOf('set') != -1)
 				{
-					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3).split("||")[0], true, false);
+					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3).split(" || ")[0], true, false);
 					controlLabel.isMenuItem = true;
 					controlLabel.targetY = i;
 					grpControls.add(controlLabel);
@@ -73,7 +89,29 @@ class OptionsMenu extends MusicBeatState
 		
 			if (controls.ACCEPT)
 			{
-				trace('thing');
+				// hey, atleast its not yanderedev
+				//trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
+				switch(controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+					case "Downscroll":
+						//trace("Before: " + FlxG.save.data.downscroll);
+						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
+						optionsText.text = FlxG.save.data.downscroll;
+						//trace("After: " + FlxG.save.data.downscroll);
+					case "Ghost Tapping":
+						//trace("Before: " + FlxG.save.data.ghosttapping);
+						FlxG.save.data.ghosttapping = !FlxG.save.data.ghosttapping;
+						optionsText.text = FlxG.save.data.ghosttapping;
+						//trace("After: " + FlxG.save.data.ghosttapping);
+					case "Miss Shake":
+						FlxG.save.data.missshake = !FlxG.save.data.missshake;
+						optionsText.text = FlxG.save.data.missshake;//FlxG.save.data.dadnotesvisible
+					case "Dad Notes Visible":
+						FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
+						optionsText.text = FlxG.save.data.dadnotesvisible;
+				}
+				FlxG.save.flush();
+				// this could be us but FlxG savedata sucks dick and im too lazy too see how kade engine did it
+			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];
 			}
 				if (controls.BACK)
 					FlxG.switchState(new MainMenuState());
@@ -119,9 +157,18 @@ class OptionsMenu extends MusicBeatState
 			curSelected = 0;
 
 
-		// how did it take me this long to figure this out bruh
-		optionsText.text = controlsStrings[curSelected].split("||")[2];
-		optionsDesc.text = controlsStrings[curSelected].split("||")[1];
+		switch(controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+			case "Ghost Tapping":
+				optionsText.text = FlxG.save.data.ghosttapping;
+			case "Downscroll":
+				optionsText.text = FlxG.save.data.downscroll;
+			case "Miss Shake":
+				optionsText.text = FlxG.save.data.missshake;
+			case "Dad Notes Visible":
+				optionsText.text = FlxG.save.data.dadnotesvisible;
+		}
+		// how did it take me this long to figure this out bruh (still applies here)
+		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];
 
 		// selector.y = (70 * curSelected) + 30;
 		var bullShit:Int = 0;
