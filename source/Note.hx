@@ -55,7 +55,7 @@ class Note extends FlxSkewedSprite
 		switch (daStage)
 		{
 			case 'school' | 'schoolEvil':
-				loadGraphic(Paths.image('weeb/pixelUI/notes/' + FlxG.save.data.notetheme + '_pixels'), true, 17, 17);
+				loadGraphic(Paths.image('weeb/pixelUI/notes/' + FlxG.save.data.notetheme + '-pixels'), true, 17, 17);
 
 				animation.add('greenScroll', [6]);
 				animation.add('redScroll', [7]);
