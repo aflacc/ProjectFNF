@@ -21,6 +21,18 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/dadnotes1.png)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/pixel.png)
 
+# Features(WIP)
+- Custom input and ratings sytem
+- Custom options menu
+- Easy selectable custom note skins
+- Very simple modcharting for mac and windows
+- Downscroll
+- A very easy config file for new mod developers
+- Custom keybinds
+- Advanced info text
+- Ability to hide the second player's notes
+- Much more
+
 # Mods that use ProjectFNF
 - neo (woah)
 - VS Aflac
