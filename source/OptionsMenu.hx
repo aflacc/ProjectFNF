@@ -28,6 +28,11 @@ class OptionsMenu extends MusicBeatState
 	var optionsText:FlxText;
 	var optionsDesc:FlxText;
 
+	var viewer:FlxSprite;
+	
+	var notetypes = ["NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "SPOOKY", "VAPORWAVE", "ETTERNA", "HELLBEATS"];
+	var noteselection = 69; //funny number
+	
 	override function create()
 	{
 		instance = this;
@@ -49,7 +54,6 @@ class OptionsMenu extends MusicBeatState
 		add(optionsBG);
 		add(optionsText);
 		add(optionsDesc);
-
 		
 			grpControls = new FlxTypedGroup<Alphabet>();
 			add(grpControls);
@@ -73,11 +77,8 @@ class OptionsMenu extends MusicBeatState
 						if (!FlxG.save.data.enablemissanimations)
 							FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
 					case "Change Note Theme":
-						if (FlxG.save.data.notetheme == "CIRCLE") {
-							FlxG.save.data.notetheme = "CIRCLE";
-						} else {
+						if (!FlxG.save.data.enablemissanimations)
 							FlxG.save.data.notetheme = "NOTE";
-						}
 					}
 					FlxG.save.flush();
 
@@ -91,8 +92,14 @@ class OptionsMenu extends MusicBeatState
 				}
 				// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			}
-		 
+		viewer = new FlxSprite(1000, 300);
+		add(viewer);
+		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
+		viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
+		viewer.animation.play('confirm');
+	//		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
 
+		noteselection = notetypes.indexOf(FlxG.save.data.notetheme);
 		super.create();
 		changeSelection();
 	//	openSubState(new OptionsSubState());
@@ -128,14 +135,18 @@ class OptionsMenu extends MusicBeatState
 						FlxG.save.data.enablemissanimations = !FlxG.save.data.enablemissanimations;
 						optionsText.text = FlxG.save.data.enablemissanimations;
 					case "Change Note Theme":
+						noteselection++;
+						if (noteselection > notetypes.length - 1) { noteselection = 0; }
+						FlxG.save.data.notetheme = notetypes[noteselection];
 						if (FlxG.save.data.notetheme == "NOTE") {
-							FlxG.save.data.notetheme = "CIRCLE";
-							optionsText.text = "CIRCLE";
-						} else {
-							FlxG.save.data.notetheme = "NOTE";
 							optionsText.text = "NOTE(DEFAULT)";
+						} else {
+							optionsText.text = FlxG.save.data.notetheme;
 						}
-						trace(FlxG.save.data.notetheme);
+						viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
+						viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
+						viewer.animation.play('confirm');
+					//	trace(FlxG.save.data.notetheme);
 					default: // lol
 						OptionsMenu.instance.openSubState(new KeyBindMenu());
 				}
@@ -184,6 +195,7 @@ class OptionsMenu extends MusicBeatState
 
 
 		//trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
+		viewer.visible = false;
 		switch(controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 			case "Ghost Tapping":
 				optionsText.text = FlxG.save.data.ghosttapping;
@@ -201,6 +213,10 @@ class OptionsMenu extends MusicBeatState
 				} else {
 					optionsText.text = FlxG.save.data.notetheme;
 				}
+				viewer.visible = true;
+				viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
+				viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
+				viewer.animation.play('confirm');
 			default: // lol im lazy
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";
