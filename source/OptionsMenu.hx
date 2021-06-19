@@ -30,7 +30,7 @@ class OptionsMenu extends MusicBeatState
 
 	var viewer:FlxSprite;
 	
-	var notetypes = ["NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "STEPMANIA", "ETTERNA", "SPOOKY", "VAPORWAVE",  "HELLBEATS"];
+	var notetypes = ["NOTE", "STEPMANIA",  "ETTERNA", "TRIANGLE", "BEATSABER", "SPOOKY", "VAPORWAVE",  "HELLBEATS", "CIRCLE"];
 	var noteselection = 69; //funny number
 	
 	override function create()
@@ -76,9 +76,15 @@ class OptionsMenu extends MusicBeatState
 					case "Enable Miss Animations":
 						if (!FlxG.save.data.enablemissanimations)
 							FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
+					case "Advanced Info Bar":
+						if (!FlxG.save.data.advancedinfobar)
+							FlxG.save.data.advancedinfobar = controlsStrings[curSelected].split(" || ")[2];
 					case "Change Note Theme":
 						if (!FlxG.save.data.enablemissanimations)
 							FlxG.save.data.notetheme = "NOTE";
+					case "Beta Note Strums":
+						if (!FlxG.save.data.betanotestrums)
+							FlxG.save.data.betanotestrums = controlsStrings[curSelected].split(" || ")[2];
 					}
 					FlxG.save.flush();
 
@@ -95,8 +101,9 @@ class OptionsMenu extends MusicBeatState
 		viewer = new FlxSprite(1000, 300);
 		add(viewer);
 		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
-		viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
-		viewer.animation.play('confirm');
+		viewer.animation.addByPrefix('static', 'arrowUP', 24, true);
+		viewer.animation.addByPrefix('confirm', 'up confirm', 24, false);
+		viewer.animation.play('static');
 	//		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
 
 		noteselection = notetypes.indexOf(FlxG.save.data.notetheme);
@@ -110,6 +117,9 @@ class OptionsMenu extends MusicBeatState
 		super.update(elapsed);
 
 		
+			if (FlxG.keys.justPressed.SEVEN && controlsStrings[curSelected].substring(3).split(" || ")[0] == "Change Note Theme") {
+				viewer.animation.play('confirm');
+			}
 			if (controls.ACCEPT)
 			{
 				// hey, atleast its not yanderedev
@@ -134,6 +144,12 @@ class OptionsMenu extends MusicBeatState
 					case "Enable Miss Animations":
 						FlxG.save.data.enablemissanimations = !FlxG.save.data.enablemissanimations;
 						optionsText.text = FlxG.save.data.enablemissanimations;
+					case "Advanced Info Bar":
+						FlxG.save.data.advancedinfobar = !FlxG.save.data.advancedinfobar;
+						optionsText.text = FlxG.save.data.advancedinfobar;
+					case "Beta Note Strums":
+						FlxG.save.data.betanotestrums = !FlxG.save.data.betanotestrums;
+						optionsText.text = FlxG.save.data.betanotestrums;
 					case "Change Note Theme":
 						noteselection++;
 						if (noteselection > notetypes.length - 1) { noteselection = 0; }
@@ -144,8 +160,9 @@ class OptionsMenu extends MusicBeatState
 							optionsText.text = FlxG.save.data.notetheme;
 						}
 						viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
-						viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
-						viewer.animation.play('confirm');
+						viewer.animation.addByPrefix('static', 'arrowUP', 24, true);
+						viewer.animation.addByPrefix('confirm', 'up confirm', 24, false);
+						viewer.animation.play('static');
 					//	trace(FlxG.save.data.notetheme);
 					default: // lol
 						OptionsMenu.instance.openSubState(new KeyBindMenu());
@@ -160,7 +177,6 @@ class OptionsMenu extends MusicBeatState
 					changeSelection(-1);
 				if (controls.DOWN_P)
 					changeSelection(1);
-		 
 	}
 
 	function waitingInput():Void
@@ -207,6 +223,10 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.dadnotesvisible;
 			case "Enable Miss Animations":
 				optionsText.text = FlxG.save.data.enablemissanimations;
+			case "Advanced Info Bar":
+				optionsText.text = FlxG.save.data.advancedinfobar;
+			case "Beta Note Strums":
+				optionsText.text = FlxG.save.data.betanotestrums;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE") {
 					optionsText.text = "NOTE(DEFAULT)";
@@ -215,8 +235,9 @@ class OptionsMenu extends MusicBeatState
 				}
 				viewer.visible = true;
 				viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
-				viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
-				viewer.animation.play('confirm');
+				viewer.animation.addByPrefix('static', 'arrowUP', 24, true);
+				viewer.animation.addByPrefix('confirm', 'up confirm', 24, false);
+				viewer.animation.play('static');
 			default: // lol im lazy
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";

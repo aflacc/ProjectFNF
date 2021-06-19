@@ -1641,22 +1641,26 @@ class PlayState extends MusicBeatState
 					rating = "&F&";
 				}
 		
-				/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
-					infoTxt.updateHitbox(); */
-		
-				// the things i do for funny colors
-				infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
-					+ " // Accuracy: " + accuracy + "%",
-					[
-						new FlxTextFormatMarkerPair(fullClearFormat, "!"),
-						new FlxTextFormatMarkerPair(sFormat, "-"),
-						new FlxTextFormatMarkerPair(aFormat, "@"),
-						new FlxTextFormatMarkerPair(bFormat, "#"),
-						new FlxTextFormatMarkerPair(cFormat, "$"),
-						new FlxTextFormatMarkerPair(dFormat, "*"),
-						new FlxTextFormatMarkerPair(eFormat, "^"),
-						new FlxTextFormatMarkerPair(fFormat, "&")
-					]);
+				if (!FlxG.save.data.advancedinfobar) {
+						infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore;
+					//	infoTxt.updateHitbox(); 
+				} else {
+					// the things i do for funny colors
+					infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
+						+ " // Accuracy: " + accuracy + "%",
+						[
+							new FlxTextFormatMarkerPair(fullClearFormat, "!"),
+							new FlxTextFormatMarkerPair(sFormat, "-"),
+							new FlxTextFormatMarkerPair(aFormat, "@"),
+							new FlxTextFormatMarkerPair(bFormat, "#"),
+							new FlxTextFormatMarkerPair(cFormat, "$"),
+							new FlxTextFormatMarkerPair(dFormat, "*"),
+							new FlxTextFormatMarkerPair(eFormat, "^"),
+							new FlxTextFormatMarkerPair(fFormat, "&")
+						]);
+					}
+					// How did i not think of this earlier LOL
+					infoTxt.screenCenter(X);
 	}
 	override public function update(elapsed:Float)
 	{
@@ -1976,7 +1980,11 @@ class PlayState extends MusicBeatState
 					{
 						daNote.visible = false;
 					}
-					daNote.x = strumLineNotes.members[noteNum].x;
+					if (FlxG.save.data.betanotestrums) {
+						daNote.x = strumLineNotes.members[noteNum].x;
+					} else {
+						daNote.x = strumLineNotes.members[noteNum].x + 30;
+					}
 				}
 
 				if (daNote.tooLate)

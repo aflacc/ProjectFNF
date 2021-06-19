@@ -3,4 +3,6 @@ setDownscroll || The notes scroll down || false
 setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false
 setDad Notes Visible || Dad(Enemies) notes are visible || true
 setEnable Miss Animations || Bf's miss animations play || true
-setChange Note Theme || Change the theme of your notes. || NOTE
+setAdvanced Info Bar || Shows accuracy and rating in the health bar. || true
+setBeta Note Strums || Puts note strums to the left of the note, like in the beta. Could possibly increase speed.(Only matters if modchart.sticknotes is set to true lol) || true
+setChange Note Theme || Change the theme of your notes. (PRESS SEVEN TO PLAY THE ANIMATION) || NOTE
