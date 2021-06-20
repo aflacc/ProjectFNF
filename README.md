@@ -43,6 +43,7 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 - VS Ganondorf
 - VS Cube(The facility)
 - Test Modchart (AKA High effort Test)
+- Doodles Modchart (AKA High effort Doodles)
 
 # Special Thanks :)
 - KadeDev: Rating code and keybind code
