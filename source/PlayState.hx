@@ -1666,7 +1666,6 @@ class PlayState extends MusicBeatState
 	}
 	override public function update(elapsed:Float)
 	{
-		trace(paused);
 		#if !debug
 		perfectMode = false;
 		#end
@@ -1983,11 +1982,7 @@ class PlayState extends MusicBeatState
 					{
 						daNote.visible = false;
 					}
-					if (FlxG.save.data.betanotestrums) {
-						daNote.x = strumLineNotes.members[noteNum].x;
-					} else {
-						daNote.x = strumLineNotes.members[noteNum].x + 30;
-					}
+					daNote.x = strumLineNotes.members[noteNum].x;
 				}
 
 				if (daNote.tooLate)

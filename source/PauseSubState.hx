@@ -108,6 +108,7 @@ class PauseSubState extends MusicBeatSubstate
 			switch (daSelected)
 			{
 				case "Resume":
+					if (FlxG.save.data.countdownafterpause) {
 					var swagCounter = 0;
 					// I HAD TO DO IT HERE THE WHOLE TIME IMA KMS
 					var sussyTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
@@ -232,6 +233,9 @@ class PauseSubState extends MusicBeatSubstate
 							swagCounter += 1;
 							// generateSong('fresh');
 						}, 5);
+					} else {
+							close();
+						}
 				case "Restart Song":
 					FlxG.resetState();
 				case "Exit to menu":

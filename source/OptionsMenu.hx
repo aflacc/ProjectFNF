@@ -82,9 +82,9 @@ class OptionsMenu extends MusicBeatState
 					case "Change Note Theme":
 						if (!FlxG.save.data.enablemissanimations)
 							FlxG.save.data.notetheme = "NOTE";
-					case "Beta Note Strums":
-						if (!FlxG.save.data.betanotestrums)
-							FlxG.save.data.betanotestrums = controlsStrings[curSelected].split(" || ")[2];
+					case "Countdown After Pause":
+						if (!FlxG.save.data.countdownafterpause)
+							FlxG.save.data.countdownafterpause = controlsStrings[curSelected].split(" || ")[2];
 					}
 					FlxG.save.flush();
 
@@ -147,9 +147,9 @@ class OptionsMenu extends MusicBeatState
 					case "Advanced Info Bar":
 						FlxG.save.data.advancedinfobar = !FlxG.save.data.advancedinfobar;
 						optionsText.text = FlxG.save.data.advancedinfobar;
-					case "Beta Note Strums":
-						FlxG.save.data.betanotestrums = !FlxG.save.data.betanotestrums;
-						optionsText.text = FlxG.save.data.betanotestrums;
+					case "Countdown After Pause":
+						FlxG.save.data.countdownafterpause = !FlxG.save.data.countdownafterpause;
+						optionsText.text = FlxG.save.data.countdownafterpause;
 					case "Change Note Theme":
 						noteselection++;
 						if (noteselection > notetypes.length - 1) { noteselection = 0; }
@@ -225,8 +225,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.enablemissanimations;
 			case "Advanced Info Bar":
 				optionsText.text = FlxG.save.data.advancedinfobar;
-			case "Beta Note Strums":
-				optionsText.text = FlxG.save.data.betanotestrums;
+			case "Countdown After Pause":
+				optionsText.text = FlxG.save.data.countdownafterpause;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE") {
 					optionsText.text = "NOTE(DEFAULT)";
