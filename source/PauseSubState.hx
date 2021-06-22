@@ -26,6 +26,10 @@ class PauseSubState extends MusicBeatSubstate
 
 	var pauseMusic:FlxSound;
 
+	var bg:FlxSprite;
+	var levelDifficulty:FlxText;
+	var levelInfo:FlxText;
+
 	public function new(x:Float, y:Float)
 	{
 		super();
@@ -36,19 +40,19 @@ class PauseSubState extends MusicBeatSubstate
 
 		FlxG.sound.list.add(pauseMusic);
 
-		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
 
-		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
+		levelInfo = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += PlayState.SONG.song;
 		levelInfo.scrollFactor.set();
 		levelInfo.setFormat(Paths.font("vcr.ttf"), 32);
 		levelInfo.updateHitbox();
 		add(levelInfo);
 
-		var levelDifficulty:FlxText = new FlxText(20, 15 + 32, 0, "", 32);
+		levelDifficulty = new FlxText(20, 15 + 32, 0, "", 32);
 		levelDifficulty.text += CoolUtil.difficultyString();
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
@@ -113,7 +117,12 @@ class PauseSubState extends MusicBeatSubstate
 					// I HAD TO DO IT HERE THE WHOLE TIME IMA KMS
 					var sussyTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 						{
-				
+							// chefs kiss
+							bg.visible = false;
+							grpMenuShit.visible = false;
+							levelInfo.visible = false;
+							levelDifficulty.visible = false;
+							
 							var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 							introAssets.set('default', ['ready', "set", "go"]);
 							introAssets.set('school', ['weeb/pixelUI/ready-pixel', 'weeb/pixelUI/set-pixel', 'weeb/pixelUI/date-pixel']);
