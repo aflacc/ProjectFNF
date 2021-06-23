@@ -29,6 +29,7 @@ class PauseSubState extends MusicBeatSubstate
 	var bg:FlxSprite;
 	var levelDifficulty:FlxText;
 	var levelInfo:FlxText;
+	var closed:Bool = false;
 
 	public function new(x:Float, y:Float)
 	{
@@ -112,8 +113,9 @@ class PauseSubState extends MusicBeatSubstate
 			switch (daSelected)
 			{
 				case "Resume":
-					if (FlxG.save.data.countdownafterpause) {
+					if (FlxG.save.data.countdownafterpause && !closed) {
 					var swagCounter = 0;
+					closed = true;
 					// I HAD TO DO IT HERE THE WHOLE TIME IMA KMS
 					var sussyTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 						{
