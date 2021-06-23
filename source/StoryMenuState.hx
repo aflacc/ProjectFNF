@@ -30,7 +30,8 @@ class StoryMenuState extends MusicBeatState
 		['Pico', 'Philly', "Blammed"],
 		['Satin-Panties', "High", "Milf"],
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
-		['Senpai', 'Roses', 'Thorns']
+		['Senpai', 'Roses', 'Thorns'],
+		['Friendly']
 	];
 	var weekColors:Array<FlxColor> = [
 		0xFFca1f6f, // GF
@@ -39,11 +40,12 @@ class StoryMenuState extends MusicBeatState
 		0xFFceec75, // PICO
 		0xFFec7aac, // MOM
 		0xFFffffff, // PARENTS-CHRISTMAS (Look I don't know what a Better color would be.)
-		0xFFffaa6f // SENPAI
+		0xFFffaa6f, // SENPAI
+		0xFF82b6ff // Star
 	];
 	var curDifficulty:Int = 1; // 0 = easy, 1 = normal, 2 = hard
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true]; // If the weeks are unlocked
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true]; // If the weeks are unlocked
 
 	var weekCharacters:Array<Dynamic> = [
 		// Characters that are displayed in the story mode menu
@@ -53,7 +55,8 @@ class StoryMenuState extends MusicBeatState
 		['pico', 'bf', 'gf'],
 		['mom', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf']
+		['senpai', 'bf', 'gf'],
+		['dad','bf','gf']
 	];
 
 	var weekNames:Array<String> = [
@@ -64,7 +67,8 @@ class StoryMenuState extends MusicBeatState
 		"PICO",
 		"MOMMY MUST MURDER",
 		"RED SNOW",
-		"hating simulator ft. moawling"
+		"hating simulator ft. moawling",
+		"Star of the Show" // i couldn't come up with anything good lol
 	];
 
 	var txtWeekTitle:FlxText;
@@ -92,7 +96,7 @@ class StoryMenuState extends MusicBeatState
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('freakyMenuLoop_star'));
 		}
 
 		persistentUpdate = persistentDraw = true;

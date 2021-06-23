@@ -13,7 +13,7 @@ class Config extends MusicBeatState
 	 * 
 	 * Default = **["Friday", "Night", "Funkin"]**
 	 */
-	 public static var TITLEMESSAGE:Array<String> = ["Friday", "Night", "Funkin"];
+	 public static var TITLEMESSAGE:Array<String> = ["Friday Night", "Funkin", "Vs Star"];
 
 	/**
 	 * Makes the Girlfriend sit on the Limo instead of the Speaker in week 4.
@@ -28,7 +28,7 @@ class Config extends MusicBeatState
 	 * 
 	 * Default = **true**
 	 */
-	public static var CONFIGTitle:Bool = true;
+	public static var CONFIGTitle:Bool = false;
 
 	/**
 	 * Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
@@ -42,7 +42,7 @@ class Config extends MusicBeatState
 	 * 
 	 * Default = **ProjectFNF**
 	 */
-	public static var ModName:String = 'ProjectFNF';
+	public static var ModName:String = 'VS Star';
 
 	/**
 	 * This is a WIP thing. I don't fully know what I'm gonna do with this but I might just have it make the Output be a little more in depth.

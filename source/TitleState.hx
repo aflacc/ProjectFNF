@@ -129,7 +129,7 @@ class TitleState extends MusicBeatState
 			// music.loadStream(Paths.music('freakyMenu'));
 			// FlxG.sound.list.add(music);
 			// music.play();
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('freakyMenu_star'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
@@ -192,7 +192,7 @@ class TitleState extends MusicBeatState
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
 
-		credTextShit = new Alphabet(0, 0, "ninjamuffin99\nPhantomArcade\nkawaisprite\nevilsk8er\naflac", true);
+		credTextShit = new Alphabet(0, 0, "starundrscre\nother people\ni have to\ninclude\nlater", true);
 		credTextShit.screenCenter();
 
 		// credTextShit.alignment = CENTER;
@@ -304,7 +304,7 @@ class TitleState extends MusicBeatState
 				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState && skip == false)
 				{
 					FlxG.switchState(new OutdatedSubState());
-					trace('OLD VERSION!');
+					trace('guys how do i remove the function to check the old version');
 					trace('old ver');
 					trace(version.trim());
 					trace('cur ver');
@@ -373,7 +373,7 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er', 'aflac']);
+				createCoolText(['starundrscre', 'other people', 'i have to', 'include', 'later']);
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
