@@ -7,6 +7,7 @@ if you're planning to make use of this, credit me (StarUndrscre)
 ***
 
 ## Credits
+- **StarUndrscre: most of the coding, music making, and charting**
 
 ### Made with [Aflacc's ProjectFNF](https://github.com/aflacc/ProjectFNF)
 
