@@ -31,7 +31,7 @@ class StoryMenuState extends MusicBeatState
 		['Satin-Panties', "High", "Milf"],
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
 		['Senpai', 'Roses', 'Thorns'],
-		['Friendly']
+		['Friendly','Offset']
 	];
 	var weekColors:Array<FlxColor> = [
 		0xFFca1f6f, // GF
