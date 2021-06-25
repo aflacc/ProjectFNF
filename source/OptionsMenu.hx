@@ -215,6 +215,10 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.dadnotesvisible;
 			case "Enable Miss Animations":
 				optionsText.text = FlxG.save.data.enablemissanimations;
+			case "Advanced Info Bar":
+				optionsText.text = FlxG.save.data.advancedinfobar;
+			case "Countdown After Pause":
+				optionsText.text = FlxG.save.data.countdownafterpause;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{
@@ -226,8 +230,9 @@ class OptionsMenu extends MusicBeatState
 				}
 				viewer.visible = true;
 				viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
-				viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
-				viewer.animation.play('confirm');
+				viewer.animation.addByPrefix('static', 'arrowUP', 24, true);
+				viewer.animation.addByPrefix('confirm', 'up confirm', 24, false);
+				viewer.animation.play('static');
 			default: // lol im lazy
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";

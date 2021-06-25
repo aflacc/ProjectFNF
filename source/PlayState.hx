@@ -1500,14 +1500,16 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{
-			if (FlxG.sound.music != null && !startingSong)
-			{
-				resyncVocals();
-			}
 
-			if (!startTimer.finished)
-				startTimer.active = true;
-			paused = false;
+			// ITS 1:49 AM IOM SO FIUCKING TIREEDDD
+			if (FlxG.sound.music != null && !startingSong)
+				{
+					resyncVocals();
+				}
+	
+				if (!startTimer.finished)
+					startTimer.active = true;
+				paused = false;
 
 			#if desktop
 			if (startTimer.finished)
@@ -1641,22 +1643,26 @@ class PlayState extends MusicBeatState
 					rating = "&F&";
 				}
 		
-				/*	infoTxt.text = "Rating: " + rating + "// Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // Accuracy: " + accuracy + "%";
-					infoTxt.updateHitbox(); */
-		
-				// the things i do for funny colors
-				infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
-					+ " // Accuracy: " + accuracy + "%",
-					[
-						new FlxTextFormatMarkerPair(fullClearFormat, "!"),
-						new FlxTextFormatMarkerPair(sFormat, "-"),
-						new FlxTextFormatMarkerPair(aFormat, "@"),
-						new FlxTextFormatMarkerPair(bFormat, "#"),
-						new FlxTextFormatMarkerPair(cFormat, "$"),
-						new FlxTextFormatMarkerPair(dFormat, "*"),
-						new FlxTextFormatMarkerPair(eFormat, "^"),
-						new FlxTextFormatMarkerPair(fFormat, "&")
-					]);
+				if (!FlxG.save.data.advancedinfobar) {
+						infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore;
+					//	infoTxt.updateHitbox(); 
+				} else {
+					// the things i do for funny colors
+					infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
+						+ " // Accuracy: " + accuracy + "%",
+						[
+							new FlxTextFormatMarkerPair(fullClearFormat, "!"),
+							new FlxTextFormatMarkerPair(sFormat, "-"),
+							new FlxTextFormatMarkerPair(aFormat, "@"),
+							new FlxTextFormatMarkerPair(bFormat, "#"),
+							new FlxTextFormatMarkerPair(cFormat, "$"),
+							new FlxTextFormatMarkerPair(dFormat, "*"),
+							new FlxTextFormatMarkerPair(eFormat, "^"),
+							new FlxTextFormatMarkerPair(fFormat, "&")
+						]);
+					}
+					// How did i not think of this earlier LOL
+					infoTxt.screenCenter(X);
 	}
 	override public function update(elapsed:Float)
 	{
@@ -2905,7 +2911,7 @@ class PlayState extends MusicBeatState
 	override function stepHit()
 	{
 		super.stepHit();
-		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20)
+		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20 && !paused)
 		{
 			resyncVocals();
 		}
