@@ -29,10 +29,13 @@ class OptionsMenu extends MusicBeatState
 	var optionsDesc:FlxText;
 
 	var viewer:FlxSprite;
-	
-	var notetypes = ["NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "STEPMANIA", "ETTERNA", "SPOOKY", "VAPORWAVE",  "HELLBEATS"];
-	var noteselection = 69; //funny number
-	
+
+	var notetypes = [
+		"NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "STEPMANIA", "ETTERNA", "SPOOKY", "VAPORWAVE", "HELLBEATS", "WAFELS3", "NEO", "SOFT", "TRANSPARENT",
+		"SPLASH"
+	];
+	var noteselection = 69; // funny number
+
 	override function create()
 	{
 		instance = this;
@@ -54,113 +57,118 @@ class OptionsMenu extends MusicBeatState
 		add(optionsBG);
 		add(optionsText);
 		add(optionsDesc);
-		
-			grpControls = new FlxTypedGroup<Alphabet>();
-			add(grpControls);
-			controlsStrings[controlsStrings.length + 1] = "setCustomize Keybinds";
-			for (i in 0...controlsStrings.length)
+
+		grpControls = new FlxTypedGroup<Alphabet>();
+		add(grpControls);
+		controlsStrings[controlsStrings.length + 1] = "setCustomize Keybinds";
+		for (i in 0...controlsStrings.length)
+		{
+			switch (controlsStrings[i].substring(3).split(" || ")[0])
 			{
-				switch(controlsStrings[i].substring(3).split(" || ")[0]) {
-					case "Ghost Tapping":
-						if (!FlxG.save.data.ghosttapping)
-							FlxG.save.data.ghosttapping = controlsStrings[curSelected].split(" || ")[2];
-					case "Downscroll":
-						if (!FlxG.save.data.downscroll)
-							FlxG.save.data.downscroll = controlsStrings[curSelected].split(" || ")[2];
-					case "Miss Shake":
-						if (!FlxG.save.data.missshake)
-							FlxG.save.data.missshake = controlsStrings[curSelected].split(" || ")[2];
-					case "Dad Notes Visible":
-						if (!FlxG.save.data.dadnotesvisible)
-							FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
-					case "Enable Miss Animations":
-						if (!FlxG.save.data.enablemissanimations)
-							FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
-					case "Change Note Theme":
-						if (!FlxG.save.data.enablemissanimations)
-							FlxG.save.data.notetheme = "NOTE";
-					}
-					FlxG.save.flush();
-
-
-				if (controlsStrings[i].indexOf('set') != -1)
-				{
-					var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3).split(" || ")[0], true, false);
-					controlLabel.isMenuItem = true;
-					controlLabel.targetY = i;
-					grpControls.add(controlLabel);
-				}
-				// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+				case "Ghost Tapping":
+					if (!FlxG.save.data.ghosttapping)
+						FlxG.save.data.ghosttapping = controlsStrings[curSelected].split(" || ")[2];
+				case "Downscroll":
+					if (!FlxG.save.data.downscroll)
+						FlxG.save.data.downscroll = controlsStrings[curSelected].split(" || ")[2];
+				case "Miss Shake":
+					if (!FlxG.save.data.missshake)
+						FlxG.save.data.missshake = controlsStrings[curSelected].split(" || ")[2];
+				case "Dad Notes Visible":
+					if (!FlxG.save.data.dadnotesvisible)
+						FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
+				case "Enable Miss Animations":
+					if (!FlxG.save.data.enablemissanimations)
+						FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
+				case "Change Note Theme":
+					if (!FlxG.save.data.enablemissanimations)
+						FlxG.save.data.notetheme = "NOTE";
 			}
+			FlxG.save.flush();
+
+			if (controlsStrings[i].indexOf('set') != -1)
+			{
+				var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3).split(" || ")[0], true, false);
+				controlLabel.isMenuItem = true;
+				controlLabel.targetY = i;
+				grpControls.add(controlLabel);
+			}
+			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
+		}
 		viewer = new FlxSprite(1000, 300);
 		add(viewer);
 		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
 		viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
 		viewer.animation.play('confirm');
-	//		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
+		//		viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
 
 		noteselection = notetypes.indexOf(FlxG.save.data.notetheme);
 		super.create();
 		changeSelection();
-	//	openSubState(new OptionsSubState());
+		//	openSubState(new OptionsSubState());
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		
-			if (controls.ACCEPT)
+		if (controls.ACCEPT)
+		{
+			// hey, atleast its not yanderedev
+			// trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
+			switch (controlsStrings[curSelected].substring(3).split(" || ")[0])
 			{
-				// hey, atleast its not yanderedev
-				//trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
-				switch(controlsStrings[curSelected].substring(3).split(" || ")[0]) {
-					case "Downscroll":
-						//trace("Before: " + FlxG.save.data.downscroll);
-						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
-						optionsText.text = FlxG.save.data.downscroll;
-						//trace("After: " + FlxG.save.data.downscroll);
-					case "Ghost Tapping":
-						//trace("Before: " + FlxG.save.data.ghosttapping);
-						FlxG.save.data.ghosttapping = !FlxG.save.data.ghosttapping;
-						optionsText.text = FlxG.save.data.ghosttapping;
-						//trace("After: " + FlxG.save.data.ghosttapping);
-					case "Miss Shake":
-						FlxG.save.data.missshake = !FlxG.save.data.missshake;
-						optionsText.text = FlxG.save.data.missshake;//FlxG.save.data.dadnotesvisible
-					case "Dad Notes Visible":
-						FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
-						optionsText.text = FlxG.save.data.dadnotesvisible;
-					case "Enable Miss Animations":
-						FlxG.save.data.enablemissanimations = !FlxG.save.data.enablemissanimations;
-						optionsText.text = FlxG.save.data.enablemissanimations;
-					case "Change Note Theme":
-						noteselection++;
-						if (noteselection > notetypes.length - 1) { noteselection = 0; }
-						FlxG.save.data.notetheme = notetypes[noteselection];
-						if (FlxG.save.data.notetheme == "NOTE") {
-							optionsText.text = "NOTE(DEFAULT)";
-						} else {
-							optionsText.text = FlxG.save.data.notetheme;
-						}
-						viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
-						viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
-						viewer.animation.play('confirm');
-					//	trace(FlxG.save.data.notetheme);
-					default: // lol
-						OptionsMenu.instance.openSubState(new KeyBindMenu());
-				}
-				FlxG.save.flush();
-				// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
-			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];
+				case "Downscroll":
+					// trace("Before: " + FlxG.save.data.downscroll);
+					FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
+					optionsText.text = FlxG.save.data.downscroll;
+				// trace("After: " + FlxG.save.data.downscroll);
+				case "Ghost Tapping":
+					// trace("Before: " + FlxG.save.data.ghosttapping);
+					FlxG.save.data.ghosttapping = !FlxG.save.data.ghosttapping;
+					optionsText.text = FlxG.save.data.ghosttapping;
+				// trace("After: " + FlxG.save.data.ghosttapping);
+				case "Miss Shake":
+					FlxG.save.data.missshake = !FlxG.save.data.missshake;
+					optionsText.text = FlxG.save.data.missshake; // FlxG.save.data.dadnotesvisible
+				case "Dad Notes Visible":
+					FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
+					optionsText.text = FlxG.save.data.dadnotesvisible;
+				case "Enable Miss Animations":
+					FlxG.save.data.enablemissanimations = !FlxG.save.data.enablemissanimations;
+					optionsText.text = FlxG.save.data.enablemissanimations;
+				case "Change Note Theme":
+					noteselection++;
+					if (noteselection > notetypes.length - 1)
+					{
+						noteselection = 0;
+					}
+					FlxG.save.data.notetheme = notetypes[noteselection];
+					if (FlxG.save.data.notetheme == "NOTE")
+					{
+						optionsText.text = "NOTE(DEFAULT)";
+					}
+					else
+					{
+						optionsText.text = FlxG.save.data.notetheme;
+					}
+					viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
+					viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
+					viewer.animation.play('confirm');
+				//	trace(FlxG.save.data.notetheme);
+				default: // lol
+					OptionsMenu.instance.openSubState(new KeyBindMenu());
 			}
-				if (controls.BACK)
-					FlxG.switchState(new MainMenuState());
-				if (controls.UP_P)
-					changeSelection(-1);
-				if (controls.DOWN_P)
-					changeSelection(1);
-		 
+			FlxG.save.flush();
+			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
+			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];
+		}
+		if (controls.BACK)
+			FlxG.switchState(new MainMenuState());
+		if (controls.UP_P)
+			changeSelection(-1);
+		if (controls.DOWN_P)
+			changeSelection(1);
 	}
 
 	function waitingInput():Void
@@ -193,10 +201,10 @@ class OptionsMenu extends MusicBeatState
 		if (curSelected >= grpControls.length)
 			curSelected = 0;
 
-
-		//trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
+		// trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
 		viewer.visible = false;
-		switch(controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+		switch (controlsStrings[curSelected].substring(3).split(" || ")[0])
+		{
 			case "Ghost Tapping":
 				optionsText.text = FlxG.save.data.ghosttapping;
 			case "Downscroll":
@@ -208,9 +216,12 @@ class OptionsMenu extends MusicBeatState
 			case "Enable Miss Animations":
 				optionsText.text = FlxG.save.data.enablemissanimations;
 			case "Change Note Theme":
-				if (FlxG.save.data.notetheme == "NOTE") {
+				if (FlxG.save.data.notetheme == "NOTE")
+				{
 					optionsText.text = "NOTE(DEFAULT)";
-				} else {
+				}
+				else
+				{
 					optionsText.text = FlxG.save.data.notetheme;
 				}
 				viewer.visible = true;
@@ -230,7 +241,7 @@ class OptionsMenu extends MusicBeatState
 		{
 			item.targetY = bullShit - curSelected;
 			bullShit++;
-			
+
 			item.alpha = 0.6;
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
