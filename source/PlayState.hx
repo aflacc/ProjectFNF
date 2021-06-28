@@ -49,6 +49,8 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	public static var instance:PlayState;
+
 	var characterCol:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
 	var col:Array<FlxColor> = [
 		0xFF51d8fb, // BF
@@ -125,7 +127,7 @@ class PlayState extends MusicBeatState
 
 	private var iconP1:HealthIcon;
 	private var iconP2:HealthIcon;
-	private var camHUD:FlxCamera;
+	public var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
