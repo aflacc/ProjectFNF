@@ -1623,7 +1623,7 @@ class PlayState extends MusicBeatState
 				}
 				else if (accuracy > 90)
 				{
-					rating = "-S-";
+					rating = "<S<";
 				}
 				else if (accuracy > 80)
 				{
@@ -1662,7 +1662,7 @@ class PlayState extends MusicBeatState
 						+ " // Accuracy: " + accuracy + "% // ProjectFNF " + Application.current.meta.get('version'),
 						[
 							new FlxTextFormatMarkerPair(fullClearFormat, "!"),
-							new FlxTextFormatMarkerPair(sFormat, "-"),
+							new FlxTextFormatMarkerPair(sFormat, "<"),
 							new FlxTextFormatMarkerPair(aFormat, "@"),
 							new FlxTextFormatMarkerPair(bFormat, "#"),
 							new FlxTextFormatMarkerPair(cFormat, "$"),
