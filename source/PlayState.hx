@@ -1206,6 +1206,10 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
+
+				// making sure i got kade engine to work correctly lol
+					//ModCharts.tweenCameraAngle(180, 1, FlxG.camera);
+
 			}
 			swagCounter += 1;
 			// generateSong('fresh');
