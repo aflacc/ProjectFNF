@@ -5,4 +5,5 @@ setDad Notes Visible || Dad(Enemies) notes are visible || true
 setEnable Miss Animations || Bf's miss animations play || true
 setAdvanced Info Bar || Shows accuracy and rating in the health bar. || true
 setCountdown After Pause || Counts down (3, 2, 1) after you unpause the game || true
+setBot Play || Enable Bot play to showcase your mods. WIP || false;
 setChange Note Theme || Change the theme of your notes. (PRESS SEVEN TO PLAY THE ANIMATION) || NOTE

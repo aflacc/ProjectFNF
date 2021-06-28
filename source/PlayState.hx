@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
 import haxe.Timer;
@@ -1649,13 +1650,16 @@ class PlayState extends MusicBeatState
 					rating = "&F&";
 				}
 		
+				if (FlxG.save.data.botplay) {
+					infoTxt.text = "BOTPLAY // ProjectFNF " + Application.current.meta.get('version');
+				}
 				if (!FlxG.save.data.advancedinfobar) {
-						infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore;
+						infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // ProjectFNF " + Application.current.meta.get('version');
 					//	infoTxt.updateHitbox(); 
 				} else {
 					// the things i do for funny colors
 					infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
-						+ " // Accuracy: " + accuracy + "%",
+						+ " // Accuracy: " + accuracy + "% // ProjectFNF " + Application.current.meta.get('version'),
 						[
 							new FlxTextFormatMarkerPair(fullClearFormat, "!"),
 							new FlxTextFormatMarkerPair(sFormat, "-"),
@@ -2460,17 +2464,6 @@ class PlayState extends MusicBeatState
 
 			notes.forEachAlive(function(daNote:Note)
 			{
-				/*if (left)
-							goodNoteHit(daNote);
-					case 1:
-						if (down)
-							goodNoteHit(daNote);
-					case 2:
-						if (up)
-							goodNoteHit(daNote);
-					case 3:
-						if (right)
-							goodNoteHit(daNote); */
 				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
 				{
 					// the sorting probably doesn't need to be in here? who cares lol
@@ -2505,7 +2498,7 @@ class PlayState extends MusicBeatState
 									if (controlArray[ignoreList[shit]])
 										inIgnoreList = true;
 								}
-								if (!inIgnoreList)
+								if (!inIgnoreList && !FlxG.save.data.botplay)
 									badNoteCheck();
 							}
 						}
@@ -2782,7 +2775,7 @@ class PlayState extends MusicBeatState
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
 		songNotesHit += 1;
-		if (keyP)
+		if (keyP || FlxG.save.data.botplay)
 			goodNoteHit(note);
 		else
 		{
