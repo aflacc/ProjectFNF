@@ -249,7 +249,7 @@ class OptionsMenu extends MusicBeatState
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";
 			default: // i am so lazy :LOOOOL I cant figure this out
 				optionsText.text = "Press ENTER";
-				optionsDesc.text = "Customize your info bar by adding modules.(WIP)";
+				optionsDesc.text = "Customize your info bar by adding modules.(WIP, DOES NOT WORK IF ADVANCED INFO TEXT IS OFF)";
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];

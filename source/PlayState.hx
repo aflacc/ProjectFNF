@@ -1657,8 +1657,28 @@ class PlayState extends MusicBeatState
 					//	infoTxt.updateHitbox(); 
 				} else {
 					// the things i do for funny colors
-					infoTxt.applyMarkup("Rating: " + rating + " // Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore
-						+ " // Accuracy: " + accuracy + "% // ProjectFNF " + Application.current.meta.get('version'),
+					var finalthing = "";
+					var haxewantsthis:Array<String> = FlxG.save.data.infobar;
+
+					for (item in haxewantsthis) {
+						var lol:Any = "ERROR";
+						switch(item) {
+							case "Rating":
+								lol = rating;
+							case "Accuracy":
+								lol = accuracy + "%";
+							case "Score":
+								lol = songScore;
+							case "Misses":
+								lol = songNotesMissed;
+							case "Hits":
+								lol = songNotesHit;
+							case "Health":
+								lol = healthBar.percent;
+						}
+						finalthing += item + ": " + lol + " // ";
+					}
+					infoTxt.applyMarkup(finalthing + "ProjectFNF " + Application.current.meta.get('version'),
 						[
 							new FlxTextFormatMarkerPair(fullClearFormat, "!"),
 							new FlxTextFormatMarkerPair(sFormat, "<"),
