@@ -60,7 +60,8 @@ class OptionsMenu extends MusicBeatState
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
-		controlsStrings[controlsStrings.length + 1] = "setCustomize Keybinds";
+		controlsStrings[controlsStrings.length] = "setCustomize Keybinds"; // I HAVE SEVERE AUTISM LOOODALOFDALK
+		controlsStrings[controlsStrings.length + 1] = "setCustomize Info Bar";
 		for (i in 0...controlsStrings.length)
 		{
 			switch (controlsStrings[i].substring(3).split(" || ")[0])
@@ -118,7 +119,7 @@ class OptionsMenu extends MusicBeatState
 		if (controls.ACCEPT)
 		{
 			// hey, atleast its not yanderedev
-			// trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
+			 trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0])
 			{
 				case "Downscroll":
@@ -162,8 +163,10 @@ class OptionsMenu extends MusicBeatState
 					viewer.animation.addByPrefix('confirm', 'up confirm', 24, true);
 					viewer.animation.play('confirm');
 				//	trace(FlxG.save.data.notetheme);
-				default: // lol
+				case "Customize Keybinds":
 					OptionsMenu.instance.openSubState(new KeyBindMenu());
+				default: // lol
+					OptionsMenu.instance.openSubState(new InfoBarSubstate());
 			}
 			FlxG.save.flush();
 			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
@@ -241,9 +244,12 @@ class OptionsMenu extends MusicBeatState
 				viewer.animation.addByPrefix('static', 'arrowUP', 24, true);
 				viewer.animation.addByPrefix('confirm', 'up confirm', 24, false);
 				viewer.animation.play('static');
-			default: // lol im lazy
+			case "Customize Keybinds":
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize the keys you use. (Up down left right)";
+			default: // i am so lazy :LOOOOL I cant figure this out
+				optionsText.text = "Press ENTER";
+				optionsDesc.text = "Customize your info bar by adding modules.(WIP)";
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];
