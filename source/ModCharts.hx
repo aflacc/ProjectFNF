@@ -258,7 +258,11 @@ class ModCharts
 	// kade shit
 					
 	/**
-	* Ported from Kade Engine. WIP
+	* Moves a camera to another position.
+	* @param toX		The x to go to.
+	* @param toY		The y to go to.
+	* @param time		How long it takes to get there.
+	* @param camera		The camera to move
 	**/
 	static public function tweenCameraPos(toX:Int, toY:Int, time:Float, camera:Any) {
 		FlxTween.tween(camera, {x: toX, y: toY}, time, {ease: FlxEase.linear} );

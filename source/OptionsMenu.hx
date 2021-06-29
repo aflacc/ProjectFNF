@@ -61,7 +61,6 @@ class OptionsMenu extends MusicBeatState
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
 		controlsStrings[controlsStrings.length] = "setCustomize Keybinds"; // I HAVE SEVERE AUTISM LOOODALOFDALK
-		controlsStrings[controlsStrings.length + 1] = "setCustomize Info Bar";
 		for (i in 0...controlsStrings.length)
 		{
 			switch (controlsStrings[i].substring(3).split(" || ")[0])
@@ -88,8 +87,9 @@ class OptionsMenu extends MusicBeatState
 					if (!FlxG.save.data.hitsounds)
 						FlxG.save.data.hitsounds = controlsStrings[curSelected].split(" || ")[2];
 				case "Change Note Theme":
-					if (!FlxG.save.data.enablemissanimations)
+					if (!FlxG.save.data.notetheme)
 						FlxG.save.data.notetheme = "NOTE";
+				case "Customize Info Bar":
 			}
 			FlxG.save.flush();
 
@@ -125,6 +125,12 @@ class OptionsMenu extends MusicBeatState
 			 trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0])
 			{
+				case "Advanced Info Bar":
+					FlxG.save.data.advancedinfobar = !FlxG.save.data.advancedinfobar;
+					optionsText.text = FlxG.save.data.advancedinfobar;
+				case "Countdown After Pause":
+					FlxG.save.data.countdownafterpause = !FlxG.save.data.countdownafterpause;
+					optionsText.text = FlxG.save.data.countdownafterpause;
 				case "Downscroll":
 					// trace("Before: " + FlxG.save.data.downscroll);
 					FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
@@ -171,7 +177,7 @@ class OptionsMenu extends MusicBeatState
 				//	trace(FlxG.save.data.notetheme);
 				case "Customize Keybinds":
 					OptionsMenu.instance.openSubState(new KeyBindMenu());
-				default: // lol
+				case "Customize Info Bar": // lol
 					OptionsMenu.instance.openSubState(new InfoBarSubstate());
 			}
 			FlxG.save.flush();
@@ -254,7 +260,6 @@ class OptionsMenu extends MusicBeatState
 				viewer.animation.play('static');
 			case "Customize Keybinds":
 				optionsText.text = "Press ENTER";
-				optionsDesc.text = "Customize the keys you use. (Up down left right)";
 			default: // i am so lazy :LOOOOL I cant figure this out
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize your info bar by adding modules.(WIP, DOES NOT WORK IF ADVANCED INFO TEXT IS OFF)";
