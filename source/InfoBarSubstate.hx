@@ -39,17 +39,19 @@ class InfoBarSubstate extends FlxSubState
         funny.alpha = 0;
         view.alpha = 0;
 
-        FlxTween.tween(blackBox, {alpha: 0.7}, 1, {ease: FlxEase.expoInOut});
-        FlxTween.tween(funny, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
-        FlxTween.tween(view, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
-
         var amogus = 20;
         for (option in available) {
             var optionBtn = new FlxButton(amogus, 300, option, function() {addFeature(option);});
             optionBtn.scale.set(1, 2);
             btns.add(optionBtn);
+            optionBtn.alpha = 0;
+            FlxTween.tween(optionBtn, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
             amogus = amogus + 90;
         }
+
+        FlxTween.tween(blackBox, {alpha: 0.7}, 1, {ease: FlxEase.expoInOut});
+        FlxTween.tween(funny, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
+        FlxTween.tween(view, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
 
         
 
