@@ -166,6 +166,8 @@ class PlayState extends MusicBeatState
 	var good = 0;
 	var sick = 0;
 
+	var totalAccuracy:Float = 0;
+
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
@@ -1612,10 +1614,13 @@ class PlayState extends MusicBeatState
 	var dFormat = new FlxTextFormat(FlxColor.ORANGE);
 	var eFormat = new FlxTextFormat(FlxColor.BLUE);
 	var fFormat = new FlxTextFormat(FlxColor.PURPLE);
+	var fcFormat = new FlxTextFormat(FlxColor.fromRGB(255, 252, 97));
 
 	function updateInfo() {
 		// accuracy!!
-		var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
+		//var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
+		var accuracy = FlxMath.roundDecimal((totalAccuracy / (songNotesHit + songNotesMissed) * 100), 2);
+
 		if (Math.isNaN(accuracy))
 				{
 					accuracy = 100;
@@ -1625,7 +1630,7 @@ class PlayState extends MusicBeatState
 				var rating = "??"; // incase it doesnt load or start idk
 				if (accuracy == 100)
 				{
-					rating = "!FC!";
+					rating = "!GFC!";
 				}
 				else if (accuracy > 90)
 				{
@@ -1654,6 +1659,10 @@ class PlayState extends MusicBeatState
 				else
 				{
 					rating = "&F&";
+				}
+
+				if (songNotesMissed == 0) {
+					rating = rating + "(>FC>)";
 				}
 		
 				if (FlxG.save.data.botplay) {
@@ -1703,7 +1712,8 @@ class PlayState extends MusicBeatState
 							new FlxTextFormatMarkerPair(cFormat, "$"),
 							new FlxTextFormatMarkerPair(dFormat, "*"),
 							new FlxTextFormatMarkerPair(eFormat, "^"),
-							new FlxTextFormatMarkerPair(fFormat, "&")
+							new FlxTextFormatMarkerPair(fFormat, "&"),
+							new FlxTextFormatMarkerPair(fcFormat, ">")
 						]);
 					}
 					// How did i not think of this earlier LOL
@@ -2335,14 +2345,19 @@ class PlayState extends MusicBeatState
 		switch(daRating) {
 			case "miss":
 				songNotesMissed++;
+				totalAccuracy += 0;
 			case "shit":
 				shit++;
+				totalAccuracy += 0.1; // absolute dogshit
 			case "bad":
 				bad++;
+				totalAccuracy += 0.5; // ass. 50% 
 			case "good":
 				good++;
+				totalAccuracy += 0.7; // u aight
 			case "sick":
 				sick++;
+				totalAccuracy += 1; // swag shit homie
 		}
 		/*if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{

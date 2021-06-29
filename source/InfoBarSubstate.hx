@@ -46,7 +46,7 @@ class InfoBarSubstate extends FlxSubState
         var amogus = 20;
         for (option in available) {
             var optionBtn = new FlxButton(amogus, 300, option, function() {addFeature(option);});
-            optionBtn.scale.x = optionBtn.scale.y = 1.1;
+            optionBtn.scale.set(1, 2);
             btns.add(optionBtn);
             amogus = amogus + 90;
         }
@@ -54,9 +54,12 @@ class InfoBarSubstate extends FlxSubState
         
 
         if (current == null) {
-            current = [];
+            current = ["Rating", "Misses", "Score", "Accuracy", "Health"];
             trace(save());
         }
+        view.text = "Current Bar: " + current.toString();
+        view.screenCenter();
+
         super.create();
 
     }
@@ -66,8 +69,6 @@ class InfoBarSubstate extends FlxSubState
             exit();
         }
 
-        view.text = current.toString();
-        view.screenCenter();
         super.update(elapsed);
     }
 
@@ -88,5 +89,7 @@ class InfoBarSubstate extends FlxSubState
             current.push(feature);
         }
         save();
+        view.text = "Current Bar:" + current.toString();
+        view.screenCenter();
     }
 }
