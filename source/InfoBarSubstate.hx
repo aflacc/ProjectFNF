@@ -14,7 +14,7 @@ import flixel.util.FlxColor;
 class InfoBarSubstate extends FlxSubState
 {
     var blackBox:FlxSprite;
-    var available:Array<String> = ["Rating", "Accuracy", "Score", "Misses", "Hits", "Health", "Week Score", "Misses", "Shits", "Bads", "Goods", "Sicks", "Reset"];
+    var available:Array<String> = ["Rating", "Accuracy", "Score", "Misses", "Hits", "Health", "Week Score", "Accuracy Score", "Notes Judged", "Shits", "Bads", "Goods", "Sicks", "Reset"];
     var current:Array<String> = FlxG.save.data.infobar;
     var view:FlxText;
     var btns:FlxTypedGroup<FlxButton>;
@@ -61,7 +61,6 @@ class InfoBarSubstate extends FlxSubState
         view.screenCenter();
 
         super.create();
-
     }
 
     override public function update(elapsed:Float) {

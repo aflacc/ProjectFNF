@@ -167,7 +167,6 @@ class PlayState extends MusicBeatState
 	var sick = 0;
 
 	var totalAccuracy:Float = 0;
-
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
@@ -1630,7 +1629,7 @@ class PlayState extends MusicBeatState
 				var rating = "??"; // incase it doesnt load or start idk
 				if (accuracy == 100)
 				{
-					rating = "!GFC!";
+					rating = "!SFC!";
 				}
 				else if (accuracy > 90)
 				{
@@ -1700,6 +1699,10 @@ class PlayState extends MusicBeatState
 								lol = Std.string(good);
 							case "Sicks":
 								lol = Std.string(sick);
+							case "Accuracy Score":
+								lol = totalAccuracy;
+							case "Notes Judged":
+								lol = songNotesHit + songNotesMissed;
 						}
 						finalthing += item + ": " + lol + " // ";
 					}
@@ -2200,10 +2203,12 @@ class PlayState extends MusicBeatState
 							else
 							{
 								health -= 0.075;
-								songNotesMissed += 1;
+							
+								songNotesMissed++;
 								vocals.volume = 0;
 								if (theFunne)
 									noteMiss(daNote.noteData, daNote);
+								updateInfo();
 							}
 		
 							daNote.visible = false;
@@ -2338,7 +2343,7 @@ class PlayState extends MusicBeatState
 		var rating:FlxSprite = new FlxSprite();
 		var score:Int = 500; // hehe
 
-		var daRating:String = "sick";
+		var daRating:String = "";
 
 		daRating = Ratings.CalculateRating(noteDiff);
 		score = 100; // till i stop being a lazy cunt
@@ -2346,18 +2351,30 @@ class PlayState extends MusicBeatState
 			case "miss":
 				songNotesMissed++;
 				totalAccuracy += 0;
+				//trace("miss added");
 			case "shit":
 				shit++;
 				totalAccuracy += 0.1; // absolute dogshit
+				//trace("shit added");
 			case "bad":
 				bad++;
-				totalAccuracy += 0.5; // ass. 50% 
+				totalAccuracy += 0.3; // ass. 30% 
+				//trace("bad added");
 			case "good":
 				good++;
 				totalAccuracy += 0.7; // u aight
+			//	trace("good added");
 			case "sick":
 				sick++;
 				totalAccuracy += 1; // swag shit homie
+				//trace("sick added");
+			default:
+				trace("oop");
+		}
+
+		// idk hopefully this works
+		if (totalAccuracy > (songNotesMissed + songNotesHit)) {
+			totalAccuracy = (songNotesMissed + songNotesHit);
 		}
 		/*if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
@@ -2719,7 +2736,7 @@ class PlayState extends MusicBeatState
 					gf.playAnim('sad');
 				}
 				combo = 0;
-				songNotesMissed += 1;
+				songNotesMissed++;
 	
 				//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
 				//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
@@ -2856,12 +2873,16 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
-		songNotesHit += 1;
 		if (keyP || FlxG.save.data.botplay)
 			goodNoteHit(note);
 		else
 		{
 			badNoteCheck(note);
+		}
+		songNotesHit += 1;
+		if (FlxG.save.data.hitsounds) {
+			//trace("ayo ima play hitsound ahahah");
+			FlxG.sound.play(Paths.sound("hitsound"), 0.5);
 		}
 	}
 

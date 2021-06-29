@@ -1,5 +1,6 @@
 setGhost Tapping || Hitting a key will not give you a miss || false
 setDownscroll || The notes scroll down || false
+setHit Sounds || A hit sound plays when you hit a note. || false
 setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false
 setDad Notes Visible || Dad(Enemies) notes are visible || true
 setEnable Miss Animations || Bf's miss animations play || true

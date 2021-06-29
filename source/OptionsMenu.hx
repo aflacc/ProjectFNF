@@ -84,6 +84,9 @@ class OptionsMenu extends MusicBeatState
 				case "Bot Play":
 					if (!FlxG.save.data.botplay)
 						FlxG.save.data.botplay = controlsStrings[curSelected].split(" || ")[2];
+				case "Hit Sounds":
+					if (!FlxG.save.data.hitsounds)
+						FlxG.save.data.hitsounds = controlsStrings[curSelected].split(" || ")[2];
 				case "Change Note Theme":
 					if (!FlxG.save.data.enablemissanimations)
 						FlxG.save.data.notetheme = "NOTE";
@@ -144,6 +147,9 @@ class OptionsMenu extends MusicBeatState
 				case "Bot Play":
 					FlxG.save.data.botplay = !FlxG.save.data.botplay;
 					optionsText.text = FlxG.save.data.botplay;
+				case "Hit Sounds":
+					FlxG.save.data.hitsounds = !FlxG.save.data.hitsounds;
+					optionsText.text = FlxG.save.data.hitsounds;
 				case "Change Note Theme":
 					noteselection++;
 					if (noteselection > notetypes.length - 1)
@@ -230,6 +236,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.countdownafterpause;
 			case "Bot Play":
 				optionsText.text = FlxG.save.data.botplay;
+			case "Hit Sounds":
+				optionsText.text = FlxG.save.data.hitsounds;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{
