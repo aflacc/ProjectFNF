@@ -2351,22 +2351,27 @@ class PlayState extends MusicBeatState
 			case "miss":
 				songNotesMissed++;
 				totalAccuracy += 0;
+				score = -100;
 				//trace("miss added");
 			case "shit":
 				shit++;
 				totalAccuracy += 0.1; // absolute dogshit
+				score = -50;
 				//trace("shit added");
 			case "bad":
 				bad++;
 				totalAccuracy += 0.3; // ass. 30% 
+				score = 30;
 				//trace("bad added");
 			case "good":
 				good++;
 				totalAccuracy += 0.7; // u aight
+				score = 100;
 			//	trace("good added");
 			case "sick":
 				sick++;
 				totalAccuracy += 1; // swag shit homie
+				score = 200;
 				//trace("sick added");
 			default:
 				trace("oop");
