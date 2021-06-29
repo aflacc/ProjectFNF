@@ -14,7 +14,7 @@ import flixel.util.FlxColor;
 class InfoBarSubstate extends FlxSubState
 {
     var blackBox:FlxSprite;
-    var available:Array<String> = ["Rating", "Accuracy", "Score", "Misses", "Hits", "Health", "Reset"];
+    var available:Array<String> = ["Rating", "Accuracy", "Score", "Misses", "Hits", "Health", "Week Score", "Misses", "Shits", "Bads", "Goods", "Sicks", "Reset"];
     var current:Array<String> = FlxG.save.data.infobar;
     var view:FlxText;
     var btns:FlxTypedGroup<FlxButton>;
@@ -40,15 +40,15 @@ class InfoBarSubstate extends FlxSubState
         view.alpha = 0;
 
         FlxTween.tween(blackBox, {alpha: 0.7}, 1, {ease: FlxEase.expoInOut});
-        FlxTween.tween(funny, {alpha: 0.7}, 1, {ease: FlxEase.expoInOut});
-        FlxTween.tween(view, {alpha: 0.7}, 1, {ease: FlxEase.expoInOut});
+        FlxTween.tween(funny, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
+        FlxTween.tween(view, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
 
-        var amogus = 150;
+        var amogus = 20;
         for (option in available) {
             var optionBtn = new FlxButton(amogus, 300, option, function() {addFeature(option);});
             optionBtn.scale.x = optionBtn.scale.y = 1.1;
             btns.add(optionBtn);
-            amogus = amogus + 150;
+            amogus = amogus + 90;
         }
 
         

@@ -160,6 +160,12 @@ class PlayState extends MusicBeatState
 	var funnySexBox:FlxSprite;
 	var timerTxt:FlxText;
 
+	var miss = 0;
+	var shit = 0;
+	var bad = 0;
+	var good = 0;
+	var sick = 0;
+
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
@@ -1675,6 +1681,16 @@ class PlayState extends MusicBeatState
 								lol = songNotesHit;
 							case "Health":
 								lol = healthBar.percent;
+							case "Week Score":
+								lol = campaignScore;
+							case "Shits":
+								lol = Std.string(shit);
+							case "Bads":
+								lol = Std.string(bad);
+							case "Goods":
+								lol = Std.string(good);
+							case "Sicks":
+								lol = Std.string(sick);
 						}
 						finalthing += item + ": " + lol + " // ";
 					}
@@ -2316,6 +2332,18 @@ class PlayState extends MusicBeatState
 
 		daRating = Ratings.CalculateRating(noteDiff);
 		score = 100; // till i stop being a lazy cunt
+		switch(daRating) {
+			case "miss":
+				songNotesMissed++;
+			case "shit":
+				shit++;
+			case "bad":
+				bad++;
+			case "good":
+				good++;
+			case "sick":
+				sick++;
+		}
 		/*if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
 			daRating = 'shit';
