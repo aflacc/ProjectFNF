@@ -1214,7 +1214,10 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
-
+				/*	for (note in 0...strumLineNotes.members.length) {
+						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
+				  }*/
+				  
 				// making sure i got kade engine to work correctly lol
 					//ModCharts.tweenCameraAngle(180, 1, FlxG.camera);
 
@@ -2040,7 +2043,7 @@ class PlayState extends MusicBeatState
 					{
 						daNote.visible = false;
 					}
-					daNote.x = strumLineNotes.members[noteNum].x;
+					//daNote.x = strumLineNotes.members[noteNum].x;
 				}
 
 				if (daNote.tooLate)
@@ -2178,16 +2181,22 @@ class PlayState extends MusicBeatState
 					{
 						daNote.visible = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].visible;
 						daNote.x = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
-						if (!daNote.isSustainNote)
+						if (!daNote.isSustainNote) {
 							daNote.angle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
+						} else {
+							daNote.x += 30;
+						}
 						daNote.alpha = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
 					}
 					else if (!daNote.wasGoodHit)
 					{
 						daNote.visible = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].visible;
 						daNote.x = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].x;
-						if (!daNote.isSustainNote)
+						if (!daNote.isSustainNote) {
 							daNote.angle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].angle;
+						} else {
+							daNote.x += 30;
+						}
 						daNote.alpha = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].alpha;
 					}
 
