@@ -187,6 +187,8 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	private var endingSong = false;
+
 	// modcharting
 
 	function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
@@ -1764,6 +1766,9 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.ENTER && endingSong) {
+			nextSong();
+		}
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -2244,6 +2249,93 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	function nextSong():Void {
+		if (isStoryMode)
+			{
+				campaignScore += songScore;
+	
+				storyPlaylist.remove(storyPlaylist[0]);
+	
+				if (storyPlaylist.length <= 0)
+				{
+					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+	
+					transIn = FlxTransitionableState.defaultTransIn;
+					transOut = FlxTransitionableState.defaultTransOut;
+	
+					FlxG.switchState(new StoryMenuState());
+	
+					// if ()
+					StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
+	
+					if (SONG.validScore)
+					{
+						NGio.unlockMedal(60961);
+						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+					}
+	
+					FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
+					FlxG.save.flush();
+				}
+				else
+				{
+					var difficulty:String = "";
+	
+					if (storyDifficulty == 0)
+						difficulty = '-easy';
+	
+					if (storyDifficulty == 2)
+						difficulty = '-hard';
+	
+					trace('[ProjectFNF] Loading song ' + SONG.song.toLowerCase());
+					trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
+	
+					if (SONG.song.toLowerCase() == 'eggnog')
+					{
+						var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+							-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+						blackShit.scrollFactor.set();
+						add(blackShit);
+						camHUD.visible = false;
+	
+						FlxG.sound.play(Paths.sound('Lights_Shut_off'));
+					}
+					if (SONG.song.toLowerCase() == 'south')
+					{
+						var whiteShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
+							-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 100, FlxG.height * 100, FlxColor.WHITE);
+						whiteShit.scrollFactor.set();
+						add(whiteShit);
+						camHUD.visible = false;
+	
+						FlxG.sound.play(Paths.sound('thunder_2'));
+					}
+	
+					if (SONG.song.toLowerCase() == 'south' || SONG.song.toLowerCase() == 'eggnog')
+					{
+						FlxTransitionableState.skipNextTransIn = false;
+						FlxTransitionableState.skipNextTransOut = false;
+					}
+					else
+					{
+						FlxTransitionableState.skipNextTransIn = true;
+						FlxTransitionableState.skipNextTransOut = true;
+					}
+					prevCamFollow = camFollow;
+	
+					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+					FlxG.sound.music.stop();
+	
+					LoadingState.loadAndSwitchState(new PlayState());
+				}
+			}
+			else
+			{
+				trace('[ProjectFNF] Returned to Freeplay');
+				FlxG.switchState(new FreeplayState());
+			}
+	}
+
 	function endSong():Void
 	{
 		canPause = false;
@@ -2255,94 +2347,67 @@ class PlayState extends MusicBeatState
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
 			#end
 		}
+        var blackBox:FlxSprite = new FlxSprite(0,0).makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
+        add(blackBox);
+		blackBox.alpha = 0;
+		FlxTween.tween(blackBox, {alpha: 0.7}, 0.3, {ease: FlxEase.expoInOut});
+		blackBox.cameras = [camHUD];
+		var stats = new FlxText(-100, -100, 0, "Stats: LOADING....");
+		stats.setFormat(Paths.font("vcr.ttf"), 50, FlxColor.WHITE, LEFT);
+		add(stats);
+		// rating
+		var accuracy = FlxMath.roundDecimal((totalAccuracy / (songNotesHit + songNotesMissed) * 100), 2);
 
-		if (isStoryMode)
-		{
-			campaignScore += songScore;
-
-			storyPlaylist.remove(storyPlaylist[0]);
-
-			if (storyPlaylist.length <= 0)
-			{
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
-
-				transIn = FlxTransitionableState.defaultTransIn;
-				transOut = FlxTransitionableState.defaultTransOut;
-
-				FlxG.switchState(new StoryMenuState());
-
-				// if ()
-				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
-
-				if (SONG.validScore)
+		if (Math.isNaN(accuracy))
 				{
-					NGio.unlockMedal(60961);
-					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+					accuracy = 100;
 				}
-
-				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
-				FlxG.save.flush();
-			}
-			else
-			{
-				var difficulty:String = "";
-
-				if (storyDifficulty == 0)
-					difficulty = '-easy';
-
-				if (storyDifficulty == 2)
-					difficulty = '-hard';
-
-				trace('[ProjectFNF] Loading song ' + SONG.song.toLowerCase());
-				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
-
-				if (SONG.song.toLowerCase() == 'eggnog')
+		
+				// rating!!
+				var rating = "??"; // incase it doesnt load or start idk
+				if (accuracy == 100)
 				{
-					var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-					blackShit.scrollFactor.set();
-					add(blackShit);
-					camHUD.visible = false;
-
-					FlxG.sound.play(Paths.sound('Lights_Shut_off'));
+					rating = "SFC";
 				}
-				if (SONG.song.toLowerCase() == 'south')
+				else if (accuracy > 90)
 				{
-					var whiteShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-						-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 100, FlxG.height * 100, FlxColor.WHITE);
-					whiteShit.scrollFactor.set();
-					add(whiteShit);
-					camHUD.visible = false;
-
-					FlxG.sound.play(Paths.sound('thunder_2'));
+					rating = "S";
 				}
-
-				if (SONG.song.toLowerCase() == 'south' || SONG.song.toLowerCase() == 'eggnog')
+				else if (accuracy > 80)
 				{
-					FlxTransitionableState.skipNextTransIn = false;
-					FlxTransitionableState.skipNextTransOut = false;
+					rating = "A";
+				}
+				else if (accuracy > 70)
+				{
+					rating = "B";
+				}
+				else if (accuracy > 60)
+				{
+					rating = "C";
+				}
+				else if (accuracy > 50)
+				{
+					rating = "D";
+				}
+				else if (accuracy > 30)
+				{
+					rating = "E";
 				}
 				else
 				{
-					FlxTransitionableState.skipNextTransIn = true;
-					FlxTransitionableState.skipNextTransOut = true;
+					rating = "F";
 				}
-				prevCamFollow = camFollow;
 
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
-				FlxG.sound.music.stop();
+				if (songNotesMissed == 0) {
+					rating = rating + "(FC)";
+				}
 
-				LoadingState.loadAndSwitchState(new PlayState());
-			}
-		}
-		else
-		{
-			trace('[ProjectFNF] Returned to Freeplay');
-			FlxG.switchState(new FreeplayState());
-		}
+		stats.text = 'Overall Rating: ' + rating + '\n Accuracy: ' + accuracy + '%\n Sicks: ' + sick + '\n Goods:' + good + '\n Bads:' + bad + '\n Shits:' + shit + '\n Misses: ' + songNotesMissed + '\n Final Score: ' + songScore + '\n Press ENTER to continue.';
+		stats.screenCenter();
+		stats.cameras = [camHUD];
+		// transferring to next song(or back to menu)
+		endingSong = true;
 	}
-
-	var endingSong:Bool = false;
 
 	private function popUpScore(strumtime:Float):Void
 	{
