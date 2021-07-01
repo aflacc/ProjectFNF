@@ -337,6 +337,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence(detailsText, "Score: " + songScore, iconRPC);
 		#end
 
+	if (!FlxG.save.data.maxoptimization) {
 		switch (SONG.song.toLowerCase())
 		{
 			case 'spookeez' | 'monster' | 'south':
@@ -673,6 +674,7 @@ class PlayState extends MusicBeatState
 					}
 				}
 		}
+	}
 
 		var gfVersion:String = 'gf';
 
@@ -802,6 +804,12 @@ class PlayState extends MusicBeatState
 		add(dad);
 		// add(ModCharts.addTrailToSprite(dad));
 		add(boyfriend);
+
+		if (FlxG.save.data.maxoptimization) {
+			dad.visible = false;
+			boyfriend.visible = false;
+			gf.visible = false;
+		}
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
@@ -2960,14 +2968,16 @@ class PlayState extends MusicBeatState
 
 	function resetFastCar():Void
 	{
+		if (!FlxG.save.data.maxoptimization) {
 		fastCar.x = -12600;
 		fastCar.y = FlxG.random.int(140, 250);
 		fastCar.velocity.x = 0;
 		fastCarCanDrive = true;
+		}
 	}
 
 	function fastCarDrive()
-	{
+	{if (!FlxG.save.data.maxoptimization) {
 		FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
 
 		fastCar.velocity.x = (FlxG.random.int(170, 220) / FlxG.elapsed) * 3;
@@ -2976,6 +2986,7 @@ class PlayState extends MusicBeatState
 		{
 			resetFastCar();
 		});
+	}
 	}
 
 	var trainMoving:Bool = false;
@@ -3033,17 +3044,20 @@ class PlayState extends MusicBeatState
 		startedMoving = false;
 	}
 
+
 	function lightningStrikeShit():Void
 	{
-		FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
-		halloweenBG.animation.play('lightning');
-		camera.shake(0.003, 2.3, null, true, Y);
+		if (!FlxG.save.data.maxoptimization) {
+			FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
+			halloweenBG.animation.play('lightning');
+			camera.shake(0.003, 2.3, null, true, Y);
 
-		lightningStrikeBeat = curBeat;
-		lightningOffset = FlxG.random.int(8, 24);
+			lightningStrikeBeat = curBeat;
+			lightningOffset = FlxG.random.int(8, 24);
 
-		boyfriend.playAnim('scared', true);
-		gf.playAnim('scared', true);
+			boyfriend.playAnim('scared', true);
+			gf.playAnim('scared', true);
+		}
 	}
 
 	override function stepHit()
@@ -3089,6 +3103,7 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
+		
 		// modcharting for spookeez part two
 		/*if (curSong.toLowerCase() == 'spookeez') {
 				if (curStep == 191) {
@@ -3149,6 +3164,7 @@ class PlayState extends MusicBeatState
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
+		if (!FlxG.save.data.maxoptimization) {
 		if (curBeat % gfSpeed == 0)
 		{
 			gf.dance();
@@ -3217,6 +3233,7 @@ class PlayState extends MusicBeatState
 					ModCharts.fadeOutObject(dad);
 			}
 		}
+		if (!FlxG.save.data.maxoptimization) {
 		switch (curStage)
 		{
 			case 'school':
@@ -3257,11 +3274,13 @@ class PlayState extends MusicBeatState
 					trainStart();
 				}
 		}
+		
 		if (isHalloween && FlxG.random.bool(20) && curBeat > lightningStrikeBeat + lightningOffset)
 		{
 			lightningStrikeShit();
 		}
 	}
-
+		}
+	}
 	var curLight:Int = 0;
 }

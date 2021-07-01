@@ -31,7 +31,7 @@ class OptionsMenu extends MusicBeatState
 	var viewer:FlxSprite;
 
 	var notetypes = [
-		"NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "STEPMANIA", "ETTERNA", "SPOOKY", "VAPORWAVE", "HELLBEATS", "WAFELS3", "NEO", "SOFT", "TRANSPARENT",
+		"NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "STEPMANIA", "ETTERNA", "GREYSCALE", "SPOOKY", "VAPORWAVE", "HELLBEATS", "WAFELS3", "NEO", "SOFT", "TRANSPARENT",
 		"SPLASH"
 	];
 	var noteselection = 69; // funny number
@@ -89,7 +89,10 @@ class OptionsMenu extends MusicBeatState
 				case "Change Note Theme":
 					if (!FlxG.save.data.notetheme)
 						FlxG.save.data.notetheme = "NOTE";
-				case "Customize Info Bar":
+				case "Max Optimization":
+					if (!FlxG.save.data.maxoptimization) {
+						FlxG.save.data.maxoptimization = controlsStrings[curSelected].split(" || ")[2];
+					}
 			}
 			FlxG.save.flush();
 
@@ -156,6 +159,9 @@ class OptionsMenu extends MusicBeatState
 				case "Hit Sounds":
 					FlxG.save.data.hitsounds = !FlxG.save.data.hitsounds;
 					optionsText.text = FlxG.save.data.hitsounds;
+				case "Max Optimization":
+					FlxG.save.data.maxoptimization = !FlxG.save.data.maxoptimization;
+					optionsText.text = FlxG.save.data.maxoptimization;
 				case "Change Note Theme":
 					noteselection++;
 					if (noteselection > notetypes.length - 1)
@@ -244,6 +250,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.botplay;
 			case "Hit Sounds":
 				optionsText.text = FlxG.save.data.hitsounds;
+			case "Max Optimization":
+				optionsText.text = FlxG.save.data.maxoptimization;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{
