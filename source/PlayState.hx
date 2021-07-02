@@ -200,9 +200,12 @@ class PlayState extends MusicBeatState
 		var stageCurtains:FlxSprite;
 		var stageFront:FlxSprite;
 		var bg:FlxSprite;
-		// ModCharts.autoStrum = true;
+		// ModCharts.autostrum = true;
+		// GAME MODIFIERS. PLACE UR MODCHART SHIT AFTER THIS!
 		ModCharts.dadNotesVisible = FlxG.save.data.dadnotesvisible; // gamer
-		ModCharts.bfNotesVisible = true;
+		ModCharts.bfNotesVisible = FlxG.save.data.bfnotesvisible;
+		ModCharts.dadNotesDoDamage = FlxG.save.data.dadnotesdodamage;
+		ModCharts.dadNotesCanKill = FlxG.save.data.dadnotescankill;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 

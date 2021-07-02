@@ -183,6 +183,8 @@ class OptionsMenu extends MusicBeatState
 				//	trace(FlxG.save.data.notetheme);
 				case "Customize Keybinds":
 					OptionsMenu.instance.openSubState(new KeyBindMenu());
+				case "Modifiers":
+					FlxG.switchState(new ModifiersMenu());
 				case "Customize Info Bar": // lol
 					OptionsMenu.instance.openSubState(new InfoBarSubstate());
 			}
