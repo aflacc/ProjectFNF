@@ -1,3 +1,4 @@
+import flixel.FlxObject;
 import flixel.group.FlxGroup;
 import flixel.FlxBasic.FlxType;
 import flixel.FlxCamera;
@@ -251,4 +252,238 @@ class ModCharts
 	{
 		FlxTween.tween(camera, {'scroll.y': intensity}, duration, {ease: FlxEase.quadOut, type: FlxTweenType.PINGPONG});
 	}
+
+
+
+	// kade shit
+					
+	/**
+	* Moves a camera to another position.
+	* @param toX		The x to go to.
+	* @param toY		The y to go to.
+	* @param time		How long it takes to get there.
+	* @param camera		The camera to move
+	**/
+	static public function tweenCameraPos(toX:Int, toY:Int, time:Float, camera:Any) {
+		FlxTween.tween(camera, {x: toX, y: toY}, time, {ease: FlxEase.linear} );
+	}
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	static public function tweenCameraAngle(toAngle:Float, time:Float, camera:Any) {
+		FlxTween.tween(camera, {angle:toAngle}, time, {ease: FlxEase.linear});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	static public function tweenCameraZoom(toZoom:Float, time:Float, camera:Any) {
+		FlxTween.tween(camera, {zoom:toZoom}, time, {ease: FlxEase.linear });
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	static public function tweenHudPos(toX:Int, toY:Int, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {ease: FlxEase.linear});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	static public function tweenHudAngle(toAngle:Float, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {angle:toAngle}, time, {ease: FlxEase.linear });
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	static public function tweenHudZoom(toZoom:Float, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {zoom:toZoom}, time, {ease: FlxEase.linear});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	static public function tweenPos(id:FlxObject , toX:Int, toY:Int, time:Float) {
+		FlxTween.tween(id, {x: toX, y: toY}, time, {ease: FlxEase.linear});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosXAngle(id:FlxObject, toX:Int, toAngle:Float, time:Float) {
+		FlxTween.tween(id, {x: toX, angle: toAngle}, time, {ease: FlxEase.linear});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosYAngle(id:FlxObject, toY:Int, toAngle:Float, time:Float) {
+		FlxTween.tween(id, {y: toY, angle: toAngle}, time, {ease: FlxEase.linear });
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenAngle(id:FlxObject, toAngle:Int, time:Float) {
+		FlxTween.tween(id, {angle: toAngle}, time, {ease: FlxEase.linear});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenCameraPosOut(toX:Int, toY:Int, time:Float, camera:Any) {
+		FlxTween.tween(camera, {x: toX, y: toY}, time, {ease: FlxEase.cubeOut});
+	};
+			
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenCameraAngleOut(toAngle:Float, time:Float, camera:Any) {
+		FlxTween.tween(camera, {angle:toAngle}, time, {ease: FlxEase.cubeOut});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenCameraZoomOut(toZoom:Float, time:Float, camera:Any) {
+		FlxTween.tween(camera, {zoom:toZoom}, time, {ease: FlxEase.cubeOut});
+	};
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenHudPosOut(toX:Int, toY:Int, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {ease: FlxEase.cubeOut });
+	};
+	
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenHudAngleOut(toAngle:Float, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {angle:toAngle}, time, {ease: FlxEase.cubeOut });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenHudZoomOut(toZoom:Float, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {zoom:toZoom}, time, {ease: FlxEase.cubeOut });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosOut(id:FlxObject, toX:Int, toY:Int, time:Float) {
+		FlxTween.tween(id, {x: toX, y: toY}, time, {ease: FlxEase.cubeOut});
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosXAngleOut(id:FlxObject, toX:Int, toAngle:Float, time:Float) {
+		FlxTween.tween(id, {x: toX, angle: toAngle}, time, {ease: FlxEase.cubeOut});
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosYAngleOut(id:FlxObject, toY:Int, toAngle:Float, time:Float) {
+		FlxTween.tween(id, {y: toY, angle: toAngle}, time, {ease: FlxEase.cubeOut});
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenAngleOut(id:FlxObject, toAngle:Int, time:Float) {
+		FlxTween.tween(id, {angle: toAngle}, time, {ease: FlxEase.cubeOut });
+	};
+
+
+	/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenCameraPosIn(toX:Int, toY:Int, time:Float, camera:Any) {
+		FlxTween.tween(camera, {x: toX, y: toY}, time, {ease: FlxEase.cubeIn });
+	};
+		
+	
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenCameraAngleIn(toAngle:Float, time:Float, camera:Any) {
+		FlxTween.tween(camera, {angle:toAngle}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenCameraZoomIn(toZoom:Float, time:Float, camera:Any) {
+		FlxTween.tween(camera, {zoom:toZoom}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenHudPosIn(toX:Int, toY:Int, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {x: toX, y: toY}, time, {ease: FlxEase.cubeIn });
+	};
+			
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenHudAngleIn(toAngle:Float, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {angle:toAngle}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenHudZoomIn(toZoom:Float, time:Float) {
+		FlxTween.tween(PlayState.instance.camHUD, {zoom:toZoom}, time, {ease: FlxEase.cubeIn });
+	};
+	
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosIn(id:FlxObject, toX:Int, toY:Int, time:Float) {
+		FlxTween.tween(id, {x: toX, y: toY}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosXAngleIn(id:FlxObject, toX:Int, toAngle:Float, time:Float) {
+		FlxTween.tween(id, {x: toX, angle: toAngle}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenPosYAngleIn(id:FlxObject, toY:Int, toAngle:Float, time:Float) {
+		FlxTween.tween(id, {y: toY, angle: toAngle}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenAngleIn(id:FlxObject, toAngle:Int, time:Float) {
+		FlxTween.tween(id, {angle: toAngle}, time, {ease: FlxEase.cubeIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenFadeIn(id:FlxObject, toAlpha:Float, time:Float) {
+		FlxTween.tween(id, {alpha: toAlpha}, time, {ease: FlxEase.circIn });
+	};
+
+		/**
+	* Ported from Kade Engine. WIP
+	**/
+	function tweenFadeOut(id:FlxObject, toAlpha:Float, time:Float) {
+		FlxTween.tween(id, {alpha: toAlpha}, time, {ease: FlxEase.circOut });
+	};
 }

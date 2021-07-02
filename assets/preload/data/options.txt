@@ -1,8 +1,12 @@
 setGhost Tapping || Hitting a key will not give you a miss || false
 setDownscroll || The notes scroll down || false
+setHit Sounds || A hit sound plays when you hit a note. || false
 setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false
 setDad Notes Visible || Dad(Enemies) notes are visible || true
 setEnable Miss Animations || Bf's miss animations play || true
-setAdvanced Info Bar || Shows accuracy and rating in the health bar. || true
+setAdvanced Info Bar || Allows you to customize your info bar. || true
 setCountdown After Pause || Counts down (3, 2, 1) after you unpause the game || true
+setMax Optimization || Removes Everything but the notes. || false.
+setBot Play || Enable Bot play to showcase your mods. WIP || false;
 setChange Note Theme || Change the theme of your notes. (PRESS SEVEN TO PLAY THE ANIMATION) || NOTE
+setCustomize Info Bar || Customize what stats are beside your healthbar during games. || Press ENTER
