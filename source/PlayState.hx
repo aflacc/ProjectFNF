@@ -53,31 +53,6 @@ class PlayState extends MusicBeatState
 	public static var instance:PlayState;
 
 	var characterCol:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
-	var col:Array<FlxColor> = [
-		0xFF51d8fb, // BF
-		0xFF9fe6ff, // BF-PIXEL
-		0xFF51d8fb, // BF-CHRISTMAS
-		0xFF51d8fb, // BF-CAR
-		0xFFca1f6f, // GF
-		0xFFca1f6f, // GF-CHRISTMAS (Pretty sure this one doesn't really do anything.)
-		0xFFc885e5, // DAD
-		0xFFec7aac, // MOM
-		0xFFec7aac, // MOM-CAR
-		0xFFffffff, // PARENTS-CHRISTMAS (Look I don't know what a Better color would be.)
-		0xFFf9a326, // SPOOKY
-		0xFFceec75, // PICO
-		0xFFf5ff8a, // MONSTER
-		0xFFf5ff8a, // MONSTER-CHRISTMAS
-		0xFFffaa6f, // SENPAI
-		0xFFffaa6f, // SENPAI-ANGRY
-		0xFFff5d87 // SPIRIT
-	];
-
-	/* 
-		Health Bar Colors. One for each character uses the character list
-		To add your own character healthbar color, simply add another line to the list, and put your hexadecimal color code (#ffffff or somethin)
-		and then replace the "#" with "0xFF".
-	 */
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -872,8 +847,8 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		var curcol:FlxColor = col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon
-		var curcol2:FlxColor = col[characterCol.indexOf(boyfriend.curCharacter)]; // Bf Icon
+		var curcol:FlxColor = Config.col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon
+		var curcol2:FlxColor = Config.col[characterCol.indexOf(boyfriend.curCharacter)]; // Bf Icon
 		healthBar.createFilledBar(curcol, curcol2); // Use those colors
 		// healthBar
 		add(healthBar);
