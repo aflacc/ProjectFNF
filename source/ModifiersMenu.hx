@@ -160,7 +160,6 @@ class ModifiersMenu extends MusicBeatState
 			case "BF Notes Visible":
 				optionsText.text = FlxG.save.data.bfnotesvisible;
 			case "Dad Notes Visible":
-				FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
 				optionsText.text = FlxG.save.data.dadnotesvisible;
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
