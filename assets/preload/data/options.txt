@@ -5,8 +5,9 @@ setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENS
 setEnable Miss Animations || Bf's miss animations play || true
 setAdvanced Info Bar || Allows you to customize your info bar. || true
 setCountdown After Pause || Counts down (3, 2, 1) after you unpause the game || true
-setMax Optimization || Removes Everything but the notes. || false.
-setBot Play || Enable Bot play to showcase your mods. WIP || false;
+setMax Optimization || Removes Everything but the notes. || false
+setBot Play || Enable Bot play to showcase your mods. WIP || false
+setNew Icons || Uses new icons from Palladium346 || false
 setChange Note Theme || Change the theme of your notes. (PRESS SEVEN TO PLAY THE ANIMATION) || NOTE
 setCustomize Info Bar || Customize what stats are beside your healthbar during games. || Press ENTER
 setModifiers || Manage modifiers on your game. || Press ENTER
