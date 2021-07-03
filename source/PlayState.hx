@@ -857,7 +857,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 		// i hate my fucking life
 		funnySexBox = new FlxSprite(healthBarBG.x + healthBarBG.width - 545, healthBarBG.y + 55).makeGraphic(500, 20, FlxColor.BLACK);
-		funnySexBox.alpha = 0.3;
+		funnySexBox.alpha = (FlxG.save.data.infobarbg ? 0.3 : 0); // i really like this feature c:
 		add(funnySexBox);
 		funnySexBox.cameras = [camHUD]; // hopefully this works lol
 		infoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 610, healthBarBG.y + 55, 0, "", 20);
@@ -2415,12 +2415,12 @@ class PlayState extends MusicBeatState
 				//trace("miss added");
 			case "shit":
 				shit++;
-				totalAccuracy += 0.1; // absolute dogshit
+				totalAccuracy += 0.3; // absolute dogshit
 				score = -50;
 				//trace("shit added");
 			case "bad":
 				bad++;
-				totalAccuracy += 0.3; // ass. 30% 
+				totalAccuracy += 0.5; // ass. 50% 
 				score = 30;
 				//trace("bad added");
 			case "good":
