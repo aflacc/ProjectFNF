@@ -86,6 +86,9 @@ class OptionsMenu extends MusicBeatState
 				case "Hit Sounds":
 					if (!FlxG.save.data.hitsounds)
 						FlxG.save.data.hitsounds = controlsStrings[curSelected].split(" || ")[2];
+				case "New Icons":
+					if (!FlxG.save.data.newicons)
+						FlxG.save.data.newicons = controlsStrings[curSelected].split(" || ")[2];
 				case "Change Note Theme":
 					if (!FlxG.save.data.notetheme)
 						FlxG.save.data.notetheme = "NOTE";
@@ -159,6 +162,9 @@ class OptionsMenu extends MusicBeatState
 				case "Hit Sounds":
 					FlxG.save.data.hitsounds = !FlxG.save.data.hitsounds;
 					optionsText.text = FlxG.save.data.hitsounds;
+				case "New Icons":
+					FlxG.save.data.newicons = !FlxG.save.data.newicons;
+					optionsText.text = FlxG.save.data.newicons;
 				case "Max Optimization":
 					FlxG.save.data.maxoptimization = !FlxG.save.data.maxoptimization;
 					optionsText.text = FlxG.save.data.maxoptimization;
@@ -254,6 +260,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.hitsounds;
 			case "Max Optimization":
 				optionsText.text = FlxG.save.data.maxoptimization;
+			case "New Icons":
+				optionsText.text = FlxG.save.data.newicons;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{

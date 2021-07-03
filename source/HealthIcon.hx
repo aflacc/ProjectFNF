@@ -13,7 +13,7 @@ class HealthIcon extends FlxSprite
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
 		super();
-		loadGraphic(Paths.image(FlxG.save.data.newicons ? 'iconGrid' : 'iconGrid-v2'), true, 150, 150);
+		loadGraphic(Paths.image(!FlxG.save.data.newicons ? 'iconGrid' : 'iconGrid-v2'), true, 150, 150);
 
 		antialiasing = true;
 		if (!FlxG.save.data.newicons) {
