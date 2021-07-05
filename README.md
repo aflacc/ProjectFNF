@@ -48,7 +48,11 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 | End screen | Yes | Yes |
 | Modifiers | Yes | No |
 | Downscroll | Yes | Yes |
-# Mods that use ProjectFNF
+| Replays | No | Yes |
+| Audio Offset | Coming Soon! | Yes |
+| Accuracy and Grades | Yes | Yes |
+
+# Mods that use ProjecFNF
 - neo (woah)
 - VS Aflac
 - Wii Deleted You
