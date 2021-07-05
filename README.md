@@ -45,7 +45,9 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 | Custom Arrow Skins | Yes | No |
 | Increased FPS | Yes | Yes |
 | Early Windows and better ratings | Yes | Yes |
-
+| End screen | Yes | Yes |
+| Modifiers | Yes | No |
+| Downscroll | Yes | Yes |
 # Mods that use ProjectFNF
 - neo (woah)
 - VS Aflac
@@ -58,7 +60,7 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 - Doodles Modchart (AKA High effort Doodles)
 
 # Special Thanks :)
-- KadeDev: Rating code and keybind code
+- KadeDev: Rating code, downscroll code and keybind code
 - Palladium346: Second icon grid
 
 # Usage
