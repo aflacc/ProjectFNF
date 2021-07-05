@@ -3129,7 +3129,9 @@ class PlayState extends MusicBeatState
 			var parser = new hscript.Parser();
 			var ast = parser.parseString(modchart);
 			var interp = new hscript.Interp();
+			interp.variables.set("stepping", true);
 			interp.variables.set("beatShit", curBeat);
+			interp.variables.set("stepShit", curStep);
 			interp.variables.set("ModCharts", ModCharts);
 			interp.variables.set("PlayState", PlayState); 
 			interp.variables.set("strumLineNotes", strumLineNotes); 
@@ -3167,47 +3169,22 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
 
-		
-		// modcharting for spookeez part two
-		/*if (curSong.toLowerCase() == 'spookeez') {
-				if (curStep == 191) {
-					for(note in 0...strumLineNotes.members.length) 
-						{
-							if (note >= 4)
-							{
-								ModCharts.cancelMovement(note);
-								ModCharts.dadNotesVisible = false;
-							} else {
-								ModCharts.toggleVisibility(note, false); // im so smart
-							}
-					}
+				// modcharting
+				if (modcharting) {
+					// i doubt its this easy
+				//	trace(modchart);
+					var parser = new hscript.Parser();
+					var ast = parser.parseString(modchart);
+					var interp = new hscript.Interp();
+					interp.variables.set("stepping", false);
+					interp.variables.set("beatShit", curBeat);
+					interp.variables.set("stepShit", curStep);
+					interp.variables.set("ModCharts", ModCharts);
+					interp.variables.set("PlayState", PlayState); 
+					interp.variables.set("strumLineNotes", strumLineNotes); 
+					interp.variables.set("assets", Assets); 
+					interp.execute(ast);
 				}
-			}
-				if (curSong.toLowerCase() == 'spookeez' && curStep > 191 && curStep < 319) {
-					var gotox = FlxG.random.int(100, 1000);
-					var gotoy = FlxG.random.int(50, 500);
-					for(note in 0...strumLineNotes.members.length) 
-						{
-							if (note >= 4)
-							{
-								ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000 );
-							}
-						}
-						strumLine.y = gotoy;
-					}
-					// im bad
-					if (curSong.toLowerCase() == 'spookeez' && curStep > 448 && curStep < 574) {
-						var gotox = FlxG.random.int(100, 1000);
-						var gotoy = FlxG.random.int(50, 500);
-						for(note in 0...strumLineNotes.members.length) 
-							{
-								if (note >= 4)
-								{
-									ModCharts.moveTo(strumLineNotes.members[note], gotox + note * 100, gotoy, Conductor.crochet / 1000);
-								}
-							}
-							strumLine.y = gotoy;
-		}*/
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
