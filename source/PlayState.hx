@@ -80,7 +80,7 @@ class PlayState extends MusicBeatState
 
 	private static var prevCamFollow:FlxObject;
 
-	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
+	public var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	private var playerStrums:FlxTypedGroup<FlxSprite>;
 	private var player2Strums:FlxTypedGroup<FlxSprite>;
 
@@ -166,6 +166,9 @@ class PlayState extends MusicBeatState
 
 	// modcharting
 
+	var modcharting:Bool = false;
+	var modchart:String;
+
 	function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
 	{
 		var length:Float = note.sustainLength;
@@ -197,11 +200,19 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		// modchartz
+		try {
+			modchart = Assets.getText(Paths.mc(SONG.song.toLowerCase() + '/' + SONG.song.toLowerCase()).trim());
+			modcharting = true;
+		} catch(err) {
+			trace("no modchart poops cutely");
+			modcharting = false;
+		}
+		
 		var stageCurtains:FlxSprite;
 		var stageFront:FlxSprite;
 		var bg:FlxSprite;
-		// ModCharts.autostrum = true;
-		// GAME MODIFIERS. PLACE UR MODCHART SHIT AFTER THIS!
+		// dis shit can be changed
 		ModCharts.dadNotesVisible = FlxG.save.data.dadnotesvisible; // gamer
 		ModCharts.bfNotesVisible = FlxG.save.data.bfnotesvisible;
 		ModCharts.dadNotesDoDamage = FlxG.save.data.dadnotesdodamage;
@@ -3111,9 +3122,19 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		if (dad.curCharacter == 'spooky' && curStep % 4 == 2)
-		{
-			// dad.dance();
+		// modcharting
+		if (modcharting) {
+			// i doubt its this easy
+		//	trace(modchart);
+			var parser = new hscript.Parser();
+			var ast = parser.parseString(modchart);
+			var interp = new hscript.Interp();
+			interp.variables.set("beatShit", curBeat);
+			interp.variables.set("ModCharts", ModCharts);
+			interp.variables.set("PlayState", PlayState); 
+			interp.variables.set("strumLineNotes", strumLineNotes); 
+			interp.variables.set("assets", Assets); 
+			interp.execute(ast);
 		}
 	}
 
