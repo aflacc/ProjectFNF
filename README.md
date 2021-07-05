@@ -35,10 +35,10 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 - Much more
 
 # Compare
-| ProjectFNF       | Kade Engine    | FPS Plus    |
-| :------------- | :----------: | -----------: |
-|  Cell Contents | More Stuff   | And Again    |
-| You Can Also   | Put Pipes In | Like this \| |
+| ProjectFNF       | Kade Engine    | FPS Plus    | Have? |
+| :------------- | :----------: | ----------- | -----------: |
+|  Cell Contents | More Stuff   | And Again    | Yes |
+| You Can Also   | Put Pipes In | Like this  | No |
 
 # Mods that use ProjectFNF
 - neo (woah)
