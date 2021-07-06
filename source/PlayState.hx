@@ -2436,7 +2436,7 @@ class PlayState extends MusicBeatState
 				//trace("bad added");
 			case "good":
 				good++;
-				totalAccuracy += 0.7; // u aight
+				totalAccuracy += 0.9; // u aight
 				score = 100;
 			//	trace("good added");
 			case "sick":
