@@ -1,4 +1,4 @@
-// trace("BEATSHIT: " + beatShit);
+trace("BEATSHIT: " + beatShit);
 
 if (stepping) {
     switch (stepShit) {
@@ -6,7 +6,9 @@ if (stepping) {
 } else {
     switch (beatShit) {
         case 4:
+            trace("WE GOIN IN FUCVKYEAHBABY");
             for (note in 0...strumLineNotes.members.length) {
+                trace(strumLineNotes.members[note]);
                 ModCharts.circleLoop(strumLineNotes.members[note], 20, 3);
             }
         case 8:

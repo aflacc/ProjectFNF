@@ -3126,6 +3126,7 @@ class PlayState extends MusicBeatState
 		if (modcharting) {
 			// i doubt its this easy
 		//	trace(modchart);
+			//trace(PlayState.instance.strumLineNotes.getFirstAlive().x);
 			var parser = new hscript.Parser();
 			var ast = parser.parseString(modchart);
 			var interp = new hscript.Interp();
@@ -3133,8 +3134,19 @@ class PlayState extends MusicBeatState
 			interp.variables.set("beatShit", curBeat);
 			interp.variables.set("stepShit", curStep);
 			interp.variables.set("ModCharts", ModCharts);
-			interp.variables.set("PlayState", PlayState); 
+			interp.variables.set("game", PlayState.instance); 
 			interp.variables.set("strumLineNotes", strumLineNotes); 
+			interp.variables.set("strumLineNotes", strumLineNotes); 
+			interp.variables.set("playerStrums", playerStrums); 
+			interp.variables.set("player2Strums", player2Strums); 
+			interp.variables.set("dad", dad); 
+			interp.variables.set("boyfriend", boyfriend); 
+			interp.variables.set("gf", gf);
+			interp.variables.set("notes", notes);
+			interp.variables.set("mainCamera", FlxG.camera);
+			interp.variables.set("camHUD", camHUD);
+			interp.variables.set("iconP1", iconP1);
+			interp.variables.set("iconP2", iconP2);
 			interp.variables.set("assets", Assets); 
 			interp.execute(ast);
 		}
@@ -3180,8 +3192,20 @@ class PlayState extends MusicBeatState
 					interp.variables.set("beatShit", curBeat);
 					interp.variables.set("stepShit", curStep);
 					interp.variables.set("ModCharts", ModCharts);
-					interp.variables.set("PlayState", PlayState); 
+
+					// i hate my life
 					interp.variables.set("strumLineNotes", strumLineNotes); 
+					interp.variables.set("strumLineNotes", strumLineNotes); 
+					interp.variables.set("playerStrums", playerStrums); 
+					interp.variables.set("player2Strums", player2Strums); 
+					interp.variables.set("dad", dad); 
+					interp.variables.set("boyfriend", boyfriend); 
+					interp.variables.set("gf", gf);
+					interp.variables.set("notes", notes);
+					interp.variables.set("mainCamera", FlxG.camera);
+					interp.variables.set("camHUD", camHUD);
+					interp.variables.set("iconP1", iconP1);
+					interp.variables.set("iconP2", iconP2);
 					interp.variables.set("assets", Assets); 
 					interp.execute(ast);
 				}
