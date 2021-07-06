@@ -1,11 +1,8 @@
-// stepping = runs every step. otherwise, runs every beat
-
-if (stepping) {
+if (stepping) { // runs every step
     switch (stepShit) {
     }
-} else {
+} else { // runs every beat
     switch (beatShit) {
-        // on beats 4, 8, 12, and 16, it variates through spinning and unspinning the notes B)
         case 4:
             for (note in 0...strumLineNotes.members.length) {
                 ModCharts.circleLoop(strumLineNotes.members[note], 20, 3);
