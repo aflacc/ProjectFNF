@@ -38,7 +38,7 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 | Topic | ProjectFNF | Kade Engine |  
 | :------------- | :----------: | -----------: |
 | Modcharting support for Windows | Yes  |  Yes | 
-| Modcharting support for Linux | Yes | Yes |
+| Modcharting support for Linux | Yes | No |
 | Modcharting support for Mac  | Yes | No |
 | Offset timing | Coming Soon! | Yes |
 | Customizeable Keybinds | Yes |  Yes |
