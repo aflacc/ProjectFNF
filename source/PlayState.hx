@@ -1,5 +1,6 @@
 package;
 
+import sys.io.File;
 import lime.app.Application;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
@@ -3148,6 +3149,14 @@ class PlayState extends MusicBeatState
 			interp.variables.set("iconP1", iconP1);
 			interp.variables.set("iconP2", iconP2);
 			interp.variables.set("assets", Assets); 
+			// shit i *cough* stole *cough* borrowed.
+			interp.variables.set("FlxSprite", flixel.FlxSprite);
+			interp.variables.set("FlxTimer", FlxTimer);
+			interp.variables.set("Math", Math);
+			interp.variables.set("Std", Std);
+			interp.variables.set("FlxTween", FlxTween);
+			interp.variables.set("FlxText", FlxText);
+
 			interp.execute(ast);
 		}
 	}
@@ -3207,6 +3216,13 @@ class PlayState extends MusicBeatState
 					interp.variables.set("iconP1", iconP1);
 					interp.variables.set("iconP2", iconP2);
 					interp.variables.set("assets", Assets); 
+					// shit i *cough* stole *cough* 
+					interp.variables.set("FlxSprite", flixel.FlxSprite);
+					interp.variables.set("FlxTimer", FlxTimer);
+					interp.variables.set("Math", Math);
+					interp.variables.set("Std", Std);
+					interp.variables.set("FlxTween", FlxTween);
+					interp.variables.set("FlxText", FlxText);
 					interp.execute(ast);
 				}
 
