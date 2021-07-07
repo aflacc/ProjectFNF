@@ -1,6 +1,5 @@
 package;
 
-import sys.io.File;
 import lime.app.Application;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
@@ -3114,6 +3113,7 @@ class PlayState extends MusicBeatState
 			gf.playAnim('scared', true);
 		}
 	}
+
 
 	override function stepHit()
 	{
