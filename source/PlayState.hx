@@ -2751,14 +2751,19 @@ class PlayState extends MusicBeatState
 						spr.animation.play('static');
 			}
 
+			try {
 			if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
 			{
 				spr.centerOffsets();
 				spr.offset.x -= 13;
 				spr.offset.y -= 13;
 			}
-			else
+			else {
 				spr.centerOffsets();
+			}
+		} catch(e) {
+			trace("oh shit daddy~ smtn went wrong uwu~ lil fucky wucky teehee~");
+		}
 		});
 	}
 
