@@ -84,8 +84,8 @@ class ChartingState extends MusicBeatState
 	var gridBlackLine:FlxSprite;
 	var vocals:FlxSound;
 
-	var player2:Character = new Character(850, 0, "dad");
-	var player1:Boyfriend = new Boyfriend(-60, 0, "bf");
+	var player2:Character;
+	var player1:Boyfriend;
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
@@ -457,7 +457,6 @@ class ChartingState extends MusicBeatState
 
 		// sections = _song.notes;
 
-		stage();
 		updateGrid();
 
 		loadSong(_song.song);
@@ -494,12 +493,14 @@ class ChartingState extends MusicBeatState
 		add(curRenderedNotes);
 		add(curRenderedSustains);
 
+		player2 = new Character(850, 0, _song.player2.toLowerCase());
+		player1 =  new Boyfriend(-60, 0, _song.player1.toLowerCase());
 		player1.setGraphicSize(300);
 		player1.scrollFactor.set(0, 0);
 		player2.scrollFactor.set(0, 0);
 		player2.setGraphicSize(300);
 		add(player1);
-		add(player2);
+		//add(player2);
 
 		super.create();
 	}
@@ -1169,7 +1170,9 @@ class ChartingState extends MusicBeatState
 			+ "\nSection: "
 			+ curSection
 			+ "\nCurStep: "
-			+ curStep;
+			+ curStep
+			+ "\nCurBeat: "
+			+ curBeat;
 		super.update(elapsed);
 	}
 
