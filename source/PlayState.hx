@@ -128,20 +128,20 @@ class PlayState extends MusicBeatState
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 
 	var talking:Bool = true;
-	var songScore:Int = 0;
-	var songNotesMissed:Float = 0; // accurasy shit
-	var songNotesHit:Float = 0;
+	public var songScore:Int = 0;
+	public var songNotesMissed:Float = 0; // accurasy shit
+	public var songNotesHit:Float = 0;
 	var infoTxt:FlxText;
 	var funnySexBox:FlxSprite;
 	var timerTxt:FlxText;
 
-	var miss = 0;
-	var shit = 0;
-	var bad = 0;
-	var good = 0;
-	var sick = 0;
+	public var miss = 0;
+	public var shit = 0;
+	public var bad = 0;
+	public var good = 0;
+	public var sick = 0;
 
-	var totalAccuracy:Float = 0;
+	public var totalAccuracy:Float = 0;
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
@@ -2109,9 +2109,13 @@ class PlayState extends MusicBeatState
 						}
 					});
 					if (ModCharts.dadNotesDoDamage) {
-						if (!(health - 0.01 < 0.001) && !ModCharts.dadNotesCanKill) {
+						if (!(health - 0.01 < 0.001)) {
 							health -= 0.01;
 							updateInfo();
+						} else {
+							if (ModCharts.dadNotesCanKill) {
+								health -= 0.01;
+							}
 						}
 					}
 
@@ -2200,7 +2204,7 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	function nextSong():Void {
+	public function nextSong():Void {
 		if (isStoryMode)
 			{
 				campaignScore += songScore;
@@ -2287,9 +2291,14 @@ class PlayState extends MusicBeatState
 			}
 	}
 
-	function endSong():Void
+	public function endSong():Void
 	{
+/*openSubState(new EndScreenSubstate(totalAccuracy, songNotesHit, songNotesMissed, miss, shit, bad, good, sick, songScore, camHUD));
+		persistentUpdate = false;
+		persistentDraw = false;*/
 		canPause = false;
+		paused = true;
+		inCutscene = true;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
 		if (SONG.validScore)
@@ -2298,6 +2307,7 @@ class PlayState extends MusicBeatState
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
 			#end
 		}
+
         var blackBox:FlxSprite = new FlxSprite(0,0).makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
         add(blackBox);
 		blackBox.alpha = 0;
@@ -2356,6 +2366,7 @@ class PlayState extends MusicBeatState
 		stats.text = 'Overall Rating: ' + rating + '\n Accuracy: ' + accuracy + '%\n Sicks: ' + sick + '\n Goods:' + good + '\n Bads:' + bad + '\n Shits:' + shit + '\n Misses: ' + songNotesMissed + '\n Final Score: ' + songScore + '\n Press ENTER to continue.';
 		stats.screenCenter();
 		stats.cameras = [camHUD];
+		
 		// transferring to next song(or back to menu)
 		endingSong = true;
 	}
