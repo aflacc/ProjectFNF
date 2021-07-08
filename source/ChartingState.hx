@@ -99,6 +99,7 @@ class ChartingState extends MusicBeatState
 
 	var daPixelZoom:Float = 6;
 
+	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	
 	function stage() {
 		trace("stage reset sussy");
@@ -175,7 +176,7 @@ class ChartingState extends MusicBeatState
 					add(bgLimo);
 					bgLimo.scrollFactor.set(0, 0);
 
-					var grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
+					grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
 					add(grpLimoDancers);
 
 					for (i in 0...5)
@@ -409,11 +410,28 @@ class ChartingState extends MusicBeatState
 	{
 		curSection = lastSection;
 
+		if (PlayState.SONG != null)
+			_song = PlayState.SONG;
+		else
+		{
+			_song = {
+				song: 'Test',
+				notes: [],
+				bpm: 150,
+				needsVoices: true,
+				player1: 'bf',
+				player2: 'dad',
+				speed: 1,
+				validScore: false
+			};
+		}
+
+		stage();
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
 
-		leftIcon = new HealthIcon('bf');
-		rightIcon = new HealthIcon('dad');
+		leftIcon = new HealthIcon(_song.player1.toLowerCase());
+		rightIcon = new HealthIcon(_song.player2.toLowerCase());
 		leftIcon.scrollFactor.set(1, 1);
 		rightIcon.scrollFactor.set(1, 1);
 
@@ -432,22 +450,6 @@ class ChartingState extends MusicBeatState
 		curRenderedNotes = new FlxTypedGroup<Note>();
 		curRenderedSustains = new FlxTypedGroup<FlxSprite>();
 
-		if (PlayState.SONG != null)
-			_song = PlayState.SONG;
-		else
-		{
-			_song = {
-				song: 'Test',
-				notes: [],
-				bpm: 150,
-				needsVoices: true,
-				player1: 'bf',
-				player2: 'dad',
-				speed: 1,
-				validScore: false
-			};
-		}
-
 		FlxG.mouse.visible = true;
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
@@ -464,6 +466,7 @@ class ChartingState extends MusicBeatState
 		Conductor.mapBPMChanges(_song);
 
 		bpmTxt = new FlxText(1000, 50, 0, "", 16);
+		bpmTxt.color = FlxColor.BLACK;
 		bpmTxt.scrollFactor.set();
 		add(bpmTxt);
 
@@ -494,7 +497,7 @@ class ChartingState extends MusicBeatState
 		add(curRenderedSustains);
 
 		player2 = new Character(850, 0, _song.player2.toLowerCase());
-		player1 =  new Boyfriend(-60, 0, _song.player1.toLowerCase());
+		player1 =  new Boyfriend(900, 300, "bf");
 		player1.setGraphicSize(300);
 		player1.scrollFactor.set(0, 0);
 		player2.scrollFactor.set(0, 0);
@@ -705,7 +708,7 @@ class ChartingState extends MusicBeatState
 
 	function loadSong(daSong:String):Void
 	{
-		stage();
+	//	stage();
 		updateGrid();
 		if (FlxG.sound.music != null)
 		{
@@ -933,7 +936,7 @@ class ChartingState extends MusicBeatState
 					}
 					else
 					{
-						trace('hit ' + Math.abs(note.noteData));
+					//	trace('hit ' + Math.abs(note.noteData));
 						if (note.noteData < 4)
 						{
 							switch (Math.abs(note.noteData))
@@ -1201,6 +1204,14 @@ class ChartingState extends MusicBeatState
 			player2.playAnim('idle');
 		}
 		player1.dance();
+
+		trace(curStage);
+		switch(curStage) {
+			case 'limo':
+				grpLimoDancers.forEach(function(dancer) {
+					dancer.dance();
+				});
+		}
 	}
 
 	function recalculateSteps():Int
@@ -1313,13 +1324,13 @@ class ChartingState extends MusicBeatState
 	{
 		if (check_mustHitSection.checked)
 		{
-			leftIcon.animation.play('bf');
-			rightIcon.animation.play('dad');
+			leftIcon.animation.play(_song.player1.toLowerCase());
+			rightIcon.animation.play(_song.player2.toLowerCase());
 		}
 		else
 		{
-			leftIcon.animation.play('dad');
-			rightIcon.animation.play('bf');
+			leftIcon.animation.play(_song.player2.toLowerCase());
+			rightIcon.animation.play(_song.player1.toLowerCase());
 		}
 	}
 
