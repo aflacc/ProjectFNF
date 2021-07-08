@@ -896,7 +896,7 @@ class ChartingState extends MusicBeatState
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
 
 		curRenderedNotes.forEach(function(note:Note) {
-			if (strumLine.overlaps(note) && strumLine.y == note.y) // yandere dev type shit
+			if (strumLine.overlaps(note) /*&& strumLine.y == note.y*/) // yandere dev type shit
 			{
 				if (_song.notes[curSection].mustHitSection)
 					{
