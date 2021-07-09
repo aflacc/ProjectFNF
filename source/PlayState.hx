@@ -2153,7 +2153,8 @@ class PlayState extends MusicBeatState
 						if (!daNote.isSustainNote) {
 							daNote.angle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
 							if (daNote.nType == 1) {
-								daNote.x -= 170;
+								daNote.x -= 130;
+								daNote.y -= 60;
 							}
 						} else {
 							daNote.x += 30;
@@ -2167,7 +2168,8 @@ class PlayState extends MusicBeatState
 						if (!daNote.isSustainNote) {
 							daNote.angle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].angle;
 							if (daNote.nType == 1) {
-								daNote.x -= 170;
+								daNote.x -= 130;
+								daNote.y -= 60;
 							}
 						} else {
 							daNote.x += 30;
@@ -2955,8 +2957,10 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
-		if (note.nType == 1)
+		if (note.nType == 1) {
+			trace("FIRE NOTE OH SHTIT");
 			health -= 1;
+		}
 		else		
 			if (keyP || FlxG.save.data.botplay)
 				goodNoteHit(note);

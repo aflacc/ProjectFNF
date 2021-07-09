@@ -60,7 +60,7 @@ class Note extends FlxSkewedSprite
 			animation.addByPrefix('redScroll', 'Red Arrow');
 			animation.addByPrefix('blueScroll', 'Blue Arrow');
 			animation.addByPrefix('purpleScroll', 'Purple Arrow');
-			setGraphicSize(Std.int(width * 0.7));
+			setGraphicSize(Std.int(width * 0.6));
 			updateHitbox();
 			antialiasing = true;
 			//animation.play('redScroll', true);
