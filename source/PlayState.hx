@@ -2713,22 +2713,22 @@ class PlayState extends MusicBeatState
 						}
 					} else {
 					if (up || right || down || left) {
-						switch (daNote.noteData)
-						{
-							// NOTES YOU ARE HOLDING
-							case 0:
-								if (left)
-									goodNoteHit(daNote);
-							case 1:
-								if (down)
-									goodNoteHit(daNote);
-							case 2:
-								if (up)
-									goodNoteHit(daNote);
-							case 3:
-								if (right)
-									goodNoteHit(daNote);
-						}
+							switch (daNote.noteData)
+							{
+								// NOTES YOU ARE HOLDING
+								case 0:
+									if (left)
+										goodNoteHit(daNote);
+								case 1:
+									if (down)
+										goodNoteHit(daNote);
+								case 2:
+									if (up)
+										goodNoteHit(daNote);
+								case 3:
+									if (right)
+										goodNoteHit(daNote);
+							}
 				}
 			}
 					}
@@ -2943,17 +2943,20 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
-		if (keyP || FlxG.save.data.botplay)
-			goodNoteHit(note);
-		else
-		{
-			badNoteCheck(note);
-		}
-		songNotesHit += 1;
-		if (FlxG.save.data.hitsounds) {
-			//trace("ayo ima play hitsound ahahah");
-			FlxG.sound.play(Paths.sound("hitsound"), 0.5);
-		}
+		if (note.nType == 1)
+			health -= 1;
+		else		
+			if (keyP || FlxG.save.data.botplay)
+				goodNoteHit(note);
+			else
+			{
+				badNoteCheck(note);
+			}
+			songNotesHit += 1;
+			if (FlxG.save.data.hitsounds) {
+				//trace("ayo ima play hitsound ahahah");
+				FlxG.sound.play(Paths.sound("hitsound"), 0.5);
+			}
 	}
 
 	function goodNoteHit(note:Note):Void
