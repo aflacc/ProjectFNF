@@ -2183,13 +2183,14 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-								health -= 0.075;
-							
-								songNotesMissed++;
-								vocals.volume = 0;
-								if (theFunne)
-									noteMiss(daNote.noteData, daNote, true);
-								updateInfo();
+								if (daNote.nType != 1)
+									health -= 0.075;
+								
+									songNotesMissed++;
+									vocals.volume = 0;
+									if (theFunne)
+										noteMiss(daNote.noteData, daNote, true);
+									updateInfo();
 							}
 		
 							daNote.visible = false;
@@ -2786,8 +2787,9 @@ class PlayState extends MusicBeatState
 	}
 
 
-	function noteMiss(direction:Int = 1, note:Any, fromfall:Bool = false):Void
+	function noteMiss(direction:Int = 1, note:Note, fromfall:Bool = false):Void
 		{
+		if (note.nType != 1)
 			if (!FlxG.save.data.ghosttapping) {
 			if (!boyfriend.stunned)
 			{
