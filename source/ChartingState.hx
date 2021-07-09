@@ -527,7 +527,7 @@ class ChartingState extends MusicBeatState
 				player2.y = 50;
 			case 'parents-christmas':
 				player2.x = 625;
-				player2.y = 150
+				player2.y = 150;
 			case 'senpai':
 				player2.x = 1050;
 		}
