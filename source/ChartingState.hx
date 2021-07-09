@@ -501,17 +501,37 @@ class ChartingState extends MusicBeatState
 		add(curRenderedNotes);
 		add(curRenderedSustains);
 
-		player2 = new Character(850, 0, _song.player2.toLowerCase());
+		player2 = new Character(900, 300, _song.player2.toLowerCase());
 		player1 =  new Boyfriend(900, 300, "bf");
 		player1.setGraphicSize(300);
 		player1.scrollFactor.set(0, 0);
 		player2.scrollFactor.set(0, 0);
 		player2.setGraphicSize(300);
+		switch (_song.player2.toLowerCase()) {
+			case 'gf':
+				player2.x = 750;
+				player2.y = 200;
+			case 'dad':
+				player2.x = 875;
+				player2.y = 100;
+			case 'spooky':
+				player2.x = 850;
+				player2.y = 200;
+			case 'monster':
+				player2.x = 875;
+				player2.y = 150;
+			case 'pico':
+				player2.flipX = true;
+				player2.x = 850;
+			case 'mom', 'mom-car':
+				player2.y = 50;
+
+		}
 		add(player1);
 		snapText = new FlxText(60,10,0,"Snap: 1/" + snap + " (Press Control to unsnap the cursor)\nAdd Notes: 1-8 (or click)\n", 14);
 		snapText.scrollFactor.set();
 		add(snapText);
-		//add(player2);
+		add(player2);
 
 		super.create();
 	}
@@ -1409,11 +1429,15 @@ class ChartingState extends MusicBeatState
 		{
 			leftIcon.animation.play(_song.player1.toLowerCase());
 			rightIcon.animation.play(_song.player2.toLowerCase());
+			player2.visible = false;
+			player1.visible = true;
 		}
 		else
 		{
 			leftIcon.animation.play(_song.player2.toLowerCase());
 			rightIcon.animation.play(_song.player1.toLowerCase());
+			player2.visible = true;
+			player1.visible = false;
 		}
 	}
 
