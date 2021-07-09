@@ -68,6 +68,9 @@ class ModifiersMenu extends MusicBeatState
 				case "BF Notes Visible":
 					if (!FlxG.save.data.bfnotesvisible)
 						FlxG.save.data.bfnotesvisible = controlsStrings[curSelected].split(" || ")[2];
+				case "Stuns Block Inputs":
+					if (!FlxG.save.data.stunsblockinputs)
+						FlxG.save.data.stunsblockinputs = controlsStrings[curSelected].split(" || ")[2];
 			}
 			FlxG.save.flush();
 
@@ -107,6 +110,9 @@ class ModifiersMenu extends MusicBeatState
 				case "BF Notes Visible":
 					FlxG.save.data.bfnotesvisible = !FlxG.save.data.bfnotesvisible;
 					optionsText.text = FlxG.save.data.bfnotesvisible;
+				case "Stuns Block Inputs":
+					FlxG.save.data.stunsblockinputs = !FlxG.save.data.stunsblockinputs;
+					optionsText.text = FlxG.save.data.stunsblockinputs;
 			}
 			FlxG.save.flush();
 			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
@@ -161,6 +167,8 @@ class ModifiersMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.bfnotesvisible;
 			case "Dad Notes Visible":
 				optionsText.text = FlxG.save.data.dadnotesvisible;
+			case "Stuns Block Inputs":
+				optionsText.text = FlxG.save.data.stunsblockinputs;
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];

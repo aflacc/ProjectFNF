@@ -2184,7 +2184,7 @@ class PlayState extends MusicBeatState
 								songNotesMissed++;
 								vocals.volume = 0;
 								if (theFunne)
-									noteMiss(daNote.noteData, daNote);
+									noteMiss(daNote.noteData, daNote, true);
 								updateInfo();
 							}
 		
@@ -2195,8 +2195,13 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		if (!inCutscene)
-			keyShit();
+		if (!inCutscene) // why does this look so confusing
+			if (!boyfriend.stunned)
+				keyShit();
+			else if (!FlxG.save.data.stunsblockinputs) // not fucking up again LMAO
+				keyShit();
+			else
+				trace("cant hit note cuz stunned");
 
 		#if debug
 		if (FlxG.keys.justPressed.ONE)
@@ -2779,7 +2784,7 @@ class PlayState extends MusicBeatState
 	}
 
 
-	function noteMiss(direction:Int = 1, note:Any):Void
+	function noteMiss(direction:Int = 1, note:Any, fromfall:Bool = false):Void
 		{
 			if (!FlxG.save.data.ghosttapping) {
 			if (!boyfriend.stunned)
@@ -2801,8 +2806,9 @@ class PlayState extends MusicBeatState
 				// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 				// FlxG.log.add('played imss note');
 	
+				boyfriend.stunned = true;
 							// get stunned for 5 seconds
-				new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
+				new FlxTimer().start(5, function(tmr:FlxTimer)
 				{
 					boyfriend.stunned = false;
 				});
@@ -2825,12 +2831,20 @@ class PlayState extends MusicBeatState
 					case 3:
 						boyfriend.playAnim('singRIGHTmiss', true);
 						if (FlxG.save.data.missshake)
-							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
 				}
 			}
 			updateInfo();
 			}
 		} else {
+			if (fromfall && !boyfriend.stunned) {
+				boyfriend.stunned = true;
+							// get stunned for 5 seconds
+				new FlxTimer().start(5, function(tmr:FlxTimer)
+				{
+					boyfriend.stunned = false;
+				});
+			}
 			if (FlxG.save.data.enablemissanimations) {
 				switch (direction)
 				{
