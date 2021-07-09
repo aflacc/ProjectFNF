@@ -2186,14 +2186,16 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-								if (daNote.nType != 1)
+								if (daNote.nType != 1) {
 									health -= 0.075;
 								
 									songNotesMissed++;
+									trace(daNote.nType);
 									vocals.volume = 0;
 									if (theFunne)
 										noteMiss(daNote.noteData, daNote, true);
 									updateInfo();
+								}	
 							}
 		
 							daNote.visible = false;
@@ -2407,7 +2409,7 @@ class PlayState extends MusicBeatState
 				songNotesMissed++;
 				totalAccuracy += 0;
 				score = -100;
-				//trace("miss added");
+				trace("miss added");
 			case "shit":
 				shit++;
 				totalAccuracy += 0.3; // absolute dogshit
@@ -2807,6 +2809,7 @@ class PlayState extends MusicBeatState
 				}
 				combo = 0;
 				songNotesMissed++;
+				trace("Misse added at notemiss");
 	
 				//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
 				//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
