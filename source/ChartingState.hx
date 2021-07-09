@@ -105,6 +105,7 @@ class ChartingState extends MusicBeatState
 
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var snapText:FlxText;
+	var evilNotes:Bool = false;
 
 	function stage() {
 		trace("stage reset sussy");
@@ -900,8 +901,11 @@ class ChartingState extends MusicBeatState
 	{
 		curStep = recalculateSteps();
 
-		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Control to disable" : "Snap Disabled, Control to renable") + ")\nAdd Notes: 1-8 (or click)\n";
+		snapText.text = "Snap: 1/" + snap + " (" + (doSnapShit ? "Control to disable" : "Snap Disabled, Control to renable") + ")\nAdd Notes: 1-8 (or click)\nWriting Evil Notes: " + evilNotes + " (9 To Toggle)";
 
+		if (FlxG.keys.justPressed.NINE) {
+			evilNotes = !evilNotes;
+		}
 		if (FlxG.keys.justPressed.CONTROL)
 			doSnapShit = !doSnapShit;
 
@@ -949,7 +953,8 @@ class ChartingState extends MusicBeatState
 				var i = pressArray[p];
 				if (i && !delete)
 				{
-					addNote(new Note(Conductor.songPosition,p));
+					//trace(evilNotes);
+					addNote(new Note(Conductor.songPosition,p, null, false, evilNotes ? 1 : 0));
 				}
 			}
 
@@ -984,7 +989,7 @@ class ChartingState extends MusicBeatState
 			{
 				if (_song.notes[curSection].mustHitSection)
 					{
-						trace('must hit ' + Math.abs(note.noteData));
+						//trace('must hit ' + Math.abs(note.noteData));
 						if (note.noteData < 4)
 						{
 							switch (Math.abs(note.noteData))
@@ -1508,7 +1513,7 @@ class ChartingState extends MusicBeatState
 			var daStrumTime = i[0];
 			var daSus = i[2];
 
-			var note:Note = new Note(daStrumTime, daNoteInfo % 4);
+			var note:Note = new Note(daStrumTime, daNoteInfo % 4, null, false, i[3]);
 			note.sustainLength = daSus;
 			note.setGraphicSize(GRID_SIZE, GRID_SIZE);
 			note.updateHitbox();
@@ -1602,9 +1607,9 @@ class ChartingState extends MusicBeatState
 		var noteSus = 0;
 
 		if (n != null)
-			_song.notes[curSection].sectionNotes.push([n.strumTime, n.noteData, n.sustainLength]);
+			_song.notes[curSection].sectionNotes.push([n.strumTime, n.noteData, n.sustainLength, n.nType]);
 		else
-			_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus]);
+			_song.notes[curSection].sectionNotes.push([noteStrum, noteData, noteSus, evilNotes ? 1 : 0]);
 
 		var thingy = _song.notes[curSection].sectionNotes[_song.notes[curSection].sectionNotes.length - 1];
 

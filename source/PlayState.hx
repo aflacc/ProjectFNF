@@ -1277,7 +1277,8 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
+			//	trace("NOTE TYPE: " + songNotes[3]);
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, songNotes[3]);
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
 				var susLength:Float = swagNote.sustainLength;
@@ -2151,6 +2152,9 @@ class PlayState extends MusicBeatState
 						daNote.x = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
 						if (!daNote.isSustainNote) {
 							daNote.angle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
+							if (daNote.nType == 1) {
+								daNote.x -= 170;
+							}
 						} else {
 							daNote.x += 30;
 						}
@@ -2200,8 +2204,6 @@ class PlayState extends MusicBeatState
 				keyShit();
 			else if (!FlxG.save.data.stunsblockinputs) // not fucking up again LMAO
 				keyShit();
-			else
-				trace("cant hit note cuz stunned");
 
 		#if debug
 		if (FlxG.keys.justPressed.ONE)

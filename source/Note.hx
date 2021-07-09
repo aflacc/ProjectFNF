@@ -24,7 +24,7 @@ class Note extends FlxSkewedSprite
 	public var prevNote:Note;
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
-
+	public var nType:Int = 0;
 	public var noteScore:Float = 1;
 
 	public static var swagWidth:Float = 160 * 0.7;
@@ -33,10 +33,11 @@ class Note extends FlxSkewedSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, type:Int = 0)
 	{
 		super();
-
+		nType = type;
+		
 		if (prevNote == null)
 			prevNote = this;
 
@@ -52,57 +53,69 @@ class Note extends FlxSkewedSprite
 
 		var daStage:String = PlayState.curStage;
 
-		switch (daStage)
-		{
-			case 'school' | 'schoolEvil':
-				loadGraphic(Paths.image('weeb/pixelUI/notes/' + FlxG.save.data.notetheme + '-pixels'), true, 17, 17);
+	//	trace("Type == " + type);
+		if (type == 1) { //????
+			frames = Paths.getSparrowAtlas('notes/ALL_deathnotes');
+			animation.addByPrefix('greenScroll', 'Green Arrow');
+			animation.addByPrefix('redScroll', 'Red Arrow');
+			animation.addByPrefix('blueScroll', 'Blue Arrow');
+			animation.addByPrefix('purpleScroll', 'Purple Arrow');
+			setGraphicSize(Std.int(width * 0.7));
+			updateHitbox();
+			antialiasing = true;
+			//animation.play('redScroll', true);
+		} else {
+			switch (daStage)
+			{
+				case 'school' | 'schoolEvil':
+					loadGraphic(Paths.image('weeb/pixelUI/notes/' + FlxG.save.data.notetheme + '-pixels'), true, 17, 17);
 
-				animation.add('greenScroll', [6]);
-				animation.add('redScroll', [7]);
-				animation.add('blueScroll', [5]);
-				animation.add('purpleScroll', [4]);
+					animation.add('greenScroll', [6]);
+					animation.add('redScroll', [7]);
+					animation.add('blueScroll', [5]);
+					animation.add('purpleScroll', [4]);
 
-				if (isSustainNote)
-				{
-					loadGraphic(Paths.image('weeb/pixelUI/notes/arrowEnds' /*forgot notes oops*/), true, 7, 6);
+					if (isSustainNote)
+					{
+						loadGraphic(Paths.image('weeb/pixelUI/notes/arrowEnds' /*forgot notes oops*/), true, 7, 6);
 
-					animation.add('purpleholdend', [4]);
-					animation.add('greenholdend', [6]);
-					animation.add('redholdend', [7]);
-					animation.add('blueholdend', [5]);
+						animation.add('purpleholdend', [4]);
+						animation.add('greenholdend', [6]);
+						animation.add('redholdend', [7]);
+						animation.add('blueholdend', [5]);
 
-					animation.add('purplehold', [0]);
-					animation.add('greenhold', [2]);
-					animation.add('redhold', [3]);
-					animation.add('bluehold', [1]);
-				}
+						animation.add('purplehold', [0]);
+						animation.add('greenhold', [2]);
+						animation.add('redhold', [3]);
+						animation.add('bluehold', [1]);
+					}
 
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
-				updateHitbox();
+					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+					updateHitbox();
 
-			default:
-				frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets');
+				default:
+					frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets');
 
-				animation.addByPrefix('greenScroll', 'green0');
-				animation.addByPrefix('redScroll', 'red0');
-				animation.addByPrefix('blueScroll', 'blue0');
-				animation.addByPrefix('purpleScroll', 'purple0');
+					animation.addByPrefix('greenScroll', 'green0');
+					animation.addByPrefix('redScroll', 'red0');
+					animation.addByPrefix('blueScroll', 'blue0');
+					animation.addByPrefix('purpleScroll', 'purple0');
 
-				animation.addByPrefix('purpleholdend', 'pruple end hold');
-				animation.addByPrefix('greenholdend', 'green hold end');
-				animation.addByPrefix('redholdend', 'red hold end');
-				animation.addByPrefix('blueholdend', 'blue hold end');
+					animation.addByPrefix('purpleholdend', 'pruple end hold');
+					animation.addByPrefix('greenholdend', 'green hold end');
+					animation.addByPrefix('redholdend', 'red hold end');
+					animation.addByPrefix('blueholdend', 'blue hold end');
 
-				animation.addByPrefix('purplehold', 'purple hold piece');
-				animation.addByPrefix('greenhold', 'green hold piece');
-				animation.addByPrefix('redhold', 'red hold piece');
-				animation.addByPrefix('bluehold', 'blue hold piece');
+					animation.addByPrefix('purplehold', 'purple hold piece');
+					animation.addByPrefix('greenhold', 'green hold piece');
+					animation.addByPrefix('redhold', 'red hold piece');
+					animation.addByPrefix('bluehold', 'blue hold piece');
 
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
+					setGraphicSize(Std.int(width * 0.7));
+					updateHitbox();
+					antialiasing = true;
+			}
 		}
-
 		switch (noteData)
 		{
 			case 0:
