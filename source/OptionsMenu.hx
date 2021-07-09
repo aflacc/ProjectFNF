@@ -93,7 +93,7 @@ class OptionsMenu extends MusicBeatState
 					if (!FlxG.save.data.infobarbg)
 						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
 				case "Change Note Theme":
-					if (!FlxG.save.data.notetheme)
+					if (FlxG.save.data.notetheme == null)
 						FlxG.save.data.notetheme = "NOTE";
 				case "Max Optimization":
 					if (!FlxG.save.data.maxoptimization) {
