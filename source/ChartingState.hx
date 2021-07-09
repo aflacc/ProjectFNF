@@ -525,7 +525,11 @@ class ChartingState extends MusicBeatState
 				player2.x = 850;
 			case 'mom', 'mom-car':
 				player2.y = 50;
-
+			case 'parents-christmas':
+				player2.x = 625;
+				player2.y = 150
+			case 'senpai':
+				player2.x = 1050;
 		}
 		add(player1);
 		snapText = new FlxText(60,10,0,"Snap: 1/" + snap + " (Press Control to unsnap the cursor)\nAdd Notes: 1-8 (or click)\n", 14);
