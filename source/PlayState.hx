@@ -2166,6 +2166,9 @@ class PlayState extends MusicBeatState
 						daNote.x = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].x;
 						if (!daNote.isSustainNote) {
 							daNote.angle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].angle;
+							if (daNote.nType == 1) {
+								daNote.x -= 170;
+							}
 						} else {
 							daNote.x += 30;
 						}
@@ -2789,7 +2792,11 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, note:Note, fromfall:Bool = false):Void
 		{
-		if (note.nType != 1)
+			try {
+				if (note.nType == 1) { return; }
+			} catch (e) {
+				trace("idk smtn");
+			}
 			if (!FlxG.save.data.ghosttapping) {
 			if (!boyfriend.stunned)
 			{
