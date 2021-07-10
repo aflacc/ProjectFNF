@@ -56,10 +56,10 @@ class Note extends FlxSkewedSprite
 	//	trace("Type == " + type);
 		if (type == 1) { //????
 			frames = Paths.getSparrowAtlas('notes/ALL_deathnotes');
-			animation.addByPrefix('greenScroll', 'Green Arrow');
-			animation.addByPrefix('redScroll', 'Red Arrow');
-			animation.addByPrefix('blueScroll', 'Blue Arrow');
-			animation.addByPrefix('purpleScroll', 'Purple Arrow');
+			animation.addByPrefix('greenScroll', 'Green Arrow', 30, false);
+			animation.addByPrefix('redScroll', 'Red Arrow', 30, false);
+			animation.addByPrefix('blueScroll', 'Blue Arrow', 30, false);
+			animation.addByPrefix('purpleScroll', 'Purple Arrow', 30, false);
 			setGraphicSize(Std.int(width * 0.6));
 			updateHitbox();
 			antialiasing = true;

@@ -2195,6 +2195,7 @@ class PlayState extends MusicBeatState
 									trace(daNote.nType);
 									vocals.volume = 0;
 									if (theFunne)
+										trace("nut initiated");
 										noteMiss(daNote.noteData, daNote, true);
 									updateInfo();
 								}	
@@ -2796,6 +2797,8 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, note:Note, fromfall:Bool = false):Void
 		{
+			trace("BALLS");
+		//	trace(boyfriend.stunned);
 			try {
 				if (note.nType == 1) { return; }
 			} catch (e) {
@@ -2945,6 +2948,33 @@ class PlayState extends MusicBeatState
 		var downP = controls.DOWN_P;
 		var leftP = controls.LEFT_P;
 
+		// SEXY FAILSAFE (THANKS VM U A REAL ONE)
+		if (note == 'none') {
+			if (FlxG.save.data.enablemissanimations) { // indenting worked out in the end *holds hands with family*
+				if (leftP) {
+					boyfriend.playAnim('singLEFTmiss', true);
+					if (FlxG.save.data.missshake)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+				}
+				if (downP) {
+					boyfriend.playAnim('singDOWNmiss', true);
+					if (FlxG.save.data.missshake)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+				}
+				if (upP) {
+					boyfriend.playAnim('singUPmiss', true);
+					if (FlxG.save.data.missshake)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+				}
+				if (rightP) {
+					boyfriend.playAnim('singRIGHTmiss', true);
+					if (FlxG.save.data.missshake)
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
+				}
+			}
+			return;
+		}
+
 		if (leftP)
 			noteMiss(0, note);
 		if (downP)
@@ -2956,19 +2986,16 @@ class PlayState extends MusicBeatState
 	}
 
 	function noteCheck(keyP:Bool, note:Note):Void
-	{
-		if (note.nType == 1) {
-			trace("FIRE NOTE OH SHTIT");
-			health -= 1;
-		}
-		else		
+	{		
 			if (keyP || FlxG.save.data.botplay)
 				goodNoteHit(note);
 			else
 			{
 				badNoteCheck(note);
 			}
-			songNotesHit += 1;
+			if (note.nType != 1) {
+				songNotesHit += 1;
+			}
 			if (FlxG.save.data.hitsounds) {
 				//trace("ayo ima play hitsound ahahah");
 				FlxG.sound.play(Paths.sound("hitsound"), 0.5);
@@ -2977,58 +3004,62 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		if (!note.wasGoodHit)
-		{
-			if (!note.isSustainNote)
-			{
-				popUpScore(note.strumTime);
-				combo += 1;
-			}
-
-			if (note.noteData >= 0)
-			{
-				health += 0.023;
-				if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
-					gf.playAnim('cheer', true);
-			}
-			else
-			{
-				health += 0.004;
-				if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
-					gf.playAnim('cheer', true);
-			}
-
-			switch (note.noteData)
-			{
-				case 0:
-					boyfriend.playAnim('singLEFT', true);
-				case 1:
-					boyfriend.playAnim('singDOWN', true);
-				case 2:
-					boyfriend.playAnim('singUP', true);
-				case 3:
-					boyfriend.playAnim('singRIGHT', true);
-			}
-
-			playerStrums.forEach(function(spr:FlxSprite)
-			{
-				if (Math.abs(note.noteData) == spr.ID)
-				{
-					spr.animation.play('confirm', true);
-				}
-			});
-
-			note.wasGoodHit = true;
-			vocals.volume = 1;
-
-			if (!note.isSustainNote)
-			{
-				note.kill();
-				notes.remove(note, true);
-				note.destroy();
-			}
+		if (note.nType == 1) {
+			trace("FIRE NOTE OH SHTIT");
+			health -= 1;
 		}
-		updateInfo();
+			if (!note.wasGoodHit)
+			{
+				if (!note.isSustainNote)
+				{
+					popUpScore(note.strumTime);
+					combo += 1;
+				}
+
+				if (note.noteData >= 0)
+				{
+					health += 0.023;
+					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
+						gf.playAnim('cheer', true);
+				}
+				else
+				{
+					health += 0.004;
+					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
+						gf.playAnim('cheer', true);
+				}
+
+				switch (note.noteData)
+				{
+					case 0:
+						boyfriend.playAnim('singLEFT', true);
+					case 1:
+						boyfriend.playAnim('singDOWN', true);
+					case 2:
+						boyfriend.playAnim('singUP', true);
+					case 3:
+						boyfriend.playAnim('singRIGHT', true);
+				}
+
+				playerStrums.forEach(function(spr:FlxSprite)
+				{
+					if (Math.abs(note.noteData) == spr.ID)
+					{
+						spr.animation.play('confirm', true);
+					}
+				});
+
+				note.wasGoodHit = true;
+				vocals.volume = 1;
+
+				if (!note.isSustainNote)
+				{
+					note.kill();
+					notes.remove(note, true);
+					note.destroy();
+				}
+			}
+			updateInfo();
 	}
 
 	var fastCarCanDrive:Bool = true;
