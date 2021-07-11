@@ -94,7 +94,7 @@ class OptionsMenu extends MusicBeatState
 						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
 				case "Custom Scroll Speed":
 					if (!FlxG.save.data.customscrollspeed)
-						FlxG.save.data.customscrollspeed = controlsStrings[curSelected].split(" || ")[2];
+						FlxG.save.data.customscrollspeed = 0;
 				case "Change Note Theme":
 					if (FlxG.save.data.notetheme == null)
 						FlxG.save.data.notetheme = "NOTE";
@@ -207,18 +207,19 @@ class OptionsMenu extends MusicBeatState
 			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
 			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];
 		}
-		if (controls.LEFT) {
+		if (controls.LEFT_P) {
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 				case "Custom Scroll Speed":
-					FlxG.save.data.customscrollspeed = FlxG.save.data.customscrollspeed - 0.1;
-					optionsText.text = FlxG.save.data.advancedinfobar;
+					if (FlxG.save.data.customscrollspeed > 0)
+						FlxG.save.data.customscrollspeed -= 0.1;
+						optionsText.text = FlxG.save.data.customscrollspeed;
 			}
 		}
-		if (controls.RIGHT) {
+		if (controls.RIGHT_P) {
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 				case "Custom Scroll Speed":
-					FlxG.save.data.customscrollspeed = FlxG.save.data.customscrollspeed + 0.1;
-					optionsText.text = FlxG.save.data.advancedinfobar;
+					FlxG.save.data.customscrollspeed += 0.1;
+					optionsText.text = FlxG.save.data.customscrollspeed;
 			}
 		}
 		if (controls.BACK)
@@ -303,6 +304,8 @@ class OptionsMenu extends MusicBeatState
 				viewer.animation.play('static');
 			case "Customize Keybinds":
 				optionsText.text = "Press ENTER";
+			case "Custom Scroll Speed":
+				optionsText.text = FlxG.save.data.customscrollspeed;
 			default: // i am so lazy :LOOOOL I cant figure this out
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize your info bar by adding modules.(WIP, DOES NOT WORK IF ADVANCED INFO TEXT IS OFF)";

@@ -198,6 +198,8 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	var usingCustomScrollSpeed:Bool = false;
+
 	override public function create()
 	{
 		// modchartz
@@ -207,6 +209,11 @@ class PlayState extends MusicBeatState
 		} catch(err) {
 			trace("no modchart poops cutely");
 			modcharting = false;
+		}
+
+		// scrollspeed
+		if (FlxG.save.data.customscrollspeed > 0) {
+			usingCustomScrollSpeed = true;
 		}
 		
 		var stageCurtains:FlxSprite;
@@ -2034,9 +2041,9 @@ class PlayState extends MusicBeatState
 				if (FlxG.save.data.downscroll)
 					{
 						if (daNote.mustPress)
-							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2));
+							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal( !usingCustomScrollSpeed ? SONG.speed : FlxG.save.data.customscrollspeed, 2));
 						else
-							daNote.y = (strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2));
+							daNote.y = (strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal( !usingCustomScrollSpeed ? SONG.speed : FlxG.save.data.customscrollspeed, 2));
 						if(daNote.isSustainNote)
 						{
 							// Remember = minus makes notes go up, plus makes them go down
@@ -2057,9 +2064,9 @@ class PlayState extends MusicBeatState
 					}else
 					{
 						if (daNote.mustPress)
-							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2));
+							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(!usingCustomScrollSpeed ? SONG.speed : FlxG.save.data.customscrollspeed, 2));
 						else
-							daNote.y = (strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2));
+							daNote.y = (strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal( !usingCustomScrollSpeed ? SONG.speed : FlxG.save.data.customscrollspeed, 2));
 						if(daNote.isSustainNote)
 						{
 							daNote.y -= daNote.height / 2;
