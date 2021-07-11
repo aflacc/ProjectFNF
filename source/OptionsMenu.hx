@@ -92,6 +92,9 @@ class OptionsMenu extends MusicBeatState
 				case "Info Bar BG":
 					if (!FlxG.save.data.infobarbg)
 						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
+				case "Custom Scroll Speed":
+					if (!FlxG.save.data.customscrollspeed)
+						FlxG.save.data.customscrollspeed = controlsStrings[curSelected].split(" || ")[2];
 				case "Change Note Theme":
 					if (FlxG.save.data.notetheme == null)
 						FlxG.save.data.notetheme = "NOTE";
@@ -203,6 +206,20 @@ class OptionsMenu extends MusicBeatState
 			FlxG.save.flush();
 			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
 			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];
+		}
+		if (controls.LEFT) {
+			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+				case "Custom Scroll Speed":
+					FlxG.save.data.customscrollspeed = FlxG.save.data.customscrollspeed - 0.1;
+					optionsText.text = FlxG.save.data.advancedinfobar;
+			}
+		}
+		if (controls.RIGHT) {
+			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+				case "Custom Scroll Speed":
+					FlxG.save.data.customscrollspeed = FlxG.save.data.customscrollspeed + 0.1;
+					optionsText.text = FlxG.save.data.advancedinfobar;
+			}
 		}
 		if (controls.BACK)
 			FlxG.switchState(new MainMenuState());

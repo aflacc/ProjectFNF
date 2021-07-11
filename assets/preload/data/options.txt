@@ -1,6 +1,7 @@
 setGhost Tapping || Hitting a key will not give you a miss || false
 setDownscroll || The notes scroll down || false
 setHit Sounds || A hit sound plays when you hit a note. || false
+setCustom Scroll Speed || Use LEFT and RIGHT to customize Scroll Speed. (IF ZERO, WILL USE DEFAULT TO SONG) || 0
 setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false
 setEnable Miss Animations || Bf's miss animations play || true
 setAdvanced Info Bar || Allows you to customize your info bar. || true
