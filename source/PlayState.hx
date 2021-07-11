@@ -2198,7 +2198,9 @@ class PlayState extends MusicBeatState
 								if (daNote.nType != 1) {
 									health -= 0.075;
 								
-									songNotesMissed++;
+									if (!daNote.isSustainNote) {
+										songNotesMissed++;
+									}
 									trace(daNote.nType);
 									vocals.volume = 0;
 									if (theFunne)
@@ -2823,7 +2825,8 @@ class PlayState extends MusicBeatState
 					gf.playAnim('sad');
 				}
 				combo = 0;
-				songNotesMissed++;
+				if (!note.isSustainNote)
+					songNotesMissed++;
 				trace("Misse added at notemiss");
 	
 				//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
@@ -3047,7 +3050,7 @@ class PlayState extends MusicBeatState
 			{
 				badNoteCheck(note);
 			}
-			if (note.nType != 1) {
+			if (note.nType != 1 && !note.isSustainNote) {
 				songNotesHit += 1;
 			}
 			if (FlxG.save.data.hitsounds) {
