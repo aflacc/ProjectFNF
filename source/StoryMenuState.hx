@@ -372,6 +372,13 @@ class StoryMenuState extends MusicBeatState
 		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07);
 	}
 
+	override function beatHit() {
+		trace("beat");
+		grpWeekCharacters.members[0].animation.play(weekCharacters[curWeek][0]);
+		grpWeekCharacters.members[1].animation.play(weekCharacters[curWeek][1]);
+		grpWeekCharacters.members[2].animation.play(weekCharacters[curWeek][2]);
+		super.beatHit();
+	}
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 
