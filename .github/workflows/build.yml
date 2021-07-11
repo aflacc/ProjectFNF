@@ -48,7 +48,7 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git extension-webm https://github.com/KadeDev/extension-webm
           haxelib run lime rebuild extension-webm windows
-          haxelib install linc_luajit
+          haxelib git openfl https://github.com/openfl/openfl
           haxelib install actuate
           haxelib list
         shell: cmd
@@ -91,7 +91,7 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git extension-webm https://github.com/KadeDev/extension-webm
           haxelib run lime rebuild extension-webm macos
-          haxelib install linc_luajit
+          haxelib git openfl https://github.com/openfl/openfl
           haxelib install actuate
           haxelib list
       - name: Create APIStuff
