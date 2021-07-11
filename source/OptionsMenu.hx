@@ -202,6 +202,8 @@ class OptionsMenu extends MusicBeatState
 					FlxG.switchState(new ModifiersMenu());
 				case "Customize Info Bar": // lol
 					OptionsMenu.instance.openSubState(new InfoBarSubstate());
+				case "Reset":
+					reset();
 			}
 			FlxG.save.flush();
 			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
@@ -329,5 +331,9 @@ class OptionsMenu extends MusicBeatState
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
+	}
+
+	function reset() {
+		
 	}
 }
