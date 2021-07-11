@@ -2811,9 +2811,12 @@ class PlayState extends MusicBeatState
 			} catch (e) {
 				trace("idk smtn");
 			}
+			trace(FlxG.save.data.ghosttapping);
+			trace(boyfriend.stunned);
 			if (!FlxG.save.data.ghosttapping) {
 			if (!boyfriend.stunned)
 			{
+				trace('balls');
 				health -= 0.04;
 				if (combo > 5 && gf.animOffsets.exists('sad'))
 				{
@@ -2957,6 +2960,7 @@ class PlayState extends MusicBeatState
 
 		// SEXY FAILSAFE (THANKS VM U A REAL ONE)
 		if (note == 'none') {
+			if (FlxG.save.data.ghosttapping) {
 			if (FlxG.save.data.enablemissanimations) { // indenting worked out in the end *holds hands with family*
 				if (leftP) {
 					boyfriend.playAnim('singLEFTmiss', true);
@@ -2979,6 +2983,49 @@ class PlayState extends MusicBeatState
 						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
 				}
 			}
+			} else { // ehh fuck it
+				health -= 0.04;
+				if (combo > 5 && gf.animOffsets.exists('sad'))
+				{
+					gf.playAnim('sad');
+				}
+				combo = 0;
+				songNotesMissed++;
+	
+				songScore -= 10;
+	
+				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+	
+				boyfriend.stunned = true;
+							// get stunned for 5 seconds
+				new FlxTimer().start(5, function(tmr:FlxTimer)
+				{
+					boyfriend.stunned = false;
+				});
+				if (FlxG.save.data.enablemissanimations) { // indenting worked out in the end *holds hands with family*
+					if (leftP) {
+						boyfriend.playAnim('singLEFTmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+					}
+					if (downP) {
+						boyfriend.playAnim('singDOWNmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+					}
+					if (upP) {
+						boyfriend.playAnim('singUPmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
+					}
+					if (rightP) {
+						boyfriend.playAnim('singRIGHTmiss', true);
+						if (FlxG.save.data.missshake)
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
+					}
+			updateInfo();
+			}
+		}
 			return;
 		}
 

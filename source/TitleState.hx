@@ -312,6 +312,7 @@ class TitleState extends MusicBeatState
 				}
 				else
 				{
+					//FlxG.switchState(new TapBPMState());
 					FlxG.switchState(new MainMenuState());
 				}
 			});
@@ -322,6 +323,9 @@ class TitleState extends MusicBeatState
 		{
 			skipIntro();
 		}
+
+		if (FlxG.keys.justPressed.FIVE)
+			FlxG.switchState(new TapBPMState());
 
 		super.update(elapsed);
 	}
