@@ -1,5 +1,6 @@
 setGhost Tapping || Hitting a key will not give you a miss || false
 setDownscroll || The notes scroll down || false
+setMiddle Scroll || The notes are in the middle of the screen || false
 setHit Sounds || A hit sound plays when you hit a note. || false
 setCustom Scroll Speed || Use LEFT and RIGHT to customize Scroll Speed. (IF ZERO, WILL USE DEFAULT TO SONG) || 0
 setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false

@@ -66,41 +66,45 @@ class OptionsMenu extends MusicBeatState
 			switch (controlsStrings[i].substring(3).split(" || ")[0])
 			{
 				case "Ghost Tapping":
-					if (!FlxG.save.data.ghosttapping)
+					if (FlxG.save.data.ghosttapping == null)
 						FlxG.save.data.ghosttapping = controlsStrings[curSelected].split(" || ")[2];
 				case "Downscroll":
-					if (!FlxG.save.data.downscroll)
+					if (FlxG.save.data.downscroll == null)
 						FlxG.save.data.downscroll = controlsStrings[curSelected].split(" || ")[2];
 				case "Miss Shake":
-					if (!FlxG.save.data.missshake)
+					if (FlxG.save.data.missshake == null)
 						FlxG.save.data.missshake = controlsStrings[curSelected].split(" || ")[2];
 				case "Dad Notes Visible":
-					if (!FlxG.save.data.dadnotesvisible)
+					if (FlxG.save.data.dadnotesvisible == null)
 						FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
 				case "Enable Miss Animations":
-					if (!FlxG.save.data.enablemissanimations)
+					if (FlxG.save.data.enablemissanimations == null)
 						FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
 				case "Bot Play":
-					if (!FlxG.save.data.botplay)
+					if (FlxG.save.data.botplay == null)
 						FlxG.save.data.botplay = controlsStrings[curSelected].split(" || ")[2];
 				case "Hit Sounds":
-					if (!FlxG.save.data.hitsounds)
+					if (FlxG.save.data.hitsounds == null)
 						FlxG.save.data.hitsounds = controlsStrings[curSelected].split(" || ")[2];
 				case "New Icons":
-					if (!FlxG.save.data.newicons)
+					if (FlxG.save.data.newicons == null)
 						FlxG.save.data.newicons = controlsStrings[curSelected].split(" || ")[2];
 				case "Info Bar BG":
-					if (!FlxG.save.data.infobarbg)
+					if (FlxG.save.data.infobarbg == null)
 						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
 				case "Custom Scroll Speed":
-					if (!FlxG.save.data.customscrollspeed)
+					if (FlxG.save.data.customscrollspeed == null)
 						FlxG.save.data.customscrollspeed = 0;
 				case "Change Note Theme":
 					if (FlxG.save.data.notetheme == null)
 						FlxG.save.data.notetheme = "NOTE";
 				case "Max Optimization":
-					if (!FlxG.save.data.maxoptimization) {
+					if (FlxG.save.data.maxoptimization == null) {
 						FlxG.save.data.maxoptimization = controlsStrings[curSelected].split(" || ")[2];
+					}
+				case "Middle Scroll":
+					if (FlxG.save.data.middlescroll == null) {
+						FlxG.save.data.middlescroll = controlsStrings[curSelected].split(" || ")[2];
 					}
 			}
 			FlxG.save.flush();
@@ -177,6 +181,9 @@ class OptionsMenu extends MusicBeatState
 				case "Max Optimization":
 					FlxG.save.data.maxoptimization = !FlxG.save.data.maxoptimization;
 					optionsText.text = FlxG.save.data.maxoptimization;
+				case "Middle Scroll":
+					FlxG.save.data.middlescroll = !FlxG.save.data.middlescroll;
+					optionsText.text = FlxG.save.data.middlescroll;
 				case "Change Note Theme":
 					noteselection++;
 					if (noteselection > notetypes.length - 1)
@@ -311,6 +318,9 @@ class OptionsMenu extends MusicBeatState
 			default: // i am so lazy :LOOOOL I cant figure this out
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize your info bar by adding modules.(WIP, DOES NOT WORK IF ADVANCED INFO TEXT IS OFF)";
+			case "Middle Scroll":
+				//FlxG.save.data.middlescroll = !FlxG.save.data.middlescroll
+				optionsText.text = FlxG.save.data.middlescroll;
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];
