@@ -3,7 +3,7 @@ name: Suggestion
 about: Suggest a feature to be implemented!
 title: "[\U0001F4A1]"
 labels: enhancement
-assignees: ''
+assignees: MagnusStrom
 
 ---
 

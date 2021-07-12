@@ -39,7 +39,7 @@ class TapBPMState extends FlxState
         }
         var tps = tps1/prevtaps.length; // the fact that i had to look this up
         var tpm = tps * 60;
-        funny.text = "TAPS: " + taps + "\nTIME: " + seconds + "s\nTPM: " + tpm;
+        funny.text = "TAPS: " + taps + "\nTIME: " + seconds + "s\nTPM: " + tpm + "\nPREVTAPS: " + prevtaps;
         super.update(elapsed);
     }
 }

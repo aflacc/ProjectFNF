@@ -3,7 +3,7 @@ name: Bug Report
 about: Report a problem with the engine.
 title: "[#] "
 labels: bug
-assignees: aflacc
+assignees: MagnusStrom
 
 ---
 
