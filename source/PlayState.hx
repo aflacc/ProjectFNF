@@ -1165,6 +1165,7 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
+					trace("OFFSET: " + FlxG.save.data.offset);
 				/*	for (note in 0...strumLineNotes.members.length) {
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 				  }*/
@@ -1251,7 +1252,9 @@ class PlayState extends MusicBeatState
 
 			for (songNotes in section.sectionNotes)
 			{
-				var daStrumTime:Float = songNotes[0];
+				//trace("STRUM TIME WITHOUT: " + songNotes[0])
+				//trace("STRUM TIME WITH: " + FlxG.save.data.offset)
+				var daStrumTime:Float = songNotes[0] + FlxG.save.data.offset;
 				var daNoteData:Int = Std.int(songNotes[1] % 4);
 
 				var gottaHitNote:Bool = section.mustHitSection;
@@ -3047,6 +3050,7 @@ class PlayState extends MusicBeatState
 				badNoteCheck(note);
 			}
 			if (note.nType != 1 && !note.isSustainNote) {
+				trace("note shit OWO");
 				songNotesHit += 1;
 			}
 			if (FlxG.save.data.hitsounds) {

@@ -23,6 +23,8 @@ class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
 
+	static public var soundExt:String = ".ogg";
+	
 	var blackScreen:FlxSprite;
 	var PFNFLOGO:Bool = Config.CONFIGTitle; // Shows logo instead of Bumpin
 	var credGroup:FlxGroup;

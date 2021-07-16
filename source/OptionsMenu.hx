@@ -106,6 +106,10 @@ class OptionsMenu extends MusicBeatState
 					if (FlxG.save.data.middlescroll == null) {
 						FlxG.save.data.middlescroll = controlsStrings[curSelected].split(" || ")[2];
 					}
+				case "Custom Offset":
+					if (FlxG.save.data.offset == null) {
+						FlxG.save.data.offset = 0;
+					}
 			}
 			FlxG.save.flush();
 
@@ -222,6 +226,11 @@ class OptionsMenu extends MusicBeatState
 					if (FlxG.save.data.customscrollspeed > 0)
 						FlxG.save.data.customscrollspeed -= 0.1;
 						optionsText.text = FlxG.save.data.customscrollspeed;
+				case "Custom Offset":
+					FlxG.save.data.offset -= 0.1;
+					// haxe is monkey
+					//FlxG.save.data.offset = Math.fround(FlxG.save.data.offset);
+					optionsText.text = FlxG.save.data.offset;
 			}
 		}
 		if (controls.RIGHT_P) {
@@ -229,6 +238,11 @@ class OptionsMenu extends MusicBeatState
 				case "Custom Scroll Speed":
 					FlxG.save.data.customscrollspeed += 0.1;
 					optionsText.text = FlxG.save.data.customscrollspeed;
+				case "Custom Offset":
+					FlxG.save.data.offset += 0.1;
+					// haxe is monkey
+					//FlxG.save.data.offset = Math.fround(FlxG.save.data.offset);
+					optionsText.text = FlxG.save.data.offset;
 			}
 		}
 		if (controls.BACK)
@@ -321,6 +335,8 @@ class OptionsMenu extends MusicBeatState
 			case "Middle Scroll":
 				//FlxG.save.data.middlescroll = !FlxG.save.data.middlescroll
 				optionsText.text = FlxG.save.data.middlescroll;
+			case "Custom Offset":
+				optionsText.text = FlxG.save.data.offset;
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];
