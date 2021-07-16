@@ -1,5 +1,6 @@
 package;
 
+import haxe.Timer;
 import lime.app.Application;
 #if desktop
 import Discord.DiscordClient;
