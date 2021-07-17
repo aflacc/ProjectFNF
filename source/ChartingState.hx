@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxCamera;
 import lime.math.BGRA;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.ui.FlxUIText;
@@ -106,6 +107,8 @@ class ChartingState extends MusicBeatState
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var snapText:FlxText;
 	var evilNotes:Bool = false;
+	var camHUD:FlxCamera;
+	var camGame:FlxCamera;
 
 	function stage() {
 		trace("stage reset sussy");
@@ -412,8 +415,21 @@ class ChartingState extends MusicBeatState
 		}
 	}
 
+	function sex(bpm:Int) {
+		tempBpm = bpm;
+		_song.bpm = bpm;
+		Conductor.changeBPM(_song.bpm);
+		Conductor.mapBPMChanges(_song);
+		Conductor.bpm = bpm;
+		stepperSectionBPM.value = bpm;
+	}
+
 	override function create()
 	{
+		
+		camHUD = new FlxCamera();
+		FlxG.cameras.add(camHUD);
+
 		curSection = lastSection;
 
 		if (PlayState.SONG != null)
@@ -485,13 +501,14 @@ class ChartingState extends MusicBeatState
 		var tabs = [
 			{name: "Song", label: 'Song'},
 			{name: "Section", label: 'Section'},
-			{name: "Note", label: 'Note'}
+			{name: "Note", label: 'Note'},
+			{name: "Extra", label: 'Extra'}
 		];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
 		UI_box.resize(300, 400);
-		UI_box.x = FlxG.width / 2;
+		UI_box.x = 320;
 		UI_box.y = 20;
 		add(UI_box);
 
@@ -534,7 +551,7 @@ class ChartingState extends MusicBeatState
 				player2.x = 1050;
 		}
 		add(player1);
-		snapText = new FlxText(60,10,0,"Snap: 1/" + snap + " (Press Control to unsnap the cursor)\nAdd Notes: 1-8 (or click)\n", 14);
+		snapText = new FlxText(330,430,0,"Snap: 1/" + snap + " (Press Control to unsnap the cursor)\nAdd Notes: 1-8 (or click)\n", 14);
 		snapText.scrollFactor.set();
 		add(snapText);
 		add(player2);
@@ -652,7 +669,7 @@ class ChartingState extends MusicBeatState
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();
 
-		FlxG.camera.follow(strumLine);
+		//FlxG.camera.follow(strumLine);
 	}
 
 	var stepperLength:FlxUINumericStepper;
@@ -755,18 +772,33 @@ class ChartingState extends MusicBeatState
 	}
 
 	var tab_group_extra:FlxUI;
+	var tapbpm:FlxButton;
 
 	function addExtraUI():Void
 	{
-		tab_group_note = new FlxUI(null, UI_box);
-		tab_group_note.name = 'Extra';
+		tab_group_extra = new FlxUI(null, UI_box);
+		tab_group_extra.name = 'Extra';
 
 
-		var tapbpm:FlxButton = new FlxButton(100, 10, 'Open Tap BPM state');
+		tapbpm = new FlxButton(100, 10, 'Tap BPM', function()
+			{
+				var state = new TapBPMSubState(_song.song, camHUD);
+				state.openCallback = function() {
+					FlxG.sound.music.pause();
+					vocals.pause();
+				}
+				state.closeCallback = function() {
+					FlxG.sound.music.play();
+					vocals.play();
+					if (state.saving)
+						sex(Math.round(state.tpm));
+				}
+				openSubState(state);
+			});
 
-		tab_group_note.add(tapbpm);
+		tab_group_extra.add(tapbpm);
 
-		UI_box.addGroup(tab_group_note);
+		UI_box.addGroup(tab_group_extra);
 
 		/*player2 = new Character(0,gridBG.y, _song.player2);
 			player1 = new Boyfriend(player2.width * 0.2,gridBG.y + player2.height, _song.player1);
