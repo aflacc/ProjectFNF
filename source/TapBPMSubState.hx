@@ -42,27 +42,27 @@ class TapBPMSubState extends FlxSubState
         FlxTween.tween(blackBox, {alpha: 0.7}, 1, {ease: FlxEase.expoInOut});
         FlxTween.tween(funny, {alpha: 1}, 1, {ease: FlxEase.expoInOut});
 
-        timer = new haxe.Timer(1000); // 1000ms delay
-        timer.run = function() {
-            trace("Nothing is done LOL");
-        }
         super.create();
     }
 
     override public function update(elapsed:Float):Void
     {
-        trace(started);
+     //   trace(started);
         if (FlxG.keys.justPressed.SPACE) {
             if (!started) {
                 started = true;
                 FlxG.sound.playMusic(Paths.inst(songName.toLowerCase()), 0.6);
+                taps++;
+                timer = new haxe.Timer(1000); // 1000ms delay
                 timer.run = function() { 
                     seconds++;
                     prevtaps.push(taps);
                     taps = 0;
-            }
+                }
+                FlxG.sound.play(Paths.sound('hitsound'), 0.5);
             } else {
                 taps++;
+                FlxG.sound.play(Paths.sound('hitsound'), 0.5);
             }
         }
         if (FlxG.keys.justPressed.ESCAPE) {
@@ -81,7 +81,7 @@ class TapBPMSubState extends FlxSubState
         var tps = tps1/prevtaps.length; // the fact that i had to look this up
         tpm = tps * 60;
         if (started)
-            funny.text = "TAPS: " + taps + "\nTIME: " + seconds + "s\nBPM: " + tpm + "\nPress ESCAPE to exit, \nand ENTER to update Song BPM and exit.";
+            funny.text = "TAPS: " + taps + "\nTIME: " + seconds + "s\nBPM: " + tpm + "\nPress SPACE and tap to the beat!\nPress ESCAPE to exit, \nand ENTER to update Song BPM and exit.";
         super.update(elapsed);
     }
 }

@@ -110,6 +110,7 @@ class ChartingState extends MusicBeatState
 	var camHUD:FlxCamera;
 	var camGame:FlxCamera;
 
+	var stepperBPM:FlxUINumericStepper;
 	function stage() {
 		trace("stage reset sussy");
 		switch (_song.song.toLowerCase())
@@ -416,12 +417,10 @@ class ChartingState extends MusicBeatState
 	}
 
 	function sex(bpm:Int) {
-		tempBpm = bpm;
-		_song.bpm = bpm;
-		Conductor.changeBPM(_song.bpm);
+		stepperBPM.value = Std.int(bpm);
+		tempBpm = Std.int(bpm);
 		Conductor.mapBPMChanges(_song);
-		Conductor.bpm = bpm;
-		stepperSectionBPM.value = bpm;
+		Conductor.changeBPM(Std.int(bpm));
 	}
 
 	override function create()
@@ -515,6 +514,7 @@ class ChartingState extends MusicBeatState
 		addSongUI();
 		addSectionUI();
 		addNoteUI();
+		addExtraUI();
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
@@ -617,7 +617,7 @@ class ChartingState extends MusicBeatState
 		stepperSpeed.value = _song.speed;
 		stepperSpeed.name = 'song_speed';
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 65, 0.1, 1, 1.0, 5000.0, 1);
+		stepperBPM = new FlxUINumericStepper(10, 65, 0.1, 1, 1.0, 5000.0, 1);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
