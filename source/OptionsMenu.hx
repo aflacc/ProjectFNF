@@ -106,6 +106,10 @@ class OptionsMenu extends MusicBeatState
 					if (FlxG.save.data.middlescroll == null) {
 						FlxG.save.data.middlescroll = controlsStrings[curSelected].split(" || ")[2];
 					}
+				case "Charting Background":
+					if (FlxG.save.data.chartingbackground == null) {
+						FlxG.save.data.chartingbackground = controlsStrings[curSelected].split(" || ")[2];
+					}
 				case "Custom Offset":
 					if (FlxG.save.data.offset == null) {
 						FlxG.save.data.offset = 0;
@@ -134,7 +138,7 @@ class OptionsMenu extends MusicBeatState
 		changeSelection();
 		//	openSubState(new OptionsSubState());
 	}
-
+	
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -188,6 +192,9 @@ class OptionsMenu extends MusicBeatState
 				case "Middle Scroll":
 					FlxG.save.data.middlescroll = !FlxG.save.data.middlescroll;
 					optionsText.text = FlxG.save.data.middlescroll;
+				case "Charting Background":
+					FlxG.save.data.chartingbackground = !FlxG.save.data.chartingbackground;
+					optionsText.text = FlxG.save.data.chartingbackground;
 				case "Change Note Theme":
 					noteselection++;
 					if (noteselection > notetypes.length - 1)
@@ -213,6 +220,14 @@ class OptionsMenu extends MusicBeatState
 					FlxG.switchState(new ModifiersMenu());
 				case "Customize Info Bar": // lol
 					OptionsMenu.instance.openSubState(new InfoBarSubstate());
+				case "Custom Scroll Speed":
+					FlxG.save.data.customscrollspeed = 0;
+					optionsText.text = "0";
+				case "Custom Offset":
+					FlxG.save.data.offset = 0;
+					// haxe is monkey
+					//FlxG.save.data.offset = Math.fround(FlxG.save.data.offset);
+					optionsText.text = "0";
 				case "Reset":
 					reset();
 			}
@@ -223,26 +238,27 @@ class OptionsMenu extends MusicBeatState
 		if (controls.LEFT_P) {
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 				case "Custom Scroll Speed":
-					if (FlxG.save.data.customscrollspeed > 0)
-						FlxG.save.data.customscrollspeed -= 0.1;
-						optionsText.text = FlxG.save.data.customscrollspeed;
+					if (FlxG.save.data.customscrollspeed > 0) {
+						FlxG.save.data.customscrollspeed -= 1;
+						optionsText.text = Std.string(FlxG.save.data.customscrollspeed / 10);
+					}
 				case "Custom Offset":
-					FlxG.save.data.offset -= 0.1;
+					FlxG.save.data.offset -= 1;
 					// haxe is monkey
 					//FlxG.save.data.offset = Math.fround(FlxG.save.data.offset);
-					optionsText.text = FlxG.save.data.offset;
+					optionsText.text = Std.string(FlxG.save.data.offset / 10);
 			}
 		}
 		if (controls.RIGHT_P) {
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 				case "Custom Scroll Speed":
-					FlxG.save.data.customscrollspeed += 0.1;
-					optionsText.text = FlxG.save.data.customscrollspeed;
+					FlxG.save.data.customscrollspeed += 1;
+					optionsText.text = Std.string(FlxG.save.data.customscrollspeed / 10);
 				case "Custom Offset":
-					FlxG.save.data.offset += 0.1;
+					FlxG.save.data.offset += 1;
 					// haxe is monkey
 					//FlxG.save.data.offset = Math.fround(FlxG.save.data.offset);
-					optionsText.text = FlxG.save.data.offset;
+					optionsText.text = Std.string(FlxG.save.data.offset / 10);
 			}
 		}
 		if (controls.BACK)
@@ -311,6 +327,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.newicons;
 			case "Info Bar BG":
 				optionsText.text = FlxG.save.data.infobarbg;
+			case "Charting Background":
+				optionsText.text = FlxG.save.data.chartingbackground;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{
@@ -328,7 +346,7 @@ class OptionsMenu extends MusicBeatState
 			case "Customize Keybinds":
 				optionsText.text = "Press ENTER";
 			case "Custom Scroll Speed":
-				optionsText.text = FlxG.save.data.customscrollspeed;
+				optionsText.text = Std.string(FlxG.save.data.customscrollspeed / 10);
 			default: // i am so lazy :LOOOOL I cant figure this out
 				optionsText.text = "Press ENTER";
 				optionsDesc.text = "Customize your info bar by adding modules.(WIP, DOES NOT WORK IF ADVANCED INFO TEXT IS OFF)";
@@ -336,7 +354,7 @@ class OptionsMenu extends MusicBeatState
 				//FlxG.save.data.middlescroll = !FlxG.save.data.middlescroll
 				optionsText.text = FlxG.save.data.middlescroll;
 			case "Custom Offset":
-				optionsText.text = FlxG.save.data.offset;
+				optionsText.text = Std.string(FlxG.save.data.offset / 10);
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];

@@ -114,9 +114,9 @@ class ChartingState extends MusicBeatState
 	var stepperBPM:FlxUINumericStepper;
 	function stage() {
 		trace("stage reset sussy");
-		switch (_song.song.toLowerCase())
+		switch (FlxG.random.int(0, 8))
 		{
-			case 'spookeez' | 'monster' | 'south':
+			case 1:
 				{
 					curStage = 'spooky';
 
@@ -131,7 +131,7 @@ class ChartingState extends MusicBeatState
 					halloweenBG.antialiasing = true;
 					add(halloweenBG);
 				}
-			case 'pico' | 'blammed' | 'philly':
+			case 2:
 				{
 					curStage = 'philly';
 
@@ -171,7 +171,7 @@ class ChartingState extends MusicBeatState
 					add(street);
 					street.scrollFactor.set(0, 0);
 				}
-			case 'milf' | 'satin-panties' | 'high':
+			case 3:
 				{
 					curStage = 'limo';
 					defaultCamZoom = 0.90;
@@ -220,7 +220,7 @@ class ChartingState extends MusicBeatState
 					var fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol'));
 					// add(limo);
 				}
-			case 'cocoa' | 'eggnog':
+			case 4:
 				{
 					curStage = 'mall';
 
@@ -278,7 +278,7 @@ class ChartingState extends MusicBeatState
 					add(santa);
 					santa.scrollFactor.set(0, 0);
 				}
-			case 'winter-horrorland':
+			case 5:
 				{
 					curStage = 'mallEvil';
 					var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG'));
@@ -300,7 +300,7 @@ class ChartingState extends MusicBeatState
 					add(evilSnow);
 					evilSnow.scrollFactor.set(0, 0);
 				}
-			case 'senpai' | 'roses':
+			case 6:
 				{
 					curStage = 'school';
 
@@ -368,7 +368,7 @@ class ChartingState extends MusicBeatState
 					add(bgGirls);
 					bgGirls.scrollFactor.set(0, 0);
 				}
-			case 'thorns':
+			case 7:
 				{
 					curStage = 'schoolEvil';
 
@@ -448,7 +448,8 @@ class ChartingState extends MusicBeatState
 			};
 		}
 
-		stage();
+		if (FlxG.save.data.chartingbackground)
+			stage();
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
 
@@ -463,8 +464,8 @@ class ChartingState extends MusicBeatState
 		add(leftIcon);
 		add(rightIcon);
 
-		leftIcon.setPosition(0, -100);
-		rightIcon.setPosition(gridBG.width / 2, -100);
+		leftIcon.setPosition(0, 600);
+		rightIcon.setPosition(gridBG.width / 2, 600);
 
 		gridBlackLine = new FlxSprite(gridBG.x + gridBG.width / 2).makeGraphic(2, Std.int(gridBG.height), FlxColor.BLACK);
 		add(gridBlackLine);
