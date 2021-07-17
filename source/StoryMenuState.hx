@@ -12,6 +12,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 
 using StringTools;
 
@@ -115,7 +116,7 @@ class StoryMenuState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Selecting a Week", null);
+		DiscordClient.changePresence("Selecting a Week", "Version " + Application.current.meta.get('version'));
 		#end
 
 		for (i in 0...weekData.length)

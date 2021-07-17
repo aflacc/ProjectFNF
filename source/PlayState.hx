@@ -28,6 +28,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import lime.utils.Assets;
+import lime.app.Application;
 
 using StringTools;
 
@@ -315,7 +316,7 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused on " + detailsText;
 
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, "Score: " + songScore, iconRPC);
+		DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), iconRPC);
 		#end
 
 	if (!FlxG.save.data.maxoptimization) {
@@ -1200,7 +1201,7 @@ class PlayState extends MusicBeatState
 		songLength = FlxG.sound.music.length;
 
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, "Score: " + songScore, iconRPC, true, songLength);
+		DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), iconRPC, true, songLength);
 		updateLoop();
 		#end
 	}
@@ -1210,7 +1211,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		var timer = Timer.delay(function()
 		{
-			DiscordClient.changePresence(detailsText, "Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%",
+			DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), 
 				iconRPC);
 			updateLoop();
 		}, 5000);
@@ -1493,19 +1494,11 @@ class PlayState extends MusicBeatState
 			#if desktop
 			if (startTimer.finished)
 			{
-				DiscordClient.changePresence(detailsText,
-					"Score: "
-					+ songScore
-					+ " / Accuracy: "
-					+ (songNotesHit / (songNotesHit + songNotesMissed) * 100)
-					+ "%", iconRPC, true,
-					songLength
-					- Conductor.songPosition);
+				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'));
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText,
-					"Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC);
+				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), iconRPC);
 			}
 			#end
 		}
@@ -1520,19 +1513,11 @@ class PlayState extends MusicBeatState
 		{
 			if (Conductor.songPosition > 0.0)
 			{
-				DiscordClient.changePresence(detailsText,
-					"Score: "
-					+ songScore
-					+ " / Accuracy: "
-					+ (songNotesHit / (songNotesHit + songNotesMissed) * 100)
-					+ "%", iconRPC, true,
-					songLength
-					- Conductor.songPosition);
+				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'));
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText,
-					"Score: " + songScore + " / Accuracy: " + (songNotesHit / (songNotesHit + songNotesMissed) * 100) + "%", iconRPC);
+				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), iconRPC);
 			}
 		}
 		#end
@@ -1545,12 +1530,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (health > 0 && !paused)
 		{
-			DiscordClient.changePresence(detailsPausedText,
-				"Score: "
-				+ songScore
-				+ " / Accuracy: "
-				+ (songNotesHit / (songNotesHit + songNotesMissed) * 100)
-				+ "%", iconRPC);
+			DiscordClient.changePresence(detailsPausedText, "Version " + Application.current.meta.get('version'), iconRPC);
 		}
 		#end
 
@@ -1737,7 +1717,7 @@ class PlayState extends MusicBeatState
 				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 			#if desktop
-			DiscordClient.changePresence(detailsPausedText, "Score: " + songScore, iconRPC);
+			DiscordClient.changePresence(detailsPausedText, "Version " + Application.current.meta.get('version'), iconRPC);
 			#end
 		}
 
@@ -1746,7 +1726,7 @@ class PlayState extends MusicBeatState
 			FlxG.switchState(new ChartingState());
 
 			#if desktop
-			DiscordClient.changePresence("Chart Editor", null, null, true);
+			DiscordClient.changePresence("Chart Editor", "Version " + Application.current.meta.get('version'), null, true);
 			#end
 		}
 
@@ -1953,7 +1933,7 @@ class PlayState extends MusicBeatState
 
 			#if desktop
 			// Game Over doesn't get his own variable because it's only used here
-			DiscordClient.changePresence("Game Over - " + detailsText, "Score: " + songScore, iconRPC);
+			DiscordClient.changePresence("Game Over - " + detailsText, "Version " + Application.current.meta.get('version'), iconRPC);
 			#end
 		}
 

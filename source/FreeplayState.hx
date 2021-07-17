@@ -12,6 +12,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import lime.app.Application;
 
 using StringTools;
 
@@ -53,7 +54,7 @@ class FreeplayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Browsing Songs", null);
+		DiscordClient.changePresence("Browsing Songs", "Version " + Application.current.meta.get('version'));
 		#end
 
 		var isDebug:Bool = false;

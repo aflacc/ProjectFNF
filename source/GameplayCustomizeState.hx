@@ -10,6 +10,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import openfl.ui.Keyboard;
 import flixel.FlxSprite;
 import flixel.FlxG;
+import lime.app.Application;
 
 class GameplayCustomizeState extends MusicBeatState
 {
@@ -34,7 +35,7 @@ class GameplayCustomizeState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Customizing Gameplay", null);
+		DiscordClient.changePresence("Customizing Gameplay", "Version " + Application.current.meta.get('version'));
 		#end
 
 		Conductor.changeBPM(102);
