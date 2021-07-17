@@ -1199,6 +1199,17 @@ class PlayState extends MusicBeatState
 		#if desktop
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
+		if (isStoryMode)
+			{
+				detailsText = "Story Mode: " + SONG.song;
+			}
+			else
+			{
+				detailsText = "Free Play: " + SONG.song;
+			}
+	
+			// String for when the game is paused
+			detailsPausedText = "Paused on " + detailsText;
 
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), iconRPC, true, songLength);
@@ -1211,6 +1222,18 @@ class PlayState extends MusicBeatState
 		#if desktop
 		var timer = Timer.delay(function()
 		{
+			if (isStoryMode)
+				{
+					detailsText = "Story Mode: " + SONG.song;
+				}
+				else
+				{
+					detailsText = "Free Play: " + SONG.song;
+				}
+		
+				// String for when the game is paused
+				detailsPausedText = "Paused on " + detailsText;
+
 			DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), 
 				iconRPC);
 			updateLoop();
@@ -1492,6 +1515,18 @@ class PlayState extends MusicBeatState
 				paused = false;
 
 			#if desktop
+			if (isStoryMode)
+				{
+					detailsText = "Story Mode: " + SONG.song;
+				}
+				else
+				{
+					detailsText = "Free Play: " + SONG.song;
+				}
+		
+				// String for when the game is paused
+				detailsPausedText = "Paused on " + detailsText;
+
 			if (startTimer.finished)
 			{
 				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'));
@@ -1511,6 +1546,19 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (health > 0 && !paused)
 		{
+			if (isStoryMode)
+				{
+					detailsText = "Story Mode: " + SONG.song;
+				}
+				else
+				{
+					detailsText = "Free Play: " + SONG.song;
+				}
+		
+				// String for when the game is paused
+				detailsPausedText = "Paused on " + detailsText;
+
+				
 			if (Conductor.songPosition > 0.0)
 			{
 				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'));
@@ -1530,6 +1578,18 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (health > 0 && !paused)
 		{
+			if (isStoryMode)
+				{
+					detailsText = "Story Mode: " + SONG.song;
+				}
+				else
+				{
+					detailsText = "Free Play: " + SONG.song;
+				}
+		
+				// String for when the game is paused
+				detailsPausedText = "Paused on " + detailsText;
+
 			DiscordClient.changePresence(detailsPausedText, "Version " + Application.current.meta.get('version'), iconRPC);
 		}
 		#end
@@ -1715,6 +1775,8 @@ class PlayState extends MusicBeatState
 			}
 			else
 				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+
+				var detailsPausedText = "Paused on " + SONG.song;
 
 			#if desktop
 			DiscordClient.changePresence(detailsPausedText, "Version " + Application.current.meta.get('version'), iconRPC);
