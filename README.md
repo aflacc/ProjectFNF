@@ -4,6 +4,8 @@
 ![Code Size](https://img.shields.io/github/languages/code-size/aflacc/ProjectFNF?style=plastic)
 [![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues) 
 ![Downloads](https://img.shields.io/github/downloads/aflacc/ProjectFNF/total?style=for-the-badge)
+![Windows Build](https://img.shields.io/github/workflow/status/aflacc/ProjectFNF/BuildWin/master?label=Windows%20Build&style=for-the-badge)
+![MacOS Build](https://img.shields.io/github/workflow/status/aflacc/ProjectFNF/BuildMac/master?label=MacOS%20Build&style=for-the-badge)
 
 *click on the stats to see more about that topic!*/
 *stats generated with [shields.io](http://shields.io/)*
