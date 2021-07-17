@@ -515,7 +515,6 @@ class ChartingState extends MusicBeatState
 		addSongUI();
 		addSectionUI();
 		addNoteUI();
-		addExtraUI();
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
