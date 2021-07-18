@@ -76,7 +76,7 @@ class Config extends MusicBeatState
 	 * 
 	 * Default = **false**
 	 */
-	public static var CONFIGSkip:Bool = false;
+	public static var CONFIGSkip:Bool = true;
 	/**
 	 *  The Name of the Mod. This shows up in the Main Menu with the Story Mode, Freeplay, Donate, and Options buttons
 	 * 
