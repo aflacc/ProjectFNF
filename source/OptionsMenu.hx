@@ -138,6 +138,51 @@ class OptionsMenu extends MusicBeatState
 		changeSelection();
 		//	openSubState(new OptionsSubState());
 	}
+
+	function getOption(name:String) {
+		switch (name)
+		{
+			case "Advanced Info Bar":
+				return FlxG.save.data.advancedinfobar;
+			case "Countdown After Pause":
+				return FlxG.save.data.countdownafterpause;
+			case "Downscroll":
+				// trace("Before: " + FlxG.save.data.downscroll);
+				return FlxG.save.data.downscroll;
+			// trace("After: " + FlxG.save.data.downscroll);
+			case "Ghost Tapping":
+				// trace("Before: " + FlxG.save.data.ghosttapping);
+				return FlxG.save.data.ghosttapping;
+			// trace("After: " + FlxG.save.data.ghosttapping);
+			case "Miss Shake":
+				return FlxG.save.data.missshake; // FlxG.save.data.dadnotesvisible
+			case "Dad Notes Visible":
+				return FlxG.save.data.dadnotesvisible;
+			case "Enable Miss Animations":
+				return FlxG.save.data.enablemissanimations;
+			case "Bot Play":
+				return FlxG.save.data.botplay;
+			case "Hit Sounds":
+				return FlxG.save.data.hitsounds;
+			case "New Icons":
+				return FlxG.save.data.newicons;
+			case "Info Bar BG":
+				return FlxG.save.data.infobarbg;
+			case "Max Optimization":
+				return FlxG.save.data.maxoptimization;
+			case "Middle Scroll":
+				return FlxG.save.data.middlescroll;
+			case "Charting Background":
+				return FlxG.save.data.chartingbackground;
+			case "Change Note Theme":
+				return FlxG.save.data.notetheme;
+			case "Custom Scroll Speed":
+				return FlxG.save.data.customscrollspeed;
+			case "Custom Offset":
+				return FlxG.save.data.offset;
+		}
+		return "None Found";
+	}
 	
 	override function update(elapsed:Float)
 	{
@@ -147,7 +192,7 @@ class OptionsMenu extends MusicBeatState
 		{
 			// hey, atleast its not yanderedev
 			 trace(controlsStrings[curSelected].substring(3).split(" || ")[0]);
-			switch (controlsStrings[curSelected].substring(3).split(" || ")[0])
+		switch (controlsStrings[curSelected].substring(3).split(" || ")[0])
 			{
 				case "Advanced Info Bar":
 					FlxG.save.data.advancedinfobar = !FlxG.save.data.advancedinfobar;
@@ -231,6 +276,7 @@ class OptionsMenu extends MusicBeatState
 				case "Reset":
 					reset();
 			}
+			//getOption(controlsStrings[curSelected].substring(3).split(" || ")[0]) = !getOption(controlsStrings[curSelected].substring(3).split(" || ")[0]);
 			FlxG.save.flush();
 			// this could be us but FlxG savedata sucks dick and im too lazy to see how kade engine did it
 			//	FlxG.save.data[controlsStrings[curSelected].split(" || ")[1]] = !FlxG.save.data.options[controlsStrings[curSelected].split(" || ")[1]];

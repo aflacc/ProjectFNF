@@ -26,7 +26,6 @@ class TitleState extends MusicBeatState
 	static public var soundExt:String = ".ogg";
 	
 	var blackScreen:FlxSprite;
-	var PFNFLOGO:Bool = Config.CONFIGTitle; // Shows logo instead of Bumpin
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -139,18 +138,19 @@ class TitleState extends MusicBeatState
 		add(bg);
 
 		logoBl = new FlxSprite(-150, -100);
-		if (PFNFLOGO = true)
+		if (Config.CONFIGTitle == true) // AFLAC YOU ABSOLUTE MONKEY
 		{
 			logoBl.frames = Paths.getSparrowAtlas('ProjectFNFLogoBumpin');
 			logoBl.x += 180;
 			logoBl.y += 80;
 		}
-		else
+		else {
 			logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
-		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logoBl.animation.play('bump');
-		logoBl.updateHitbox();
+			logoBl.antialiasing = true;
+			logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+			logoBl.animation.play('bump');
+			logoBl.updateHitbox();
+		}
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 

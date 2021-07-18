@@ -81,7 +81,7 @@ class TapBPMSubState extends FlxSubState
         var tps = tps1/prevtaps.length; // the fact that i had to look this up
         tpm = tps * 60;
         if (started)
-            funny.text = "TAPS: " + taps + "\nTIME: " + seconds + "s\nBPM: " + tpm + "\nPress SPACE and tap to the beat!\nPress ESCAPE to exit, \nand ENTER to update Song BPM and exit.";
+            funny.text = "TAPS: " + taps + "\nTIME: " + seconds + "s\nBPM: " + tpm + "\nPress SPACE and tap to the beat!\nPress ESCAPE to exit. \n Press ENTER to update Song BPM and exit.";
         super.update(elapsed);
     }
 }
