@@ -74,9 +74,9 @@ class Config extends MusicBeatState
 	/**
 	 * Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
 	 * 
-	 * Default = **false**
+	 * Usually for devs
 	 */
-	public static var CONFIGSkip:Bool = true;
+	public static var CONFIGSkip:Bool = false;
 	/**
 	 *  The Name of the Mod. This shows up in the Main Menu with the Story Mode, Freeplay, Donate, and Options buttons
 	 * 
