@@ -1,24 +1,14 @@
 
 ![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&icon=discord&label=Discord&logoColor=%234e5d94&style=for-the-badge&icon=disc)(https://discord.gg/fmxuXhRqMU) 
-
 [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases) 
-
 [![GitHub pre-release](https://img.shields.io/github/release-pre/aflacc/ProjectFNF?label=beta&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases/latest)
-
 [![Updated](https://img.shields.io/github/last-commit/aflacc/ProjectFNF?label=Updated&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master) 
-
 [![Activity](https://img.shields.io/github/commit-activity/w/aflacc/ProjectFNF?label=Activity&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/commits/master)
-
 ![Code Size](https://img.shields.io/github/languages/code-size/aflacc/ProjectFNF?style=plastic)
-
 [![Issues](https://img.shields.io/github/issues/aflacc/ProjectFNF?style=for-the-badge)](https://github.com/aflacc/ProjectFNF/issues) 
-
-![Downloads](https://img.shields.io/github/downloads/aflacc/ProjectFNF/total?style=for-the-badge)]
-
+![Downloads](https://img.shields.io/github/downloads/aflacc/ProjectFNF/total?style=for-the-badge)
 ![Windows Build](https://img.shields.io/github/workflow/status/aflacc/ProjectFNF/BuildWin/master?label=Windows%20Build&style=for-the-badge)
-
 ![MacOS Build](https://img.shields.io/github/workflow/status/aflacc/ProjectFNF/BuildMac/master?label=MacOS%20Build&style=for-the-badge)
-
 ![Balls](https://img.shields.io/badge/Balls-In%20Your%20Jaws-green?style=for-the-badge)
 
 *click on the stats to see more about that topic!*/
