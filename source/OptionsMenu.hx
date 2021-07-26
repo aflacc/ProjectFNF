@@ -82,6 +82,9 @@ class OptionsMenu extends MusicBeatState
 				case "Enable Miss Animations":
 					if (FlxG.save.data.enablemissanimations == null)
 						FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
+				case "Advanced Info Bar":
+					if (FlxG.save.data.advancedinfobar == null)
+						FlxG.save.data.advancedinfobar = controlsStrings[curSelected].split(" || ")[2];
 				case "Bot Play":
 					if (FlxG.save.data.botplay == null)
 						FlxG.save.data.botplay = controlsStrings[curSelected].split(" || ")[2];
