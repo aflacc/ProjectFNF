@@ -57,19 +57,19 @@ class ModifiersMenu extends MusicBeatState
 			switch (controlsStrings[i].substring(3).split(" || ")[0])
 			{
 				case "Dad Notes Do Damage":
-					if (!FlxG.save.data.dadnotesdodamage)
+					if (FlxG.save.data.dadnotesdodamage == null)
 						FlxG.save.data.dadnotesdodamage = controlsStrings[curSelected].split(" || ")[2];
 				case "Dad Notes Can Kill":
-					if (!FlxG.save.data.dadnotescankill)
+					if (FlxG.save.data.dadnotescankill == null)
 						FlxG.save.data.dadnotescankill = controlsStrings[curSelected].split(" || ")[2];
 				case "Dad Notes Visible":
-					if (!FlxG.save.data.dadnotesvisible)
+					if (FlxG.save.data.dadnotesvisible == null)
 						FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
 				case "BF Notes Visible":
-					if (!FlxG.save.data.bfnotesvisible)
+					if (FlxG.save.data.bfnotesvisible == null)
 						FlxG.save.data.bfnotesvisible = controlsStrings[curSelected].split(" || ")[2];
 				case "Stuns Block Inputs":
-					if (!FlxG.save.data.stunsblockinputs)
+					if (FlxG.save.data.stunsblockinputs == null)
 						FlxG.save.data.stunsblockinputs = controlsStrings[curSelected].split(" || ")[2];
 			}
 			FlxG.save.flush();
