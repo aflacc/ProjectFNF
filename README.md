@@ -6,6 +6,7 @@
 ![Downloads](https://img.shields.io/github/downloads/aflacc/ProjectFNF/total?style=for-the-badge)
 ![Windows Build](https://img.shields.io/github/workflow/status/aflacc/ProjectFNF/BuildWin/master?label=Windows%20Build&style=for-the-badge)
 ![MacOS Build](https://img.shields.io/github/workflow/status/aflacc/ProjectFNF/BuildMac/master?label=MacOS%20Build&style=for-the-badge)
+[![GitHub pre-release](https://img.shields.io/github/release-pre/aflacc/ProjectFNF?label=beta)](https://github.com/aflacc/ProjectFNF/releases/latest)
 ![Balls](https://img.shields.io/badge/Balls-In%20Your%20Jaws-green)
 
 *click on the stats to see more about that topic!*/
