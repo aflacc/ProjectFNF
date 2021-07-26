@@ -1678,7 +1678,9 @@ class PlayState extends MusicBeatState
 					// the things i do for funny colors
 					var finalthing = "";
 					var haxewantsthis:Array<String> = FlxG.save.data.infobar;
-
+					if (haxewantsthis == null) {
+						haxewantsthis = [];
+					}
 					for (item in haxewantsthis) {
 						var lol:Any = "ERROR";
 						switch(item) {
