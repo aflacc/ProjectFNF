@@ -2830,7 +2830,6 @@ class PlayState extends MusicBeatState
 					if ((rightR || FlxG.save.data.botplay))
 						spr.animation.play('static');
 			}
-
 			try {
 			if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
 			{
