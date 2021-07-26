@@ -123,6 +123,14 @@ class OptionsMenu extends MusicBeatState
 						FlxG.save.data.offset = 0;
 					}
 			}
+
+			// failsafe cuz stupid
+			FlxG.save.data.dadnotesdodamage = false;
+			FlxG.save.data.dadnotescankill = false;
+			FlxG.save.data.dadnotesvisible = true;
+			FlxG.save.data.bfnotesvisible = true;
+			FlxG.save.data.stunsblockinputs = false;
+			
 			FlxG.save.flush();
 
 			if (controlsStrings[i].indexOf('set') != -1)
