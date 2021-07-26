@@ -66,8 +66,10 @@ class OptionsMenu extends MusicBeatState
 			switch (controlsStrings[i].substring(3).split(" || ")[0])
 			{
 				case "Ghost Tapping":
-					if (FlxG.save.data.ghosttapping == null)
+					if (FlxG.save.data.ghosttapping == null) {
+						trace("Some data's null around here :nerd:");
 						FlxG.save.data.ghosttapping = controlsStrings[curSelected].split(" || ")[2];
+					}
 				case "Downscroll":
 					if (FlxG.save.data.downscroll == null)
 						FlxG.save.data.downscroll = controlsStrings[curSelected].split(" || ")[2];
@@ -92,6 +94,9 @@ class OptionsMenu extends MusicBeatState
 				case "Info Bar BG":
 					if (FlxG.save.data.infobarbg == null)
 						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
+				case "Countdown After Pause":
+					if (FlxG.save.data.countdownafterpause == null)
+						FlxG.save.data.countdownafterpause = controlsStrings[curSelected].split(" || ")[2];
 				case "Custom Scroll Speed":
 					if (FlxG.save.data.customscrollspeed == null)
 						FlxG.save.data.customscrollspeed = 0;
