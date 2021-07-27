@@ -2,6 +2,7 @@ setGhost Tapping || Hitting a key will not give you a miss || false
 setDownscroll || The notes scroll down || false
 setCustom Offset || Use left and right to set your offset, and enter to reset. || 0
 setMiddle Scroll || The notes are in the middle of the screen || false
+setSquare Notes || The notes are square, kinda like quavers. easier to see, more optimized || false
 setHit Sounds || A hit sound plays when you hit a note. || false
 setCustom Scroll Speed || Use LEFT and RIGHT to customize Scroll Speed, and ENTER to reset. (IF ZERO, WILL USE DEFAULT TO SONG) || 0
 setMiss Shake || Screen shakes on miss(FOR MOD DEVS: CONFIGURE THIS SHAKE INTENSITY IN SETTINGS!!!) || false

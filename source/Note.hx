@@ -115,6 +115,15 @@ class Note extends FlxSkewedSprite
 					antialiasing = true;
 			}
 		}
+		if (FlxG.save.data.squarenotes) {
+			x += swagWidth * 0;
+			makeGraphic(150, 150, 0xFFFFFFFF);
+		/*	switch (noteData)
+			{
+				x += swagWidth * 0;
+
+			}*/
+		}
 		switch (noteData)
 		{
 			case 0:

@@ -66,6 +66,8 @@ class ProjectFNF
 			if (FlxG.save.data.offset == null) {
 				FlxG.save.data.offset = 0;
 			}
+			if (FlxG.save.data.squarenotes == null)
+				FlxG.save.data.squarenotes = controlsStrings[curSelected].split(" || ")[2];
 		}
 	}
 }
