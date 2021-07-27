@@ -1350,6 +1350,7 @@ class PlayState extends MusicBeatState
 		for (i in 0...4)
 		{
 			// FlxG.log.add(i);
+			//if (!FlxG.save.data.squarenotes) {
 			var babyArrow:FlxSprite = new FlxSprite(0, strumLine.y);
 
 			switch (curStage)
@@ -1424,7 +1425,6 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
 					}
 			}
-
 			babyArrow.updateHitbox();
 			babyArrow.scrollFactor.set();
 

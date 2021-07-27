@@ -64,6 +64,7 @@ class Note extends FlxSkewedSprite
 			antialiasing = true;
 			//animation.play('redScroll', true);
 		} else {
+			if (!FlxG.save.data.squarenotes) {
 			switch (daStage)
 			{
 				case 'school' | 'schoolEvil':
@@ -115,25 +116,27 @@ class Note extends FlxSkewedSprite
 					antialiasing = true;
 			}
 		}
+		}
 		if (FlxG.save.data.squarenotes) {
+			setGraphicSize(Std.int(width * 0.7));
 			if (!isSustainNote) 
 				switch (noteData)
 				{
 					case 0:
 						x += swagWidth * 0;
-						makeGraphic(150, 150, 0xFFFFFFFF);
+						makeGraphic(100, 100, 0xFFFFFFFF);
 						color = FlxColor.PURPLE;
 					case 1:
 						x += swagWidth * 1;
-						makeGraphic(150, 150, 0xFFFFFFFF);
+						makeGraphic(100, 100, 0xFFFFFFFF);
 						color = FlxColor.BLUE;
 					case 2:
 						x += swagWidth * 2;
-						makeGraphic(150, 150, 0xFFFFFFFF);
+						makeGraphic(100, 100, 0xFFFFFFFF);
 						color = FlxColor.GREEN;
 					case 3:
 						x += swagWidth * 3;
-						makeGraphic(150, 150, 0xFFFFFFFF);
+						makeGraphic(100, 100, 0xFFFFFFFF);
 						color = FlxColor.RED;
 				}
 
@@ -175,14 +178,22 @@ class Note extends FlxSkewedSprite
 			if (FlxG.save.data.squarenotes) {
 				switch (noteData)
 				{
-					case 2:
-						width = 30;
-					case 3:
-						width = 30;
-					case 1:
-						width = 30;
 					case 0:
-						width = 30;
+						x += swagWidth * 0;
+						makeGraphic(30, 50, 0xFFFFFFFF);
+						color = FlxColor.PURPLE;
+					case 1:
+						x += swagWidth * 1;
+						makeGraphic(30, 50, 0xFFFFFFFF);
+						color = FlxColor.BLUE;
+					case 2:
+						x += swagWidth * 2;
+						makeGraphic(30, 50, 0xFFFFFFFF);
+						color = FlxColor.GREEN;
+					case 3:
+						x += swagWidth * 3;
+						makeGraphic(30, 50, 0xFFFFFFFF);
+						color = FlxColor.RED;
 				}
 			} else {
 				switch (noteData)
