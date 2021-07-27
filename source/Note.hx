@@ -117,7 +117,9 @@ class Note extends FlxSkewedSprite
 		}
 		if (FlxG.save.data.squarenotes) {
 			x += swagWidth * 0;
-			makeGraphic(150, 150, 0xFFFFFFFF);
+			if (!isSustainNote) {
+				makeGraphic(150, 150, 0xFFFFFFFF);
+			}
 		/*	switch (noteData)
 			{
 				x += swagWidth * 0;

@@ -2084,7 +2084,6 @@ class PlayState extends MusicBeatState
 						if(daNote.isSustainNote)
 						{
 							// Remember = minus makes notes go up, plus makes them go down
-							if (!FlxG.save.data.squarenotes) {
 							if(daNote.animation.curAnim.name.endsWith('end') && daNote.prevNote != null)
 								daNote.y += daNote.prevNote.height;
 							else
@@ -2098,7 +2097,6 @@ class PlayState extends MusicBeatState
 
 									daNote.clipRect = swagRect;
 								}
-							}
 						}
 					}else
 					{
