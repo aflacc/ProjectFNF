@@ -116,31 +116,49 @@ class Note extends FlxSkewedSprite
 			}
 		}
 		if (FlxG.save.data.squarenotes) {
-			x += swagWidth * 0;
-			if (!isSustainNote) {
-				makeGraphic(150, 150, 0xFFFFFFFF);
-			}
+			if (!isSustainNote) 
+				switch (noteData)
+				{
+					case 0:
+						x += swagWidth * 0;
+						makeGraphic(150, 150, 0xFFFFFFFF);
+						color = FlxColor.PURPLE;
+					case 1:
+						x += swagWidth * 1;
+						makeGraphic(150, 150, 0xFFFFFFFF);
+						color = FlxColor.BLUE;
+					case 2:
+						x += swagWidth * 2;
+						makeGraphic(150, 150, 0xFFFFFFFF);
+						color = FlxColor.GREEN;
+					case 3:
+						x += swagWidth * 3;
+						makeGraphic(150, 150, 0xFFFFFFFF);
+						color = FlxColor.RED;
+				}
+
 		/*	switch (noteData)
 			{
 				x += swagWidth * 0;
 
 			}*/
-		}
-		switch (noteData)
-		{
-			case 0:
-				x += swagWidth * 0;
-				animation.play('purpleScroll');
-			case 1:
-				x += swagWidth * 1;
-				animation.play('blueScroll');
-			case 2:
-				x += swagWidth * 2;
-				animation.play('greenScroll');
-			case 3:
-				x += swagWidth * 3;
-				animation.play('redScroll');
-		}
+		} else {
+			switch (noteData)
+			{
+				case 0:
+					x += swagWidth * 0;
+					animation.play('purpleScroll');
+				case 1:
+					x += swagWidth * 1;
+					animation.play('blueScroll');
+				case 2:
+					x += swagWidth * 2;
+					animation.play('greenScroll');
+				case 3:
+					x += swagWidth * 3;
+					animation.play('redScroll');
+			}
+	}
 
 		// trace(prevNote);
 		if (FlxG.save.data.downscroll && sustainNote) {
@@ -154,18 +172,31 @@ class Note extends FlxSkewedSprite
 
 			x += width / 2;
 
-			switch (noteData)
-			{
-				case 2:
-					animation.play('greenholdend');
-				case 3:
-					animation.play('redholdend');
-				case 1:
-					animation.play('blueholdend');
-				case 0:
-					animation.play('purpleholdend');
+			if (FlxG.save.data.squarenotes) {
+				switch (noteData)
+				{
+					case 2:
+						width = 30;
+					case 3:
+						width = 30;
+					case 1:
+						width = 30;
+					case 0:
+						width = 30;
+				}
+			} else {
+				switch (noteData)
+				{
+					case 2:
+						animation.play('greenholdend');
+					case 3:
+						animation.play('redholdend');
+					case 1:
+						animation.play('blueholdend');
+					case 0:
+						animation.play('purpleholdend');
+				}
 			}
-
 			updateHitbox();
 
 			x -= width / 2;
