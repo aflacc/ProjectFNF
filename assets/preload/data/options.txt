@@ -11,6 +11,7 @@ setAdvanced Info Bar || Allows you to customize your info bar. || true
 setInfo Bar BG || Toggles the black bar behind info text. || true
 setCountdown After Pause || Counts down (3, 2, 1) after you unpause the game || true
 setMax Optimization || Removes Everything but the notes. || false
+setOptimized Notes || Uses default FlxGraphic squares to optimize notes. || false
 setBot Play || Enable Bot play to showcase your mods. WIP || false
 setCharting Background || Toggle the stage background in charting. || true
 setChange Note Theme || Change the theme of your notes. || NOTE

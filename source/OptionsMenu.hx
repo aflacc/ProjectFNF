@@ -82,7 +82,7 @@ class OptionsMenu extends MusicBeatState
 				case "Enable Miss Animations":
 					if (FlxG.save.data.enablemissanimations == null)
 						FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
-				case "Square Notes":
+				case "Optimized Notes":
 					if (FlxG.save.data.squarenotes == null)
 						FlxG.save.data.squarenotes = controlsStrings[curSelected].split(" || ")[2];
 				case "Advanced Info Bar":
@@ -226,7 +226,7 @@ class OptionsMenu extends MusicBeatState
 				case "Countdown After Pause":
 					FlxG.save.data.countdownafterpause = !FlxG.save.data.countdownafterpause;
 					optionsText.text = FlxG.save.data.countdownafterpause;
-				case "Square Notes":
+				case "Optimized Notes":
 					FlxG.save.data.squarenotes = !FlxG.save.data.squarenotes;
 					optionsText.text = FlxG.save.data.squarenotes;
 				case "Downscroll":
@@ -400,7 +400,7 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.maxoptimization;
 			case "New Icons":
 				optionsText.text = FlxG.save.data.newicons;
-			case "Square Notes":
+			case "Optimized Notes":
 				optionsText.text = FlxG.save.data.squarenotes;
 			case "Info Bar BG":
 				optionsText.text = FlxG.save.data.infobarbg;
