@@ -13,6 +13,6 @@ setCountdown After Pause || Counts down (3, 2, 1) after you unpause the game || 
 setMax Optimization || Removes Everything but the notes. || false
 setBot Play || Enable Bot play to showcase your mods. WIP || false
 setCharting Background || Toggle the stage background in charting. || true
-setChange Note Theme || Change the theme of your notes. (PRESS SEVEN TO PLAY THE ANIMATION) || NOTE
+setChange Note Theme || Change the theme of your notes. || NOTE
 setCustomize Info Bar || Customize what stats are beside your healthbar during games. || Press ENTER
 setModifiers || Manage modifiers on your game. || Press ENTER

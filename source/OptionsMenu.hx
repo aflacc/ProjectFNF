@@ -419,7 +419,7 @@ class OptionsMenu extends MusicBeatState
 				viewer.frames = Paths.getSparrowAtlas('notes/' + FlxG.save.data.notetheme + '_assets', 'shared');
 				viewer.animation.addByPrefix('static', 'arrowUP', 24, true);
 				viewer.animation.addByPrefix('confirm', 'up confirm', 24, false);
-				viewer.animation.play('static');
+				viewer.animation.play('confirm');
 			case "Customize Keybinds":
 				optionsText.text = "Press ENTER";
 			case "Custom Scroll Speed":
