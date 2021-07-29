@@ -448,6 +448,7 @@ class ChartingState extends MusicBeatState
 			};
 		}
 
+		trace(FlxG.save.data.chartingbackground);
 		if (FlxG.save.data.chartingbackground)
 			stage();
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
