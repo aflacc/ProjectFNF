@@ -810,16 +810,16 @@ class PlayState extends MusicBeatState
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
-		if (FlxG.save.data.quaverbar)
+		if (FlxG.save.data.quaverbar) {
 			healthBarBG.angle = 90;
+		}
 		trace("QUAVERBAR: " + FlxG.save.data.quaverbar);
 
 		if (FlxG.save.data.quaverbar) {
 			healthBarBG.x = -290;
 			healthBarBG.y = 340;
 		}
-		// this might be confusing to read
-		healthBar = new FlxBar(!FlxG.save.data.quaverbar ? healthBarBG.x + 4 : healthBarBG.x + 20, !FlxG.save.data.quaverbar ? healthBarBG.y + 4 : 54, !FlxG.save.data.quaverbar ? RIGHT_TO_LEFT : BOTTOM_TO_TOP, !FlxG.save.data.quaverbar ? Std.int(healthBarBG.width - 8) : Std.int(healthBarBG.height - 8), !FlxG.save.data.quaverbar ? Std.int(healthBarBG.height - 8) : Std.int(healthBarBG.width - 8), this,
+		healthBar = new FlxBar(FlxG.save.data.quaverbar ? 5 : healthBarBG.x + 4, !FlxG.save.data.quaverbar ? healthBarBG.y + 4 : 53, !FlxG.save.data.quaverbar ? RIGHT_TO_LEFT : BOTTOM_TO_TOP, !FlxG.save.data.quaverbar ? Std.int(healthBarBG.width - 8) : Std.int(healthBarBG.height - 8), !FlxG.save.data.quaverbar ? Std.int(healthBarBG.height - 8) : Std.int(healthBarBG.width - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		var curcol:FlxColor = Config.col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon

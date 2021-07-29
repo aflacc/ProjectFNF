@@ -321,6 +321,9 @@ class TitleState extends MusicBeatState
 			skipIntro();
 		}
 
+		if (FlxG.keys.justPressed.FIVE) {
+			//FlxG.switchState(new OffsetCalculationState());
+		}
 		super.update(elapsed);
 	}
 
