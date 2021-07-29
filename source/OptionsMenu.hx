@@ -97,6 +97,9 @@ class OptionsMenu extends MusicBeatState
 				case "New Icons":
 					if (FlxG.save.data.newicons == null)
 						FlxG.save.data.newicons = controlsStrings[curSelected].split(" || ")[2];
+				case "Icons":
+					if (FlxG.save.data.icons == null)
+						FlxG.save.data.icons = controlsStrings[curSelected].split(" || ")[2];
 				case "Info Bar BG":
 					if (FlxG.save.data.infobarbg == null)
 						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
@@ -261,6 +264,9 @@ class OptionsMenu extends MusicBeatState
 				case "New Icons":
 					FlxG.save.data.newicons = !FlxG.save.data.newicons;
 					optionsText.text = FlxG.save.data.newicons;
+				case "Icons":
+					FlxG.save.data.icons = !FlxG.save.data.icons;
+					optionsText.text = FlxG.save.data.icons;
 				case "Info Bar BG":
 					FlxG.save.data.infobarbg = !FlxG.save.data.infobarbg;
 					optionsText.text = FlxG.save.data.infobarbg;
@@ -301,6 +307,8 @@ class OptionsMenu extends MusicBeatState
 					FlxG.switchState(new ModifiersMenu());
 				case "Customize Info Bar": // lol
 					OptionsMenu.instance.openSubState(new InfoBarSubstate());
+				case "Time Your Offset": // lol
+					OptionsMenu.instance.openSubState(new OffsetCalculationSubState());
 				case "Custom Scroll Speed":
 					FlxG.save.data.customscrollspeed = 0;
 					optionsText.text = "0";
@@ -401,6 +409,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.countdownafterpause;
 			case "Bot Play":
 				optionsText.text = FlxG.save.data.botplay;
+			case "Icons":
+				optionsText.text = FlxG.save.data.icons;
 			case "Hit Sounds":
 				optionsText.text = FlxG.save.data.hitsounds;
 			case "Max Optimization":
@@ -441,6 +451,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.middlescroll;
 			case "Custom Offset":
 				optionsText.text = Std.string(FlxG.save.data.offset / 10);
+			case "Time Your Offset":
+				optionsText.text = "Press ENTER";
 		}
 		// how did it take me this long to figure this out bruh (still applies here)
 		optionsDesc.text = controlsStrings[curSelected].split(" || ")[1];

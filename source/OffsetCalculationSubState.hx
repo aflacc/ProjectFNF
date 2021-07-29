@@ -63,7 +63,7 @@ class OffsetCalculationSubState extends FlxSubState
                     }
                 }
             } else {
-                prevoffsets.push((100 - miniseconds) / 100);
+                prevoffsets.push((100 - miniseconds));
                 var of1:Float = 0;
                 for (i in 0...prevoffsets.length) {
                     of1 = of1 + prevoffsets[i];
@@ -73,11 +73,16 @@ class OffsetCalculationSubState extends FlxSubState
         }
 
         if (FlxG.keys.justPressed.ESCAPE) {
-            saving = false;
+            timer.run = function() {
+
+            }
             close();
         }
         if (FlxG.keys.justPressed.ENTER) {
-            saving = true;
+            timer.run = function() {
+                
+            }
+            FlxG.save.data.offset = offset;
             close();
         }
         

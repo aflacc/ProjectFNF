@@ -849,10 +849,12 @@ class PlayState extends MusicBeatState
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
+		iconP1.visible = FlxG.save.data.icons;
 
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+		iconP2.visible = FlxG.save.data.icons;
 
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
