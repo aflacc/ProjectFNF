@@ -810,11 +810,16 @@ class PlayState extends MusicBeatState
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
-		if (FlxG.save.data.quaverbar) {
-			//healthBarBG.visible = false;
-		}
+		if (FlxG.save.data.quaverbar)
+			healthBarBG.angle = 90;
+		trace("QUAVERBAR: " + FlxG.save.data.quaverbar);
 
-		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, !FlxG.save.data.quaverbar ? RIGHT_TO_LEFT : BOTTOM_TO_TOP, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
+		if (FlxG.save.data.quaverbar) {
+			healthBarBG.x = -290;
+			healthBarBG.y = 340;
+		}
+		// this might be confusing to read
+		healthBar = new FlxBar(!FlxG.save.data.quaverbar ? healthBarBG.x + 4 : healthBarBG.x + 20, !FlxG.save.data.quaverbar ? healthBarBG.y + 4 : 54, !FlxG.save.data.quaverbar ? RIGHT_TO_LEFT : BOTTOM_TO_TOP, !FlxG.save.data.quaverbar ? Std.int(healthBarBG.width - 8) : Std.int(healthBarBG.height - 8), !FlxG.save.data.quaverbar ? Std.int(healthBarBG.height - 8) : Std.int(healthBarBG.width - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		var curcol:FlxColor = Config.col[characterCol.indexOf(dad.curCharacter)]; // Dad Icon
@@ -836,6 +841,10 @@ class PlayState extends MusicBeatState
 		updateInfo();
 		add(timerTxt);
 		funnySexBox.scale.x = infoTxt.fieldWidth;
+		if (FlxG.save.data.quaverbar) {
+			infoTxt.y = 10;
+			funnySexBox.y = 10;
+		}
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -1808,9 +1817,17 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
-
+		// if this works like the other things i will laugh so fucking hard
+		
+		if (FlxG.save.data.quaverbar) {
+			iconP1.x = healthBar.x;
+			iconP1.y = healthBar.y + (healthBar.height * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+			iconP2.x = healthBar.x;
+			iconP2.y = healthBar.y + (healthBar.height * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		} else {
+			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		}
 		if (health > 2)
 			health = 2;
 

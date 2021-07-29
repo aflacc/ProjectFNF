@@ -1,6 +1,7 @@
 setGhost Tapping || Hitting a key will not give you a miss || false
 setDownscroll || The notes scroll down || false
 setCustom Offset || Use left and right to set your offset, and enter to reset. || 0
+setQuaver Bar || Makes the bar vertical, like in quaver || false
 setMiddle Scroll || The notes are in the middle of the screen || false
 setHit Sounds || A hit sound plays when you hit a note. || false
 setCustom Scroll Speed || Use LEFT and RIGHT to customize Scroll Speed, and ENTER to reset. (IF ZERO, WILL USE DEFAULT TO SONG) || 0

@@ -113,6 +113,10 @@ class OptionsMenu extends MusicBeatState
 					if (FlxG.save.data.maxoptimization == null) {
 						FlxG.save.data.maxoptimization = controlsStrings[curSelected].split(" || ")[2];
 					}
+				case "Quaver Bar":
+					if (FlxG.save.data.quaverbar == null) {
+						FlxG.save.data.quaverbar = controlsStrings[curSelected].split(" || ")[2];
+					}
 				case "Middle Scroll":
 					if (FlxG.save.data.middlescroll == null) {
 						FlxG.save.data.middlescroll = controlsStrings[curSelected].split(" || ")[2];
@@ -260,6 +264,9 @@ class OptionsMenu extends MusicBeatState
 				case "Info Bar BG":
 					FlxG.save.data.infobarbg = !FlxG.save.data.infobarbg;
 					optionsText.text = FlxG.save.data.infobarbg;
+				case "Quaver Bar":
+					FlxG.save.data.quaverbar = !FlxG.save.data.quaverbar;
+					optionsText.text = FlxG.save.data.quaverbar;
 				case "Max Optimization":
 					FlxG.save.data.maxoptimization = !FlxG.save.data.maxoptimization;
 					optionsText.text = FlxG.save.data.maxoptimization;
@@ -406,6 +413,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.infobarbg;
 			case "Charting Background":
 				optionsText.text = FlxG.save.data.chartingbackground;
+			case "Quaver Bar":
+				optionsText.text = FlxG.save.data.quaverbar;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{
