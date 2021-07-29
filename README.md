@@ -67,16 +67,6 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 | Accuracy and Grades | Yes | Yes |
 | Pause countdown | Yes | No |
 
-# Mods that use ProjecFNF
-- VS Aflac
-- Wii Deleted You
-- VS Default
-- VS Banjo and Kazooie
-- VS Ganondorf
-- VS Cube(The facility)
-- Test Modchart (AKA High effort Test)
-- Doodles Modchart (AKA High effort Doodles)
-
 # Special Thanks :)
 - KadeDev: Rating code, downscroll code and keybind code
 - Palladium346: Second icon grid
