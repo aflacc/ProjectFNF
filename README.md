@@ -38,7 +38,8 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 
 # Features(WIP)
 - Custom input and ratings sytem
-- Custom options menu
+- 24 different options to customize
+- Modifiers menu
 - Easy selectable custom note skins
 - Very simple modcharting for mac and windows
 - Downscroll
