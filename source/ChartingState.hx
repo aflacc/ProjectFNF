@@ -66,8 +66,8 @@ class ChartingState extends MusicBeatState
 	var highlight:FlxSprite;
 	var playClaps:Bool = false;
 
-	var GRID_SIZE:Int = 40;
-
+//	var GRID_SIZE:Int = 40;
+	var GRID_SIZE:Int = 100;
 	public var snap:Int = 1;
 
 	var dummyArrow:FlxSprite;
@@ -448,7 +448,7 @@ class ChartingState extends MusicBeatState
 			};
 		}
 
-		trace(FlxG.save.data.chartingbackground);
+//		trace(FlxG.save.data.chartingbackground);
 		if (FlxG.save.data.chartingbackground)
 			stage();
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);

@@ -32,6 +32,7 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/storymenu.png)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/mother.png)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/options.png)
+![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/SPOOKY.png)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/dadnotes1.png)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/pixel.png)
 
