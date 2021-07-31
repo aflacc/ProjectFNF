@@ -63,7 +63,7 @@ class OffsetCalculationSubState extends FlxSubState
                     }
                 }
             } else {
-                prevoffsets.push((100 - miniseconds));
+                prevoffsets.push((100 - miniseconds) / 10);
                 var of1:Float = 0;
                 for (i in 0...prevoffsets.length) {
                     of1 = of1 + prevoffsets[i];
