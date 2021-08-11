@@ -7,6 +7,7 @@ class ProjectFNF
 	* Simple helper function to update all options to prevent crashes. ngl you could probably run this every frame :troll:
 	**/
 	static public function updateOptions() {
+		FlxG.save.bind('savedata', 'ProjectFNF');
 		trace(FlxG.save.data.quaverbar);
 		var controlsStrings = CoolUtil.coolTextFile(Paths.txt('options'));
 		

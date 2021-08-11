@@ -38,6 +38,7 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		FlxG.save.bind('savedata', 'ProjectFNF');
 		ProjectFNF.updateOptions();
 		
 		#if polymod
@@ -61,8 +62,6 @@ class TitleState extends MusicBeatState
 		var ng:NGio = new NGio(APIStuff.API, APIStuff.EncKey);
 		trace('NEWGROUNDS LOL');
 		#end
-
-		FlxG.save.bind('savedata', 'data');
 
 		Highscore.load();
 

@@ -1308,7 +1308,7 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-			//	trace("NOTE TYPE: " + songNotes[3]);
+//				trace("NOTE TYPE: " + songNotes[3]);
 				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, songNotes[3]);
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
