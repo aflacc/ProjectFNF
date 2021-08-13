@@ -20,8 +20,8 @@ class Ratings
 	if (FlxG.save.data.botplay)
 	    return "good"; // FUNNY
 	    
-        if (noteDiff > 166 * customTimeScale) // so god damn early its a miss
-            return "miss";
+    //    if (noteDiff > 166 * customTimeScale) // so god damn early its a miss
+      //      return "miss";
         if (noteDiff > 135 * customTimeScale) // way early
             return "shit";
         else if (noteDiff > 90 * customTimeScale) // early
@@ -34,8 +34,8 @@ class Ratings
             return "bad";
         else if (noteDiff < -135 * customTimeScale) // late as fuck
             return "shit";
-        else if (noteDiff < -166 * customTimeScale) // so god damn late its a miss
-            return "miss";
+     //   else if (noteDiff < -166 * customTimeScale) // so god damn late its a miss
+       //     return "miss";
         return "sick";
     }
 }
