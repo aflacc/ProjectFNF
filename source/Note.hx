@@ -68,8 +68,12 @@ class Note extends FlxSkewedSprite
 			switch (daStage)
 			{
 				case 'school' | 'schoolEvil':
-					loadGraphic(Paths.image('weeb/pixelUI/notes/' + FlxG.save.data.notetheme + '-pixels'), true, 17, 17);
-
+					try {
+						loadGraphic(Paths.image('weeb/pixelUI/notes/' + FlxG.save.data.notetheme + '-pixels'), true, 17, 17);
+					} catch(err) {
+						trace("No pixel theme found");
+						loadGraphic(Paths.image('weeb/pixelUI/notes/NOTE-pixels'), true, 17, 17);
+					}
 					animation.add('greenScroll', [6]);
 					animation.add('redScroll', [7]);
 					animation.add('blueScroll', [5]);
