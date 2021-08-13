@@ -2225,7 +2225,7 @@ class PlayState extends MusicBeatState
 								daNote.y -= 60;
 							}
 						} else {
-							daNote.x += 30;
+							daNote.x += 35;
 						}
 						daNote.alpha = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
 					}
@@ -2240,7 +2240,7 @@ class PlayState extends MusicBeatState
 								daNote.y -= 60;
 							}
 						} else {
-							daNote.x += 30;
+							daNote.x += 35;
 						}
 						daNote.alpha = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].alpha;
 					}
