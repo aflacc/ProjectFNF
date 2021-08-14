@@ -3302,6 +3302,7 @@ class PlayState extends MusicBeatState
 	//		}
 	//	}
 
+		FlxG.watch.addQuick("MODCHART LAST", lastModchart);
 		// shiet modchart code but it doesnt run often so it should be fine
 			if (SONG.notes[Math.floor(curStep / 16)].circle) {
 				FlxG.log.add("Circle is true");
@@ -3318,6 +3319,14 @@ class PlayState extends MusicBeatState
 					for (note in 0...strumLineNotes.members.length) {
 						ModCharts.fadeOutObject(strumLineNotes.members[note]);
 					}
+				}
+			} if (SONG.notes[Math.floor(curStep / 16)].bounce) {
+				if (!lastModchart) {
+					lastModchart = true;
+					strumLineNotes.forEach(function(note)
+					{
+						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
+					});
 				}
 			} else {
 				FlxG.log.add("No modcharts");
