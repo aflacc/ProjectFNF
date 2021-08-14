@@ -3295,12 +3295,12 @@ class PlayState extends MusicBeatState
 	**/
 	function sectionHit() {
 		// ass code
-		if (!lastModchart) { // there was no modchart last section
-			FlxG.log.add("Last modchart is false");
-			for (note in 0...strumLineNotes.members.length) {
-				ModCharts.cancelMovement(strumLineNotes.members[note]);
-			}
-		}
+	//	if (!lastModchart) { // there was no modchart last section
+	//		FlxG.log.add("Last modchart is false");
+	//		for (note in 0...strumLineNotes.members.length) {
+	//			ModCharts.cancelMovement(strumLineNotes.members[note]);
+	//		}
+	//	}
 
 		// shiet modchart code but it doesnt run often so it should be fine
 			if (SONG.notes[Math.floor(curStep / 16)].circle) {
