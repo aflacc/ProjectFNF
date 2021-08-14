@@ -76,6 +76,7 @@ class PlayState extends MusicBeatState
 	private var gfSpeed:Int = 1;
 
 	var health:Float = 1; // dont set to static
+	var healthPercentage:Float = 50;
 
 	private var combo:Int = 0;
 
@@ -134,7 +135,7 @@ class PlayState extends MusicBeatState
 	public static var daPixelZoom:Float = 6;
 
 	public static var theFunne:Bool = true;
-	
+
 	var inCutscene:Bool = false;
 
 	#if desktop
@@ -199,7 +200,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.customscrollspeed > 0) {
 			usingCustomScrollSpeed = true;
 		}
-		
+
 		var stageCurtains:FlxSprite;
 		var stageFront:FlxSprite;
 		var bg:FlxSprite;
@@ -1189,7 +1190,7 @@ class PlayState extends MusicBeatState
 				/*	for (note in 0...strumLineNotes.members.length) {
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 				  }*/
-				  
+
 				// making sure i got kade engine to work correctly lol
 					//ModCharts.tweenCameraAngle(180, 1, FlxG.camera);
 
@@ -1226,7 +1227,7 @@ class PlayState extends MusicBeatState
 			{
 				detailsText = "Free Play: " + SONG.song;
 			}
-	
+
 			// String for when the game is paused
 			detailsPausedText = "Paused on " + detailsText;
 
@@ -1249,11 +1250,11 @@ class PlayState extends MusicBeatState
 				{
 					detailsText = "Free Play: " + SONG.song;
 				}
-		
+
 				// String for when the game is paused
 				detailsPausedText = "Paused on " + detailsText;
 
-			DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'), 
+			DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'),
 				iconRPC);
 			updateLoop();
 		}, 5000);
@@ -1528,7 +1529,7 @@ class PlayState extends MusicBeatState
 				{
 					resyncVocals();
 				}
-	
+
 				if (!startTimer.finished)
 					startTimer.active = true;
 				paused = false;
@@ -1542,7 +1543,7 @@ class PlayState extends MusicBeatState
 				{
 					detailsText = "Free Play: " + SONG.song;
 				}
-		
+
 				// String for when the game is paused
 				detailsPausedText = "Paused on " + detailsText;
 
@@ -1573,11 +1574,11 @@ class PlayState extends MusicBeatState
 				{
 					detailsText = "Free Play: " + SONG.song;
 				}
-		
+
 				// String for when the game is paused
 				detailsPausedText = "Paused on " + detailsText;
 
-				
+
 			if (Conductor.songPosition > 0.0)
 			{
 				DiscordClient.changePresence(detailsText, "Version " + Application.current.meta.get('version'));
@@ -1605,7 +1606,7 @@ class PlayState extends MusicBeatState
 				{
 					detailsText = "Free Play: " + SONG.song;
 				}
-		
+
 				// String for when the game is paused
 				detailsPausedText = "Paused on " + detailsText;
 
@@ -1643,12 +1644,13 @@ class PlayState extends MusicBeatState
 		// accuracy!!
 		//var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
 		var accuracy = FlxMath.roundDecimal((totalAccuracy / (songNotesHit + songNotesMissed) * 100), 2);
+		healthPercentage = FlxMath.roundDecimal((health / 0.02), 0);
 
 		if (Math.isNaN(accuracy))
 				{
 					accuracy = 100;
 				}
-		
+
 				// rating!!
 				var rating = "??"; // incase it doesnt load or start idk
 				if (accuracy == 100)
@@ -1687,12 +1689,12 @@ class PlayState extends MusicBeatState
 				if (songNotesMissed == 0) {
 					rating = rating + "(>FC>)";
 				}
-		
+
 				if (FlxG.save.data.botplay) {
 					infoTxt.text = "BOTPLAY // ProjectFNF " + Application.current.meta.get('version');
 				} else if (!FlxG.save.data.advancedinfobar) {
-						infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthBar.percent + "% // Score: " + songScore + " // ProjectFNF " + Application.current.meta.get('version');
-					//	infoTxt.updateHitbox(); 
+						infoTxt.text = "Misses: " + songNotesMissed + " // Health: " + healthPercentage + "% // Score: " + songScore + " // ProjectFNF " + Application.current.meta.get('version');
+					//	infoTxt.updateHitbox();
 				} else {
 					// the things i do for funny colors
 					var finalthing = "";
@@ -1714,7 +1716,7 @@ class PlayState extends MusicBeatState
 							case "Hits":
 								lol = songNotesHit;
 							case "Health":
-								lol = healthBar.percent;
+								lol = healthPercentage;
 							case "Week Score":
 								lol = campaignScore;
 							case "Shits":
@@ -1825,30 +1827,30 @@ class PlayState extends MusicBeatState
 		var iconOffset:Int = 26;
 
 		// if this works like the other things i will laugh so fucking hard
-		
+
 		if (FlxG.save.data.quaverbar) {
 			iconP1.x = healthBar.x;
-			iconP1.y = healthBar.y + (healthBar.height * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+			iconP1.y = healthBar.y + (healthBar.height * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01) - iconOffset);
 			iconP2.x = healthBar.x;
-			iconP2.y = healthBar.y + (healthBar.height * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+			iconP2.y = healthBar.y + (healthBar.height * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 		} else {
-			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01) - iconOffset);
+			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 		}
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
+		if (healthPercentage < 20)
 			iconP1.animation.curAnim.curFrame = 1;
 		else
 			iconP1.animation.curAnim.curFrame = 0;
 
-		if (healthBar.percent > 80)
+		if (healthPercentage > 80)
 		{
 			iconP2.animation.curAnim.curFrame = 1;
 			iconP1.animation.curAnim.curFrame = 3;
 		}
-		else if (healthBar.percent < 20)
+		else if (healthPercentage < 20)
 			iconP2.animation.curAnim.curFrame = 3;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
@@ -2148,7 +2150,7 @@ class PlayState extends MusicBeatState
 								}
 						}
 					}
-				
+
 
 				if (!daNote.mustPress && daNote.wasGoodHit)
 				{
@@ -2263,7 +2265,7 @@ class PlayState extends MusicBeatState
 							{
 								if (daNote.nType != 1) {
 									health -= 0.075;
-								
+
 									if (!daNote.isSustainNote) {
 										songNotesMissed++;
 									}
@@ -2273,9 +2275,9 @@ class PlayState extends MusicBeatState
 										trace("nut initiated");
 										noteMiss(daNote.noteData, daNote, true);
 									updateInfo();
-								}	
+								}
 							}
-		
+
 							daNote.visible = false;
 							daNote.kill();
 							notes.remove(daNote, true);
@@ -2299,43 +2301,43 @@ class PlayState extends MusicBeatState
 		if (isStoryMode)
 			{
 				campaignScore += songScore;
-	
+
 				storyPlaylist.remove(storyPlaylist[0]);
-	
+
 				if (storyPlaylist.length <= 0)
 				{
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
-	
+
 					transIn = FlxTransitionableState.defaultTransIn;
 					transOut = FlxTransitionableState.defaultTransOut;
-	
+
 					FlxG.switchState(new StoryMenuState());
-	
+
 					// if ()
 					StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
-	
+
 					if (SONG.validScore)
 					{
 						NGio.unlockMedal(60961);
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 					}
-	
+
 					FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 					FlxG.save.flush();
 				}
 				else
 				{
 					var difficulty:String = "";
-	
+
 					if (storyDifficulty == 0)
 						difficulty = '-easy';
-	
+
 					if (storyDifficulty == 2)
 						difficulty = '-hard';
-	
+
 					trace('[ProjectFNF] Loading song ' + SONG.song.toLowerCase());
 					trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
-	
+
 					if (SONG.song.toLowerCase() == 'eggnog')
 					{
 						var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
@@ -2343,7 +2345,7 @@ class PlayState extends MusicBeatState
 						blackShit.scrollFactor.set();
 						add(blackShit);
 						camHUD.visible = false;
-	
+
 						FlxG.sound.play(Paths.sound('Lights_Shut_off'));
 					}
 					if (SONG.song.toLowerCase() == 'south')
@@ -2353,10 +2355,10 @@ class PlayState extends MusicBeatState
 						whiteShit.scrollFactor.set();
 						add(whiteShit);
 						camHUD.visible = false;
-	
+
 						FlxG.sound.play(Paths.sound('thunder_2'));
 					}
-	
+
 					if (SONG.song.toLowerCase() == 'south' || SONG.song.toLowerCase() == 'eggnog')
 					{
 						FlxTransitionableState.skipNextTransIn = false;
@@ -2368,10 +2370,10 @@ class PlayState extends MusicBeatState
 						FlxTransitionableState.skipNextTransOut = true;
 					}
 					prevCamFollow = camFollow;
-	
+
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
-	
+
 					LoadingState.loadAndSwitchState(new PlayState());
 				}
 			}
@@ -2414,7 +2416,7 @@ class PlayState extends MusicBeatState
 				{
 					accuracy = 100;
 				}
-		
+
 				// rating!!
 				var rating = "??"; // incase it doesnt load or start idk
 				if (accuracy == 100)
@@ -2457,7 +2459,7 @@ class PlayState extends MusicBeatState
 		stats.text = 'Overall Rating: ' + rating + '\n Accuracy: ' + accuracy + '%\n Sicks: ' + sick + '\n Goods:' + good + '\n Bads:' + bad + '\n Shits:' + shit + '\n Misses: ' + songNotesMissed + '\n Final Score: ' + songScore + '\n Press ENTER to continue.';
 		stats.screenCenter();
 		stats.cameras = [camHUD];
-		
+
 		// transferring to next song(or back to menu)
 		endingSong = true;
 	}
@@ -2495,7 +2497,7 @@ class PlayState extends MusicBeatState
 				//trace("shit added");
 			case "bad":
 				bad++;
-				totalAccuracy += 0.5; // ass. 50% 
+				totalAccuracy += 0.5; // ass. 50%
 				score = 30;
 				//trace("bad added");
 			case "good":
@@ -2587,7 +2589,7 @@ class PlayState extends MusicBeatState
 		var seperatedScore:Array<Int> = [];
 
 		var comboSplit:Array<String> = (combo + "").split('');
-		
+
 		if (comboSplit.length == 2)
 			seperatedScore.push(0); // make sure theres a 0 in front or it looks weird lol!
 
@@ -2633,7 +2635,7 @@ class PlayState extends MusicBeatState
 
 			daLoop++;
 		}
-		/* 
+		/*
 			trace(combo);
 			trace(seperatedScore);
 		 */
@@ -2746,12 +2748,12 @@ class PlayState extends MusicBeatState
 				{
 					noteCheck(controlArray[daNote.noteData], daNote);
 				}
-				/* 
+				/*
 					if (controlArray[daNote.noteData])
 						goodNoteHit(daNote);
 				 */
 				// trace(daNote.noteData);
-				/* 
+				/*
 						switch (daNote.noteData)
 						{
 							case 2: // NOTES YOU JUST PRESSED
@@ -2900,16 +2902,16 @@ class PlayState extends MusicBeatState
 				if (!note.isSustainNote)
 					songNotesMissed++;
 				trace("Misse added at notemiss");
-	
+
 				//var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
 				//var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
-	
+
 				songScore -= 10;
-	
+
 				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 				// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 				// FlxG.log.add('played imss note');
-	
+
 				boyfriend.stunned = true;
 							// get stunned for 5 seconds
 				new FlxTimer().start(5, function(tmr:FlxTimer)
@@ -2935,7 +2937,7 @@ class PlayState extends MusicBeatState
 					case 3:
 						boyfriend.playAnim('singRIGHTmiss', true);
 						if (FlxG.save.data.missshake)
-							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 				}
 			}
 			updateInfo();
@@ -2973,7 +2975,7 @@ class PlayState extends MusicBeatState
 		}
 		}
 
-		
+
 /*	function noteMiss(direction:Int = 1):Void
 	{
 		if (FlxG.save.data.ghosttapping == false)
@@ -3055,7 +3057,7 @@ class PlayState extends MusicBeatState
 				if (rightP) {
 					boyfriend.playAnim('singRIGHTmiss', true);
 					if (FlxG.save.data.missshake)
-						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
+						FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 				}
 			}
 			} else { // ehh fuck it
@@ -3066,11 +3068,11 @@ class PlayState extends MusicBeatState
 				}
 				combo = 0;
 				songNotesMissed++;
-	
+
 				songScore -= 10;
-	
+
 				FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-	
+
 				boyfriend.stunned = true;
 							// get stunned for 5 seconds
 				new FlxTimer().start(5, function(tmr:FlxTimer)
@@ -3096,7 +3098,7 @@ class PlayState extends MusicBeatState
 					if (rightP) {
 						boyfriend.playAnim('singRIGHTmiss', true);
 						if (FlxG.save.data.missshake)
-							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X); 
+							FlxG.camera.shake(Config.MISSINTENSITY, 0.1, null, true, X);
 					}
 			updateInfo();
 			}
@@ -3115,7 +3117,7 @@ class PlayState extends MusicBeatState
 	}
 
 	function noteCheck(keyP:Bool, note:Note):Void
-	{		
+	{
 			if (keyP || FlxG.save.data.botplay)
 				goodNoteHit(note);
 			else
@@ -3309,20 +3311,20 @@ class PlayState extends MusicBeatState
 			interp.variables.set("beatShit", curBeat);
 			interp.variables.set("stepShit", curStep);
 			interp.variables.set("ModCharts", ModCharts);
-			interp.variables.set("game", PlayState.instance); 
-			interp.variables.set("strumLineNotes", strumLineNotes); 
-			interp.variables.set("strumLineNotes", strumLineNotes); 
-			interp.variables.set("playerStrums", playerStrums); 
-			interp.variables.set("player2Strums", player2Strums); 
-			interp.variables.set("dad", dad); 
-			interp.variables.set("boyfriend", boyfriend); 
+			interp.variables.set("game", PlayState.instance);
+			interp.variables.set("strumLineNotes", strumLineNotes);
+			interp.variables.set("strumLineNotes", strumLineNotes);
+			interp.variables.set("playerStrums", playerStrums);
+			interp.variables.set("player2Strums", player2Strums);
+			interp.variables.set("dad", dad);
+			interp.variables.set("boyfriend", boyfriend);
 			interp.variables.set("gf", gf);
 			interp.variables.set("notes", notes);
 			interp.variables.set("mainCamera", FlxG.camera);
 			interp.variables.set("camHUD", camHUD);
 			interp.variables.set("iconP1", iconP1);
 			interp.variables.set("iconP2", iconP2);
-			interp.variables.set("assets", Assets); 
+			interp.variables.set("assets", Assets);
 			// shit i *cough* stole *cough* borrowed.
 			interp.variables.set("FlxSprite", flixel.FlxSprite);
 			interp.variables.set("FlxTimer", FlxTimer);
@@ -3377,20 +3379,20 @@ class PlayState extends MusicBeatState
 					interp.variables.set("ModCharts", ModCharts);
 
 					// i hate my life
-					interp.variables.set("strumLineNotes", strumLineNotes); 
-					interp.variables.set("strumLineNotes", strumLineNotes); 
-					interp.variables.set("playerStrums", playerStrums); 
-					interp.variables.set("player2Strums", player2Strums); 
-					interp.variables.set("dad", dad); 
-					interp.variables.set("boyfriend", boyfriend); 
+					interp.variables.set("strumLineNotes", strumLineNotes);
+					interp.variables.set("strumLineNotes", strumLineNotes);
+					interp.variables.set("playerStrums", playerStrums);
+					interp.variables.set("player2Strums", player2Strums);
+					interp.variables.set("dad", dad);
+					interp.variables.set("boyfriend", boyfriend);
 					interp.variables.set("gf", gf);
 					interp.variables.set("notes", notes);
 					interp.variables.set("mainCamera", FlxG.camera);
 					interp.variables.set("camHUD", camHUD);
 					interp.variables.set("iconP1", iconP1);
 					interp.variables.set("iconP2", iconP2);
-					interp.variables.set("assets", Assets); 
-					// shit i *cough* stole *cough* 
+					interp.variables.set("assets", Assets);
+					// shit i *cough* stole *cough*
 					interp.variables.set("FlxSprite", flixel.FlxSprite);
 					interp.variables.set("FlxTimer", FlxTimer);
 					interp.variables.set("Math", Math);
@@ -3529,7 +3531,7 @@ class PlayState extends MusicBeatState
 					trainStart();
 				}
 		}
-		
+
 		if (isHalloween && FlxG.random.bool(20) && curBeat > lightningStrikeBeat + lightningOffset)
 		{
 			lightningStrikeShit();
