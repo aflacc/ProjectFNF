@@ -778,6 +778,7 @@ class ChartingState extends MusicBeatState
 
 	var modText:FlxText;
 	var modCircle:FlxUICheckBox;
+	var modFadeOut:FlxUICheckBox;
 	//var modCircleRadius:FlxUINumericStepper;
 
 	function addExtraUI():Void
@@ -811,6 +812,11 @@ class ChartingState extends MusicBeatState
 		modCircle.name = 'check_modCircle';
 		modCircle.checked = _song.notes[curSection].circle;
 		tab_group_extra.add(modCircle);
+
+		modFadeOut = new FlxUICheckBox(100, 150, null, null, "Fade Out Notes", 100);
+		modFadeOut.name = 'check_modFadeOut';
+		modFadeOut.checked = _song.notes[curSection].fadeout;
+		tab_group_extra.add(modFadeOut);
 
 		//modCircleRadius = new FlxUINumericStepper(10, 65, 0.1, 1, 1.0, 5000.0, 1);
 		//modCircleRadius.value = _song.circleradius;
@@ -898,9 +904,11 @@ class ChartingState extends MusicBeatState
 				case "Alt Animation":
 					_song.notes[curSection].altAnim = check.checked;
 				case "Notes Spin In Circle":
-					FlxG.log.add("WHATTHEFUCKWATDAFUCWAT");
+				//	FlxG.log.add("WHATTHEFUCKWATDAFUCWAT");
 					_song.notes[curSection].circle = check.checked;
 				//	_song.circle = check.checked;
+				case "Fade Out Notes":
+					_song.notes[curSection].fadeout = check.checked;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
@@ -1520,6 +1528,7 @@ class ChartingState extends MusicBeatState
 	{
 		var sec = _song.notes[curSection];
 		modCircle.checked = sec.circle;
+		modFadeOut.checked = sec.fadeout;
 	}
 
 	function updateHeads():Void
@@ -1636,7 +1645,8 @@ class ChartingState extends MusicBeatState
 			sectionNotes: [],
 			typeOfSection: 0,
 			altAnim: false,
-			circle: false
+			circle: false,
+			fadeout: false
 		};
 
 		_song.notes.push(sec);

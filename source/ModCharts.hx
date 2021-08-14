@@ -218,7 +218,7 @@ class ModCharts
 	 */
 	static public function fadeOutObject(object)
 	{
-		FlxTween.tween(object, {"alpha": 0}, 2);
+		FlxTween.tween(object, {"alpha": 0}, 1);
 	}
 
 	/**
@@ -227,7 +227,7 @@ class ModCharts
 	 */
 	static public function fadeInObject(object)
 	{
-		FlxTween.tween(object, {"alpha": 1}, 2);
+		FlxTween.tween(object, {"alpha": 1}, 1);
 	}
 
 	/**

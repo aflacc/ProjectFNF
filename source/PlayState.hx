@@ -3312,11 +3312,21 @@ class PlayState extends MusicBeatState
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 					}
 				}
+			} else if (SONG.notes[Math.floor(curStep / 16)].fadeout) {
+				if (!lastModchart) {
+					lastModchart = true;
+					for (note in 0...strumLineNotes.members.length) {
+						ModCharts.fadeOutObject(strumLineNotes.members[note]);
+					}
+				}
 			} else {
-				FlxG.log.add("Circle is false");
+				FlxG.log.add("No modcharts");
 				lastModchart = false;
 				for (note in 0...strumLineNotes.members.length) {
 					ModCharts.cancelMovement(strumLineNotes.members[note]);
+					if (strumLineNotes.members[note].alpha != 1) {
+						ModCharts.fadeInObject(strumLineNotes.members[note]);
+					}
 				}
 			}
 	}
