@@ -3310,6 +3310,12 @@ class PlayState extends MusicBeatState
 			}
 		}*/
 		// shiet modchart code but it doesnt run often so it should be fine
+		if (SONG.notes[Math.floor(curStep / 16)].camerabounce) {
+			ModCharts.cameraBounce(camGame, Conductor.crochet / 1000, 200);
+		}
+		if (SONG.notes[Math.floor(curStep / 16)].cameracancel) {
+			ModCharts.cancelCamera(camGame);
+		}
 		if (SONG.notes[Math.floor(curStep / 16)].cancel) {
 			lastModchart = false;
 			for (note in 0...strumLineNotes.members.length) {

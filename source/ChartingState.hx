@@ -782,6 +782,8 @@ class ChartingState extends MusicBeatState
 	var modFadeIn:FlxUICheckBox;
 	var modBounce:FlxUICheckBox;
 	var modCancel:FlxUICheckBox;
+	var modCameraBounce:FlxUICheckBox;
+	var modCameraCancel:FlxUICheckBox;
 	//var modCircleRadius:FlxUINumericStepper;
 
 	function addExtraUI():Void
@@ -830,6 +832,16 @@ class ChartingState extends MusicBeatState
 		modFadeOut.name = 'check_modFadeOut';
 		modFadeOut.checked = _song.notes[curSection].fadeout;
 		tab_group_extra.add(modFadeOut);
+
+		modCameraBounce = new FlxUICheckBox(100, 230, null, null, "Bounce Camera", 100);
+		modCameraBounce.name = 'check_modCameraBounce';
+		modCameraBounce.checked = _song.notes[curSection].camerabounce;
+		tab_group_extra.add(modCameraBounce);
+
+		modCameraCancel = new FlxUICheckBox(100, 250, null, null, "Cancel Camera", 100);
+		modCameraCancel.name = 'check_modCameraCancel';
+		modCameraCancel.checked = _song.notes[curSection].cameracancel;
+		tab_group_extra.add(modCameraCancel);
 
 		modFadeIn = new FlxUICheckBox(100, 170, null, null, "Fade In Notes", 100);
 		modFadeIn.name = 'check_modFadeIn';
@@ -933,6 +945,10 @@ class ChartingState extends MusicBeatState
 					_song.notes[curSection].cancel = check.checked;
 				case "Fade In Notes":
 					_song.notes[curSection].fadein = check.checked;
+				case "Bounce Camera":
+					_song.notes[curSection].camerabounce = check.checked;
+				case "Cancel Camera":
+					_song.notes[curSection].cameracancel = check.checked;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
@@ -1556,6 +1572,9 @@ class ChartingState extends MusicBeatState
 		modFadeIn.checked = sec.fadein;
 		modBounce.checked = sec.bounce;
 		modCancel.checked = sec.cancel;
+		modCameraBounce.checked = sec.camerabounce;
+		modCameraCancel.checked = sec.cameracancel;
+		modFadeOut.checked = sec.fadeout;
 	}
 
 	function updateHeads():Void
@@ -1676,7 +1695,9 @@ class ChartingState extends MusicBeatState
 			fadeout: false,
 			bounce: false,
 			cancel: false,
-			fadein: false
+			fadein: false,
+			camerabounce: false,
+			cameracancel: false
 		};
 
 		_song.notes.push(sec);

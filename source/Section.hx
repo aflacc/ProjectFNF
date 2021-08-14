@@ -14,6 +14,8 @@ typedef SwagSection =
 	var bounce:Bool;
 	var cancel:Bool;
 	var fadein:Bool;
+	var camerabounce:Bool;
+	var cameracancel:Bool;
 }
 
 class Section
