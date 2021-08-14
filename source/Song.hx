@@ -24,9 +24,6 @@ typedef SwagSong =
 	var player1:String;
 	var player2:String;
 	var validScore:Bool;
-
-	var circle:Bool;
-	var swap:Bool;
 }
 
 class Song

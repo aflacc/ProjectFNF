@@ -445,8 +445,6 @@ class ChartingState extends MusicBeatState
 				player2: 'dad',
 				speed: 1,
 				validScore: false,
-				"circle": true,
-				"swap": false
 			};
 		}
 
@@ -780,6 +778,7 @@ class ChartingState extends MusicBeatState
 
 	var modText:FlxText;
 	var modCircle:FlxUICheckBox;
+	//var modCircleRadius:FlxUINumericStepper;
 
 	function addExtraUI():Void
 	{
@@ -810,8 +809,12 @@ class ChartingState extends MusicBeatState
 
 		modCircle = new FlxUICheckBox(100, 120, null, null, "Notes Spin In Circle", 100);
 		modCircle.name = 'check_modCircle';
-		modCircle.checked = _song.circle;
+		modCircle.checked = _song.notes[curSection].circle;
 		tab_group_extra.add(modCircle);
+
+		//modCircleRadius = new FlxUINumericStepper(10, 65, 0.1, 1, 1.0, 5000.0, 1);
+		//modCircleRadius.value = _song.circleradius;
+		//modCircleRadius.name = 'song_bpm';
 
 		UI_box.addGroup(tab_group_extra);
 
@@ -896,7 +899,8 @@ class ChartingState extends MusicBeatState
 					_song.notes[curSection].altAnim = check.checked;
 				case "Notes Spin In Circle":
 					FlxG.log.add("WHATTHEFUCKWATDAFUCWAT");
-					_song.circle = check.checked;
+					_song.notes[curSection].circle = check.checked;
+				//	_song.circle = check.checked;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
@@ -1444,6 +1448,7 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 		updateSectionUI();
+		updateExtraUI();
 	}
 
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void
@@ -1477,6 +1482,7 @@ class ChartingState extends MusicBeatState
 
 			updateGrid();
 			updateSectionUI();
+			updateExtraUI();
 		}
 		else
 			trace('bro wtf I AM NULL');
@@ -1508,6 +1514,12 @@ class ChartingState extends MusicBeatState
 		stepperSectionBPM.value = sec.bpm;
 
 		updateHeads();
+	}
+
+	function updateExtraUI():Void
+	{
+		var sec = _song.notes[curSection];
+		modCircle.checked = sec.circle;
 	}
 
 	function updateHeads():Void
@@ -1623,7 +1635,8 @@ class ChartingState extends MusicBeatState
 			mustHitSection: true,
 			sectionNotes: [],
 			typeOfSection: 0,
-			altAnim: false
+			altAnim: false,
+			circle: false
 		};
 
 		_song.notes.push(sec);

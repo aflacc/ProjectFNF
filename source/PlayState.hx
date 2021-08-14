@@ -154,6 +154,10 @@ class PlayState extends MusicBeatState
 	var modcharting:Bool = false;
 	var modchart:String;
 
+	var lastModchart:Bool = false;
+
+	var step:Int = 0;
+
 	function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
 	{
 		var length:Float = note.sustainLength;
@@ -1182,11 +1186,6 @@ class PlayState extends MusicBeatState
 					}
 				case 4:
 					// modchart shit
-					if (SONG.circle) {
-						for (note in 0...strumLineNotes.members.length) {
-							ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
-						}
-					}
 				/*	for (note in 0...strumLineNotes.members.length) {
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 				  }*/
@@ -3291,6 +3290,36 @@ class PlayState extends MusicBeatState
 	}
 
 
+	/**
+	* Runs every section. Used for modcharting but will work for everything
+	**/
+	function sectionHit() {
+		// ass code
+		if (!lastModchart) { // there was no modchart last section
+			FlxG.log.add("Last modchart is false");
+			for (note in 0...strumLineNotes.members.length) {
+				ModCharts.cancelMovement(strumLineNotes.members[note]);
+			}
+		}
+
+		// shiet modchart code but it doesnt run often so it should be fine
+			if (SONG.notes[Math.floor(curStep / 16)].circle) {
+				FlxG.log.add("Circle is true");
+				if (!lastModchart) {
+					FlxG.log.add("Starting circle");
+					lastModchart = true;
+					for (note in 0...strumLineNotes.members.length) {
+						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
+					}
+				}
+			} else {
+				FlxG.log.add("Circle is false");
+				lastModchart = false;
+				for (note in 0...strumLineNotes.members.length) {
+					ModCharts.cancelMovement(strumLineNotes.members[note]);
+				}
+			}
+	}
 	override function stepHit()
 	{
 		super.stepHit();
@@ -3299,6 +3328,19 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
+		step++;
+		if (step > 15) {
+			sectionHit();
+			step = 0;
+		}
+		// might represent steps?
+		// this is shitty but im tired
+
+		//if (SONG.notes[Math.floor(curStep / 16)].circle) {
+		//	for (note in 0...strumLineNotes.members.length) {
+		//		ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
+		//	}
+		//}
 		// modcharting
 		if (modcharting) {
 			// i doubt its this easy
