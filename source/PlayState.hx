@@ -3303,41 +3303,43 @@ class PlayState extends MusicBeatState
 	//	}
 
 		FlxG.watch.addQuick("MODCHART LAST", lastModchart);
+		/*for (note in 0...strumLineNotes.members.length) {
+			ModCharts.cancelMovement(strumLineNotes.members[note]);
+			if (strumLineNotes.members[note].alpha != 1) {
+				ModCharts.fadeInObject(strumLineNotes.members[note]);
+			}
+		}*/
 		// shiet modchart code but it doesnt run often so it should be fine
+		if (SONG.notes[Math.floor(curStep / 16)].cancel) {
+			lastModchart = false;
+			for (note in 0...strumLineNotes.members.length) {
+				ModCharts.cancelMovement(strumLineNotes.members[note]);
+				if (strumLineNotes.members[note].alpha != 1) {
+					ModCharts.fadeInObject(strumLineNotes.members[note]);
+				}
+			}
+		}
 			if (SONG.notes[Math.floor(curStep / 16)].circle) {
 				FlxG.log.add("Circle is true");
-				if (!lastModchart) {
 					FlxG.log.add("Starting circle");
 					lastModchart = true;
 					for (note in 0...strumLineNotes.members.length) {
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 					}
-				}
-			} else if (SONG.notes[Math.floor(curStep / 16)].fadeout) {
-				if (!lastModchart) {
+			} 
+			if (SONG.notes[Math.floor(curStep / 16)].fadeout) {
 					lastModchart = true;
 					for (note in 0...strumLineNotes.members.length) {
 						ModCharts.fadeOutObject(strumLineNotes.members[note]);
 					}
-				}
-			} if (SONG.notes[Math.floor(curStep / 16)].bounce) {
-				if (!lastModchart) {
+			}
+			 if (SONG.notes[Math.floor(curStep / 16)].bounce) {
 					lastModchart = true;
 					strumLineNotes.forEach(function(note)
 					{
 						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
 					});
-				}
-			} else {
-				FlxG.log.add("No modcharts");
-				lastModchart = false;
-				for (note in 0...strumLineNotes.members.length) {
-					ModCharts.cancelMovement(strumLineNotes.members[note]);
-					if (strumLineNotes.members[note].alpha != 1) {
-						ModCharts.fadeInObject(strumLineNotes.members[note]);
-					}
-				}
-			}
+			} 
 	}
 	override function stepHit()
 	{

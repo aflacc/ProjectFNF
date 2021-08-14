@@ -780,6 +780,7 @@ class ChartingState extends MusicBeatState
 	var modCircle:FlxUICheckBox;
 	var modFadeOut:FlxUICheckBox;
 	var modBounce:FlxUICheckBox;
+	var modCancel:FlxUICheckBox;
 	//var modCircleRadius:FlxUINumericStepper;
 
 	function addExtraUI():Void
@@ -818,6 +819,11 @@ class ChartingState extends MusicBeatState
 		modBounce.name = 'check_modBounce';
 		modBounce.checked = _song.notes[curSection].bounce;
 		tab_group_extra.add(modBounce);
+
+		modCancel = new FlxUICheckBox(100, 190, null, null, "Cancel Movements", 100);
+		modCancel.name = 'check_modCancel';
+		modCancel.checked = _song.notes[curSection].cancel;
+		tab_group_extra.add(modCancel);
 
 		modFadeOut = new FlxUICheckBox(100, 150, null, null, "Fade Out Notes", 100);
 		modFadeOut.name = 'check_modFadeOut';
@@ -1538,6 +1544,7 @@ class ChartingState extends MusicBeatState
 		modCircle.checked = sec.circle;
 		modFadeOut.checked = sec.fadeout;
 		modBounce.checked = sec.bounce;
+		modCancel.checked = sec.cancel;
 	}
 
 	function updateHeads():Void
@@ -1656,7 +1663,8 @@ class ChartingState extends MusicBeatState
 			altAnim: false,
 			circle: false,
 			fadeout: false,
-			bounce: false
+			bounce: false,
+			cancel: false
 		};
 
 		_song.notes.push(sec);

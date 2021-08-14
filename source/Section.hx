@@ -12,6 +12,7 @@ typedef SwagSection =
 	var circle:Bool;
 	var fadeout:Bool;
 	var bounce:Bool;
+	var cancel:Bool;
 }
 
 class Section
