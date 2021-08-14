@@ -779,6 +779,7 @@ class ChartingState extends MusicBeatState
 	var modText:FlxText;
 	var modCircle:FlxUICheckBox;
 	var modFadeOut:FlxUICheckBox;
+	var modFadeIn:FlxUICheckBox;
 	var modBounce:FlxUICheckBox;
 	var modCancel:FlxUICheckBox;
 	//var modCircleRadius:FlxUINumericStepper;
@@ -807,7 +808,7 @@ class ChartingState extends MusicBeatState
 
 		tab_group_extra.add(tapbpm);
 
-		modText = new FlxText(100, 70, 0, 'Modcharts\n(USE ONE AT A TIME!)', 8);
+		modText = new FlxText(100, 70, 0, 'Modcharts', 24);
 		tab_group_extra.add(modText);
 
 		modCircle = new FlxUICheckBox(100, 120, null, null, "Notes Spin In Circle", 100);
@@ -815,12 +816,12 @@ class ChartingState extends MusicBeatState
 		modCircle.checked = _song.notes[curSection].circle;
 		tab_group_extra.add(modCircle);
 
-		modBounce = new FlxUICheckBox(100, 170, null, null, "Bounce Notes", 100);
+		modBounce = new FlxUICheckBox(100, 190, null, null, "Bounce Notes", 100);
 		modBounce.name = 'check_modBounce';
 		modBounce.checked = _song.notes[curSection].bounce;
 		tab_group_extra.add(modBounce);
 
-		modCancel = new FlxUICheckBox(100, 190, null, null, "Cancel Movements", 100);
+		modCancel = new FlxUICheckBox(100, 210, null, null, "Cancel Movements", 100);
 		modCancel.name = 'check_modCancel';
 		modCancel.checked = _song.notes[curSection].cancel;
 		tab_group_extra.add(modCancel);
@@ -829,6 +830,11 @@ class ChartingState extends MusicBeatState
 		modFadeOut.name = 'check_modFadeOut';
 		modFadeOut.checked = _song.notes[curSection].fadeout;
 		tab_group_extra.add(modFadeOut);
+
+		modFadeIn = new FlxUICheckBox(100, 170, null, null, "Fade In Notes", 100);
+		modFadeIn.name = 'check_modFadeIn';
+		modFadeIn.checked = _song.notes[curSection].fadein;
+		tab_group_extra.add(modFadeIn);
 
 		//modCircleRadius = new FlxUINumericStepper(10, 65, 0.1, 1, 1.0, 5000.0, 1);
 		//modCircleRadius.value = _song.circleradius;
@@ -923,6 +929,10 @@ class ChartingState extends MusicBeatState
 					_song.notes[curSection].fadeout = check.checked;
 				case "Bounce Notes":
 					_song.notes[curSection].bounce = check.checked;
+				case "Cancel Movements":
+					_song.notes[curSection].cancel = check.checked;
+				case "Fade In Notes":
+					_song.notes[curSection].fadein = check.checked;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
@@ -1543,6 +1553,7 @@ class ChartingState extends MusicBeatState
 		var sec = _song.notes[curSection];
 		modCircle.checked = sec.circle;
 		modFadeOut.checked = sec.fadeout;
+		modFadeIn.checked = sec.fadein;
 		modBounce.checked = sec.bounce;
 		modCancel.checked = sec.cancel;
 	}
@@ -1664,7 +1675,8 @@ class ChartingState extends MusicBeatState
 			circle: false,
 			fadeout: false,
 			bounce: false,
-			cancel: false
+			cancel: false,
+			fadein: false
 		};
 
 		_song.notes.push(sec);
