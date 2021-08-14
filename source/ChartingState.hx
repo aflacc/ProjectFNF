@@ -444,7 +444,9 @@ class ChartingState extends MusicBeatState
 				player1: 'bf',
 				player2: 'dad',
 				speed: 1,
-				validScore: false
+				validScore: false,
+				"circle": true,
+				"swap": false
 			};
 		}
 
@@ -776,6 +778,9 @@ class ChartingState extends MusicBeatState
 	var tab_group_extra:FlxUI;
 	var tapbpm:FlxButton;
 
+	var modText:FlxText;
+	var modCircle:FlxUICheckBox;
+
 	function addExtraUI():Void
 	{
 		tab_group_extra = new FlxUI(null, UI_box);
@@ -799,6 +804,14 @@ class ChartingState extends MusicBeatState
 			});
 
 		tab_group_extra.add(tapbpm);
+
+		modText = new FlxText(100, 70, 0, 'Modcharts\n(USE ONE AT A TIME!)', 8);
+		tab_group_extra.add(modText);
+
+		modCircle = new FlxUICheckBox(100, 120, null, null, "Notes Spin In Circle", 100);
+		modCircle.name = 'check_modCircle';
+		modCircle.checked = _song.circle;
+		tab_group_extra.add(modCircle);
 
 		UI_box.addGroup(tab_group_extra);
 
@@ -881,6 +894,9 @@ class ChartingState extends MusicBeatState
 					FlxG.log.add('changed bpm shit');
 				case "Alt Animation":
 					_song.notes[curSection].altAnim = check.checked;
+				case "Notes Spin In Circle":
+					FlxG.log.add("WHATTHEFUCKWATDAFUCWAT");
+					_song.circle = check.checked;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))

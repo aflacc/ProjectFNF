@@ -29,7 +29,7 @@ class OutdatedSubState extends MusicBeatState
 	{
 		if (controls.ACCEPT)
 		{
-			FlxG.openURL("https://github.com/aflacc/ProjectFNF/releases/tag/v0.3-d");
+			FlxG.openURL("https://github.com/aflacc/ProjectFNF/releases/tag/v0.4-a");
 		}
 		if (controls.BACK)
 		{

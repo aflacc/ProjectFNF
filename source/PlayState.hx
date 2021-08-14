@@ -1180,7 +1180,12 @@ class PlayState extends MusicBeatState
 						};
 					}
 				case 4:
-					trace("OFFSET: " + FlxG.save.data.offset / 10);
+					// modchart shit
+					if (SONG.circle) {
+						for (note in 0...strumLineNotes.members.length) {
+							ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
+						}
+					}
 				/*	for (note in 0...strumLineNotes.members.length) {
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 				  }*/
