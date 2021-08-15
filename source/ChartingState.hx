@@ -784,6 +784,7 @@ class ChartingState extends MusicBeatState
 	var modCancel:FlxUICheckBox;
 	var modCameraBounce:FlxUICheckBox;
 	var modCameraCancel:FlxUICheckBox;
+	var modCameraFlip:FlxUICheckBox;
 	//var modCircleRadius:FlxUINumericStepper;
 
 	function addExtraUI():Void
@@ -842,6 +843,11 @@ class ChartingState extends MusicBeatState
 		modCameraCancel.name = 'check_modCameraCancel';
 		modCameraCancel.checked = _song.notes[curSection].cameracancel;
 		tab_group_extra.add(modCameraCancel);
+
+		modCameraFlip = new FlxUICheckBox(100, 270, null, null, "Flip Camera", 100);
+		modCameraFlip.name = 'check_modCameraFlip';
+		modCameraFlip.checked = _song.notes[curSection].cameraflip;
+		tab_group_extra.add(modCameraFlip);
 
 		modFadeIn = new FlxUICheckBox(100, 170, null, null, "Fade In Notes", 100);
 		modFadeIn.name = 'check_modFadeIn';
@@ -949,6 +955,8 @@ class ChartingState extends MusicBeatState
 					_song.notes[curSection].camerabounce = check.checked;
 				case "Cancel Camera":
 					_song.notes[curSection].cameracancel = check.checked;
+				case "Flip Camera":
+					_song.notes[curSection].cameraflip = check.checked;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
@@ -1697,7 +1705,8 @@ class ChartingState extends MusicBeatState
 			cancel: false,
 			fadein: false,
 			camerabounce: false,
-			cameracancel: false
+			cameracancel: false,
+			cameraflip: false
 		};
 
 		_song.notes.push(sec);

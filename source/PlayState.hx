@@ -1192,11 +1192,13 @@ class PlayState extends MusicBeatState
 
 				// making sure i got kade engine to work correctly lol
 					//ModCharts.tweenCameraAngle(180, 1, FlxG.camera);
+				case 5:
+					sectionHit();
 
 			}
 			swagCounter += 1;
 			// generateSong('fresh');
-		}, 5);
+		}, 6);
 	}
 
 	var previousFrameTime:Int = 0;
@@ -3315,7 +3317,13 @@ class PlayState extends MusicBeatState
 		}
 		if (SONG.notes[Math.floor(curStep / 16)].cameracancel) {
 			ModCharts.cancelCamera(camGame);
+			ModCharts.tweenCameraAngle(0, 1, FlxG.camera);
 		}
+
+		if (SONG.notes[Math.floor(curStep / 16)].cameraflip) {
+			ModCharts.tweenCameraAngle(180, 1, FlxG.camera);
+		}
+		
 		if (SONG.notes[Math.floor(curStep / 16)].cancel) {
 			lastModchart = false;
 			for (note in 0...strumLineNotes.members.length) {
