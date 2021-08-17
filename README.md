@@ -26,7 +26,7 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 ***
 
 
-### Here are some examples of ProjectFNF:
+### Here are some examples of ProjectFNF: (![Skip](#featureswip))
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/2021-06-18%2019.21.45.gif)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/QUAVER.png)
 ![image](https://github.com/aflacc/ProjectFNF/blob/master/art/screenshots/storymenu.png)
