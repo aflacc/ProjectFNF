@@ -811,7 +811,7 @@ class ChartingState extends MusicBeatState
 
 		tab_group_extra.add(tapbpm);
 
-		modText = new FlxText(100, 70, 0, 'Modcharts', 24);
+		modText = new FlxText(100, 70, 0, 'Modifiers this section', 10);
 		tab_group_extra.add(modText);
 
 		modCircle = new FlxUICheckBox(100, 120, null, null, "Notes Spin In Circle", 100);
@@ -1583,6 +1583,7 @@ class ChartingState extends MusicBeatState
 		modCameraBounce.checked = sec.camerabounce;
 		modCameraCancel.checked = sec.cameracancel;
 		modFadeOut.checked = sec.fadeout;
+		modCameraFlip.checked = sec.cameraflip;
 	}
 
 	function updateHeads():Void

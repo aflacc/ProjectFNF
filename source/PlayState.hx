@@ -3296,28 +3296,16 @@ class PlayState extends MusicBeatState
 	* Runs every section. Used for modcharting but will work for everything
 	**/
 	function sectionHit() {
-		// ass code
-	//	if (!lastModchart) { // there was no modchart last section
-	//		FlxG.log.add("Last modchart is false");
-	//		for (note in 0...strumLineNotes.members.length) {
-	//			ModCharts.cancelMovement(strumLineNotes.members[note]);
-	//		}
-	//	}
-
-		FlxG.watch.addQuick("MODCHART LAST", lastModchart);
-		/*for (note in 0...strumLineNotes.members.length) {
-			ModCharts.cancelMovement(strumLineNotes.members[note]);
-			if (strumLineNotes.members[note].alpha != 1) {
-				ModCharts.fadeInObject(strumLineNotes.members[note]);
-			}
-		}*/
 		// shiet modchart code but it doesnt run often so it should be fine
+		// bandaid
+		try {
+		if (SONG.notes[Math.floor(curStep / 16)].cameracancel) {
+			ModCharts.cancelCamera(FlxG.camera);
+			ModCharts.tweenCameraAngle(0, 1, FlxG.camera);
+		}
+
 		if (SONG.notes[Math.floor(curStep / 16)].camerabounce) {
 			ModCharts.cameraBounce(camGame, Conductor.crochet / 1000, 200);
-		}
-		if (SONG.notes[Math.floor(curStep / 16)].cameracancel) {
-			ModCharts.cancelCamera(camGame);
-			ModCharts.tweenCameraAngle(0, 1, FlxG.camera);
 		}
 
 		if (SONG.notes[Math.floor(curStep / 16)].cameraflip) {
@@ -3360,6 +3348,9 @@ class PlayState extends MusicBeatState
 						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
 					});
 			} 
+		} catch(err) {
+			trace("TRIED TO RUN CHART AT END OF SONG???");
+		}
 	}
 	override function stepHit()
 	{
