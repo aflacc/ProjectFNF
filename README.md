@@ -56,6 +56,7 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 | Modcharting support for Windows | Yes  |  Yes | 
 | Modcharting support for Linux | Yes | No |
 | Modcharting support for Mac  | Yes | No |
+| Modcharting in charting menu  | Yes | No |
 | Offset timing | Yes | Yes |
 | Customizeable Keybinds | Yes |  Yes |
 | Hit Sounds | Yes | No |
@@ -78,4 +79,4 @@ ProjectFNF is a engine for Friday Night Funkin' designed to be flexible. It cont
 
 
 # Usage
-We do not ask for much, all we ask is you link the github and if the mod is on gamebanana make sure to credit aflack and Magnus for making the engine. Also please do not remove the ProjectFNF version on the bottom of the screen in the main menu, this gives the engine its credit and also makes it easier to receive help with the mod. I will *not* be able to help you if you do not have the version of ProjectFNF in the game. also make sure to add the tag "projectfnf" to the github page.
+We do not ask for much, all we ask is you link the github and if the mod is on gamebanana make sure to credit aflack and Zeptos for making the engine. Also please do not remove the ProjectFNF version on the bottom of the screen in the main menu, this gives the engine its credit and also makes it easier to receive help with the mod. I will *not* be able to help you if you do not have the version of ProjectFNF in the game. also make sure to add the tag "projectfnf" to the github page.
