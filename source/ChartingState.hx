@@ -120,7 +120,7 @@ class ChartingState extends MusicBeatState
 				{
 					curStage = 'spooky';
 
-					var hallowTex = Paths.getSparrowAtlas('halloween_bg');
+					var hallowTex = Paths.getSparrowAtlas('halloween_bg', 'week2');
 
 					halloweenBG = new FlxSprite(-200, -100);
 					halloweenBG.frames = hallowTex;
@@ -135,11 +135,11 @@ class ChartingState extends MusicBeatState
 				{
 					curStage = 'philly';
 
-					var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('philly/sky'));
+					var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('philly/sky', 'week3'));
 					add(bg);
 					bg.scrollFactor.set(0, 0);
 
-					var city:FlxSprite = new FlxSprite(-10).loadGraphic(Paths.image('philly/city'));
+					var city:FlxSprite = new FlxSprite(-10).loadGraphic(Paths.image('philly/city', 'week3'));
 					city.setGraphicSize(Std.int(city.width * 0.85));
 					city.updateHitbox();
 					add(city);
@@ -150,7 +150,7 @@ class ChartingState extends MusicBeatState
 
 					for (i in 0...5)
 					{
-						var light:FlxSprite = new FlxSprite(city.x).loadGraphic(Paths.image('philly/win' + i));
+						var light:FlxSprite = new FlxSprite(city.x).loadGraphic(Paths.image('philly/win' + i, 'week3'));
 						light.visible = false;
 						light.setGraphicSize(Std.int(light.width * 0.85));
 						light.updateHitbox();
@@ -159,7 +159,7 @@ class ChartingState extends MusicBeatState
 						phillyCityLights.add(light);
 					}
 
-					var streetBehind:FlxSprite = new FlxSprite(-40, 50).loadGraphic(Paths.image('philly/behindTrain'));
+					var streetBehind:FlxSprite = new FlxSprite(-40, 50).loadGraphic(Paths.image('philly/behindTrain', 'week3'));
 					add(streetBehind);
 					streetBehind.scrollFactor.set(0, 0);
 
@@ -167,7 +167,7 @@ class ChartingState extends MusicBeatState
 
 					// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
 
-					var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
+					var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street', 'week3'));
 					add(street);
 					street.scrollFactor.set(0, 0);
 				}
@@ -176,12 +176,12 @@ class ChartingState extends MusicBeatState
 					curStage = 'limo';
 					defaultCamZoom = 0.90;
 
-					var skyBG:FlxSprite = new FlxSprite(-120, -50).loadGraphic(Paths.image('limo/limoSunset'));
+					var skyBG:FlxSprite = new FlxSprite(-120, -50).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
 					add(skyBG);
 					skyBG.scrollFactor.set(0, 0);
 
 					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
-					bgLimo.frames = Paths.getSparrowAtlas('limo/bgLimo');
+					bgLimo.frames = Paths.getSparrowAtlas('limo/bgLimo', 'week4');
 					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
 					bgLimo.animation.play('drive');
 					add(bgLimo);
@@ -197,7 +197,7 @@ class ChartingState extends MusicBeatState
 						dancer.scrollFactor.set(0, 0);
 					}
 
-					var overlayShit:FlxSprite = new FlxSprite(-500, -600).loadGraphic(Paths.image('limo/limoOverlay'));
+					var overlayShit:FlxSprite = new FlxSprite(-500, -600).loadGraphic(Paths.image('limo/limoOverlay', 'week4'));
 					overlayShit.alpha = 0.5;
 					overlayShit.scrollFactor.set(0, 0);
 					// add(overlayShit);
@@ -208,7 +208,7 @@ class ChartingState extends MusicBeatState
 
 					// overlayShit.shader = shaderBullshit;
 
-					var limoTex = Paths.getSparrowAtlas('limo/limoDrive');
+					var limoTex = Paths.getSparrowAtlas('limo/limoDrive', 'week4');
 
 					var limo = new FlxSprite(-120, 550);
 					limo.frames = limoTex;
@@ -217,7 +217,7 @@ class ChartingState extends MusicBeatState
 					limo.antialiasing = true;
 					limo.scrollFactor.set(0, 0);
 
-					var fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol'));
+					var fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol', 'week4'));
 					// add(limo);
 				}
 			case 4:
@@ -226,7 +226,7 @@ class ChartingState extends MusicBeatState
 
 					defaultCamZoom = 0.80;
 
-					var bg:FlxSprite = new FlxSprite(-1000, -500).loadGraphic(Paths.image('christmas/bgWalls'));
+					var bg:FlxSprite = new FlxSprite(-1000, -500).loadGraphic(Paths.image('christmas/bgWalls', 'week5'));
 					bg.antialiasing = true;
 					bg.active = false;
 					bg.setGraphicSize(Std.int(bg.width * 0.8));
@@ -235,7 +235,7 @@ class ChartingState extends MusicBeatState
 					bg.scrollFactor.set(0, 0);
 
 					var upperBoppers = new FlxSprite(-240, -90);
-					upperBoppers.frames = Paths.getSparrowAtlas('christmas/upperBop');
+					upperBoppers.frames = Paths.getSparrowAtlas('christmas/upperBop', 'week5');
 					upperBoppers.animation.addByPrefix('bop', "Upper Crowd Bob", 24, false);
 					upperBoppers.antialiasing = true;
 					upperBoppers.setGraphicSize(Std.int(upperBoppers.width * 0.85));
@@ -243,7 +243,7 @@ class ChartingState extends MusicBeatState
 					add(upperBoppers);
 					upperBoppers.scrollFactor.set(0, 0);
 
-					var bgEscalator:FlxSprite = new FlxSprite(-1100, -600).loadGraphic(Paths.image('christmas/bgEscalator'));
+					var bgEscalator:FlxSprite = new FlxSprite(-1100, -600).loadGraphic(Paths.image('christmas/bgEscalator', 'week5'));
 					bgEscalator.antialiasing = true;
 					bgEscalator.active = false;
 					bgEscalator.setGraphicSize(Std.int(bgEscalator.width * 0.9));
@@ -251,13 +251,13 @@ class ChartingState extends MusicBeatState
 					add(bgEscalator);
 					bgEscalator.scrollFactor.set(0, 0);
 
-					var tree:FlxSprite = new FlxSprite(370, -250).loadGraphic(Paths.image('christmas/christmasTree'));
+					var tree:FlxSprite = new FlxSprite(370, -250).loadGraphic(Paths.image('christmas/christmasTree', 'week5'));
 					tree.antialiasing = true;
 					add(tree);
 					tree.scrollFactor.set(0, 0);
 
 					var bottomBoppers = new FlxSprite(-300, 140);
-					bottomBoppers.frames = Paths.getSparrowAtlas('christmas/bottomBop');
+					bottomBoppers.frames = Paths.getSparrowAtlas('christmas/bottomBop', 'week5');
 					bottomBoppers.animation.addByPrefix('bop', 'Bottom Level Boppers', 24, false);
 					bottomBoppers.antialiasing = true;
 					bottomBoppers.setGraphicSize(Std.int(bottomBoppers.width * 1));
@@ -265,14 +265,14 @@ class ChartingState extends MusicBeatState
 					add(bottomBoppers);
 					bottomBoppers.scrollFactor.set(0, 0);
 
-					var fgSnow:FlxSprite = new FlxSprite(-600, 700).loadGraphic(Paths.image('christmas/fgSnow'));
+					var fgSnow:FlxSprite = new FlxSprite(-600, 700).loadGraphic(Paths.image('christmas/fgSnow', 'week5'));
 					fgSnow.active = false;
 					fgSnow.antialiasing = true;
 					add(fgSnow);
 					fgSnow.scrollFactor.set(0, 0);
 
 					var santa = new FlxSprite(-840, 150);
-					santa.frames = Paths.getSparrowAtlas('christmas/santa');
+					santa.frames = Paths.getSparrowAtlas('christmas/santa', 'week5');
 					santa.animation.addByPrefix('idle', 'santa idle in fear', 24, false);
 					santa.antialiasing = true;
 					add(santa);
@@ -281,7 +281,7 @@ class ChartingState extends MusicBeatState
 			case 5:
 				{
 					curStage = 'mallEvil';
-					var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG'));
+					var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG', 'week5'));
 					bg.antialiasing = true;
 					bg.active = false;
 					bg.setGraphicSize(Std.int(bg.width * 0.8));
@@ -290,12 +290,12 @@ class ChartingState extends MusicBeatState
 					bg.scrollFactor.set(0, 0);
 
 
-					var evilTree:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('christmas/evilTree'));
+					var evilTree:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('christmas/evilTree', 'week5'));
 					evilTree.antialiasing = true;
 					add(evilTree);
 					evilTree.scrollFactor.set(0, 0);
 
-					var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("christmas/evilSnow"));
+					var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("christmas/evilSnow", 'week5'));
 					evilSnow.antialiasing = true;
 					add(evilSnow);
 					evilSnow.scrollFactor.set(0, 0);
@@ -390,13 +390,13 @@ class ChartingState extends MusicBeatState
 				{
 					{
 						curStage = 'stage';
-						var bg = new FlxSprite(-600, -400).loadGraphic(Paths.image('stageback'));
+						var bg = new FlxSprite(-600, -400).loadGraphic(Paths.image('stageback', 'shared'));
 						bg.antialiasing = true;
 						bg.active = false;
 						add(bg);
 						bg.scrollFactor.set(0, 0);
 
-						var stageFront = new FlxSprite(-650, 400).loadGraphic(Paths.image('stagefront'));
+						var stageFront = new FlxSprite(-650, 400).loadGraphic(Paths.image('stagefront', 'shared'));
 						stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 						stageFront.updateHitbox();
 						stageFront.antialiasing = true;
@@ -404,7 +404,7 @@ class ChartingState extends MusicBeatState
 						add(stageFront);
 						stageFront.scrollFactor.set(0, 0);
 
-						var stageCurtains = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
+						var stageCurtains = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains', 'shared'));
 						stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 						stageCurtains.updateHitbox();
 						stageCurtains.antialiasing = true;
