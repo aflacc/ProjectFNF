@@ -3149,11 +3149,7 @@ class PlayState extends MusicBeatState
 
 				if (note.noteData >= 0)
 				{
-					if (health < 0.4) {
-						health += 0.031;
-					} else {
-						health += 0.027;
-					}
+					health += 0.029;
 					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
 						gf.playAnim('cheer', true);
 				}
