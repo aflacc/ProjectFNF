@@ -75,8 +75,8 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	var health:Float = 1; // dont set to static
-	var healthPercentage:Float = 50;
+	var health:Float = 2; // dontset to static
+	var healthPercentage:Float = 100;
 
 	private var combo:Int = 0;
 
@@ -1838,8 +1838,8 @@ class PlayState extends MusicBeatState
 			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01) - iconOffset);
 			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 		}
-		if (health > 2)
-			health = 2;
+		if (health > 3)
+			health = 3;
 
 		if (healthPercentage < 20)
 			iconP1.animation.curAnim.curFrame = 1;
