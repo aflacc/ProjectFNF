@@ -2186,9 +2186,11 @@ class PlayState extends MusicBeatState
 						}
 					});
 					if (health > 2) {
-						health -= 0.03;
+						health -= 0.0275;
 					} else if (health > 1.6) {
 						health -= 0.025;
+					} else if (health < 0.4) {
+						health -= 0.02;
 					} else {
 						health -= 0.0225;
 					}
@@ -2882,13 +2884,15 @@ class PlayState extends MusicBeatState
 			trace("BALLS");
 		//	trace(boyfriend.stunned);
 			try {
-				if (note.nType == 1) { return; }
+				if (note.nType == 1) { 
+					health += 0.023;
+					return;
+				}
 			} catch (e) {
 				trace("idk smtn");
 			}
-			trace(FlxG.save.data.ghosttapping);
 			trace(boyfriend.stunned);
-			if (!FlxG.save.data.ghosttapping) {
+			if (true) {
 			if (!boyfriend.stunned)
 			{
 				trace('balls');
@@ -3036,7 +3040,7 @@ class PlayState extends MusicBeatState
 
 		// SEXY FAILSAFE (THANKS VM U A REAL ONE)
 		if (note == 'none') {
-			if (FlxG.save.data.ghosttapping) {
+			if (false) {
 			if (FlxG.save.data.enablemissanimations) { // indenting worked out in the end *holds hands with family*
 				if (leftP) {
 					boyfriend.playAnim('singLEFTmiss', true);
