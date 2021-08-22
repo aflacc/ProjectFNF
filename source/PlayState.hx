@@ -77,7 +77,7 @@ class PlayState extends MusicBeatState
 
 	var health:Float = 1; // 50% (dont set to static)
 	var maxHealth:Float = 2; // 100%
-	var healthPercentage:Float = health / 0.02;
+	var healthPercentage:Float;
 
 	private var combo:Int = 0;
 
