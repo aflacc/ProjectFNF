@@ -75,8 +75,9 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	var health:Float = 1; // dont set to static
-	var healthPercentage:Float = 50;
+	var health:Float = 1; // 50% (dont set to static)
+	var maxHealth:Float = 2; // 100%
+	var healthPercentage:Float;
 
 	private var combo:Int = 0;
 
@@ -1645,7 +1646,7 @@ class PlayState extends MusicBeatState
 		// accuracy!!
 		//var accuracy = FlxMath.roundDecimal((songNotesHit / (songNotesHit + songNotesMissed) * 100), 2);
 		var accuracy = FlxMath.roundDecimal((totalAccuracy / (songNotesHit + songNotesMissed) * 100), 2);
-		healthPercentage = FlxMath.roundDecimal((health / 0.02), 0);
+		healthPercentage = FlxMath.roundDecimal((health / 0.02), 0) > (maxHealth / 0.02) ? (maxHealth / 0.02) : FlxMath.roundDecimal((health / 0.02), 0);
 
 		if (Math.isNaN(accuracy))
 				{
@@ -1838,8 +1839,8 @@ class PlayState extends MusicBeatState
 			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01) - iconOffset);
 			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthPercentage, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 		}
-		if (health > 2)
-			health = 2;
+		if (health > maxHealth)
+			health = maxHealth;
 
 		if (healthPercentage < 20)
 			iconP1.animation.curAnim.curFrame = 1;
@@ -3311,7 +3312,7 @@ class PlayState extends MusicBeatState
 		if (SONG.notes[Math.floor(curStep / 16)].cameraflip) {
 			ModCharts.tweenCameraAngle(180, 1, FlxG.camera);
 		}
-		
+
 		if (SONG.notes[Math.floor(curStep / 16)].cancel) {
 			lastModchart = false;
 			for (note in 0...strumLineNotes.members.length) {
@@ -3334,7 +3335,7 @@ class PlayState extends MusicBeatState
 					for (note in 0...strumLineNotes.members.length) {
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 					}
-			} 
+			}
 			if (SONG.notes[Math.floor(curStep / 16)].fadeout) {
 					lastModchart = true;
 					for (note in 0...strumLineNotes.members.length) {
@@ -3347,7 +3348,7 @@ class PlayState extends MusicBeatState
 					{
 						ModCharts.bounceLoop(note, Conductor.crochet / 1000);
 					});
-			} 
+			}
 		} catch(err) {
 			trace("TRIED TO RUN CHART AT END OF SONG???");
 		}
