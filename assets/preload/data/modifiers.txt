@@ -1,6 +1,6 @@
 setDad Notes Do Damage || The enemy's notes can do damage || false
 setDad Notes Can Kill || The enemy's notes can kill you (if doing damage) || false
-setDamage from Dad Notes || Use left and right to set how much damage will you receive from Dad Notes (in percent) || 1
+setDamage from Dad Notes || Use left and right to set how much damage you will receive from Dad Notes (in percent) || 1
 setDad Notes Visible || Dad(Enemies) notes are visible || true
 setBF Notes Visible || Boyfriend's notes are visible || true
 setStuns Block Inputs || Missing a note makes you unable to press keys || false
