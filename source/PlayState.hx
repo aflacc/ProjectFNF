@@ -214,6 +214,7 @@ class PlayState extends MusicBeatState
 		ModCharts.bfNotesVisible = FlxG.save.data.bfnotesvisible;
 		ModCharts.dadNotesDoDamage = FlxG.save.data.dadnotesdodamage;
 		ModCharts.dadNotesCanKill = FlxG.save.data.dadnotescankill;
+		ModCharts.damageFromDadNotes = FlxG.save.data.damagefromdadnotes / 10 * 0.02;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -2187,12 +2188,12 @@ class PlayState extends MusicBeatState
 						}
 					});
 					if (ModCharts.dadNotesDoDamage) {
-						if (!(health - 0.01 < 0.001)) {
-							health -= 0.01;
+						if (!(health - ModCharts.damageFromDadNotes < 0.001)) {
+							health -= ModCharts.damageFromDadNotes;
 							updateInfo();
 						} else {
 							if (ModCharts.dadNotesCanKill) {
-								health -= 0.01;
+								health -= ModCharts.damageFromDadNotes;
 							}
 						}
 					}

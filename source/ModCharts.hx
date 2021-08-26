@@ -45,12 +45,18 @@ class ModCharts
 	 * Works mid game!
 	 */
 	 static public var dadNotesDoDamage:Bool = false;
-	/**
+	
+	 /**
 	 * Configures if dad's notes can kill bf.
 	 * Works mid game!
 	 */
 	 static public var dadNotesCanKill:Bool = false;
 
+	/**
+	 * Configures how much damage will bf receive if dad notes do damage (IN PERCENTAGE!!!!)
+	 * Works mid game!
+	**/
+	static public var damageFromDadNotes:Float = 1;
 
 	/**
 	 * Quickly spin a sprite 180 degrees. Usually used for spinning the strum arrows.
