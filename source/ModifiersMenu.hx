@@ -62,6 +62,9 @@ class ModifiersMenu extends MusicBeatState
 				case "Dad Notes Can Kill":
 					if (FlxG.save.data.dadnotescankill == null)
 						FlxG.save.data.dadnotescankill = controlsStrings[curSelected].split(" || ")[2];
+				case "Damage from Dad Notes":
+					if (FlxG.save.data.damagefromdadnotes == null)
+						FlxG.save.data.damagefromdadnotes = 1;
 				case "Dad Notes Visible":
 					if (FlxG.save.data.dadnotesvisible == null)
 						FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
@@ -104,6 +107,9 @@ class ModifiersMenu extends MusicBeatState
 				case "Dad Notes Can Kill":
 					FlxG.save.data.dadnotescankill = !FlxG.save.data.dadnotescankill;
 					optionsText.text = FlxG.save.data.dadnotescankill;
+				case "Damage from Dad Notes":
+					FlxG.save.data.damagefromdadnotes = 1;
+					optionsText.text = "1";	
 				case "Dad Notes Visible":
 					FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
 					optionsText.text = FlxG.save.data.dadnotesvisible;
@@ -124,7 +130,24 @@ class ModifiersMenu extends MusicBeatState
 			changeSelection(-1);
 		if (controls.DOWN_P)
 			changeSelection(1);
+		if (controls.LEFT_P) {
+			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+				case "Damage from Dad Notes":
+					FlxG.save.data.damagefromdadnotes -= 1;
+					if (FlxG.save.data.damagefromdadnotes < 0.1)
+						FlxG.save.data.damagefromdadnotes = 0.1;
+					optionsText.text = Std.string(FlxG.save.data.damagefromdadnotes / 10);
+			}
+		}
+		if (controls.RIGHT_P) {
+			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
+				case "Damage from Dad Notes":
+					FlxG.save.data.damagefromdadnotes += 1;
+					optionsText.text = Std.string(FlxG.save.data.damagefromdadnotes / 10);
+			}
+		}
 	}
+	
 
 	function waitingInput():Void
 	{
@@ -163,6 +186,8 @@ class ModifiersMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.dadnotesdodamage;
 			case "Dad Notes Can Kill":
 				optionsText.text = FlxG.save.data.dadnotescankill;
+			case "Damage from Dad Notes":
+				optionsText.text = Std.string(FlxG.save.data.damagefromdadnotes / 10);
 			case "BF Notes Visible":
 				optionsText.text = FlxG.save.data.bfnotesvisible;
 			case "Dad Notes Visible":
