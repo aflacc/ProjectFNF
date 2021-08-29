@@ -59,6 +59,9 @@ class ProjectFNF
 			if (FlxG.save.data.maxoptimization == null) {
 				FlxG.save.data.maxoptimization = controlsStrings[curSelected].split(" || ")[2];
 			}
+			if (FlxG.save.data.hardmode == null) {
+				FlxG.save.data.hardmode = controlsStrings[curSelected].split(" || ")[2];
+			}
 			if (FlxG.save.data.middlescroll == null) {
 				FlxG.save.data.middlescroll = controlsStrings[curSelected].split(" || ")[2];
 			}

@@ -280,6 +280,9 @@ class OptionsMenu extends MusicBeatState
 				case "Charting Background":
 					FlxG.save.data.chartingbackground = !FlxG.save.data.chartingbackground;
 					optionsText.text = FlxG.save.data.chartingbackground;
+				case "Hard Mode":
+					FlxG.save.data.hardmode = !FlxG.save.data.hardmode;
+					optionsText.text = FlxG.save.data.hardmode;
 				case "Change Note Theme":
 					noteselection++;
 					if (noteselection > notetypes.length - 1)
@@ -423,6 +426,8 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.chartingbackground;
 			case "Quaver Bar":
 				optionsText.text = FlxG.save.data.quaverbar;
+			case "Hard Mode":
+				optionsText.text = FlxG.save.data.hardmode;
 			case "Change Note Theme":
 				if (FlxG.save.data.notetheme == "NOTE")
 				{

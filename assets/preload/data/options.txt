@@ -1,4 +1,5 @@
 setGhost Tapping || Hitting a key will not give you a miss || false
+setHard Mode || Sets your healthgain much lower, like in quaver. || true
 setDownscroll || The notes scroll down || false
 setCustom Offset || Use left and right to set your offset, and enter to reset. || 0
 setTime Your Offset || Use a custom tool to time your offset(WIP) || Press ENTER
