@@ -30,10 +30,12 @@ class OptionsMenu extends MusicBeatState
 
 	var viewer:FlxSprite;
 
-	var notetypes = [
+	/*var notetypes = [
 		"NOTE", "TRIANGLE", "CIRCLE", "BEATSABER", "STEPMANIA", "ETTERNA", "SPOOKY", "VAPORWAVE", "HELLBEATS", "WAFELS3", "NEO", "SOFT", "TRANSPARENT",
 		"SPLASH", "ITG"
-	];
+	];*/
+	var notetypes = CoolUtil.coolTextFile(Paths.txt('noteSkinList'));
+
 	var noteselection = 69; // funny number
 
 	override function create()
