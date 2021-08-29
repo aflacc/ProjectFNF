@@ -65,6 +65,9 @@ class ModifiersMenu extends MusicBeatState
 				case "Damage from Dad Notes":
 					if (FlxG.save.data.damagefromdadnotes == null)
 						FlxG.save.data.damagefromdadnotes = 1;
+				case "No Health Gain":
+					if (FlxG.save.data.nohealthgain == null)
+						FlxG.save.data.nohealthgain = 0;
 				case "Dad Notes Visible":
 					if (FlxG.save.data.dadnotesvisible == null)
 						FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
@@ -108,8 +111,13 @@ class ModifiersMenu extends MusicBeatState
 					FlxG.save.data.dadnotescankill = !FlxG.save.data.dadnotescankill;
 					optionsText.text = FlxG.save.data.dadnotescankill;
 				case "Damage from Dad Notes":
-					FlxG.save.data.damagefromdadnotes = 1;
-					optionsText.text = "1";	
+					FlxG.save.data.damagefromdadnotes = 10;
+					optionsText.text = "1";
+				case "No Health Gain":
+					FlxG.save.data.nohealthgain += 50;
+					if (FlxG.save.data.nohealthgain > 100)
+						FlxG.save.data.nohealthgain = 0;
+					optionsText.text = FlxG.save.data.nohealthgain == 0 ? "OFF" : FlxG.save.data.nohealthgain + "%";
 				case "Dad Notes Visible":
 					FlxG.save.data.dadnotesvisible = !FlxG.save.data.dadnotesvisible;
 					optionsText.text = FlxG.save.data.dadnotesvisible;
@@ -134,8 +142,8 @@ class ModifiersMenu extends MusicBeatState
 			switch (controlsStrings[curSelected].substring(3).split(" || ")[0]) {
 				case "Damage from Dad Notes":
 					FlxG.save.data.damagefromdadnotes -= 1;
-					if (FlxG.save.data.damagefromdadnotes < 0.1)
-						FlxG.save.data.damagefromdadnotes = 0.1;
+					if (FlxG.save.data.damagefromdadnotes < 1)
+						FlxG.save.data.damagefromdadnotes = 1;
 					optionsText.text = Std.string(FlxG.save.data.damagefromdadnotes / 10);
 			}
 		}
@@ -147,7 +155,7 @@ class ModifiersMenu extends MusicBeatState
 			}
 		}
 	}
-	
+
 
 	function waitingInput():Void
 	{
@@ -188,6 +196,8 @@ class ModifiersMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.dadnotescankill;
 			case "Damage from Dad Notes":
 				optionsText.text = Std.string(FlxG.save.data.damagefromdadnotes / 10);
+			case "No Health Gain":
+				optionsText.text = FlxG.save.data.nohealthgain == 0 ? "OFF" : FlxG.save.data.nohealthgain + "%";
 			case "BF Notes Visible":
 				optionsText.text = FlxG.save.data.bfnotesvisible;
 			case "Dad Notes Visible":

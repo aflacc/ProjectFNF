@@ -75,7 +75,7 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	var health:Float = 1; // 50% (dont set to static)
+	var health:Float; // modders: go to line 208 to set starting health (dont set to static)
 	var maxHealth:Float = 2; // 100%
 	var healthPercentage:Float;
 
@@ -205,7 +205,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.customscrollspeed > 0) {
 			usingCustomScrollSpeed = true;
 		}
-
+		health = FlxG.save.data.nohealthgain == 0 ? 1 : FlxG.save.data.nohealthgain * 0.02;
 		var stageCurtains:FlxSprite;
 		var stageFront:FlxSprite;
 		var bg:FlxSprite;
@@ -3153,13 +3153,15 @@ class PlayState extends MusicBeatState
 
 				if (note.noteData >= 0)
 				{
-					health += 0.007;
+					if (FlxG.save.data.nohealthgain == 0)
+						health += 0.007;
 					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
 						gf.playAnim('cheer', true);
 				}
 				else
 				{
-					health += 0.004;
+					if (FlxG.save.data.nohealthgain == 0)
+						health += 0.004;
 					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
 						gf.playAnim('cheer', true);
 				}
