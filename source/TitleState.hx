@@ -203,6 +203,7 @@ class TitleState extends MusicBeatState
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
+		ngSpr.y += 200;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -381,18 +382,21 @@ class TitleState extends MusicBeatState
 			// credTextShit.addText();
 			case 4:
 				deleteCoolText();
+				createCoolText(['ProjectFNF', 'by']);
 			// credTextShit.visible = false;
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['Made', 'with']);
+				addMoreText('aflac');
+			case 6:
+				addMoreText('Zeptos');
 			case 7:
-				addMoreText('ProjectFNF'); // dont remove pls
-				ngSpr.visible = true;
+				addMoreText('Smokey');
+				//ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
-				ngSpr.visible = false;
+			//	ngSpr.visible = false;
 			// credTextShit.visible = false;
 
 			// credTextShit.text = 'Shoutouts Tom Fulp';
