@@ -3153,12 +3153,8 @@ class PlayState extends MusicBeatState
 
 				if (note.noteData >= 0)
 				{
-<<<<<<< Updated upstream
 					if (FlxG.save.data.nohealthgain == 0)
-						health += 0.007;
-=======
-					health += FlxG.save.data.hardmode ? 0.007 : 0.023;
->>>>>>> Stashed changes
+						health += FlxG.save.data.hardmode ? 0.007 : 0.023;
 					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
 						gf.playAnim('cheer', true);
 				}
