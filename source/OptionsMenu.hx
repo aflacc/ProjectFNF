@@ -61,93 +61,6 @@ class OptionsMenu extends MusicBeatState
 		controlsStrings[controlsStrings.length] = "setCustomize Keybinds"; // I HAVE SEVERE AUTISM LOOODALOFDALK
 		for (i in 0...controlsStrings.length)
 		{
-			switch (controlsStrings[i].substring(3).split(" || ")[0])
-			{
-				case "Ghost Tapping":
-					if (FlxG.save.data.ghosttapping == null) {
-						trace("Some data's null around here :nerd:");
-						FlxG.save.data.ghosttapping = controlsStrings[curSelected].split(" || ")[2];
-					}
-				case "Downscroll":
-					if (FlxG.save.data.downscroll == null)
-						FlxG.save.data.downscroll = controlsStrings[curSelected].split(" || ")[2];
-				case "Miss Shake":
-					if (FlxG.save.data.missshake == null)
-						FlxG.save.data.missshake = controlsStrings[curSelected].split(" || ")[2];
-				case "Dad Notes Visible":
-					if (FlxG.save.data.dadnotesvisible == null)
-						FlxG.save.data.dadnotesvisible = controlsStrings[curSelected].split(" || ")[2];
-				case "Enable Miss Animations":
-					if (FlxG.save.data.enablemissanimations == null)
-						FlxG.save.data.enablemissanimations = controlsStrings[curSelected].split(" || ")[2];
-				case "Optimized Notes":
-					if (FlxG.save.data.squarenotes == null)
-						FlxG.save.data.squarenotes = controlsStrings[curSelected].split(" || ")[2];
-				case "Advanced Info Bar":
-					if (FlxG.save.data.advancedinfobar == null)
-						FlxG.save.data.advancedinfobar = controlsStrings[curSelected].split(" || ")[2];
-				case "Bot Play":
-					if (FlxG.save.data.botplay == null)
-						FlxG.save.data.botplay = controlsStrings[curSelected].split(" || ")[2];
-				case "Hit Sounds":
-					if (FlxG.save.data.hitsounds == null)
-						FlxG.save.data.hitsounds = controlsStrings[curSelected].split(" || ")[2];
-				case "New Icons":
-					if (FlxG.save.data.newicons == null)
-						FlxG.save.data.newicons = controlsStrings[curSelected].split(" || ")[2];
-				case "Icons":
-					if (FlxG.save.data.icons == null)
-						FlxG.save.data.icons = controlsStrings[curSelected].split(" || ")[2];
-				case "Info Bar BG":
-					if (FlxG.save.data.infobarbg == null)
-						FlxG.save.data.infobarbg = controlsStrings[curSelected].split(" || ")[2];
-				case "Countdown After Pause":
-					if (FlxG.save.data.countdownafterpause == null)
-						FlxG.save.data.countdownafterpause = controlsStrings[curSelected].split(" || ")[2];
-				case "Custom Scroll Speed":
-					if (FlxG.save.data.customscrollspeed == null)
-						FlxG.save.data.customscrollspeed = 0;
-				case "Change Note Theme":
-					if (FlxG.save.data.notetheme == null)
-						FlxG.save.data.notetheme = "NOTE";
-				case "Max Optimization":
-					if (FlxG.save.data.maxoptimization == null) {
-						FlxG.save.data.maxoptimization = controlsStrings[curSelected].split(" || ")[2];
-					}
-				case "Quaver Bar":
-					if (FlxG.save.data.quaverbar == null) {
-						FlxG.save.data.quaverbar = controlsStrings[curSelected].split(" || ")[2];
-					}
-				case "Middle Scroll":
-					if (FlxG.save.data.middlescroll == null) {
-						FlxG.save.data.middlescroll = controlsStrings[curSelected].split(" || ")[2];
-					}
-				case "Charting Background":
-					if (FlxG.save.data.chartingbackground == null) {
-						FlxG.save.data.chartingbackground = controlsStrings[curSelected].split(" || ")[2];
-					}
-				case "Custom Offset":
-					if (FlxG.save.data.offset == null) {
-						FlxG.save.data.offset = 0;
-					}
-			}
-
-			// failsafe cuz stupid
-			if (FlxG.save.data.dadnotesdodamage == null)
-				FlxG.save.data.dadnotesdodamage = false;
-			if (FlxG.save.data.dadnotescankill == null)
-				FlxG.save.data.dadnotescankill = false;
-			if (FlxG.save.data.dadnotesvisible == null)
-				FlxG.save.data.dadnotesvisible = true;
-			if (FlxG.save.data.bfnotesvisible == null)
-				FlxG.save.data.bfnotesvisible = true;
-			if (FlxG.save.data.stunsblockinputs == null)
-				FlxG.save.data.stunsblockinputs = false;
-			if (FlxG.save.data.infobar == null)
-				FlxG.save.data.infobar = [];
-
-			FlxG.save.flush();
-
 			if (controlsStrings[i].indexOf('set') != -1)
 			{
 				var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i].substring(3).split(" || ")[0], true, false);
@@ -195,8 +108,6 @@ class OptionsMenu extends MusicBeatState
 				return FlxG.save.data.botplay;
 			case "Hit Sounds":
 				return FlxG.save.data.hitsounds;
-			case "New Icons":
-				return FlxG.save.data.newicons;
 			case "Info Bar BG":
 				return FlxG.save.data.infobarbg;
 			case "Max Optimization":
@@ -214,7 +125,7 @@ class OptionsMenu extends MusicBeatState
 		}
 		return "None Found";
 	}
-	
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -259,9 +170,6 @@ class OptionsMenu extends MusicBeatState
 				case "Hit Sounds":
 					FlxG.save.data.hitsounds = !FlxG.save.data.hitsounds;
 					optionsText.text = FlxG.save.data.hitsounds;
-				case "New Icons":
-					FlxG.save.data.newicons = !FlxG.save.data.newicons;
-					optionsText.text = FlxG.save.data.newicons;
 				case "Icons":
 					FlxG.save.data.icons = !FlxG.save.data.icons;
 					optionsText.text = FlxG.save.data.icons;
@@ -416,8 +324,6 @@ class OptionsMenu extends MusicBeatState
 				optionsText.text = FlxG.save.data.hitsounds;
 			case "Max Optimization":
 				optionsText.text = FlxG.save.data.maxoptimization;
-			case "New Icons":
-				optionsText.text = FlxG.save.data.newicons;
 			case "Optimized Notes":
 				optionsText.text = FlxG.save.data.squarenotes;
 			case "Info Bar BG":
@@ -479,6 +385,6 @@ class OptionsMenu extends MusicBeatState
 	}
 
 	function reset() {
-		
+
 	}
 }
