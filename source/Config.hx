@@ -54,7 +54,8 @@ class Config extends MusicBeatState
 	 * 
 	 * Default = **["Friday", "Night", "Funkin"]**
 	 */
-	 public static var TITLEMESSAGE:Array<String> = ["Friday", "Night", "Funkin"];
+	 public static var TITLEMESSAGE:Array<String> = ["Ignore", "This", "Sussy Text"];
+	 
 
 	/**
 	 * Makes the Girlfriend sit on the Limo instead of the Speaker in week 4.
@@ -69,7 +70,7 @@ class Config extends MusicBeatState
 	 * 
 	 * Default = **true**
 	 */
-	public static var CONFIGTitle:Bool = true;
+	public static var CONFIGTitle:Bool = false;
 
 	/**
 	 * Skips the "You are using a bla bla bla projectfnf bla bla bla github bla bla bla" message
