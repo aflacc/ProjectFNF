@@ -1,6 +1,5 @@
 export/
 .vscode/*
-!.vscode/
 !.vscode/tasks.json
 desktop.ini
 Project.xml
