@@ -2795,6 +2795,7 @@ class PlayState extends MusicBeatState
 					if (daNote.canBeHit && daNote.mustPress && daNote.isSustainNote)
 					{
 						if (FlxG.save.data.botplay) {
+
 						switch (daNote.noteData)
 						{
 							// NOTES YOU ARE HOLDING
@@ -3037,6 +3038,8 @@ class PlayState extends MusicBeatState
 		var rightP = controls.RIGHT_P;
 		var downP = controls.DOWN_P;
 		var leftP = controls.LEFT_P;
+		if (FlxG.save.data.botplay)
+			return; // sike
 
 		// SEXY FAILSAFE (THANKS VM U A REAL ONE)
 		if (note == 'none') {
@@ -3140,6 +3143,8 @@ class PlayState extends MusicBeatState
 	function goodNoteHit(note:Note):Void
 	{
 		if (note.nType == 1) {
+			if (FlxG.save.data.botplay)
+				return;
 			trace("FIRE NOTE OH SHTIT");
 			health -= 1;
 		}

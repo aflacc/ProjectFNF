@@ -17,7 +17,7 @@ class ProjectFNF
 		if (FlxG.save.data.dadnotescankill == null)
 			FlxG.save.data.dadnotescankill = false;
 		if (FlxG.save.data.damagefromdadnotes == null)
-			FlxG.save.data.damagefromdadnotes = 1;
+			FlxG.save.data.damagefromdadnotes = 10;
 		if (FlxG.save.data.nohealthgain == null)
 			FlxG.save.data.nohealthgain = 0;
 		if (FlxG.save.data.dadnotesvisible == null)
