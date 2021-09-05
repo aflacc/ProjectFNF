@@ -2839,48 +2839,53 @@ class PlayState extends MusicBeatState
 				boyfriend.playAnim('idle');
 			}
 		}
-
 		playerStrums.forEach(function(spr:FlxSprite)
 		{
+			if (!FlxG.save.data.botplay) {
 			switch (spr.ID)
 			{
 				case 0:
-					if ((leftP || FlxG.save.data.botplay) && spr.animation.curAnim.name != 'confirm')
+					if (leftP && spr.animation.curAnim.name != 'confirm')
 						spr.animation.play('pressed');
-					if ((leftR || FlxG.save.data.botplay))
+					if (leftR)
 						spr.animation.play('static');
 				case 1:
-					if ((downP || FlxG.save.data.botplay)  && spr.animation.curAnim.name != 'confirm')
+					if (downP && spr.animation.curAnim.name != 'confirm')
 						spr.animation.play('pressed');
-					if ((downR || FlxG.save.data.botplay))
+					if (downR)
 						spr.animation.play('static');
 				case 2:
-					if ((upP || FlxG.save.data.botplay) && spr.animation.curAnim.name != 'confirm')
+					if (upP && spr.animation.curAnim.name != 'confirm')
 						spr.animation.play('pressed');
-					if ((upR || FlxG.save.data.botplay))
+					if (upR)
 						spr.animation.play('static');
 				case 3:
-					if ((rightP || FlxG.save.data.botplay) && spr.animation.curAnim.name != 'confirm')
+					if (rightP && spr.animation.curAnim.name != 'confirm')
 						spr.animation.play('pressed');
-					if ((rightR || FlxG.save.data.botplay))
+					if (rightR)
 						spr.animation.play('static');
 			}
-			try {
-			if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
+		} else {
+			if (strumming2[spr.ID])
 			{
-				spr.centerOffsets();
-				spr.offset.x -= 13;
-				spr.offset.y -= 13;
+				spr.animation.play("confirm");
 			}
-			else {
-				spr.centerOffsets();
-			}
+		}
+		try {
+		if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
+		{
+			spr.centerOffsets();
+			spr.offset.x -= 13;
+			spr.offset.y -= 13;
+		}
+		else {
+			spr.centerOffsets();
+		}
 		} catch(e) {
 			trace("oh shit daddy~ smtn went wrong uwu~ lil fucky wucky teehee~");
 		}
 		});
 	}
-
 
 	function noteMiss(direction:Int = 1, note:Note, fromfall:Bool = false):Void
 		{
