@@ -1548,7 +1548,7 @@ class ChartingState extends MusicBeatState
 
 			updateGrid();
 			updateSectionUI();
-			updateExtraUI();
+			updateExtraUI(true);
 		}
 		else
 			trace('bro wtf I AM NULL');
@@ -1585,14 +1585,14 @@ class ChartingState extends MusicBeatState
 	function updateExtraUI(updateModCharts:Bool = false):Void
 	{
 		var sec = _song.notes[curSection];
+		modCameraCancel.checked = sec.cameracancel;
+		modCancel.checked = sec.cancel;
 		if (updateModCharts) {
 			modCircle.checked = sec.circle;
 			modFadeOut.checked = sec.fadeout;
 			modFadeIn.checked = sec.fadein;
 			modBounce.checked = sec.bounce;
-			modCancel.checked = sec.cancel;
 			modCameraBounce.checked = sec.camerabounce;
-			modCameraCancel.checked = sec.cameracancel;
 			modFadeOut.checked = sec.fadeout;
 			modCameraFlip.checked = sec.cameraflip;
 		}
