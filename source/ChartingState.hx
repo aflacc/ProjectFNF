@@ -949,14 +949,24 @@ class ChartingState extends MusicBeatState
 					_song.notes[curSection].bounce = check.checked;
 				case "Cancel Movements":
 					_song.notes[curSection].cancel = check.checked;
+					modCircle.checked = false;
+					modFadeOut.checked = false;
+					modFadeIn.checked = false;
+					modBounce.checked = false;
+					modFadeOut.checked = false;
+					updateExtraUI(true);
 				case "Fade In Notes":
 					_song.notes[curSection].fadein = check.checked;
 				case "Bounce Camera":
 					_song.notes[curSection].camerabounce = check.checked;
 				case "Cancel Camera":
 					_song.notes[curSection].cameracancel = check.checked;
+					modCameraBounce.checked = false;
+					modCameraFlip.checked = false;
+					updateExtraUI(true);
 				case "Flip Camera":
 					_song.notes[curSection].cameraflip = check.checked;
+
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
@@ -1572,18 +1582,20 @@ class ChartingState extends MusicBeatState
 		updateHeads();
 	}
 
-	function updateExtraUI():Void
+	function updateExtraUI(updateModCharts:Bool = false):Void
 	{
 		var sec = _song.notes[curSection];
-	/*	modCircle.checked = sec.circle;
-		modFadeOut.checked = sec.fadeout;
-		modFadeIn.checked = sec.fadein;
-		modBounce.checked = sec.bounce;
-		modCancel.checked = sec.cancel;
-		modCameraBounce.checked = sec.camerabounce;
-		modCameraCancel.checked = sec.cameracancel;
-		modFadeOut.checked = sec.fadeout;
-		modCameraFlip.checked = sec.cameraflip;*/
+		if (updateModCharts) {
+			modCircle.checked = sec.circle;
+			modFadeOut.checked = sec.fadeout;
+			modFadeIn.checked = sec.fadein;
+			modBounce.checked = sec.bounce;
+			modCancel.checked = sec.cancel;
+			modCameraBounce.checked = sec.camerabounce;
+			modCameraCancel.checked = sec.cameracancel;
+			modFadeOut.checked = sec.fadeout;
+			modCameraFlip.checked = sec.cameraflip;
+		}
 	}
 
 	function updateHeads():Void
