@@ -391,7 +391,7 @@ class TitleState extends MusicBeatState
 			case 6:
 				addMoreText('Zeptos');
 			case 7:
-				addMoreText('Smokey');
+				addMoreText('l1ttle');
 				//ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
