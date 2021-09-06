@@ -1575,7 +1575,7 @@ class ChartingState extends MusicBeatState
 	function updateExtraUI():Void
 	{
 		var sec = _song.notes[curSection];
-		modCircle.checked = sec.circle;
+	/*	modCircle.checked = sec.circle;
 		modFadeOut.checked = sec.fadeout;
 		modFadeIn.checked = sec.fadein;
 		modBounce.checked = sec.bounce;
@@ -1583,7 +1583,7 @@ class ChartingState extends MusicBeatState
 		modCameraBounce.checked = sec.camerabounce;
 		modCameraCancel.checked = sec.cameracancel;
 		modFadeOut.checked = sec.fadeout;
-		modCameraFlip.checked = sec.cameraflip;
+		modCameraFlip.checked = sec.cameraflip;*/
 	}
 
 	function updateHeads():Void
