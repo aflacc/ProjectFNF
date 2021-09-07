@@ -74,9 +74,9 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	private var gfSpeed:Int = 1;
-
+  
 	var health:Float; // modders: go to line 208 to set starting health (dont set to static)
-	var maxHealth:Float = 2; // 100%
+	var maxHealth:Float = 3; // 100%
 	var healthPercentage:Float;
 
 	private var combo:Int = 0;
@@ -205,7 +205,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.customscrollspeed > 0) {
 			usingCustomScrollSpeed = true;
 		}
-		health = FlxG.save.data.nohealthgain == 0 ? 1 : FlxG.save.data.nohealthgain * 0.02;
+		health = FlxG.save.data.nohealthgain == 0 ? 2 : FlxG.save.data.nohealthgain * 0.02;
 		var stageCurtains:FlxSprite;
 		var stageFront:FlxSprite;
 		var bg:FlxSprite;
@@ -2187,16 +2187,16 @@ class PlayState extends MusicBeatState
 							sustain2(spr.ID, spr, daNote);
 						}
 					});
-					if (ModCharts.dadNotesDoDamage) {
-						if (!(health - ModCharts.damageFromDadNotes < 0.001)) {
-							health -= ModCharts.damageFromDadNotes;
-							updateInfo();
-						} else {
-							if (ModCharts.dadNotesCanKill) {
-								health -= ModCharts.damageFromDadNotes;
-							}
-						}
+					if (health > 2) {
+						health -= 0.0275;
+					} else if (health > 1.6) {
+						health -= 0.025;
+					} else if (health < 0.4) {
+						health -= 0.02;
+					} else {
+						health -= 0.0225;
 					}
+					updateInfo();
 
 					dad.holdTimer = 0;
 
@@ -2892,13 +2892,15 @@ class PlayState extends MusicBeatState
 			trace("BALLS");
 		//	trace(boyfriend.stunned);
 			try {
-				if (note.nType == 1) { return; }
+				if (note.nType == 1) { 
+					health += 0.023;
+					return;
+				}
 			} catch (e) {
 				trace("idk smtn");
 			}
-			trace(FlxG.save.data.ghosttapping);
 			trace(boyfriend.stunned);
-			if (!FlxG.save.data.ghosttapping) {
+			if (true) {
 			if (!boyfriend.stunned)
 			{
 				trace('balls');
@@ -3048,7 +3050,7 @@ class PlayState extends MusicBeatState
 
 		// SEXY FAILSAFE (THANKS VM U A REAL ONE)
 		if (note == 'none') {
-			if (FlxG.save.data.ghosttapping) {
+			if (false) {
 			if (FlxG.save.data.enablemissanimations) { // indenting worked out in the end *holds hands with family*
 				if (leftP) {
 					boyfriend.playAnim('singLEFTmiss', true);
@@ -3164,14 +3166,14 @@ class PlayState extends MusicBeatState
 				if (note.noteData >= 0)
 				{
 					if (FlxG.save.data.nohealthgain == 0)
-						health += FlxG.save.data.hardmode ? 0.007 : 0.023;
+						health += FlxG.save.data.hardmode ? 0.007 : 0.029;
 					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
 						gf.playAnim('cheer', true);
 				}
 				else
 				{
 					if (FlxG.save.data.nohealthgain == 0)
-						health += 0.004;
+						health += 0.009;
 					if (combo == 10 || combo == 50 || combo == 100 || combo == 200 || combo == 300)
 						gf.playAnim('cheer', true);
 				}
