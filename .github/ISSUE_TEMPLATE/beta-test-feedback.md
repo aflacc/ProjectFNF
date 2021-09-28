@@ -3,7 +3,7 @@ name: Beta Test Feedback
 about: Share your feedback on the Beta Tests!
 title: ''
 labels: Beta Test
-assignees: MagnusStrom
+assignees: 
 
 ---
 
