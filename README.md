@@ -1,3 +1,4 @@
+# THIS VERSION OF PROJECTFNF IS DISCONTINUED. CURRENTLY, [PROJECTFNF 2.0](https://github.com/l1ttleO/ProjectFNF) IS BEING DEVELOPED
 
 [![Discord](https://img.shields.io/discord/826580018346852372?color=7289da&icon=discord&label=Discord&logoColor=%234e5d94&style=for-the-badge&icon=disc)](https://discord.gg/fmxuXhRqMU) 
 [![Version](https://img.shields.io/github/v/release/aflacc/ProjectFNF?label=Release&style=for-the-badge)](https://github.com/aflacc/ProjectFNF/releases) 
